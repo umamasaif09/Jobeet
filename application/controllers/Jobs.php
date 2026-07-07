@@ -16,9 +16,9 @@ class Jobs extends CI_Controller
 
     public function category($id, $page=1) 
     {
-        $offset= ($page-1)*20;
+        
         $this->load->model("Job_model");
-        $data["result"]= $this->Job_model->getJobsByCategory($id, $offset);
+        $data["result"]= $this->Job_model->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
         $this->load->view("jobs/category", $data);
 
@@ -58,7 +58,7 @@ class Jobs extends CI_Controller
         $this->load->model("Job_model");
         $category= $this->Job_model->getCategoryById($id);
 
-        //image upload configs
+        //image upload configs - move to configs
         $config["upload_path"] = "./uploads/";
         $config["allowed_types"] = "jpg|jpeg|png|gif";
         $config["encrypt_name"]=  TRUE;
@@ -142,10 +142,7 @@ class Jobs extends CI_Controller
         $job= $this->Job_model->getJobForEdit($id, $token);
 
         //get expiry 
-        $expires= strtotime($job["expires_at"]);
-        $today= time();
-
-        $daysRemaining= ceil(($expires - $today)/(60*60*24));
+        $daysRemaining= $this->Job_model->getRemainingDays($id, $token);
 
         if($job == NULL) {
             show_404(); //404 error
@@ -166,15 +163,7 @@ class Jobs extends CI_Controller
         $id = $this->input->post("id");
         $token = $this->input->post("token");
 
-        if($this->upload->do_upload("logo")) //if user updates logo
-            {
-                $uploadData= $this->upload->data();
-                $jobData["logo"] = $uploadData["file_name"];
-            }
-        else 
-            { //otherwise save the previous
-                $jobData["logo"]= $this->input->post("old_logo");
-            }
+        
 
         $jobData =[
             
@@ -194,6 +183,16 @@ class Jobs extends CI_Controller
             
         ];
 
+        if($this->upload->do_upload("logo")) //if user updates logo
+            {
+                $uploadData= $this->upload->data();
+                $jobData["logo"] = $uploadData["file_name"];
+            }
+        else 
+            { //otherwise save the previous
+                $jobData["logo"]= $this->input->post("old_logo");
+            }
+
         $this->load->model("Job_model");
         $job= $this->Job_model->updatejob($jobData, $id, $token);
 
@@ -209,12 +208,10 @@ class Jobs extends CI_Controller
             show_404(); //404 error
         }
         
-        $expires= strtotime($job["expires_at"]);
-        $today= time();
 
-        $daysRemaining= ceil(($expires - $today)/(60*60*24));
+        $daysRemaining= $this->Job_model->getRemainingDays($id, $token);
 
-        if($daysRemaining <=5) {
+        if($daysRemaining >=5) {
             show_error("Job validity cannot be extended yet.");
         }
 
