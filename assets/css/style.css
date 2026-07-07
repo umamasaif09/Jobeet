@@ -1,0 +1,140 @@
+body {
+    margin: 40px auto;
+    max-width: 1100px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+}
+
+header h1{
+    margin :0;
+    color: #2c3e50;
+
+}
+
+section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th{
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+table td{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+table tr:hover{
+    background: #eef6ff;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea{
+    min-height: 120px;
+}
+
+button{
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font: 14px
+}
+
+button:hover{
+    background: #2980b9;
+}
+
+a{
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+img{
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+footer{
+    margin-top: 40px;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+header a, footer a{
+    margin-right: 15px;
+}
+
+form{
+    margin-top: 15px;
+}
+
+.actions{
+    display: flex;
+    gap: 8px;
+}
+
+.top-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar form{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 0;
+}
+
+.top-bar input{
+    width: 250px;
+    margin: 0;
+}
+
+.top-bar button{
+    margin: 0;
+}
+
