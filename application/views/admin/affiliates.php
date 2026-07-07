@@ -6,18 +6,11 @@
      <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
 </head>
 <body>
-     <header>
-        <h1>Jobeet</h1>
-    </header>
+     <?php $this->load->view("partials/adminHeader"); ?>
 
     
 
     <section>
-        <header>
-            <a href="<?php echo site_url('admin/dashboard'); ?>">
-                <button type="button">← Back</button>
-            </a>
-        </header>
         <h2>Add an Affiliate</h2>
         <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST">
             <strong>Affiliate Name</strong>

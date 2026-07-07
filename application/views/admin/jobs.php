@@ -7,13 +7,7 @@
     <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
 </head>
 <body>
-     <header>
-       <header>
-            <a href="<?php echo site_url('admin/dashboard'); ?>">
-                <button type="button">← Back</button>
-            </a>
-        </header>
-    </header>
+     <?php $this->load->view("partials/adminHeader"); ?>
 
     
 

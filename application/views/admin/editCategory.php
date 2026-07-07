@@ -8,10 +8,7 @@
 </head>
 <body>
     <section >
-        <header>
-            <a href="<?php echo site_url('admin/categories'); ?>">
-                <button type="button">← Back</button>
-            </a>
+            <?php $this->load->view("partials/adminHeader"); ?>
         </header>
         <form action="<?php echo site_url("admin/updateCategory"); ?>" method="POST">
             <input type="hidden" name="id" value="<?php echo $category["id"] ?>">

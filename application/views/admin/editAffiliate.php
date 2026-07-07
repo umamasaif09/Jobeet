@@ -8,11 +8,8 @@
 </head>
 <body>
     <section >
-        <header>
-            <a href="<?php echo site_url('admin/affiliates'); ?>">
-                <button type="button">← Back</button>
-            </a>
-        </header>
+       <?php $this->load->view("partials/adminHeader"); ?>
+       
         <form action="<?php echo site_url("admin/updateAffiliate"); ?>" method="POST">
             <input type="hidden" name="id" value="<?php echo $affiliate["id"] ?>">
            <strong>Affiliate Name</strong>
