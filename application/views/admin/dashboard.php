@@ -11,18 +11,30 @@
     <header>
         <h1>Admin Dashboard</h1>
     </header>
-    <section>
-        <a href="<?php echo site_url("admin/categories"); ?>">
-            <button>Manage Categories</button>
-        </a>
-        <br><br>
-        <a href="<?php echo site_url("admin/jobs"); ?>">
-            <button>Manage Jobs</button>
-        </a>
-        <br><br>
-        <a href="<?php echo site_url("admin/affiliates"); ?>">
-            <button>Manage Affiliates</button>
-        </a>
+    <?php $this->load->view("partials/adminHeader"); ?>
+
+    <section class="dashboard">
+
+        <div class= "dashboard-cards">
+            <div class= "card">
+                <h3>Categories</h3>
+                <p><?php echo $totalCategories; ?></p>
+                <small>Total Categories</small>
+            </div>
+
+            <div class= "card">
+                <h3>Jobs</h3>
+                <p><?php echo $totalJobs; ?></p>
+                <small>Total Jobs</small>
+            </div>
+
+            <div class= "card">
+                <h3>Affiliates</h3>
+                <p><?php echo $totalAffiliates; ?></p>
+                <small>Total Affiliates</small>
+            </div>
+
+        </div>
     </section>
 </body>
 </html>
