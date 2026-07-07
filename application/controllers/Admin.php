@@ -7,6 +7,16 @@ class Admin extends CI_Controller
     public function dashboard()
     {
         $data["title"] = "Admin Dashboard";
+
+        $this->load->model("Category_model");
+        $data ["totalCategories"] = $this->Category_model->getCategoriesCount();
+
+        $this->load->model("Job_model");
+        $data ["totalJobs"] = $this->Job_model->getJobsCount();
+
+        $this->load->model("Affiliate_model");
+        $data["totalAffiliates"] = $this->Affiliate_model->getAffiliatesCount();
+
         $this->load->view("admin/dashboard", $data);
     }
 
