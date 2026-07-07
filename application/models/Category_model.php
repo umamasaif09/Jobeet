@@ -34,4 +34,8 @@ class Category_model extends CI_Model
         $this->db->where("id", $id);
         return $this->db->delete("categories");
     }
+
+    public function getCategoriesCount() {
+        return $this->db->count_all_results("categories");
+    }
 }

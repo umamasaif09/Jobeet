@@ -79,4 +79,8 @@ class Affiliate_model extends CI_Model
         $query = $this->db->get("affiliates");
         return $query->row_array();
     }
+
+    public function getAffiliatesCount() {
+        return $this->db->count_all_results("affiliates");
+    }
 }

@@ -35,7 +35,7 @@ class Job_model extends CI_Model
 
     }
 
-    public function getJobsByCategory($id, $offset) {
+    public function getJobsByCategory($id, $page) {
 
         $this->db->where("id", $id);
         $categoryQuery= $this->db->get("categories");
@@ -50,6 +50,8 @@ class Job_model extends CI_Model
         $this->db->where("is_active",1);
         $this->db->where("jobs.expires_at >", date("Y-m-d H:i:s"));
         $this->db->order_by("created_at","DESC");
+        
+        $offset= ($page-1)*20;//model
         $this->db->limit(20, $offset);
         
         $jobsQuery= $this->db->get("jobs");
@@ -172,5 +174,22 @@ class Job_model extends CI_Model
         $this->db->where("id", $id);
         return $this->db->update("jobs", ["expires_at" =>$newDate]);
 
+    }
+
+    public function getJobsCount() {
+        return $this->db->count_all_results("jobs");
+    }
+
+    public function getRemainingDays($id, $token) 
+    {
+        $this->db->where("id", $id);
+        $this->db->where("token", $token);
+
+        $job = $this->db->get("jobs")->row_array();
+
+        $expires= strtotime($job["expires_at"]);
+        $today= time();
+
+        return ceil(($expires - $today)/(60*60*24));
     }
 }
