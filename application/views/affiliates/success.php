@@ -2,16 +2,16 @@
 
     <section>
         <h1>
-            Your request has been submitted!
+            <?= $this->lang->line("request_submition"); ?>
         </h1>
 
         <h2>
-            Thank you, <?php echo $affiliate["name"];?>.
+            <?= $this->lang->line("thank_you"); ?> <?php echo $affiliate["name"];?>.
         </h2>
 
-        <p>Your affiliate application has been submitted.</p>
+        <p><?= $this->lang->line("affiliate_application"); ?></p>
 
-        <p>Your account will be activated by an administrator.</p>
+        <p><?= $this->lang->line("account_activation"); ?></p>
            
        
     </section>

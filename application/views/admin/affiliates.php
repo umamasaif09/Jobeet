@@ -11,18 +11,18 @@
     
 
     <section>
-        <h2>Add an Affiliate</h2>
+        <h2><?= $this->lang->line("categories"); ?></h2>
         <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST">
-            <strong>Affiliate Name</strong>
+            <strong><?= $this->lang->line("affiliate_name"); ?></strong>
             <input type="text" name= "name"><br><br>
 
-            <strong>Email</strong>
+            <strong><?= $this->lang->line("affiliate_email"); ?></strong>
             <input type="text" name= "email"><br><br>
 
-            <strong>Website</strong>
+            <strong><?= $this->lang->line("affiliate_website"); ?></strong>
             <input type="text" name= "url"><br><br>
 
-            <strong>Categories</strong> <br>
+            <strong><?= $this->lang->line("categories"); ?></strong> <br>
             <?php foreach($categories as $category) { ?>
                 <input type="checkbox"
                 name="categories[]"
@@ -37,15 +37,15 @@
     </section>
 
     <section>
-        <h2>Existing Affiliates</h2>
+        <h2><?= $this->lang->line("existing_affiliates"); ?></h2>
         <table>
             <thead>
                 <tr>
-                    <th><strong>Affiliate ID</strong></th>
-                    <th><strong>Affiliate Name</strong></th>
-                    <th><strong>Affiliate Email</strong></th>
-                    <th><strong>Affiliate Website</strong></th>
-                    <th><strong>Affiliate Token</strong></th>
+                    <th><strong><?= $this->lang->line("affiliate_id"); ?></strong></th>
+                    <th><strong><?= $this->lang->line("affiliate_name"); ?></strong></th>
+                    <th><strong><?= $this->lang->line("affiliate_email"); ?></strong></th>
+                    <th><strong><?= $this->lang->line("affiliate_website"); ?></strong></th>
+                    <th><strong><?= $this->lang->line("affiliate_token"); ?></strong></th>
                     <th><strong>Active Status</strong></th>
                     <th><strong>Created At</strong></th>
                 </tr>

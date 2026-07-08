@@ -4,13 +4,13 @@
             <button type="button">← Back</button>
         </a>
         <a href="<?php echo site_url("admin/categories"); ?>">
-            <button>Manage Categories</button>
+            <button><?= $this->lang->line("manage_categories"); ?></button>
         </a>
         <a href="<?php echo site_url("admin/jobs"); ?>">
-            <button>Manage Jobs</button>
+            <button><?= $this->lang->line("manage_jobs"); ?></button>
         </a>
         <a href="<?php echo site_url("admin/affiliates"); ?>">
-            <button>Manage Affiliates</button>
+            <button><?= $this->lang->line("manage_affiliates"); ?></button>
         </a>
         
     </nav>

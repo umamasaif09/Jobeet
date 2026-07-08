@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head> <title>Admin Dashboard</title>
+    <head> <title><?= $this->lang->line("dashboard"); ?></title>
      <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
 </head>
 <body>
 
     <header>
-        <h1>Admin Dashboard</h1>
+        <h1><?= $this->lang->line("dashboard"); ?></h1>
     </header>
     <?php $this->load->view("partials/adminHeader"); ?>
 
@@ -17,21 +17,21 @@
 
         <div class= "dashboard-cards">
             <div class= "card">
-                <h3>Categories</h3>
+                <h3><?= $this->lang->line("categories"); ?></h3>
                 <p><?php echo $totalCategories; ?></p>
-                <small>Total Categories</small>
+                <small><?= $this->lang->line("total_categories"); ?></small>
             </div>
 
             <div class= "card">
-                <h3>Jobs</h3>
+                <h3><?= $this->lang->line("jobs"); ?></h3>
                 <p><?php echo $totalJobs; ?></p>
-                <small>Total Jobs</small>
+                <small><?= $this->lang->line("total_jobs"); ?></small>
             </div>
 
             <div class= "card">
-                <h3>Affiliates</h3>
+                <h3><?= $this->lang->line("affiliates"); ?></h3>
                 <p><?php echo $totalAffiliates; ?></p>
-                <small>Total Affiliates</small>
+                <small><?= $this->lang->line("total_affiliates"); ?></small>
             </div>
 
         </div>

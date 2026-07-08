@@ -2,11 +2,11 @@
 
     <section>
         <form method="POST" action="<?php echo site_url("affiliates/submitApplication"); ?>">
-            Name <input type="text" name="name"> <br><br>
-            Email <input type="text" name="email"><br><br>
-            Website <input type="text" name="site_url"><br><br>
+            <?= $this->lang->line("affiliate_name"); ?><input type="text" name="name"> <br><br>
+            <?= $this->lang->line("affiliate_email"); ?><input type="text" name="email"><br><br>
+            <?= $this->lang->line("affiliate_website"); ?><input type="text" name="site_url"><br><br>
 
-            Categories <br>
+            <?= $this->lang->line("categories"); ?> <br>
             <?php foreach($categories as $category) { ?>
                 <input type="checkbox"
                 name="categories[]"
