@@ -12,27 +12,10 @@
 
     <section>
         <h2>Add an Affiliate</h2>
-        <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST">
-            <strong>Affiliate Name</strong>
-            <input type="text" name= "name"><br><br>
-
-            <strong>Email</strong>
-            <input type="text" name= "email"><br><br>
-
-            <strong>Website</strong>
-            <input type="text" name= "url"><br><br>
-
-            <strong>Categories</strong> <br>
-            <?php foreach($categories as $category) { ?>
-                <input type="checkbox"
-                name="categories[]"
-                value="<?php echo $category["id"]; ?>"
-                >
-                <?php echo $category["name"]; ?><br>
-            <?php } ?>
-            <br><br>
-
-            <button type="submit">Create</button>
+        <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST" class="admin-form">
+            
+                <?php $this->load->view("partials/affiliates_form_fields"); ?>
+            <button type="submit" clas="btn-primary">Create Affiliate</button>
         </form>
     </section>
 
@@ -68,25 +51,26 @@
                             <td><?php echo $affiliate["created_at"]; ?></td>
 
                             <td class ="actions">
-                                <a href="<?php echo site_url("admin/editAffiliate/".$affiliate["id"]) ?>"> 
-                                    <button type="button">Edit</button>
+                                <a href="<?php echo site_url("admin/editAffiliate/".$affiliate["id"]) ?>" class="btn-warning"> 
+                                    Edit
                                 </a>
 
                                 <a href="<?php echo site_url("admin/deleteAffiliate/".$affiliate["id"]) ?>" 
-                                    onclick="return confirm('Delete this affiliate?')">
+                                    onclick="return confirm('Delete this affiliate?')"
+                                    class="btn-danger">
                                     
-                                    <button type="button" >Delete</button>
+                                    Delete
                                 </a>
 
                                 <?php if($affiliate["is_active"]) {?> 
-                                    <a href="<?php echo site_url("admin/disableAffiliate/".$affiliate["id"]) ?>" >
+                                    <a href="<?php echo site_url("admin/disableAffiliate/".$affiliate["id"]) ?>" class="btn-warning">
                                     
-                                            <button type="button" >Disable</button>
+                                            Disable
                                     </a>
                                 <?php } else { ?>
-                                    <a href="<?php echo site_url("admin/activateAffiliate/".$affiliate["id"]) ?>" >
+                                    <a href="<?php echo site_url("admin/activateAffiliate/".$affiliate["id"]) ?>" class="btn-success" >
                                     
-                                            <button type="button" >Activate</button>
+                                            Activate
                                     </a>
                                 <?php }?>
 

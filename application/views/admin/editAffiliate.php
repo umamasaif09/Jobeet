@@ -10,19 +10,12 @@
     <section >
        <?php $this->load->view("partials/adminHeader"); ?>
        
-        <form action="<?php echo site_url("admin/updateAffiliate"); ?>" method="POST">
+        <form action="<?php echo site_url("admin/updateAffiliate"); ?>" method="POST" class="admin-form">
             <input type="hidden" name="id" value="<?php echo $affiliate["id"] ?>">
-           <strong>Affiliate Name</strong>
-            <input type="text" name= "name" value="<?php echo $affiliate["name"] ?>"><br><br>
-
-            <strong>Email</strong>
-            <input type="text" name= "email" value="<?php echo $affiliate["email"] ?>"><br><br>
-
-            <strong>Website</strong>
-            <input type="text" name= "url" value="<?php echo $affiliate["site_url"] ?>"><br><br>
+            <?php $this->load->view("partials/affiliates_form_fields"); ?>
 
 
-            <button type="submit">Update</button>
+            <button type="submit" clas="btn-primary">Update Affiliate</button>
         </form>
     </section>
 

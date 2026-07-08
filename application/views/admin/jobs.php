@@ -14,12 +14,12 @@
     <section>
         <h2>Add a Job</h2>
         <section>
-            <form method="POST" action="<?php echo site_url("jobs/createJob"); ?>" enctype= "multipart/form-data">
+            <form method="POST" action="<?php echo site_url("jobs/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
                 
 
                 
                 
-                <button type="submit">Create Job</button>
+                <button type="submit" clas="btn-primary">Create Job</button>
                 
                 
             </form>
@@ -73,18 +73,18 @@
                             
 
                             <td class="actions">
-                                <a href="<?php echo site_url("admin/viewJob/".$job["id"]) ?>"> 
-                                    <button type="button">View</button>
+                                <a href="<?php echo site_url("admin/viewJob/".$job["id"]) ?>" class="btn-primary"> 
+                                    View
                                 </a>
 
-                                <a href="<?php echo site_url("admin/editJob/".$job["id"]) ?>"> 
-                                    <button type="button">Edit</button>
+                                <a href="<?php echo site_url("admin/editJob/".$job["id"]) ?>" class="btn-warning"> 
+                                    Edit
                                 </a>
 
-                                <a href="<?php echo site_url("admin/deleteJob/".$job["id"]) ?>" 
-                                    onclick="return confirm('Delete this job?')">
+                                <a href="<?php echo site_url("admin/deleteJob/".$job["id"]); ?>" 
+                                    onclick="return confirm('Delete this job?')" class="btn-danger">
                                     
-                                    <button type="button" >Delete</button>
+                                    Delete
                                 </a>
                             </td>
                         </tr>

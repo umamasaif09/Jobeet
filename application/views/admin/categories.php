@@ -13,11 +13,15 @@
 
     <section>
         <h2>Add a Category</h2>
-        <form action="<?php echo site_url("admin/createCategory"); ?>" method="POST">
-            <strong>Category Name: </strong>
-            <input type="text" name= "category_name">
+        <form action="<?php echo site_url("admin/createCategory"); ?>" method="POST" class="admin-form">
 
-            <button type="submit">Create</button>
+        <div class=form-group>
+             <label>Category Name: </label>
+            <input type="text" name= "category_name" placeholder="Enter category name" required>
+        </div>
+           
+
+            <button type="submit" class="btn-primary">Add Category</button>
         </form>
     </section>
 
@@ -39,14 +43,15 @@
                             <td><?php echo $category["name"]; ?></td>
 
                             <td>
-                                <a href="<?php echo site_url("admin/editCategory/".$category["id"]) ?>"> 
-                                    <button type="button">Edit</button>
+                                <a href="<?php echo site_url("admin/editCategory/".$category["id"]) ?>" class="btn-warning"> 
+                                    Edit
                                 </a>
 
                                 <a href="<?php echo site_url("admin/deleteCategory/".$category["id"]) ?>" 
-                                    onclick="return confirm('Delete this category?')">
+                                    onclick="return confirm('Delete this category?')"
+                                    class="btn-danger">
                                     
-                                    <button type="button" >Delete</button>
+                                    Delete
                                 </a>
                             </td>
                         </tr>

@@ -10,13 +10,14 @@
     <section >
             <?php $this->load->view("partials/adminHeader"); ?>
         </header>
-        <form action="<?php echo site_url("admin/updateCategory"); ?>" method="POST">
+        <form action="<?php echo site_url("admin/updateCategory"); ?>" method="POST" class="admin-form">
             <input type="hidden" name="id" value="<?php echo $category["id"] ?>">
-            <strong>Category Name: </strong>
+            <div class=form-group>
+                <label>Category Name: </label>
+                <input type="text" name= "category_name" placeholder="Enter category name" required>
+            </div>
 
-            <input type="text" name= "category_name" value="<?php echo $category["name"] ?>">
-
-            <button type="submit">Update</button>
+            <button type="submit" class="btn-primary">Update Category</button>
         </form>
     </section>
 
