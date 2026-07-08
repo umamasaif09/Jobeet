@@ -2,6 +2,8 @@
     "title" => $title
 ]); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
+
     <?php $this->load->view("partials/previewJob"); ?>
 
     <button type="submit" class="btn-primary">Create Job Post</button>

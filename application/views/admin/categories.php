@@ -8,7 +8,8 @@
 </head>
 <body>
         <?php $this->load->view("partials/adminHeader"); ?>
-
+        
+        <?php $this->load->view("partials/pageHeader"); ?>
     
 
     <section>
@@ -27,7 +28,7 @@
 
     <section>
         <h2>Existing Categories</h2>
-        <table>
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th><strong>Category ID</strong></th>

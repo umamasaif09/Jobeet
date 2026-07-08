@@ -8,7 +8,7 @@
 <body>
      <?php $this->load->view("partials/adminHeader"); ?>
 
-    
+    <?php $this->load->view("partials/pageHeader"); ?>
 
     <section>
         <h2>Add an Affiliate</h2>
@@ -21,7 +21,7 @@
 
     <section>
         <h2>Existing Affiliates</h2>
-        <table>
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th><strong>Affiliate ID</strong></th>

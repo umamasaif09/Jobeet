@@ -9,6 +9,7 @@
 <body>
     <section >
        <?php $this->load->view("partials/adminHeader"); ?>
+       <?php $this->load->view("partials/pageHeader"); ?>
        
         <form action="<?php echo site_url("admin/updateAffiliate"); ?>" method="POST" class="admin-form">
             <input type="hidden" name="id" value="<?php echo $affiliate["id"] ?>">

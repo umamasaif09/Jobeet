@@ -11,7 +11,8 @@ class affiliates extends CI_Controller
         //pass categrories to view for user selection
         $data= [
             "title" => "Affiliate Application",
-            "categories" => $this->Category_model->getCategories()
+            "categories" => $this->Category_model->getCategories(),
+            "backUrl" => site_url("jobs/index")
         ];
 
         $this->load->view("affiliates/apply", $data);
@@ -45,6 +46,7 @@ class affiliates extends CI_Controller
         //pass required data to view
         $viewData = [
             "title" => "Affiliation Request Submitted",
+            "backUrl" => site_url("affiliates/apply"),
             "affiliate"=>$affiliate
         ];
 

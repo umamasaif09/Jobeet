@@ -2,6 +2,8 @@
     "title" => $title
 ]); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
+
     <section>
         <h2>
             <?php echo $job["company"]; ?>

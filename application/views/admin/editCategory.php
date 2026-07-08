@@ -9,7 +9,8 @@
 <body>
     <section >
             <?php $this->load->view("partials/adminHeader"); ?>
-        </header>
+            <?php $this->load->view("partials/pageHeader"); ?>
+            
         <form action="<?php echo site_url("admin/updateCategory"); ?>" method="POST" class="admin-form">
             <input type="hidden" name="id" value="<?php echo $category["id"] ?>">
             <div class=form-group>

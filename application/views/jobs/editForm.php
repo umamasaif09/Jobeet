@@ -3,6 +3,8 @@
     
 ]); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
+
     
 <?php $this->load->view("partials/previewJob"); ?>
 <?php $this->load->view("partials/preview_submit_form"); ?>

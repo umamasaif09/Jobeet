@@ -2,6 +2,8 @@
     "title" => $title
 ]); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
+
     <section>
         <form method="POST" action="<?php echo site_url("jobs/preview"); ?>" enctype= "multipart/form-data" class="job-form">
              

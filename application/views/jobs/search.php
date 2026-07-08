@@ -2,13 +2,15 @@
     "title" => $title
 ]); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
+
     <section>
         
        <?php if(empty($jobs) or empty($keyword)) { ?>
             <p> No Results Found for this Search. </p>
             <?php } else { ?> 
     
-                <table>
+                <table class="job-table">
                     <thead>
                             <tr>
                                 <th>Location</th>

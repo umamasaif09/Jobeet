@@ -2,10 +2,12 @@
     "title" => $title
 ]); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
+
     <section>
         <div class="category-section">
             <h2><?php echo $result["category"]["name"] ?></h2>
-            <table>
+            <table class="job-table">
                 <thead>
                         <tr>
                             <th>Location</th>

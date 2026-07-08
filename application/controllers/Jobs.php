@@ -21,6 +21,7 @@ class Jobs extends CI_Controller
         $data["title"] ="Category";
         $data["result"]= $this->Job_model->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
+        $data["backUrl"] = site_url("jobs/index");
         $this->load->view("jobs/category", $data);
 
     }
@@ -30,6 +31,7 @@ class Jobs extends CI_Controller
 
         $data["title"] ="Search";
         $data["keyword"]= $keyword;
+        $data["backUrl"] = site_url("jobs/index");
 
         $this->load->model("Job_model");
         $data["jobs"]= $this->Job_model->searchJobs($keyword);
@@ -39,6 +41,7 @@ class Jobs extends CI_Controller
 
     public function job($id) {
         $data["title"] ="Job";
+        $data["backUrl"] = site_url("jobs/index");
         $this->load->model("Job_model");
         $data["job"]= $this->Job_model->getJobById($id);
 
@@ -48,6 +51,7 @@ class Jobs extends CI_Controller
     public function createJob()
     {
         $data["title"] = "Create Job";
+        $data["backUrl"] = site_url("jobs/index");
         $this->load->model("Job_model");
         $data["categories"]= $this->Job_model->getJobCategories();
         $this->load->view("jobs/createJob.php", $data);
@@ -95,7 +99,8 @@ class Jobs extends CI_Controller
             "email" => $this->input->post("email"),
             "description" => $this->input->post("description"),
             "how_to_apply" => $this->input->post("how_to_apply"),
-            "is_public" => $this->input->post("is_public")
+            "is_public" => $this->input->post("is_public"),
+            "backUrl" => site_url("jobs/createJob")
         ];
         $this->load->view("jobs/preview", $data);
     }
@@ -132,7 +137,8 @@ class Jobs extends CI_Controller
             "jobId" => $jobId,
             "token"=> $token,
             "job" => $job,
-            "category" => $category
+            "category" => $category,
+            "backUrl" => site_url("jobs/preview")
         ];
 
         $this->load->view("jobs/success", $viewData);
@@ -155,7 +161,8 @@ class Jobs extends CI_Controller
             "title"=> "Edit Form",
             "job"=> $job,
             "categories" => $this->Job_model->getJobCategories(),
-            "daysRemaining" => $daysRemaining
+            "daysRemaining" => $daysRemaining,
+            "backUrl" => site_url("jobs/index")
             ];
             $this->load->view("jobs/editForm", $data);
         }

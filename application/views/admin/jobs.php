@@ -9,7 +9,7 @@
 <body>
      <?php $this->load->view("partials/adminHeader"); ?>
 
-    
+    <?php $this->load->view("partials/pageHeader"); ?>
 
     <section>
         <h2>Add a Job</h2>
@@ -28,7 +28,7 @@
 
     <section>
         <h2>Existing Jobs</h2>
-        <table>
+        <table class="admin-table">
             <thead>
                 <tr>
                     <th><strong>Job ID</strong></th>

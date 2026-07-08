@@ -28,6 +28,7 @@ class Admin extends CI_Controller
         $data["categories"] = $this->Category_model->getCategories();
         $data["title"] = "Manage Categories";
         $data["active"] ="categories";
+        $data["backUrl"] = site_url("admin/dashboard");
 
         $this->load->view("admin/categories", $data);
     }
@@ -37,6 +38,7 @@ class Admin extends CI_Controller
         $data["name"] = $this->input->post("category_name");
         $this->load->model("Category_model");
         $this->Category_model->createCategory($data);
+        
 
         redirect("admin/categories");
     }
@@ -46,6 +48,8 @@ class Admin extends CI_Controller
         $this->load->model("Category_model");
         $data["category"]= $this->Category_model->getCategoryById($id);
         $data["title"]="Edit category";
+        $data["backUrl"] = site_url("admin/categories");
+        
         $this->load->view("admin/editCategory", $data);
     }
 
@@ -77,6 +81,7 @@ class Admin extends CI_Controller
         $data["jobs"] = $this->Job_model->getJobs();
         $data["title"] = "Manage Jobs";
         $data["active"] ="jobs";
+        $data["backUrl"] = site_url("admin/dashboard");
         
         $this->load->model("Category_model");
         $data["categories"]= $this->Category_model->getCategories();
@@ -103,7 +108,8 @@ class Admin extends CI_Controller
             "title"=> "Edit Form",
             "job"=> $job,
             "category" => $category,
-            "daysRemaining" =>$daysRemaining
+            "daysRemaining" =>$daysRemaining,
+            "backUrl" => site_url("admin/jobs")
             ];
             $this->load->view("jobs/editForm", $data);
         }
@@ -114,6 +120,7 @@ class Admin extends CI_Controller
         $data["title"] ="Job";
         $this->load->model("Job_model");
         $data["job"]= $this->Job_model->getJobById($id);
+        $data["backUrl"] = site_url("admin/jobs");
 
         $this->load->view("jobs/job", $data);
     }
@@ -130,10 +137,12 @@ class Admin extends CI_Controller
     {
         $this->load->model("Affiliate_model");
         $this->load->model("Category_model");
+        $data["backUrl"] = site_url("admin/dashboard");
 
         //get all affiliates
         $data["affiliates"] = $this->Affiliate_model->getAffiliates();
         $data["title"] = "Manage Affiliates";
+        
         $data["active"] ="affiliates";
         //to display in view
         $data["categories"] = $this->Category_model->getCategories();
@@ -174,6 +183,7 @@ class Admin extends CI_Controller
        //get affiliate that is needed to be edited
         $data["affiliate"]= $this->Affiliate_model->getAffiliateById($id);
         $data["title"]="Edit Affiliate";
+        $data["backUrl"] = site_url("admin/affiliates");
         $categories= $this->input->post("categories");
         //save selected categories
         if(!empty($categories)) {

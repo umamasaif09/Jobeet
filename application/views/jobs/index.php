@@ -12,7 +12,7 @@
             </h2>
         
             
-            <table>
+            <table class="job-table">
                 <thead>
                         <tr>
                             <th>Location</th>
