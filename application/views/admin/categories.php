@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
-     <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
-</head>
-<body>
+
         <?php $this->load->view("partials/adminHeader"); ?>
         
         <?php $this->load->view("partials/pageHeader"); ?>
     
-
-    <section>
+    <div class="container">
+        <section>
         <h2>Add a Category</h2>
         <form action="<?php echo site_url("admin/createCategory"); ?>" method="POST" class="admin-form">
 
@@ -28,11 +20,13 @@
 
     <section>
         <h2>Existing Categories</h2>
-        <table class="admin-table">
+        <div class="table-container"></div>
+        <table class="admin-table category-table">
             <thead>
                 <tr>
-                    <th><strong>Category ID</strong></th>
+                    <th class="id-column"><strong>Category ID</strong></th>
                     <th><strong>Category Name</strong></th>
+                    <th class="actions-column">Actions</th>
                 </tr>
             </thead>
 
@@ -40,10 +34,10 @@
                     <?php foreach($categories as $category) { ?>
 
                         <tr>
-                            <td><?php echo $category["id"]; ?></td>
+                            <td class="id-column"><?php echo $category["id"]; ?></td>
                             <td><?php echo $category["name"]; ?></td>
 
-                            <td>
+                            <td class="actions">
                                 <a href="<?php echo site_url("admin/editCategory/".$category["id"]) ?>" class="btn-warning"> 
                                     Edit
                                 </a>
@@ -62,6 +56,8 @@
             </tbody>
         </table>
     </section>
+    </div>
+    
 
     
 </body>

@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head> <title>Admin Dashboard</title>
-     <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
-</head>
-<body>
-
-    <div class = "admin-title">
-        <h1>Admin Dashboard</h1>
+    <div class="container">
+        <div class = "admin-title">
+            <h1>Admin Dashboard</h1>
+        </div>
     </div>
+
+    
     <?php $this->load->view("partials/adminHeader"); ?>
 
-    <section class="dashboard">
+    <div class="container">
+        
+
+        <section class="dashboard">
 
         <div class= "dashboard-cards">
             <div class= "card">
@@ -36,5 +33,8 @@
 
         </div>
     </section>
+    </div>
+
+    
 </body>
 </html>

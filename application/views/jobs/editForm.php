@@ -10,10 +10,8 @@
 <?php $this->load->view("partials/preview_submit_form"); ?>
 
 
-    
-
-
-    <section>
+    <div class="container">
+        <section>
         <form method="POST" action="<?php echo site_url("jobs/updateJob"); ?>" enctype= "multipart/form-data" class="job-form">
         <input type="hidden" name="id" value= "<?php echo $job["id"]; ?>">
         <input type="hidden" name="token" value= "<?php echo $job["token"]; ?>">
@@ -40,5 +38,9 @@
         <?php }?>
 
     </section>
+    </div>
+
+
+    
 
    <?php $this->load->view("partials/footer"); ?>

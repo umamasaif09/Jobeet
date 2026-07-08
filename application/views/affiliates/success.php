@@ -1,6 +1,8 @@
 <?php $this->load->view("partials/header"); ?>
 
-    <section>
+
+    <div class="container">
+        <section>
         <h1>
             Your request has been submitted!
         </h1>
@@ -14,6 +16,9 @@
         <p>Your account will be activated by an administrator.</p>
            
        
-    </section>
+        </section>
+    </div>
+
+    
 
     <?php $this->load->view("partials/footer"); ?>

@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
-    <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
-</head>
-<body>
+
      <?php $this->load->view("partials/adminHeader"); ?>
 
     <?php $this->load->view("partials/pageHeader"); ?>
 
-    <section>
+    <div class="container">
+        <section>
         <h2>Add a Job</h2>
         <section>
             <form method="POST" action="<?php echo site_url("jobs/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
@@ -28,7 +21,9 @@
 
     <section>
         <h2>Existing Jobs</h2>
-        <table class="admin-table">
+
+        <div class="table-wrapper">
+            <table class="admin-table jobs-table">
             <thead>
                 <tr>
                     <th><strong>Job ID</strong></th>
@@ -41,6 +36,7 @@
                     <th><strong>Active Status</strong></th>
                     <th><strong>Expires At</strong></th>
                     <th><strong>Public Status</strong></th>
+                    <th class="actions-column">Actions</th>
                 </tr>
             </thead>
 
@@ -93,7 +89,12 @@
                     <?php } ?>
             </tbody>
         </table>
+        </div>
+        
     </section>
+    </div>
+
+    
 
     
 </body>

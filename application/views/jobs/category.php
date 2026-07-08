@@ -4,7 +4,8 @@
 
 <?php $this->load->view("partials/pageHeader"); ?>
 
-    <section>
+    <div class="container">
+        <section>
         <div class="category-section">
             <h2><?php echo $result["category"]["name"] ?></h2>
             <table class="job-table">
@@ -48,5 +49,8 @@
 
        
     </section>
+    </div>
+
+    
 
     <?php $this->load->view("partials/footer"); ?>

@@ -4,7 +4,8 @@
 
 <?php $this->load->view("partials/pageHeader"); ?>
 
-    <section>
+    <div class="container">
+        <section>
         
        <?php if(empty($jobs) or empty($keyword)) { ?>
             <p> No Results Found for this Search. </p>
@@ -41,5 +42,8 @@
 
        
     </section>
+    </div>
+
+    
 
    <?php $this->load->view("partials/footer"); ?>

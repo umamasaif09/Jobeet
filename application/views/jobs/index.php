@@ -2,8 +2,9 @@
 <?php $this->load->view("partials/header", [
     "title" => $title
 ]); ?>
-    
-    <section>
+
+    <div class="container">
+        <section>
          <?php foreach($categories as $categoryId =>$category) { ?>
 
          <div class="category-section">
@@ -38,6 +39,9 @@
          </div>
             
     </section>
+    </div>
+    
+    
    
    
 <?php $this->load->view("partials/footer"); ?>

@@ -4,8 +4,13 @@
 
 <?php $this->load->view("partials/pageHeader"); ?>
 
-    <?php $this->load->view("partials/previewJob"); ?>
+    <div class="container">
+        <?php $this->load->view("partials/previewJob"); ?>
+
 
     <button type="submit" class="btn-primary">Create Job Post</button>
+    </div>
+
+    
     
    <?php $this->load->view("partials/footer"); ?>

@@ -4,7 +4,8 @@
 
 <?php $this->load->view("partials/pageHeader"); ?>
 
-    <section>
+    <div class="container">
+        <section>
         <form method="POST" action="<?php echo site_url("jobs/preview"); ?>" enctype= "multipart/form-data" class="job-form">
              
             <?php $this->load->view("partials/job_form_fields", [
@@ -17,5 +18,8 @@
             
         </form>
     </section>
+    </div>
+
+    
 
    <?php $this->load->view("partials/footer"); ?>

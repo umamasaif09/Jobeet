@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
-</head>
-<body>
+
      <?php $this->load->view("partials/adminHeader"); ?>
 
     <?php $this->load->view("partials/pageHeader"); ?>
 
-    <section>
+    <div class="container">
+        <section>
         <h2>Add an Affiliate</h2>
         <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST" class="admin-form">
             
@@ -21,7 +15,9 @@
 
     <section>
         <h2>Existing Affiliates</h2>
-        <table class="admin-table">
+        
+        <div class="table-wrapper">
+            <table class="admin-table affiliate-table">
             <thead>
                 <tr>
                     <th><strong>Affiliate ID</strong></th>
@@ -31,6 +27,7 @@
                     <th><strong>Affiliate Token</strong></th>
                     <th><strong>Active Status</strong></th>
                     <th><strong>Created At</strong></th>
+                    <th class="actions-column">Actions</th>
                 </tr>
             </thead>
 
@@ -81,7 +78,10 @@
                     <?php } ?>
             </tbody>
         </table>
+        </div>
+        
     </section>
+    </div>
 
     
 </body>
