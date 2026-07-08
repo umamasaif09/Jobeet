@@ -9,7 +9,7 @@ class Job_model extends CI_Model
         $this->db->where("is_active", 1);
         $this->db->where("jobs.expires_at >", date("Y-m-d H:i:s"));
         $this->db->order_by("created_at", "DESC");
-        $this->db->limit(10);
+        $this->db->limit($this->config->item('latest_jobs_limit'));
         $this->db->select("jobs.* , categories.name AS category_name");
         $this->db->from("jobs");
         $this->db->join("categories", "jobs.category_id = categories.id" );
@@ -51,13 +51,14 @@ class Job_model extends CI_Model
         $this->db->where("jobs.expires_at >", date("Y-m-d H:i:s"));
         $this->db->order_by("created_at","DESC");
         
-        $offset= ($page-1)*20;//model
-        $this->db->limit(20, $offset);
+        $limit = $this->config->item('jobs_per_page');
+        $offset= ($page-1)*$limit;//model
+        $this->db->limit($limit, $offset);
         
         $jobsQuery= $this->db->get("jobs");
         $jobs= $jobsQuery->result_array();
         //calculate total pages if 20 are shown per page
-        $totalPages= ceil($totalJobs/20);
+        $totalPages= ceil($totalJobs/$limit);
 
         return [
             "category" => $category,
@@ -167,8 +168,10 @@ class Job_model extends CI_Model
     }
 
     public function extendJob($id) {
+        $days = $this->Config->item('job_expiry');
+
         $newDate= date(
-            "Y-m-d H:i:s", strtotime("+30 days")
+            "Y-m-d H:i:s", strtotime("+{$days} days")
         );
 
         $this->db->where("id", $id);

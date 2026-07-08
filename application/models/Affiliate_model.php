@@ -10,11 +10,6 @@ class Affiliate_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    // public function getCategories() 
-    // {
-    //     $query= $this->db->get("categories");
-    //     return $query->result_array();
-    // }
 
     public function getAffiliateById($id) 
     {

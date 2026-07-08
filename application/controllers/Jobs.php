@@ -18,6 +18,7 @@ class Jobs extends CI_Controller
     {
         
         $this->load->model("Job_model");
+        $data["title"] ="Category";
         $data["result"]= $this->Job_model->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
         $this->load->view("jobs/category", $data);
@@ -59,10 +60,12 @@ class Jobs extends CI_Controller
         $category= $this->Job_model->getCategoryById($id);
 
         //image upload configs - move to configs
-        $config["upload_path"] = "./uploads/";
-        $config["allowed_types"] = "jpg|jpeg|png|gif";
-        $config["encrypt_name"]=  TRUE;
-        $config["max_size"]= 2048;
+
+        
+        $config["upload_path"] = $this->config->item("upload_path");
+        $config["allowed_types"] = $this->config->item("allowed_types");
+        $config["encrypt_name"]=  $this->config->item("encrypt_name");
+        $config["max_size"]= $this->config->item("max_size");
 
         //location to save images
         $this->load->library("upload", $config);
