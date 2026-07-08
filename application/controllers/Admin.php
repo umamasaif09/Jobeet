@@ -90,6 +90,10 @@ class Admin extends CI_Controller
     {
         $this->load->model("Job_model");
         $job= $this->Job_model->getJobById($id);
+
+        $category= $this->Job_model->getCategoryById($job["category_id"]);
+        $daysRemaining = $this->Job_model->getRemainingDays($id);
+        
        
         if($job == NULL) {
             show_404();
@@ -98,7 +102,8 @@ class Admin extends CI_Controller
             $data = [
             "title"=> "Edit Form",
             "job"=> $job,
-            "categories" => $this->Job_model->getJobCategories()
+            "category" => $category,
+            "daysRemaining" =>$daysRemaining
             ];
             $this->load->view("jobs/editForm", $data);
         }
@@ -163,9 +168,17 @@ class Admin extends CI_Controller
     public function editAffiliate($id)
     {
        $this->load->model("Affiliate_model");
+       $this->load->model("Category_model");
+
+       $data["categories"] = $this->Category_model->getCategories();
        //get affiliate that is needed to be edited
         $data["affiliate"]= $this->Affiliate_model->getAffiliateById($id);
         $data["title"]="Edit Affiliate";
+        $categories= $this->input->post("categories");
+        //save selected categories
+        if(!empty($categories)) {
+            $this->Affiliate_model->saveCategories($id, $categories);
+        }
         $this->load->view("admin/editAffiliate", $data);
     }
 

@@ -183,10 +183,10 @@ class Job_model extends CI_Model
         return $this->db->count_all_results("jobs");
     }
 
-    public function getRemainingDays($id, $token) 
+    public function getRemainingDays($id) 
     {
         $this->db->where("id", $id);
-        $this->db->where("token", $token);
+        //$this->db->where("token", $token);
 
         $job = $this->db->get("jobs")->row_array();
 
