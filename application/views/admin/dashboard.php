@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <header>
+    <div class = "admin-title">
         <h1>Admin Dashboard</h1>
-    </header>
+    </div>
     <?php $this->load->view("partials/adminHeader"); ?>
 
     <section class="dashboard">

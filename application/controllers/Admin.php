@@ -7,6 +7,7 @@ class Admin extends CI_Controller
     public function dashboard()
     {
         $data["title"] = "Admin Dashboard";
+        $data["active"] = "dashboard";
 
         $this->load->model("Category_model");
         $data ["totalCategories"] = $this->Category_model->getCategoriesCount();
@@ -26,6 +27,7 @@ class Admin extends CI_Controller
         
         $data["categories"] = $this->Category_model->getCategories();
         $data["title"] = "Manage Categories";
+        $data["active"] ="categories";
 
         $this->load->view("admin/categories", $data);
     }
@@ -74,6 +76,7 @@ class Admin extends CI_Controller
         
         $data["jobs"] = $this->Job_model->getJobs();
         $data["title"] = "Manage Jobs";
+        $data["active"] ="jobs";
         
         $this->load->model("Category_model");
         $data["categories"]= $this->Category_model->getCategories();
@@ -126,6 +129,7 @@ class Admin extends CI_Controller
         //get all affiliates
         $data["affiliates"] = $this->Affiliate_model->getAffiliates();
         $data["title"] = "Manage Affiliates";
+        $data["active"] ="affiliates";
         //to display in view
         $data["categories"] = $this->Category_model->getCategories();
 
