@@ -3,31 +3,30 @@
 ]); ?>
 
     <section>
-        <h2><?php echo $result["category"]["name"] ?></h2>
-        <hr>
-       
-    
-        <table>
-            <thead>
-                    <tr>
-                        <th>Location</th>
-                        <th>Position</th>
-                        <th>Company</th>
-                    </tr>
-            </thead>
+        <div class="category-section">
+            <h2><?php echo $result["category"]["name"] ?></h2>
+            <table>
+                <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Position</th>
+                            <th>Company</th>
+                        </tr>
+                </thead>
 
-            <tbody>
-                <?php foreach($result["jobs"] as $job) {?>
-        
-                    <tr>
-                        <td> <?php echo $job["location"]; ?></td>
-                        <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>"> <?php echo $job["position"]; ?></a></td>
-                        <td> <?php echo $job["company"]; ?></td>
-                    </tr>
-                
-                <?php }?>
-            </tbody>
-        </table>
+                <tbody>
+                    <?php foreach($result["jobs"] as $job) {?>
+            
+                        <tr>
+                            <td> <?php echo $job["location"]; ?></td>
+                            <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>"> <?php echo $job["position"]; ?></a></td>
+                            <td> <?php echo $job["company"]; ?></td>
+                        </tr>
+                    
+                    <?php }?>
+                </tbody>
+            </table>
+        </div>
          
         <p><?php echo $result["totalJobs"]; ?> Jobs in this category - Page <?php echo $currentPage. "/". $result["totalPages"]; ?></p>
         
