@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Affiliate_model extends CI_Model 
+class mdl_affiliate extends CI_Model 
 {
     public function createAffiliate($data) 
     {

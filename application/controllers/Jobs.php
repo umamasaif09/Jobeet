@@ -8,8 +8,8 @@ class Jobs extends CI_Controller
         
         $data ["title"] = "Latest Jobs";
 
-        $this->load->model("Job_model");
-        $data["categories"]= $this->Job_model->getLatestJobs();
+        $this->load->model("mdl_job");
+        $data["categories"]= $this->mdl_job->getLatestJobs();
     
         $this->load->view("jobs/index", $data);
     }
@@ -17,9 +17,9 @@ class Jobs extends CI_Controller
     public function category($id, $page=1) 
     {
         
-        $this->load->model("Job_model");
+        $this->load->model("mdl_job");
         $data["title"] ="Category";
-        $data["result"]= $this->Job_model->getJobsByCategory($id, $page);
+        $data["result"]= $this->mdl_job->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
         $data["backUrl"] = site_url("jobs/index");
         $this->load->view("jobs/category", $data);
@@ -33,8 +33,8 @@ class Jobs extends CI_Controller
         $data["keyword"]= $keyword;
         $data["backUrl"] = site_url("jobs/index");
 
-        $this->load->model("Job_model");
-        $data["jobs"]= $this->Job_model->searchJobs($keyword);
+        $this->load->model("mdl_job");
+        $data["jobs"]= $this->mdl_job->searchJobs($keyword);
 
         $this->load->view("jobs/search", $data);
     }
@@ -42,8 +42,8 @@ class Jobs extends CI_Controller
     public function job($id) {
         $data["title"] ="Job";
         $data["backUrl"] = site_url("jobs/index");
-        $this->load->model("Job_model");
-        $data["job"]= $this->Job_model->getJobById($id);
+        $this->load->model("mdl_job");
+        $data["job"]= $this->mdl_job->getJobById($id);
         
 
         $this->load->view("jobs/job", $data);
@@ -53,8 +53,8 @@ class Jobs extends CI_Controller
     {
         $data["title"] = "Create Job";
         $data["backUrl"] = site_url("jobs/index");
-        $this->load->model("Job_model");
-        $data["categories"]= $this->Job_model->getJobCategories();
+        $this->load->model("mdl_job");
+        $data["categories"]= $this->mdl_job->getJobCategories();
         $data["is_admin"] = false;
         $this->load->view("jobs/createJob", $data);
     }
@@ -76,8 +76,8 @@ class Jobs extends CI_Controller
 
         
         $id= $this->input->post("category_id");
-        $this->load->model("Job_model");
-        $category= $this->Job_model->getCategoryById($id);
+        $this->load->model("mdl_job");
+        $category= $this->mdl_job->getCategoryById($id);
 
         //image upload configs - move to configs
 
@@ -157,10 +157,10 @@ class Jobs extends CI_Controller
             "token" => $token
         ];
 
-        $this->load->model("Job_model");
-        $jobId= $this->Job_model->createJob($jobData);
-        $job= $this->Job_model->getJobById($jobId);
-        $category= $this->Job_model->getCategoryById($job["category_id"]);
+        $this->load->model("mdl_job");
+        $jobId= $this->mdl_job->createJob($jobData);
+        $job= $this->mdl_job->getJobById($jobId);
+        $category= $this->mdl_job->getCategoryById($job["category_id"]);
 
 
         $viewData = [
@@ -178,12 +178,12 @@ class Jobs extends CI_Controller
 
     public function edit($id, $token) 
     {
-        $this->load->model("Job_model");
-        $job= $this->Job_model->getJobForEdit($id, $token);
-        $category= $this->Job_model->getCategoryById($job["category_id"]);
+        $this->load->model("mdl_job");
+        $job= $this->mdl_job->getJobForEdit($id, $token);
+        $category= $this->mdl_job->getCategoryById($job["category_id"]);
 
         //get expiry 
-        $daysRemaining= $this->Job_model->getRemainingDays($id, $token);
+        $daysRemaining= $this->mdl_job->getRemainingDays($id, $token);
 
         if($job == NULL) {
             show_404(); //404 error
@@ -193,7 +193,7 @@ class Jobs extends CI_Controller
             "title"=> "Edit Form",
             "job"=> $job,
             "category" => $category,
-            "categories" => $this->Job_model->getJobCategories(),
+            "categories" => $this->mdl_job->getJobCategories(),
             "daysRemaining" => $daysRemaining,
             "backUrl" => site_url("jobs/index")
             ];
@@ -236,29 +236,29 @@ class Jobs extends CI_Controller
                 $jobData["logo"]= $this->input->post("old_logo");
             }
 
-        $this->load->model("Job_model");
-        $job= $this->Job_model->updatejob($jobData, $id, $token);
+        $this->load->model("mdl_job");
+        $job= $this->mdl_job->updatejob($jobData, $id, $token);
 
         redirect("jobs/job/".$id);
 
     }
 
     public function extendJob($id, $token) {
-        $this->load->model("Job_model");
-        $job= $this->Job_model->getJobForEdit($id, $token);
+        $this->load->model("mdl_job");
+        $job= $this->mdl_job->getJobForEdit($id, $token);
 
         if($job == NULL) {
             show_404(); //404 error
         }
         
 
-        $daysRemaining= $this->Job_model->getRemainingDays($id, $token);
+        $daysRemaining= $this->mdl_job->getRemainingDays($id, $token);
 
         if($daysRemaining >=5) {
             show_error("Job validity cannot be extended yet.");
         }
 
-        $job= $this->Job_model->extendjob($id);
+        $job= $this->mdl_job->extendjob($id);
 
         redirect("jobs/job/".$id);
         

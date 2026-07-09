@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Job_model extends CI_Model
+class mdl_job extends CI_Model
 {
     public function getLatestJobs()
     {

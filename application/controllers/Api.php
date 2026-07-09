@@ -11,15 +11,15 @@ class Api extends CI_Controller
         $category= $this->input->get("category");
         $format= $this->input->get("format");
 
-        $this->load->model("Affiliate_model");
-        $affiliate = $this->Affiliate_model->getAffiliateByToken($token);
+        $this->load->model("mdl_affiliate");
+        $affiliate = $this->mdl_affiliate->getAffiliateByToken($token);
 
         if(!$affiliate) {
             show_error("Unauthorized", 401);
         }
 
-        $this->load->model("Job_model");
-        $jobs= $this->Job_model->getActiveJobs($limit, $category);
+        $this->load->model("mdl_job");
+        $jobs= $this->mdl_job->getActiveJobs($limit, $category);
 
         if($format =="" || $format == "json"){
             header("Content-Type: application/json");
