@@ -7,25 +7,28 @@ class Admin extends CI_Controller
     public function dashboard()
     {
         $data["title"] = "Admin Dashboard";
+        $data["active"] = "dashboard";
 
-        $this->load->model("Category_model");
-        $data ["totalCategories"] = $this->Category_model->getCategoriesCount();
+        $this->load->model("mdl_category");
+        $data ["totalCategories"] = $this->mdl_category->getCategoriesCount();
 
-        $this->load->model("Job_model");
-        $data ["totalJobs"] = $this->Job_model->getJobsCount();
+        $this->load->model("mdl_job");
+        $data ["totalJobs"] = $this->mdl_job->getJobsCount();
 
-        $this->load->model("Affiliate_model");
-        $data["totalAffiliates"] = $this->Affiliate_model->getAffiliatesCount();
+        $this->load->model("mdl_affiliate");
+        $data["totalAffiliates"] = $this->mdl_affiliate->getAffiliatesCount();
 
         $this->load->view("admin/dashboard", $data);
     }
 
     public function categories()
     {
-        $this->load->model("Category_model");
+        $this->load->model("mdl_category");
         
-        $data["categories"] = $this->Category_model->getCategories();
+        $data["categories"] = $this->mdl_category->getCategories();
         $data["title"] = "Manage Categories";
+        $data["active"] ="categories";
+        $data["backUrl"] = site_url("admin/dashboard");
 
         $this->load->view("admin/categories", $data);
     }
@@ -33,17 +36,20 @@ class Admin extends CI_Controller
     public function createCategory() 
     {
         $data["name"] = $this->input->post("category_name");
-        $this->load->model("Category_model");
-        $this->Category_model->createCategory($data);
+        $this->load->model("mdl_category");
+        $this->mdl_category->createCategory($data);
+        
 
         redirect("admin/categories");
     }
 
     public function editCategory($id)
     {
-        $this->load->model("Category_model");
-        $data["category"]= $this->Category_model->getCategoryById($id);
+        $this->load->model("mdl_category");
+        $data["category"]= $this->mdl_category->getCategoryById($id);
         $data["title"]="Edit category";
+        $data["backUrl"] = site_url("admin/categories");
+        
         $this->load->view("admin/editCategory", $data);
     }
 
@@ -52,8 +58,8 @@ class Admin extends CI_Controller
         $category["id"]=$this->input->post("id");
         $category["name"]=$this->input->post("category_name");
 
-        $this->load->model("Category_model");
-        $this->Category_model->editCategory($category);
+        $this->load->model("mdl_category");
+        $this->mdl_category->editCategory($category);
 
         redirect("admin/categories");
         
@@ -61,8 +67,8 @@ class Admin extends CI_Controller
 
     public function deleteCategory($id)
     {
-        $this->load->model("Category_model");
-        $this->Category_model->deleteCategory($id);
+        $this->load->model("mdl_category");
+        $this->mdl_category->deleteCategory($id);
 
         redirect("admin/categories");
 
@@ -70,23 +76,44 @@ class Admin extends CI_Controller
 
     public function jobs()
     {
-        $this->load->model("Job_model");
+        $this->load->model("mdl_job");
         
-        $data["jobs"] = $this->Job_model->getJobs();
+        $data["jobs"] = $this->mdl_job->getJobs();
         $data["title"] = "Manage Jobs";
+        $data["active"] ="jobs";
+        $data["backUrl"] = site_url("admin/dashboard");
         
-        $this->load->model("Category_model");
-        $data["categories"]= $this->Category_model->getCategories();
+        $this->load->model("mdl_category");
+        $data["categories"]= $this->mdl_category->getCategories();
 
         //list jobs with category names
 
         $this->load->view("admin/jobs", $data);
     }
 
+    public function createJob() {
+        $this->load->model("mdl_job");
+
+        $data= [
+            "title" => "Create Job",
+            "backUrl" => site_url("admin/jobs"),
+            "categories" => $this->mdl_job->getJobCategories(),
+            "is_admin" => true
+        ];
+
+        $this->load->view("jobs/createJob", $data);
+    }
+
     public function editJob($id)
     {
-        $this->load->model("Job_model");
-        $job= $this->Job_model->getJobById($id);
+        $this->load->model("mdl_job");
+        $job= $this->mdl_job->getJobById($id);
+
+        $category= $this->mdl_job->getCategoryById($job["category_id"]);
+        $daysRemaining = $this->mdl_job->getRemainingDays($id);
+        
+        $this->load->model("mdl_category");
+
        
         if($job == NULL) {
             show_404();
@@ -95,7 +122,10 @@ class Admin extends CI_Controller
             $data = [
             "title"=> "Edit Form",
             "job"=> $job,
-            "categories" => $this->Job_model->getJobCategories()
+            "category" => $category,
+            "daysRemaining" =>$daysRemaining,
+            "backUrl" => site_url("admin/jobs"),
+            "categories" => $this->mdl_category->getCategories()
             ];
             $this->load->view("jobs/editForm", $data);
         }
@@ -104,30 +134,34 @@ class Admin extends CI_Controller
     public function viewJob($id) 
     {
         $data["title"] ="Job";
-        $this->load->model("Job_model");
-        $data["job"]= $this->Job_model->getJobById($id);
+        $this->load->model("mdl_job");
+        $data["job"]= $this->mdl_job->getJobById($id);
+        $data["backUrl"] = site_url("admin/jobs");
 
         $this->load->view("jobs/job", $data);
     }
 
     public function deleteJob($id) 
     {
-        $this->load->model("Job_model");
-        $this->Job_model->deleteJob($id);
+        $this->load->model("mdl_job");
+        $this->mdl_job->deleteJob($id);
 
         redirect("admin/jobs");
     }
 
     public function affiliates()
     {
-        $this->load->model("Affiliate_model");
-        $this->load->model("Category_model");
+        $this->load->model("mdl_affiliate");
+        $this->load->model("mdl_category");
+        $data["backUrl"] = site_url("admin/dashboard");
 
         //get all affiliates
-        $data["affiliates"] = $this->Affiliate_model->getAffiliates();
+        $data["affiliates"] = $this->mdl_affiliate->getAffiliates();
         $data["title"] = "Manage Affiliates";
+        
+        $data["active"] ="affiliates";
         //to display in view
-        $data["categories"] = $this->Category_model->getCategories();
+        $data["categories"] = $this->mdl_category->getCategories();
 
         $this->load->view("admin/affiliates", $data);
     }
@@ -144,12 +178,12 @@ class Admin extends CI_Controller
 
         $categories= $this->input->post("categories");
 
-        $this->load->model("Affiliate_model");
-        $affiliateID = $this->Affiliate_model->createAffiliate($affiliate);
+        $this->load->model("mdl_affiliate");
+        $affiliateID = $this->mdl_affiliate->createAffiliate($affiliate);
 
         //save selected categories
         if(!empty($categories)) {
-            $this->Affiliate_model->saveCategories($affiliateID, $categories);
+            $this->mdl_affiliate->saveCategories($affiliateID, $categories);
         }
         
 
@@ -158,10 +192,19 @@ class Admin extends CI_Controller
 
     public function editAffiliate($id)
     {
-       $this->load->model("Affiliate_model");
+       $this->load->model("mdl_affiliate");
+       $this->load->model("mdl_category");
+
+       $data["categories"] = $this->mdl_category->getCategories();
        //get affiliate that is needed to be edited
-        $data["affiliate"]= $this->Affiliate_model->getAffiliateById($id);
+        $data["affiliate"]= $this->mdl_affiliate->getAffiliateById($id);
         $data["title"]="Edit Affiliate";
+        $data["backUrl"] = site_url("admin/affiliates");
+        $categories= $this->input->post("categories");
+        //save selected categories
+        if(!empty($categories)) {
+            $this->mdl_affiliate->saveCategories($id, $categories);
+        }
         $this->load->view("admin/editAffiliate", $data);
     }
 
@@ -173,17 +216,17 @@ class Admin extends CI_Controller
         $affiliate["email"]=$this->input->post("email");
         $affiliate["url"]=$this->input->post("url");
 
-        $this->load->model("Affiliate_model");
+        $this->load->model("mdl_affiliate");
         //save the edit
-        $this->Affiliate_model->editAffiliate($affiliate);
+        $this->mdl_affiliate->editAffiliate($affiliate);
 
         redirect("admin/affiliates");
         
     }
 
     public function disableAffiliate($id) {
-        $this->load->model("Affiliate_model");
-        $this->Affiliate_model->disable($id);
+        $this->load->model("mdl_affiliate");
+        $this->mdl_affiliate->disable($id);
 
         redirect("admin/affiliates");
     }
@@ -191,10 +234,10 @@ class Admin extends CI_Controller
     public function activateAffiliate($id) {
         $token = bin2hex(random_bytes(16));
 
-        $this->load->model("Affiliate_model");
-        $this->Affiliate_model->activate($id, $token);
+        $this->load->model("mdl_affiliate");
+        $this->mdl_affiliate->activate($id, $token);
 
-        $affiliate = $this->Affiliate_model->getAffiliateById($id);
+        $affiliate = $this->mdl_affiliate->getAffiliateById($id);
         
         $this->load->library("email");
 
@@ -221,8 +264,8 @@ class Admin extends CI_Controller
 
     public function deleteAffiliate($id) 
     {
-        $this->load->model("Affiliate_model");
-        $this->Affiliate_model->delete($id);
+        $this->load->model("mdl_affiliate");
+        $this->mdl_affiliate->delete($id);
 
         redirect("admin/affiliates");
     }

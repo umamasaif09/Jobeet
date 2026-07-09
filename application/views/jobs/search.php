@@ -2,14 +2,16 @@
     "title" => $title
 ]); ?>
 
-    <section>
+<?php $this->load->view("partials/pageHeader"); ?>
+
+    <div class="container">
+        <section>
         
-        <hr>
        <?php if(empty($jobs) or empty($keyword)) { ?>
             <p> No Results Found for this Search. </p>
             <?php } else { ?> 
     
-                <table>
+                <table class="job-table">
                     <thead>
                             <tr>
                                 <th>Location</th>
@@ -40,5 +42,8 @@
 
        
     </section>
+    </div>
+
+    
 
    <?php $this->load->view("partials/footer"); ?>

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category_model extends CI_Model 
+class mdl_category extends CI_Model 
 {
     public function getCategories()
     {

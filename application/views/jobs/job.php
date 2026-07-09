@@ -2,7 +2,10 @@
     "title" => $title
 ]); ?>
 
-    <section>
+<?php $this->load->view("partials/pageHeader"); ?>
+
+    <div class="container">
+        <section>
         <h2>
             <?php echo $job["company"]; ?>
             <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="100" style="float: right;">
@@ -17,5 +20,8 @@
         <p><?php echo $job["how_to_apply"]; ?></p>
 
     </section>
+    </div>
+
+    
 
    <?php $this->load->view("partials/footer"); ?>

@@ -1,9 +1,9 @@
 <?php $isEdit= isset($job); ?>
 
-Category <select name="category_id" id="">
-
-
-                <?php foreach($categories as $category) { ?>
+<div class="form-group">
+    <label for="category_id">Category</label>
+    <select name="category_id" id="category_id">
+         <?php foreach($categories as $category) { ?>
                     <option value="<?php echo $category["id"]; ?>"
                         <?php
                             if($isEdit && $category["id"] == $job["category_id"]) {
@@ -14,66 +14,113 @@ Category <select name="category_id" id="">
                         <?php echo $category["name"]; ?>
                     </option>
                 <?php }?>
-            </select>
-            
-            <br><br>
+    </select>
 
-            Type 
-            <input type="radio" name="type" value="Full-time"
-                <?php if($isEdit && $job["type"]=="Full-time"){
-                    echo "checked";
-                } ?>
-            > Full-time
+</div>
 
-            <input type="radio" name="type" value="Part-time"
-                <?php if($isEdit && $job["type"]=="Part-time"){
-                    echo "checked";
-                } ?>
-            > Part-time
+<div class= "form-group">
+    <fieldset>
+        <legend>Job Type</legend>
 
-            <input type="radio" name="type" value="Freelance"
-                <?php if($isEdit && $job["type"]=="Freelance"){
-                    echo "checked";
-                } ?>
-            > Freelance
-            <br><br>
+        <div class="radio-group">
+            <input type="radio" name="type" value="Full-time"  id="full_time"
+                    <?php if($isEdit && $job["type"]=="Full-time"){
+                        echo "checked";
+                    } ?>
+                >
+                <label for="full_time">Full-time</label>
+        </div>
 
-            Company <input type="text" name="company"
-                value="<?php echo $isEdit ? $job["company"] : ''; ?>"
-            > <br><br>
+        <div class="radio-group">
+            <input type="radio" name="type" value="Part-time"  id="part_time"
+                    <?php if($isEdit && $job["type"]=="Part-time"){
+                        echo "checked";
+                    } ?>
+                >
+                <label for="part_time">Part-time</label>
+        </div>
 
-            <?php if($isEdit) { ?>
-                Current Logo <img src="<?php echo base_url("uploads/".$job["logo"]); ?>"  width= "150">
-                <input type="hidden" name= "old_logo" value="<?php echo $job["logo"]; ?>">
-                <br><br>
-                Upload New Logo <input type="file" name="logo" >
-            <?php } else { ?>
-                Logo <input type="file" name="logo">
-            <?php } ?>
-            <br><br>
+        <div class="radio-group">
+            <input type="radio" name="type" value="Freelance"  id="freelance"
+                    <?php if($isEdit && $job["type"]=="Freelance"){
+                        echo "checked";
+                    } ?>
+                >
+                <label for="freelance">Freelance</label>
+        </div>
 
-            
-                
-            ><br><br>
-            URL <input type="text" name="url"
-                value="<?php echo $isEdit ? $job["url"] : ''; ?>"
-            ><br><br>
-            Position <input type="text" name="position"
-                value="<?php echo $isEdit ? $job["position"] : ''; ?>"
-            ><br><br>
-            Location <input type="text" name="location"
-                value="<?php echo $isEdit ? $job["location"] : ''; ?>"
-            ><br><br>
-            Email <input type="text" name="email"
-                value="<?php echo $isEdit ? $job["email"] : ''; ?>"
-            ><br><br>
+    </fieldset>
 
-            Description <textarea name="description" id=""><?php echo $isEdit ? $job["description"]: '' ?></textarea><br><br>
-            How to Apply <textarea name="how_to_apply" id=""><?php echo $isEdit ? $job["how_to_apply"]: '' ?></textarea><br><br>
+</div>
 
-            Public <input type="checkbox" name="is_public" value="1" <?php
+<div class="form-group">
+    <label for="company">Company Name</label>
+    <input type="text" name="company" placeholder="Enter company name"
+        value="<?php echo $isEdit ? $job["company"] : ''; ?>" required
+    >
+</div>
+
+<div class="form-group">
+    <?php if($isEdit) { ?>
+        <label for="current_logo">Current Logo</label> 
+        <div class="current-logo">
+            <img src="<?php echo base_url("uploads/".$job["logo"]); ?>"  width= "150">
+            <input type="hidden" name= "old_logo" value="<?php echo $job["logo"]; ?>">
+        </div>
+        
+        
+        <label for="logo">
+            Upload New Logo
+        </label> <input type="file" name="logo" >
+    <?php } else { ?>
+        <label for="logo">Logo</label> <input type="file" name="logo">
+    <?php } ?>
+</div>
+
+<div class="form-group">
+    <label for="url">Website Url</label>
+    <input type="url" name="url" placeholder= "Enter website url"
+        value="<?php echo $isEdit ? $job["url"] : ''; ?>" required>
+</div>
+
+<div class="form-group">
+    <label for="position">Position</label>
+    <input type="text" name="position" placeholder= "Enter position"
+        value="<?php echo $isEdit ? $job["position"] : ''; ?>" required
+        >
+</div>
+
+<div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" name="location" placeholder="Enter location"
+                value="<?php echo $isEdit ? $job["location"] : ''; ?>" required
+            >
+</div>
+
+<div class="form-group">
+    <label for="email">Company Email</label>
+    <input type="email" name="email" placeholder="Enter company email"
+                value="<?php echo $isEdit ? $job["email"] : ''; ?>" required
+            >
+</div>
+
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" placeholder="Enter job description here"><?php echo $isEdit ? $job["description"]: '' ?></textarea>
+</div>
+
+<div class="form-group">
+    <label for="how_to_apply">How to apply</label>
+    <textarea name="how_to_apply" id="how_to_apply" placeholder="Enter how to apply here"><?php echo $isEdit ? $job["how_to_apply"]: '' ?></textarea>
+</div>
+
+<div class="checkbox-group">
+    <input type="checkbox"  id="is-public" name="is_public" value="1" <?php
                 if($isEdit && $job["is_public"]) {
                     echo "checked";
                 }
-             ?>><br><br>
+             ?>>
+             <label for="is-public">Public Job Listing</label>
+</div>
+
 

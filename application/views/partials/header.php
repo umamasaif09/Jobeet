@@ -2,27 +2,32 @@
 <html>
 <head> <title><?php echo $title; ?></title>
         <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <h1>Jobeet</h1>
+    <div class="container">
+        <header>
+            <a href="<?php echo site_url("jobs/index"); ?>">
+                <h1>Jobeet</h1>
+            </a>
+        
         
        
         <nav class="top-bar">
-            <a href="<?php echo site_url("jobs/index"); ?>">Home</a>
-            <form method = "GET" action="<?php echo site_url("jobs/search"); ?>">
-            <input type="text" name="keyword" placeholder = "Live Search">
-            <button>Search</button>
+
+            <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">
+            <input type="text" name="keyword" placeholder = "Live Search" required>
+            <button type="submit" class="btn-primary">Search Keyword</button>
             </form>
         
-            <a href="<?php echo site_url("jobs/createJob"); ?>">
-                <button type="button">Post a Job</button>
+            <a href="<?php echo site_url("jobs/createJob"); ?>" class="btn-primary">
+                Post a Job
             </a>
         </nav>
         
 
     </header>
+    </div>
 
     

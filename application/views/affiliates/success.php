@@ -1,6 +1,9 @@
 <?php $this->load->view("partials/header"); ?>
 
-    <section>
+<?php $this->load->view("partials/pageHeader"); ?>
+
+    <div class="container">
+        <section>
         <h1>
             <?= $this->lang->line("request_submition"); ?>
         </h1>
@@ -14,6 +17,9 @@
         <p><?= $this->lang->line("account_activation"); ?></p>
            
        
-    </section>
+        </section>
+    </div>
+
+    
 
     <?php $this->load->view("partials/footer"); ?>
