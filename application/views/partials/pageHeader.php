@@ -1,10 +1,11 @@
 <div class="container">
     <div class="page-header">
-    <?php if (isset($backUrl)) {?> 
-        <a href="<?php echo $backUrl; ?>" class="btn">
+
+        <!-- <a href="<?php echo $backUrl; ?>" class="btn">
             ← Back
-        </a>
-    <?php }?>
+        </a> -->
+        <button onclick= "history.back()" class="btn">← Back</button>
+
     <?php if(isset($title)) {?>
         
             <h2><?php echo $title; ?></h2>

@@ -23,7 +23,6 @@ class affiliates extends CI_Controller
         $data= [
             "title" => "Affiliate Application",
             "categories" => $this->mdl_category->getCategories(),
-            "backUrl" => site_url("jobs/index")
         ];
 
         $this->load->view("affiliates/apply", $data);
@@ -57,7 +56,6 @@ class affiliates extends CI_Controller
         //pass required data to view
         $viewData = [
             "title" => "Affiliation Request Submitted",
-            "backUrl" => site_url("affiliates/apply"),
             "affiliate"=>$affiliate
         ];
 

@@ -39,7 +39,6 @@ class Admin extends CI_Controller
         $data["categories"] = $this->mdl_category->getCategories();
         $data["title"] = "Manage Categories";
         $data["active"] ="categories";
-        $data["backUrl"] = site_url("admin/dashboard");
 
         $this->load->view("admin/categories", $data);
     }
@@ -59,7 +58,6 @@ class Admin extends CI_Controller
         $this->load->model("mdl_category");
         $data["category"]= $this->mdl_category->getCategoryById($id);
         $data["title"]="Edit category";
-        $data["backUrl"] = site_url("admin/categories");
         
         $this->load->view("admin/editCategory", $data);
     }
@@ -92,7 +90,6 @@ class Admin extends CI_Controller
         $data["jobs"] = $this->mdl_job->getJobs();
         $data["title"] = "Manage Jobs";
         $data["active"] ="jobs";
-        $data["backUrl"] = site_url("admin/dashboard");
         
         $this->load->model("mdl_category");
         $data["categories"]= $this->mdl_category->getCategories();
@@ -107,9 +104,7 @@ class Admin extends CI_Controller
 
         $data= [
             "title" => "Create Job",
-            "backUrl" => site_url("admin/jobs"),
-            "categories" => $this->mdl_job->getJobCategories(),
-            "is_admin" => true
+            "categories" => $this->mdl_job->getJobCategories()
         ];
 
         $this->load->view("jobs/createJob", $data);
@@ -135,7 +130,6 @@ class Admin extends CI_Controller
             "job"=> $job,
             "category" => $category,
             "daysRemaining" =>$daysRemaining,
-            "backUrl" => site_url("admin/jobs"),
             "categories" => $this->mdl_category->getCategories()
             ];
             $this->load->view("jobs/editForm", $data);
@@ -147,7 +141,6 @@ class Admin extends CI_Controller
         $data["title"] ="Job";
         $this->load->model("mdl_job");
         $data["job"]= $this->mdl_job->getJobById($id);
-        $data["backUrl"] = site_url("admin/jobs");
 
         $this->load->view("jobs/job", $data);
     }
@@ -164,7 +157,6 @@ class Admin extends CI_Controller
     {
         $this->load->model("mdl_affiliate");
         $this->load->model("mdl_category");
-        $data["backUrl"] = site_url("admin/dashboard");
 
         //get all affiliates
         $data["affiliates"] = $this->mdl_affiliate->getAffiliates();
@@ -210,7 +202,6 @@ class Admin extends CI_Controller
        //get affiliate that is needed to be edited
         $data["affiliate"]= $this->mdl_affiliate->getAffiliateById($id);
         $data["title"]="Edit Affiliate";
-        $data["backUrl"] = site_url("admin/affiliates");
         $categories= $this->input->post("categories");
         //save selected categories
         if(!empty($categories)) {

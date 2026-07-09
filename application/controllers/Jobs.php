@@ -21,7 +21,6 @@ class Jobs extends CI_Controller
         $data["title"] ="Category";
         $data["result"]= $this->mdl_job->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
-        $data["backUrl"] = site_url("jobs/index");
         $this->load->view("jobs/category", $data);
 
     }
@@ -31,7 +30,6 @@ class Jobs extends CI_Controller
 
         $data["title"] ="Search";
         $data["keyword"]= $keyword;
-        $data["backUrl"] = site_url("jobs/index");
 
         $this->load->model("mdl_job");
         $data["jobs"]= $this->mdl_job->searchJobs($keyword);
@@ -41,7 +39,6 @@ class Jobs extends CI_Controller
 
     public function job($id) {
         $data["title"] ="Job";
-        $data["backUrl"] = site_url("jobs/index");
         $this->load->model("mdl_job");
         $data["job"]= $this->mdl_job->getJobById($id);
         
@@ -52,23 +49,14 @@ class Jobs extends CI_Controller
     public function createJob()
     {
         $data["title"] = "Create Job";
-        $data["backUrl"] = site_url("jobs/index");
+
         $this->load->model("mdl_job");
         $data["categories"]= $this->mdl_job->getJobCategories();
-        $data["is_admin"] = false;
         $this->load->view("jobs/createJob", $data);
     }
 
     public function preview()
     {
-        $is_admin = $this->input->post("is_admin");
-
-        if($is_admin) {
-            $backUrl = site_url("admin/createJob");
-        }
-        else {
-            $backUrl=site_url("jobs/createJob");
-        }
 
         if($this->input->method() !== "post") {
             redirect("jobs/createJob");
@@ -120,23 +108,14 @@ class Jobs extends CI_Controller
         $data =[
             "title" => "Preview Job",   
             "category" => $category,
-            "job" => $job,
-            "is_admin" => $is_admin,
-            "backUrl" => $backUrl
+            "job" => $job
         ];
         $this->load->view("jobs/preview", $data);
     }
 
     public function postJob() {
        
-        $is_admin= $this->input->post("is_admin");
-
-        if($is_admin) {
-            $backUrl = site_url("admin/createJob");
-        }
-        else {
-            $backUrl=site_url("jobs/createJob");
-        }
+        
         $token= bin2hex(random_bytes(16)); //unique token for edit
         $jobData =[
             
@@ -168,8 +147,7 @@ class Jobs extends CI_Controller
             "jobId" => $jobId,
             "token"=> $token,
             "job" => $job,
-            "category" => $category,
-            "backUrl" => $backUrl
+            "category" => $category
         ];
 
         $this->load->view("jobs/success", $viewData);
@@ -194,8 +172,7 @@ class Jobs extends CI_Controller
             "job"=> $job,
             "category" => $category,
             "categories" => $this->mdl_job->getJobCategories(),
-            "daysRemaining" => $daysRemaining,
-            "backUrl" => site_url("jobs/index")
+            "daysRemaining" => $daysRemaining
             ];
             $this->load->view("jobs/editForm", $data);
         }
