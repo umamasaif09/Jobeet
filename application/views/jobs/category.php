@@ -31,14 +31,22 @@
             </table>
         </div>
          
-        <p><?php echo $result["totalJobs"]; ?> Jobs in this category - Page <?php echo $currentPage. "/". $result["totalPages"]; ?></p>
         
-        <div>
+            <p class="page-info"><?php echo $result["totalJobs"]; ?> Jobs in this category - Page <?php echo $currentPage. "/". $result["totalPages"]; ?></p>
+        
+        
+        
+        <div class="pagination">
             <?php if($currentPage >1 ) { ?>
-                <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>"> ← Previous </a>
-            <?php } ?>
-        </div>
-        <div>
+                <a class="btn-primary" href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>"> ← Previous </a>
+            <?php } else {?>
+                <span></span>
+            <?php }?>
+
+            <span class="page-number">
+                Page <?php echo $currentPage; ?> of <?php echo $result["totalPages"];?>
+            </span>
+        
             <?php if($currentPage < $result["totalPages"] ) { ?>
                 <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage+1)); ?>"> Next → </a>
             <?php } ?>

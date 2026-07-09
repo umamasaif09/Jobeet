@@ -115,7 +115,7 @@
 </div>
 
 <div class="checkbox-group">
-    <input type="checkbox"  id="is_public" name="is_public" value="1" <?php
+    <input type="checkbox"  id="is-public" name="is_public" value="1" <?php
                 if($isEdit && $job["is_public"]) {
                     echo "checked";
                 }

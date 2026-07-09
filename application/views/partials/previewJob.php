@@ -1,4 +1,5 @@
-<section>
+<div class="container">
+    <section>
         <p><strong>Category: </strong><?php echo $category["name"];?></p>
         <p><strong>Type: </strong><?php echo $job["type"];?></p>
         <p><strong>Company: </strong><?php echo $job["company"];?></p>
@@ -22,3 +23,4 @@
         
         
     </section>
+</div>

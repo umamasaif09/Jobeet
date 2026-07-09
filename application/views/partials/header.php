@@ -8,11 +8,13 @@
 <body>
     <div class="container">
         <header>
-        <h1>Jobeet</h1>
+            <a href="<?php echo site_url("jobs/index"); ?>">
+                <h1>Jobeet</h1>
+            </a>
+        
         
        
         <nav class="top-bar">
-            <a href="<?php echo site_url("jobs/index"); ?>">Home</a>
 
             <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">
             <input type="text" name="keyword" placeholder = "Live Search" required>

@@ -13,7 +13,11 @@
         </form>
     </section>
 
-    <section>
+    
+    </div>
+
+    <div class="table-container">
+        <section>
         <h2>Existing Affiliates</h2>
         
         <div class="table-wrapper">
@@ -82,7 +86,6 @@
         
     </section>
     </div>
-
     
 </body>
 </html>

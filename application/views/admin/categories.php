@@ -18,7 +18,11 @@
         </form>
     </section>
 
-    <section>
+    
+    </div>
+    
+    <div class="table-container">
+        <section>
         <h2>Existing Categories</h2>
         <div class="table-container"></div>
         <table class="admin-table category-table">
@@ -57,8 +61,6 @@
         </table>
     </section>
     </div>
-    
-
     
 </body>
 </html>
