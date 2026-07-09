@@ -1,5 +1,6 @@
 <?php $this->load->view("partials/header"); ?>
 
+<?php $this->load->view("partials/pageHeader"); ?>
 
     <div class="container">
         <section>

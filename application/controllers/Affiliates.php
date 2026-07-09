@@ -25,7 +25,7 @@ class affiliates extends CI_Controller
         $affiliateData= [
             "name"=> $this->input->post("name"),
             "email" => $this->input->post("email"),
-            "site_url" => $this->input->post("site_url"),
+            "site_url" => $this->input->post("url"),
             "token" => $token,
             "is_active" => 0,
             "created_at" => date("Y-m-d H:i:s")

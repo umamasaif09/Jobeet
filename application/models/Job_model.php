@@ -70,6 +70,12 @@ class Job_model extends CI_Model
 
     public function searchJobs($keyword) 
     {
+        $this->db->select("jobs.id,
+            jobs.location,
+            jobs.position,
+            jobs.company,
+            categories.name");
+
         $this->db->from("jobs");
         //join category and jobs table so we get the category name in results
         $this->db->join(

@@ -91,6 +91,19 @@ class Admin extends CI_Controller
         $this->load->view("admin/jobs", $data);
     }
 
+    public function createJob() {
+        $this->load->model("Job_model");
+
+        $data= [
+            "title" => "Create Job",
+            "backUrl" => site_url("admin/jobs"),
+            "categories" => $this->Job_model->getJobCategories(),
+            "is_admin" => true
+        ];
+
+        $this->load->view("jobs/createJob", $data);
+    }
+
     public function editJob($id)
     {
         $this->load->model("Job_model");
@@ -99,6 +112,8 @@ class Admin extends CI_Controller
         $category= $this->Job_model->getCategoryById($job["category_id"]);
         $daysRemaining = $this->Job_model->getRemainingDays($id);
         
+        $this->load->model("Category_model");
+
        
         if($job == NULL) {
             show_404();
@@ -109,7 +124,8 @@ class Admin extends CI_Controller
             "job"=> $job,
             "category" => $category,
             "daysRemaining" =>$daysRemaining,
-            "backUrl" => site_url("admin/jobs")
+            "backUrl" => site_url("admin/jobs"),
+            "categories" => $this->Category_model->getCategories()
             ];
             $this->load->view("jobs/editForm", $data);
         }

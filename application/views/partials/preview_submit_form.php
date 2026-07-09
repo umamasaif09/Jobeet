@@ -1,4 +1,4 @@
-<form method="POST" action="<?php echo site_url("jobs/postJob"); ?>" enctype= "multipart/form-data">
+
     <input type="hidden" name="category_id" value="<?php echo $job["category_id"]; ?>">
     <input type="hidden" name="type" value="<?php echo $job["type"]; ?>">
     <input type="hidden" name="company" value="<?php echo $job["company"]; ?>">
@@ -11,4 +11,3 @@
     <input type="hidden" name="is_public" value="<?php echo $job["is_public"]; ?>">
     <input type="hidden" name="logo" value="<?php echo $job["logo"]; ?>">
             
-</form>

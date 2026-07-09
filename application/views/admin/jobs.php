@@ -7,7 +7,7 @@
         <section>
         <h2>Add a Job</h2>
         <section>
-            <form method="POST" action="<?php echo site_url("jobs/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
+            <form method="POST" action="<?php echo site_url("admin/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
                 
 
                 

@@ -44,6 +44,7 @@ class Jobs extends CI_Controller
         $data["backUrl"] = site_url("jobs/index");
         $this->load->model("Job_model");
         $data["job"]= $this->Job_model->getJobById($id);
+        
 
         $this->load->view("jobs/job", $data);
     }
@@ -54,11 +55,26 @@ class Jobs extends CI_Controller
         $data["backUrl"] = site_url("jobs/index");
         $this->load->model("Job_model");
         $data["categories"]= $this->Job_model->getJobCategories();
-        $this->load->view("jobs/createJob.php", $data);
+        $data["is_admin"] = false;
+        $this->load->view("jobs/createJob", $data);
     }
 
     public function preview()
     {
+        $is_admin = $this->input->post("is_admin");
+
+        if($is_admin) {
+            $backUrl = site_url("admin/createJob");
+        }
+        else {
+            $backUrl=site_url("jobs/createJob");
+        }
+
+        if($this->input->method() !== "post") {
+            redirect("jobs/createJob");
+        } 
+
+        
         $id= $this->input->post("category_id");
         $this->load->model("Job_model");
         $category= $this->Job_model->getCategoryById($id);
@@ -86,10 +102,8 @@ class Jobs extends CI_Controller
                 }
 
 
-        $data =[
-            "title" => "Preview Job",
+        $job = [
             "category_id" => $id,
-            "category" => $category["name"],
             "type" => $this->input->post("type"),
             "company" => $this->input->post("company"),
             "logo" => $logo,
@@ -99,14 +113,30 @@ class Jobs extends CI_Controller
             "email" => $this->input->post("email"),
             "description" => $this->input->post("description"),
             "how_to_apply" => $this->input->post("how_to_apply"),
-            "is_public" => $this->input->post("is_public"),
-            "backUrl" => site_url("jobs/createJob")
+            "is_public" => $this->input->post("is_public")
+        ];
+
+
+        $data =[
+            "title" => "Preview Job",   
+            "category" => $category,
+            "job" => $job,
+            "is_admin" => $is_admin,
+            "backUrl" => $backUrl
         ];
         $this->load->view("jobs/preview", $data);
     }
 
     public function postJob() {
        
+        $is_admin= $this->input->post("is_admin");
+
+        if($is_admin) {
+            $backUrl = site_url("admin/createJob");
+        }
+        else {
+            $backUrl=site_url("jobs/createJob");
+        }
         $token= bin2hex(random_bytes(16)); //unique token for edit
         $jobData =[
             
@@ -132,13 +162,14 @@ class Jobs extends CI_Controller
         $job= $this->Job_model->getJobById($jobId);
         $category= $this->Job_model->getCategoryById($job["category_id"]);
 
+
         $viewData = [
             "title"=> "Job Created",
             "jobId" => $jobId,
             "token"=> $token,
             "job" => $job,
             "category" => $category,
-            "backUrl" => site_url("jobs/preview")
+            "backUrl" => $backUrl
         ];
 
         $this->load->view("jobs/success", $viewData);
@@ -149,6 +180,7 @@ class Jobs extends CI_Controller
     {
         $this->load->model("Job_model");
         $job= $this->Job_model->getJobForEdit($id, $token);
+        $category= $this->Job_model->getCategoryById($job["category_id"]);
 
         //get expiry 
         $daysRemaining= $this->Job_model->getRemainingDays($id, $token);
@@ -160,6 +192,7 @@ class Jobs extends CI_Controller
             $data = [
             "title"=> "Edit Form",
             "job"=> $job,
+            "category" => $category,
             "categories" => $this->Job_model->getJobCategories(),
             "daysRemaining" => $daysRemaining,
             "backUrl" => site_url("jobs/index")
@@ -173,7 +206,7 @@ class Jobs extends CI_Controller
         $id = $this->input->post("id");
         $token = $this->input->post("token");
 
-        
+        $this->load->library("upload");
 
         $jobData =[
             
