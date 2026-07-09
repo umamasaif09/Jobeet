@@ -5,11 +5,11 @@
 
     <div class="container">
         <section>
-        <h2>Add an Affiliate</h2>
+        <h2><?= $this->lang->line("add_affiliate");?></h2>
         <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST" class="admin-form">
             
                 <?php $this->load->view("partials/affiliates_form_fields"); ?>
-            <button type="submit" clas="btn-primary">Create Affiliate</button>
+            <button type="submit" clas="btn-primary"><?= $this->lang->line("create_affiliate"); ?></button>
         </form>
     </section>
 
@@ -18,7 +18,7 @@
 
     <div class="table-container">
         <section>
-        <h2>Existing Affiliates</h2>
+        <h2><?= $this->lang->line("existing_affiliates"); ?></h2>
         
         <div class="table-wrapper">
             <table class="admin-table affiliate-table">
@@ -29,9 +29,9 @@
                     <th><strong><?= $this->lang->line("affiliate_email"); ?></strong></th>
                     <th><strong><?= $this->lang->line("affiliate_website"); ?></strong></th>
                     <th><strong><?= $this->lang->line("affiliate_token"); ?></strong></th>
-                    <th><strong>Active Status</strong></th>
-                    <th><strong>Created At</strong></th>
-                    <th class="actions-column">Actions</th>
+                    <th><strong><?= $this->lang->line("active_status"); ?></strong></th>
+                    <th><strong><?= $this->lang->line("created_at"); ?></strong></th>
+                    <th class="actions-column"><?= $this->lang->line("actions"); ?></th>
                 </tr>
             </thead>
 
@@ -53,25 +53,25 @@
 
                             <td class ="actions">
                                 <a href="<?php echo site_url("admin/editAffiliate/".$affiliate["id"]) ?>" class="btn-warning"> 
-                                    Edit
+                                    <?= $this->lang->line("edit"); ?>
                                 </a>
 
                                 <a href="<?php echo site_url("admin/deleteAffiliate/".$affiliate["id"]) ?>" 
                                     onclick="return confirm('Delete this affiliate?')"
                                     class="btn-danger">
                                     
-                                    Delete
+                                   <?= $this->lang->line("delete"); ?>
                                 </a>
 
                                 <?php if($affiliate["is_active"]) {?> 
                                     <a href="<?php echo site_url("admin/disableAffiliate/".$affiliate["id"]) ?>" class="btn-warning">
                                     
-                                            Disable
+                                            <?= $this->lang->line("disable"); ?>
                                     </a>
                                 <?php } else { ?>
                                     <a href="<?php echo site_url("admin/activateAffiliate/".$affiliate["id"]) ?>" class="btn-success" >
                                     
-                                            Activate
+                                            <?= $this->lang->line("activate"); ?>
                                     </a>
                                 <?php }?>
 

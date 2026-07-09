@@ -4,8 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class affiliates extends CI_Controller 
 {
+
+    public function __construct() {
+        parent::__construct();
+
+        
+        $this->lang->load('affiliates', 'english');
+        $this->lang->load('common', 'english');
+
+    }
+
     public function apply()
     {
+    
         $this->load->model("mdl_category");
 
         //pass categrories to view for user selection

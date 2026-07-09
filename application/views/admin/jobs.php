@@ -5,14 +5,14 @@
 
     <div class="container">
         <section>
-        <h2>Add a Job</h2>
+        <h2><?= $this->lang->line("add_job"); ?></h2>
         <section>
             <form method="POST" action="<?php echo site_url("admin/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
                 
 
                 
                 
-                <button type="submit" clas="btn-primary">Create Job</button>
+                <button type="submit" clas="btn-primary"><?= $this->lang->line("create_job"); ?></button>
                 
                 
             </form>
@@ -24,23 +24,23 @@
 
     <div class="table-container">
         <section>
-            <h2>Existing Jobs</h2>
+            <h2><?= $this->lang->line("existing_jobs"); ?></h2>
 
             <div class="table-wrapper">
                 <table class="admin-table jobs-table">
                 <thead>
                     <tr>
-                        <th><strong>Job ID</strong></th>
-                        <th><strong>Category ID</strong></th>
-                        <th><strong>Company Name</strong></th>
-                        <th><strong>Company Email</strong></th>
-                        <th><strong>Position</strong></th>
-                        <th><strong>Type</strong></th>
-                        <th><strong>Location</strong></th>
-                        <th><strong>Active Status</strong></th>
-                        <th><strong>Expires At</strong></th>
-                        <th><strong>Public Status</strong></th>
-                        <th class="actions-column">Actions</th>
+                        <th><strong><?= $this->lang->line("job_id"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("category_id"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("company_nme"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("company_email"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("position"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("type"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("location"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("active_status"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("expires_at"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("public_status"); ?></strong></th>
+                        <th class="actions-column"><?= $this->lang->line("actions"); ?></th>
                     </tr>
                 </thead>
 
@@ -74,17 +74,17 @@
 
                                 <td class="actions">
                                     <a href="<?php echo site_url("admin/viewJob/".$job["id"]) ?>" class="btn-primary"> 
-                                        View
+                                        <?= $this->lang->line("view"); ?>
                                     </a>
 
                                     <a href="<?php echo site_url("admin/editJob/".$job["id"]) ?>" class="btn-warning"> 
-                                        Edit
+                                        <?= $this->lang->line("edit"); ?>
                                     </a>
 
                                     <a href="<?php echo site_url("admin/deleteJob/".$job["id"]); ?>" 
                                         onclick="return confirm('Delete this job?')" class="btn-danger">
                                         
-                                        Delete
+                                        <?= $this->lang->line("delete"); ?>
                                     </a>
                                 </td>
                             </tr>

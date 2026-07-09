@@ -8,11 +8,11 @@
         <form action="<?php echo site_url("admin/updateCategory"); ?>" method="POST" class="admin-form">
             <input type="hidden" name="id" value="<?php echo $category["id"] ?>">
             <div class=form-group>
-                <label>Category Name: </label>
+                <label><?= $this->lang->line("<?= $this->lang->line(""); ?>"); ?></label>
                 <input type="text" name= "category_name" placeholder="Enter category name" required>
             </div>
 
-            <button type="submit" class="btn-primary">Update Category</button>
+            <button type="submit" class="btn-primary"><?= $this->lang->line("update_category"); ?></button>
         </form>
     </section>
     </div>

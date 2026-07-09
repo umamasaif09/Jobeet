@@ -32,7 +32,7 @@
         </div>
          
         
-            <p class="page-info"><?php echo $result["totalJobs"]; ?> Jobs in this category - Page <?php echo $currentPage. "/". $result["totalPages"]; ?></p>
+            <p class="page-info"><?php echo $result["totalJobs"]; ?> Jobs in this category</p>
         
         
         

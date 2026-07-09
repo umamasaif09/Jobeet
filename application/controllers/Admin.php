@@ -4,6 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller 
 {
+    public function __construct() {
+        parent::__construct();
+
+        $this->lang->load('admin', 'english');
+        $this->lang->load('categories', 'english');
+        $this->lang->load('affiliates', 'english');
+        $this->lang->load('jobs', 'english');
+        $this->lang->load('common', 'english');
+
+    }
+
     public function dashboard()
     {
         $data["title"] = "Admin Dashboard";
