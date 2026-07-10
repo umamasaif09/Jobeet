@@ -1,4 +1,4 @@
-<div class="card">
+<div class="admin-section">
 
    <div class="section-header">
          <h2><?= $this->lang->line("existing_jobs"); ?></h2>
@@ -104,4 +104,5 @@
             </tbody>
         </table>
     </div>
+</div>
             

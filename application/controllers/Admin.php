@@ -187,6 +187,20 @@ class Admin extends CI_Controller
         $this->load->view("templates/admin_template", $data);
     }
 
+    public function addAffiliate() 
+    {
+        $this->load->model("mdl_job");
+
+        $data= [
+            "title" => "Create Affiliate",
+            "categories" => $this->mdl_job->getJobCategories(),
+            "content" => "admin/createAffiliate",
+            "showPageHeader" => true
+        ];
+
+        $this->load->view("templates/admin_template", $data);
+    } 
+
     public function createAffiliate() 
     {
         

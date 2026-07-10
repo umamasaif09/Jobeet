@@ -12,9 +12,9 @@
         <?php if(!empty($showPageHeader)): ?>
             <?php $this->load->view("partials/pageHeader"); ?>
         <?php endif; ?>
-
-    <div>
         <?php $this->load->view($content); ?>
+    <div>
+        
     </div>
     </div>
 </body>

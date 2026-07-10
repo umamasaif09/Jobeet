@@ -7,3 +7,5 @@ $lang["manage_affiliates"] = "Manage Affiliates";
 $lang["job_details"] ="Job Details";
 $lang["company_details"] ="Company Details";
 $lang["status"]="Status";
+$lang["affiliate_details"]="Affiliate Details";
+$lang["contact_information"]= "Contact Information";
