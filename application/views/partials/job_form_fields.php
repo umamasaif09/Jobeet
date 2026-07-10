@@ -18,38 +18,37 @@
 
 </div>
 
-<div class= "form-group">
-    <fieldset>
-        <legend>Job Type</legend>
+<div class= "form-group radio-row">
+        <label for="form-label">Job Type </label>
 
-        <div class="radio-group">
-            <input type="radio" name="type" value="Full-time"  id="full_time"
+        <div class="radio-options">
+            <div class="radio-group">
+                <input type="radio" name="type" value="Full-time"  id="full_time"
                     <?php if($isEdit && $job["type"]=="Full-time"){
                         echo "checked";
                     } ?>
                 >
                 <label for="full_time">Full-time</label>
-        </div>
+            </div>
 
-        <div class="radio-group">
-            <input type="radio" name="type" value="Part-time"  id="part_time"
-                    <?php if($isEdit && $job["type"]=="Part-time"){
-                        echo "checked";
-                    } ?>
-                >
-                <label for="part_time">Part-time</label>
-        </div>
+            <div class="radio-group">
+                <input type="radio" name="type" value="Part-time"  id="part_time"
+                        <?php if($isEdit && $job["type"]=="Part-time"){
+                            echo "checked";
+                        } ?>
+                    >
+                    <label for="part_time">Part-time</label>
+            </div>
 
-        <div class="radio-group">
-            <input type="radio" name="type" value="Freelance"  id="freelance"
-                    <?php if($isEdit && $job["type"]=="Freelance"){
-                        echo "checked";
-                    } ?>
-                >
-                <label for="freelance">Freelance</label>
+            <div class="radio-group">
+                <input type="radio" name="type" value="Freelance"  id="freelance"
+                        <?php if($isEdit && $job["type"]=="Freelance"){
+                            echo "checked";
+                        } ?>
+                    >
+                    <label for="freelance">Freelance</label>
+            </div>
         </div>
-
-    </fieldset>
 
 </div>
 
@@ -60,7 +59,7 @@
     >
 </div>
 
-<div class="form-group">
+<div class="form-group file-group">
     <?php if($isEdit) { ?>
         <label for="current_logo">Current Logo</label> 
         <div class="current-logo">

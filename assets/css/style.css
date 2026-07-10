@@ -147,12 +147,13 @@ section h2{
 
 
 
+
 /* ===== FORMS ===== */
 form{
     margin-top: 16px;
 }
 
-input, textarea, select {
+input:not([type="file"]), textarea, select {
     width: 100%;
     padding: 8px;
     margin-top: 4px;
@@ -162,7 +163,7 @@ input, textarea, select {
     box-sizing: border-box;
 }
 
-input:hover,
+input:not([type="file"]):hover,
 select:hover,
 textarea:hover{
     border-color: #999;
@@ -183,7 +184,17 @@ textarea{
     color: #333;
 }
 
-.form-group input, 
+.checkbox-group label, 
+.radio-group label{
+    display: inline;
+    margin-bottom: 0;
+    font-weight: normal;
+    width: auto;
+    align-items: center;
+}
+
+
+.form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), 
 .form-group select,
 .form-group textarea{
     width: 100%;
@@ -194,7 +205,7 @@ textarea{
     box-sizing: border-box;
 }
 
-.form-group input:focus,
+.form-group input:not([type="file"]):focus,
 .form-group select:focus,
 .form-group textarea:focus{
     outline: none;
@@ -209,6 +220,35 @@ textarea{
 .form-action{
     margin-bottom: 24px;
 }
+
+.file-group{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.file-group label{
+    margin-bottom: 0;
+}
+
+.radio-row{
+    display: flex;
+    align-items: center;
+    gap:24px;
+}
+
+.radio-options{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-options .radio-group{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 
 /* ===== BUTTONS ===== */
 
@@ -439,11 +479,12 @@ footer a:hover{
     background: #1d6fd3;
 }
 /* ===== ADMIN FORM ===== */
-.admin-form{
+.admin-form,
+.job-form{
 
     min-width: 224px;
     margin: 16px 0;
-    padding: 12px;
+    padding: 32px;
     background: #fff;
     border: 2px solid #ddd;
     border-radius: 10px;
