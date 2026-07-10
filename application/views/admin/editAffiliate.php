@@ -1,20 +1,10 @@
 
-    <?php $this->load->view("partials/adminHeader"); ?>
-       <?php $this->load->view("partials/pageHeader"); ?>
-    <div class="container">
-        <section >
-       
-       
-        <form action="<?php echo site_url("admin/updateAffiliate"); ?>" method="POST" class="admin-form">
-            <input type="hidden" name="id" value="<?php echo $affiliate["id"] ?>">
-            <?php $this->load->view("partials/affiliates_form_fields"); ?>
+<div class="container">
+   <form action="<?php echo site_url("admin/updateAffiliate"); ?>" method="POST" class="admin-form">
+        <input type="hidden" name="id" value="<?php echo $affiliate["id"] ?>">
+        <?php $this->load->view("partials/affiliates_form_fields"); ?>
 
 
-            <button type="submit" clas="btn-primary"><?= $this->lang->line("update_effiliate"); ?></button>
-        </form>
-    </section>
-    </div>
-    
-
-</body>
-</html>
+        <button type="submit" clas="btn-primary"><?= $this->lang->line("update_effiliate"); ?></button>
+    </form>
+</div>

@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head> <title><?php echo $title; ?></title>
-        <link rel= "stylesheet"  href="<?php echo base_url("assets/css/style.css"); ?>">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
 
-<body>
     <div class="container">
         <header>
             <a href="<?php echo site_url("jobs/index"); ?>">
                 <h1>Jobeet</h1>
             </a>
-        
-        
-       
+
         <nav class="top-bar">
 
             <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">
@@ -25,9 +16,7 @@
                 Post a Job
             </a>
         </nav>
-        
-
-    </header>
-    </div>
+    </header>    
+</div>
 
     

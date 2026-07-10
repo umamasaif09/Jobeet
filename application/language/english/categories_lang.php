@@ -8,4 +8,3 @@ $lang["create_category"] = "Create Category";
 $lang["existing_catrgories"] = "Existig Categories";
 $lang["category_id"] = "Category ID";
 $lang["update_category"] = "Update Category";
-$lang[""] = "";

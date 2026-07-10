@@ -10,8 +10,10 @@ class Jobs extends CI_Controller
 
         $this->load->model("mdl_job");
         $data["categories"]= $this->mdl_job->getLatestJobs();
+        $data["content"] = "jobs/index";
+        $data["showPageHeader"] = false;
     
-        $this->load->view("jobs/index", $data);
+        $this->load->view("templates/public_template", $data);
     }
 
     public function category($id, $page=1) 
@@ -21,7 +23,11 @@ class Jobs extends CI_Controller
         $data["title"] ="Category";
         $data["result"]= $this->mdl_job->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
-        $this->load->view("jobs/category", $data);
+
+        $data["content"] = "jobs/category";
+        $data["showPageHeader"] = true;
+
+        $this->load->view("templates/public_template", $data);
 
     }
 
@@ -30,20 +36,25 @@ class Jobs extends CI_Controller
 
         $data["title"] ="Search";
         $data["keyword"]= $keyword;
+        $data["content"] ="jobs/search";
+        $data["showPageHeader"]=true;
 
         $this->load->model("mdl_job");
         $data["jobs"]= $this->mdl_job->searchJobs($keyword);
 
-        $this->load->view("jobs/search", $data);
+        $this->load->view("templates/public_template", $data);
     }
 
     public function job($id) {
         $data["title"] ="Job";
         $this->load->model("mdl_job");
         $data["job"]= $this->mdl_job->getJobById($id);
+
+        $data["content"] = "jobs/job";
+        $data["showPageHeader"] = true;
         
 
-        $this->load->view("jobs/job", $data);
+        $this->load->view("templates/public_template", $data);
     }
 
     public function createJob()
@@ -52,7 +63,11 @@ class Jobs extends CI_Controller
 
         $this->load->model("mdl_job");
         $data["categories"]= $this->mdl_job->getJobCategories();
-        $this->load->view("jobs/createJob", $data);
+
+        $data["content"] = "jobs/createjob";
+        $data["showPageHeader"] = true;
+
+        $this->load->view("templates/public_template", $data);
     }
 
     public function preview()
@@ -108,9 +123,11 @@ class Jobs extends CI_Controller
         $data =[
             "title" => "Preview Job",   
             "category" => $category,
-            "job" => $job
+            "job" => $job,
+            "content" => "jobs/preview",
+            "showPageHeader" => true
         ];
-        $this->load->view("jobs/preview", $data);
+        $this->load->view("templates/public_template", $data);
     }
 
     public function postJob() {
@@ -147,10 +164,12 @@ class Jobs extends CI_Controller
             "jobId" => $jobId,
             "token"=> $token,
             "job" => $job,
-            "category" => $category
+            "category" => $category,
+            "content" => "jobs/success",
+            "showPageHeader" => true
         ];
 
-        $this->load->view("jobs/success", $viewData);
+        $this->load->view("templates/public_template", $viewData);
        
     }
 
@@ -172,9 +191,11 @@ class Jobs extends CI_Controller
             "job"=> $job,
             "category" => $category,
             "categories" => $this->mdl_job->getJobCategories(),
-            "daysRemaining" => $daysRemaining
+            "daysRemaining" => $daysRemaining,
+            "content" => "jobs/editForm",
+            "showPageHeader" => true
             ];
-            $this->load->view("jobs/editForm", $data);
+            $this->load->view("templates/public_template", $data);
         }
     }
 

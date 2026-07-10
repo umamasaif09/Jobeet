@@ -1,11 +1,8 @@
     <div class="container">
         <div class = "admin-title">
-            <h1><?= $this->lang->line("dashboard"); ?></h1>
+            <h1><?php echo $this->lang->line("dashboard"); ?></h1>
         </div>
     </div>
-
-    
-    <?php $this->load->view("partials/adminHeader"); ?>
 
     <div class="container">
         
@@ -34,7 +31,3 @@
         </div>
     </section>
     </div>
-
-    
-</body>
-</html>

@@ -23,9 +23,11 @@ class affiliates extends CI_Controller
         $data= [
             "title" => "Affiliate Application",
             "categories" => $this->mdl_category->getCategories(),
+            "content" => "affiliates/apply",
+            "showPageHeader" => true
         ];
 
-        $this->load->view("affiliates/apply", $data);
+        $this->load->view("templates/public_template", $data);
     }
 
     public function submitApplication () 
@@ -56,9 +58,11 @@ class affiliates extends CI_Controller
         //pass required data to view
         $viewData = [
             "title" => "Affiliation Request Submitted",
-            "affiliate"=>$affiliate
+            "affiliate"=>$affiliate,
+            "content" => "affiliates/success",
+            "showPageHeader" => true
         ];
 
-        $this->load->view("affiliates/success", $viewData);
+        $this->load->view("templates/public_template", $viewData);
     }
 }

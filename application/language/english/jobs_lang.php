@@ -12,7 +12,3 @@ $lang["position"] = "Position";
 $lang["type"] = "Type";
 $lang["location"] = "Location";
 $lang["create_job"] = "Create Job";
-$lang[""] = "";
-$lang[""] = "";
-$lang[""] = "";
-$lang[""] = "";

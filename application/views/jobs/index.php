@@ -1,47 +1,34 @@
 
-<?php $this->load->view("partials/header", [
-    "title" => $title
-]); ?>
+<div class="container">
+    <?php foreach($categories as $categoryId =>$category) { ?>
 
-    <div class="container">
-        <section>
-         <?php foreach($categories as $categoryId =>$category) { ?>
+    <div class="category-section">
+    <h2 class="category_titl">
+        <a href="<?php echo site_url("jobs/category/".$categoryId); ?>"><?php echo $category["name"]; ?></a>
+    </h2>
+   
+    <table class="job-table">
+        <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th>Company</th>
+                </tr>
+        </thead>
 
-         <div class="category-section">
-            <h2 class="category_titl">
-            <a href="<?php echo site_url("jobs/category/".$categoryId); ?>"><?php echo $category["name"]; ?></a>
-            </h2>
+        <tbody>
+            <?php foreach($category["jobs"] as $job) {?>
+    
+                <tr>
+                    <td> <?php echo $job["location"]; ?></td>
+                    <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>"> <?php echo $job["position"]; ?></a></td>
+                    <td> <?php echo $job["company"]; ?></td>
+                </tr>
+            
+            <?php }?>
+        </tbody>
+    </table>
         
-            
-            <table class="job-table">
-                <thead>
-                        <tr>
-                            <th>Location</th>
-                            <th>Position</th>
-                            <th>Company</th>
-                        </tr>
-                </thead>
-
-                <tbody>
-                    <?php foreach($category["jobs"] as $job) {?>
-            
-                        <tr>
-                            <td> <?php echo $job["location"]; ?></td>
-                            <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>"> <?php echo $job["position"]; ?></a></td>
-                            <td> <?php echo $job["company"]; ?></td>
-                        </tr>
-                    
-                    <?php }?>
-                </tbody>
-            </table>
-                
-            <?php } ?>
-         </div>
-            
-    </section>
+    <?php } ?>
     </div>
-    
-    
-   
-   
-<?php $this->load->view("partials/footer"); ?>
+</div>
