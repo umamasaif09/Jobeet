@@ -60,7 +60,7 @@ class affiliates extends CI_Controller
             "title" => "Affiliation Request Submitted",
             "affiliate"=>$affiliate,
             "content" => "affiliates/success",
-            "showPageHeader" => true
+            "showPageHeader" => true //back button
         ];
 
         $this->load->view("templates/public_template", $viewData);

@@ -12,15 +12,16 @@ class mdl_job extends CI_Model
         $this->db->limit($this->config->item('latest_jobs_limit'));
         $this->db->select("jobs.* , categories.name AS category_name");
         $this->db->from("jobs");
-        $this->db->join("categories", "jobs.category_id = categories.id" );
+        $this->db->join("categories", "jobs.category_id = categories.id" ); //join johs table and category table
         $jobsQuery = $this->db->get();
-        $jobs= $jobsQuery->result_array();
+        $jobs= $jobsQuery->result_array(); //latest jobs
 
         $groupedJobs= [];
 
         foreach($jobs as $job) {
             $category_id= $job["category_id"];
         
+            // group latest jobs based on category
             if(!isset($groupedJobs[$category_id]))
             $groupedJobs [$category_id]= [
                 "name" => $job["category_name"],
@@ -164,11 +165,11 @@ class mdl_job extends CI_Model
         $this->db->where("jobs.expires_at >", date("Y-m-d H:i:s"));
 
         if($category) {
-            $this->db->where("category_id", $category);
+            $this->db->where("category_id", $category); //jobs of specific category
         }
 
         if($limit) {
-            $this->db->limit($limit);
+            $this->db->limit($limit); //jobs limited to the given limit
         }
         return $this->db->get("jobs")->result_array();
     }
@@ -177,7 +178,7 @@ class mdl_job extends CI_Model
         $days = $this->Config->item('job_expiry');
 
         $newDate= date(
-            "Y-m-d H:i:s", strtotime("+{$days} days")
+            "Y-m-d H:i:s", strtotime("+{$days} days") //udpate job expiry with 30 days
         );
 
         $this->db->where("id", $id);
@@ -192,13 +193,12 @@ class mdl_job extends CI_Model
     public function getRemainingDays($id) 
     {
         $this->db->where("id", $id);
-        //$this->db->where("token", $token);
 
         $job = $this->db->get("jobs")->row_array();
 
         $expires= strtotime($job["expires_at"]);
         $today= time();
 
-        return ceil(($expires - $today)/(60*60*24));
+        return ceil(($expires - $today)/(60*60*24)); //remaining active time
     }
 }

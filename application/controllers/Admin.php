@@ -42,7 +42,7 @@ class Admin extends CI_Controller
         $data["title"] = "Manage Categories";
         $data["active"] ="categories";
         $data["content"] = "admin/categories";
-        $data["showPageHeader"] = true;
+        $data["showPageHeader"] = true; //back button
 
         $this->load->view("templates/admin_template", $data);
     }
@@ -127,7 +127,7 @@ class Admin extends CI_Controller
         $job= $this->mdl_job->getJobById($id);
 
         $category= $this->mdl_job->getCategoryById($job["category_id"]);
-        $daysRemaining = $this->mdl_job->getRemainingDays($id);
+        $daysRemaining = $this->mdl_job->getRemainingDays($id); //get job expiry
         
         $this->load->model("mdl_category");
 
@@ -278,7 +278,7 @@ class Admin extends CI_Controller
         
         $this->load->library("email");
 
-        $this->email->from("jobeetgmail@gmail.com", "Jobeet");
+        $this->email->from("jobeetgmail@gmail.com", "Jobeet"); 
         $this->email->to($affiliate["email"]);
         $this->email->subject("Affiliate Account Activated");
 

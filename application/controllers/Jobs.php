@@ -218,9 +218,7 @@ class Jobs extends CI_Controller
             "description" => $this->input->post("description"),
             "how_to_apply" => $this->input->post("how_to_apply"),
             "is_public" => $this->input->post("is_public"),
-            //"created_at" => date("Y-m-d H:i:s"),
-            "is_active" => 1,
-            //"expires_at" => date("Y-m-d H:i:s", strtotime("+30 days")),
+            "is_active" => 1
             
         ];
 
@@ -250,7 +248,7 @@ class Jobs extends CI_Controller
         }
         
 
-        $daysRemaining= $this->mdl_job->getRemainingDays($id, $token);
+        $daysRemaining= $this->mdl_job->getRemainingDays($id, $token); //job expiry
 
         if($daysRemaining >=5) {
             show_error("Job validity cannot be extended yet.");
