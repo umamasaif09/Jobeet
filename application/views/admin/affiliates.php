@@ -1,6 +1,5 @@
 
 
-<div class="container">
     <h2><?= $this->lang->line("add_affiliate");?></h2>
     <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST" class="admin-form">
         
@@ -8,7 +7,7 @@
         <button type="submit" clas="btn-primary"><?= $this->lang->line("create_affiliate"); ?></button>
     </form>
 
-</div>
+
 
 <div class="table-container">
     <h2><?= $this->lang->line("existing_affiliates"); ?></h2>

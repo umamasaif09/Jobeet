@@ -1,4 +1,4 @@
-<div class="container">
+
     <div class= "category-layout">
         <section class="category-form-card">
             <h2><?= $this->lang->line("add_category"); ?></h2>
@@ -54,5 +54,5 @@
         </section>
     </div>
 
-</div>
+
 

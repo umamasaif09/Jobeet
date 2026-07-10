@@ -1,5 +1,4 @@
-
-<div class="container">       
+     
     <?php if(empty($jobs) or empty($keyword)) { ?>
         <p> No Results Found for this Search. </p>
         <?php } else { ?> 
@@ -32,5 +31,5 @@
             </table>
     
     <?php }?>
-</div>
+
 

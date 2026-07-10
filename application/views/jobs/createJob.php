@@ -1,12 +1,9 @@
 
-<div class="container">
 
-    <form method="POST" action="<?php echo site_url("jobs/preview"); ?>" enctype= "multipart/form-data" class="job-form">
-            
-        <?php $this->load->view("partials/job_form_fields"); ?>
-         
-        <button type="submit" class="btn-primary">Preview Job</button>
-       
-    </form>
-
-</div>
+<form method="POST" action="<?php echo site_url("jobs/preview"); ?>" enctype= "multipart/form-data" class="job-form">
+        
+    <?php $this->load->view("partials/job_form_fields"); ?>
+        
+    <button type="submit" class="btn-primary">Preview Job</button>
+    
+</form>

@@ -1,5 +1,4 @@
 
-<div class="container">
     <?php foreach($categories as $categoryId =>$category) { ?>
 
     <div class="category-section">
@@ -31,4 +30,3 @@
         
     <?php } ?>
     </div>
-</div>

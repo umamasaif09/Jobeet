@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 </head>
 <body>
-    <?php $this->load->view("partials/adminHeader"); ?>
-    <?php if(!empty($showPageHeader)): ?>
-        <?php $this->load->view("partials/pageHeader"); ?>
-    <?php endif; ?>
+    <div class="container">
+        <?php $this->load->view("partials/adminHeader"); ?>
+        <?php if(!empty($showPageHeader)): ?>
+            <?php $this->load->view("partials/pageHeader"); ?>
+        <?php endif; ?>
 
     <div>
         <?php $this->load->view($content); ?>
+    </div>
     </div>
 </body>
 </html>

@@ -1,5 +1,4 @@
 
-<div class="container">
       
 <form action="<?php echo site_url("admin/updateCategory"); ?>" method="POST" class="admin-form">
     <input type="hidden" name="id" value="<?php echo $category["id"] ?>">
@@ -11,4 +10,4 @@
     <button type="submit" class="btn-primary"><?= $this->lang->line("update_category"); ?></button>
 </form>
 
-</div>
+

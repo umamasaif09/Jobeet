@@ -1,16 +1,12 @@
 
 
-<div class="container">
+<h2><?= $this->lang->line("add_job"); ?></h2>
 
-    <h2><?= $this->lang->line("add_job"); ?></h2>
-
-        <form method="POST" action="<?php echo site_url("admin/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
-         
-            <button type="submit" clas="btn-primary"><?= $this->lang->line("create_job"); ?></button>
-           
-        </form>
-
-</div>
+    <form method="POST" action="<?php echo site_url("admin/createJob"); ?>" enctype= "multipart/form-data" class="admin-form">
+        
+        <button type="submit" clas="btn-primary"><?= $this->lang->line("create_job"); ?></button>
+        
+    </form>
 
 <div class="table-container">
 

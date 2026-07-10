@@ -1,6 +1,6 @@
 <?php $active = isset($active)? $active: ''; ?>
 <div class="admin-header">
-    <div class="container">
+
         <nav class = "admin-nav">
             <a href="<?php echo site_url('admin/dashboard'); ?>" class="nav-item <?php echo($active == 'dashboard')? 'active' : ''; ?>">
                 <?= $this->lang->line("dashboard"); ?>
@@ -16,5 +16,5 @@
             </a>
         
     </nav>
-    </div>
+
 </div>

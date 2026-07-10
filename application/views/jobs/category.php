@@ -1,5 +1,5 @@
 
-<div class="container">
+
     <div class="category-section">
         <h2><?php echo $result["category"]["name"] ?></h2>
         <table class="job-table">
@@ -23,7 +23,7 @@
                 <?php }?>
             </tbody>
         </table>
-    </div>
+
          
         
     <p class="page-info"><?php echo $result["totalJobs"]; ?> Jobs in this category</p>
