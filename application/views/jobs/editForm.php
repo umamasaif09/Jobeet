@@ -13,7 +13,7 @@
 
         
         
-        <button type="submit" class="btn-primary">Update Job</button>
+        <button type="submit" class="btn btn-primary">Update Job</button>
         
         
     </form>
@@ -23,7 +23,7 @@
                 <input type="hidden" name="id" value= "<?php echo $job["id"]; ?>">
                 <input type="hidden" name="token" value= "<?php echo $job["token"]; ?>">
 
-                <button type="submit" class="btn-primary">Extend Job for 30 days</button>
+                <button type="submit" class="btn btn-primary">Extend Job for 30 days</button>
             </form>
     <?php }?>
 

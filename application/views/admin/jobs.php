@@ -3,7 +3,7 @@
    <div class="section-header">
          <h2><?= $this->lang->line("existing_jobs"); ?></h2>
 
-        <a href="<?php echo site_url("admin/createJob"); ?>" class="btn-primary">
+        <a href="<?php echo site_url("admin/createJob"); ?>" class="btn btn-primary">
             <?= $this->lang->line("add_job"); ?>
         </a>
     </div>
@@ -83,16 +83,16 @@
                             </td>
                             
                             <td class="actions">
-                                <a href="<?php echo site_url("admin/viewJob/".$job["id"]) ?>" class="btn-primary"> 
+                                <a href="<?php echo site_url("admin/viewJob/".$job["id"]) ?>" class="btn btn-primary"> 
                                     <?= $this->lang->line("view"); ?>
                                 </a>
 
-                                <a href="<?php echo site_url("admin/editJob/".$job["id"]) ?>" class="btn-warning"> 
+                                <a href="<?php echo site_url("admin/editJob/".$job["id"]) ?>" class="btn btn-warning"> 
                                     <?= $this->lang->line("edit"); ?>
                                 </a>
 
                                 <a href="<?php echo site_url("admin/deleteJob/".$job["id"]); ?>" 
-                                    onclick="return confirm('Delete this job?')" class="btn-danger">
+                                    onclick="return confirm('Delete this job?')" class="btn btn-danger">
                                     
                                     <?= $this->lang->line("delete"); ?>
                                 </a>

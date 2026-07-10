@@ -10,7 +10,7 @@
                 </div>
                 
 
-                <button type="submit" class="btn-primary"><?= $this->lang->line("create_category"); ?></button>
+                <button type="submit" class="btn btn-primary"><?= $this->lang->line("create_category"); ?></button>
             </form>
         </section>
 
@@ -33,13 +33,13 @@
                                 <td><?php echo $category["name"]; ?></td>
 
                                 <td class="actions">
-                                    <a href="<?php echo site_url("admin/editCategory/".$category["id"]) ?>" class="btn-warning"> 
+                                    <a href="<?php echo site_url("admin/editCategory/".$category["id"]) ?>" class="btn btn-warning"> 
                                         <?= $this->lang->line("edit"); ?>
                                     </a>
 
                                     <a href="<?php echo site_url("admin/deleteCategory/".$category["id"]) ?>" 
                                         onclick="return confirm('Delete this category?')"
-                                        class="btn-danger">
+                                        class="btn btn-danger">
                                         
                                         <?= $this->lang->line("delete"); ?>
                                     </a>

@@ -4,7 +4,7 @@
     <form action="<?php echo site_url("admin/createAffiliate"); ?>" method="POST" class="admin-form">
         
             <?php $this->load->view("partials/affiliates_form_fields"); ?>
-        <button type="submit" clas="btn-primary"><?= $this->lang->line("create_affiliate"); ?></button>
+        <button type="submit" class="btn btn-primary"><?= $this->lang->line("create_affiliate"); ?></button>
     </form>
 
 
@@ -44,24 +44,24 @@
                         <td><?php echo $affiliate["created_at"]; ?></td>
 
                         <td class ="actions">
-                            <a href="<?php echo site_url("admin/editAffiliate/".$affiliate["id"]) ?>" class="btn-warning"> 
+                            <a href="<?php echo site_url("admin/editAffiliate/".$affiliate["id"]) ?>" class="btn btn-warning"> 
                                 <?= $this->lang->line("edit"); ?>
                             </a>
 
                             <a href="<?php echo site_url("admin/deleteAffiliate/".$affiliate["id"]) ?>" 
                                 onclick="return confirm('Delete this affiliate?')"
-                                class="btn-danger">
+                                class="btn btn-danger">
                                 
                                 <?= $this->lang->line("delete"); ?>
                             </a>
 
                             <?php if($affiliate["is_active"]) {?> 
-                                <a href="<?php echo site_url("admin/disableAffiliate/".$affiliate["id"]) ?>" class="btn-warning">
+                                <a href="<?php echo site_url("admin/disableAffiliate/".$affiliate["id"]) ?>" class="btn btn-warning">
                                 
                                         <?= $this->lang->line("disable"); ?>
                                 </a>
                             <?php } else { ?>
-                                <a href="<?php echo site_url("admin/activateAffiliate/".$affiliate["id"]) ?>" class="btn-success" >
+                                <a href="<?php echo site_url("admin/activateAffiliate/".$affiliate["id"]) ?>" class="btn btn-success" >
                                 
                                         <?= $this->lang->line("activate"); ?>
                                 </a>

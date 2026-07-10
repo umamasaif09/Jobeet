@@ -5,5 +5,5 @@
         <?php $this->load->view("partials/preview_submit_form"); ?>
         
 
-        <button type="submit" class="btn-primary">Create Job Post</button>
+        <button type="submit" class="btn btn-primary">Create Job Post</button>
     </form>

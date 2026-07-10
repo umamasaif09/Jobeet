@@ -4,6 +4,6 @@
         
     <?php $this->load->view("partials/job_form_fields"); ?>
         
-    <button type="submit" class="btn-primary">Preview Job</button>
+    <button type="submit" class="btn btn-primary">Preview Job</button>
     
 </form>

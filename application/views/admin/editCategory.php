@@ -7,7 +7,7 @@
         <input type="text" name= "category_name" placeholder="Enter category name" required>
     </div>
 
-    <button type="submit" class="btn-primary"><?= $this->lang->line("update_category"); ?></button>
+    <button type="submit" class="btn btn-primary"><?= $this->lang->line("update_category"); ?></button>
 </form>
 
 

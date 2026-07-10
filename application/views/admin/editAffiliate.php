@@ -4,5 +4,5 @@
         <?php $this->load->view("partials/affiliates_form_fields"); ?>
 
 
-        <button type="submit" clas="btn-primary"><?= $this->lang->line("update_effiliate"); ?></button>
+        <button type="submit" clas="btn btn-primary"><?= $this->lang->line("update_effiliate"); ?></button>
     </form>
