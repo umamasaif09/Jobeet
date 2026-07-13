@@ -53,4 +53,4 @@ $route['default_controller'] = 'jobs';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route["admin"] = "admin";
+$route["admin"] = "admin/dashboard";

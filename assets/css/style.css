@@ -22,6 +22,13 @@ img{
     border: 2px solid #ddd;
 }
 
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+
 /* ===== CONTAINERS ===== */
 .container{
     max-width: 1100px;
@@ -56,7 +63,7 @@ header a, footer a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 0 0 16px;
 }
 
 .section-header h2{
@@ -431,7 +438,7 @@ footer a:hover{
 
 /* ===== ADMIN HEADER / NAV ===== */
 .admin-header {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .admin-title h1{
@@ -563,7 +570,7 @@ footer a:hover{
 .job-form{
 
     min-width: 224px;
-    margin: 16px 0;
+    margin: 0;
     padding: 32px;
     background: #fff;
     border: 2px solid #ddd;
@@ -685,10 +692,16 @@ input[type="checkbox"] {
 .admin-section{
     background: #fff;
     border-radius: 10px;
-    padding: 32px;
+    padding: 24px;
     box-shadow: 0 2px 10px rgba(0,0,0, .08);
     margin-bottom: 32px;
     text-align: left;
+}
+
+.category-form-card h2,
+.category-table-card h2,
+.admin-section h2{
+    margin: 0 0 16px;
 }
 
 /* ===== PAGE HEADER ===== */
@@ -696,7 +709,7 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .page-header h2{
@@ -820,4 +833,431 @@ input[type="checkbox"] {
 .badge.private{
     background: #f3f4f6;
     color: #374151;
+}
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 1024px) {
+    .container{
+        padding: 24px;
+    }
+
+    .table-container{
+        padding: 24px;
+    }
+
+    .dashboard-cards{
+        flex-wrap: wrap;
+    }
+
+    .card{
+        min-width: calc(50% -12px);
+        flex: 1 1 calc(50% - 12 px);
+    }
+
+    .category-layout{
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .site-header{
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .search-form input{
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        padding: 16px;
+    }
+
+    .table-container{
+        padding: 16px;
+        overflow-x: auto;
+    }
+
+    .job-table,
+    .admin-table,
+    .category-table,
+    .jobs-table,
+    .affiliate-table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .jobs-table th,
+    .job-table td,
+    .admin-table th,
+    .admin-table td{
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    header h1{
+        font-size: 24px;
+    }
+
+    .section-header{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .admin-nav {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .nav-item{
+        min-width: auto;
+        flex: 1 1 auto;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .site-header{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .site-logo h1{
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .header-actions{
+        flex-direction: column;
+        gap: 12px;
+        width: auto;
+    }
+
+    .search-form{
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .search-form input{
+        width: 100%;
+        flex: 1;
+    }
+
+    .search-form .btn,
+    .header-actions > .btn{
+        width: 100%;
+        min-width: auto;
+    }
+
+    .top-bar{
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .top-bar input{
+        width: 100%;
+        flex: 1;
+    }
+
+    .top-bar form{
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .dashboard {
+        padding: 1px;
+    }
+
+    .dashboard h2{
+        font-size: 20px;
+    }
+
+    .dashboard-cards{
+        flex-direction: column;
+        gap: 16px
+    }
+
+    .card{
+        min-width: 100%;
+        flex: 1 1 100%;
+        padding: 16px;
+    }
+
+    .card p{
+        font-size: 32px;
+    }
+
+    .admin-form,
+    .job-form{
+        padding: 20px;
+        min-width: auto;
+    }
+
+    .radio-row{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .radio-options{
+        gap: 12px;
+    }
+
+    .file-group{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .actions{
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .actions-column{
+        width: auto;
+        min-width: 120px;
+    }
+
+    .btn{
+        padding: 8px 16px;
+        font-size: 14px;
+        min-height: 40px;
+    }
+
+    .pagination{
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .page-header{
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .page-header h2{
+        font-size: 20px;
+    }
+
+    .wide-table{
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+    }
+
+    footer{
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 0;
+        margin-top: 32px;
+    }
+
+    footer a{
+        margin: 0 8px;
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .container{
+        padding: 12px;
+    }
+
+    .table-container{
+        padding: 8px;
+        overflow-x: auto;
+    }
+
+    section{
+        padding: 16px;
+        margin-bottom: 1px;
+    }
+
+    section h2{
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    header h1{
+        font-size: 20px;
+    }
+
+    .admin-title h1{
+        margin: 16px 0;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .jobs-table th,
+    .job-table td,
+    .admin-table th,
+    .admin-table td{
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .job-table td a {
+        font-size: 12px;
+    }
+
+    .admin-nav {
+        flex-direction: column;
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .nav-item{
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .admin-form,
+    .job-form{
+        padding: 16px;
+        border-width: 1px;
+    }
+
+    .form-group{
+        margin-bottom: 16px;
+    }
+
+    .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+    .form-group select,
+    .form-group textarea{
+        padding: 10px;
+        font-size: 14px;
+
+    }
+
+    fieldset{
+        padding: 12px;
+        margin-bottom: 16px;
+    }
+
+    .checkbox-group,
+    .radio-group{
+        flex-wrap: wrap;
+        gap: 4px
+    }
+
+    .checkbox-group label,
+    .radio-group label{
+        font-size:  14px;
+    }
+
+    .search-form input{
+        font-size: 14px;
+        padding: 8px 12px;
+        height: 36px;
+    }
+
+    .search-form .btn,
+    .header-actions > .btn{
+        height: 36px;
+        min-height: 36px;
+        font-size: 13px;
+        padding: 0 12px;
+    }
+
+    .badge{
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .job-title,
+    .company-name{
+        font-size: 14px;
+    }
+
+    .job-meta{
+        font-size: 12px;
+    }
+
+    .page-number{
+        font-size: 13px;
+    }
+
+    .page-info{
+        font-size: 13px;
+    }
+    
+
+    .dashboard h2{
+        font-size: 18px;
+    }
+
+    .card{
+        padding: 14px;
+    }
+
+    .card h3{
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .card p{
+        font-size: 28px;
+        margin: 8px 0;
+    }
+
+    .card small{
+        font-size: 12px;
+    }
+
+    .btn{
+        padding: 8px 14px;
+        font-size: 13px;
+        min-height: 36px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .actions .btn{
+        width: auto;
+        flex: 1;
+        min-width: 60px;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .container{
+        padding: 8px;
+    }
+
+    .job-table th,
+    .job-table td,
+    .admin-table th,
+    .admin-table td{
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+
+    .btn{
+        font-size: 12px;
+        padding: 6px 10px;
+        min-height: 32px;
+    }
+
+    .card p{
+        font-size: 24px;
+    }
+
+    .site-logo h1{
+        font-size: 20px;
+    }
+
+    header h1{
+        font-size: 18px;
+    }
 }
