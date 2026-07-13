@@ -16,6 +16,7 @@
 
         <section class="category-table-card">
             <h2><?= $this->lang->line("existing_categories"); ?></h2>
+            
             <table class="admin-table category-table">
                 <thead>
                     <tr>

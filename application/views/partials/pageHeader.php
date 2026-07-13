@@ -1,7 +1,7 @@
 
 <div class="page-header">
 
-    <button onclick= "history.back()" class="btn btn-primary">← Back</button>
+    <button class="btn btn-primary back-button">← Back</button>
 
     <?php if(isset($title)) {?>
         
