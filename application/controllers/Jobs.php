@@ -204,7 +204,15 @@ class Jobs extends CI_Controller
         $id = $this->input->post("id");
         $token = $this->input->post("token");
 
+        $this->load->config("jobeet");
         $this->load->library("upload");
+
+        $this->upload->initialize([
+            "upload_path" =>$this->config->item("upload_path"),
+            "allowed_types" => $this->config->item("allowed_types"),
+            "encrypt_name" => $this->config->item("encrypt_name"),
+            "max_size" => $this->config->item("max_size")
+        ]);
 
         $jobData =[
             

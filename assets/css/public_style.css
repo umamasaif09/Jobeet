@@ -3,7 +3,7 @@
 body {
     margin:0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f3f5f7;
+    background: #f9fafb;
     color: #333;
     line-height: 1.6;
 }
@@ -53,6 +53,11 @@ header h1{
     margin :0;
     color: #2c3e50;
     font-size: 32px;
+}
+
+header h1 a,
+header > a{
+    color: #2c3e50;
 }
 
 header a, footer a{
@@ -382,30 +387,42 @@ footer a:hover{
     align-items: center;
     justify-content: space-between;
 
-    padding: 10px 16px;
-    background: #fff;
-    border: 1px solid #e5e7eb;
+    padding: 12px 24px;
+    background: #f8fafc;
+    border: 1px solid #e9edf2;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
 
     margin-bottom: 24px;
+    transition: all 0.2 ease;
 }
 
 .site-logo{
     text-decoration: none;
     color: inherit;
+    flex-shrink: 0;
 }
 
 .site-logo h1{
     margin: 0;
     font-size: 28px;
-    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    background: linear-gradient(135deg, #2d89ef 0%, #1a6fd3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    line-height: 1.2;
 }
 
 .header-actions{
     display: flex;
     align-items: center;
     gap: 16px;
+
+    flex: 1;
+    justify-content: flex-end;
 }
 
 .search-form{
@@ -413,6 +430,7 @@ footer a:hover{
     align-items: center;
     gap: 10px;
     margin: 0;
+    flex: 0 1 auto;
 }
 
 .search-form input,
@@ -423,13 +441,50 @@ footer a:hover{
 }
 
 .search-form input{
-    width: 380px;
-    padding: 10 16px;
+    width: 320px;
+    padding: 0 16px;
+    height: 42px;
     margin: 0;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    color: #1a202c;
+    background: #fff;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
 
     box-sizing: border-box;
+}
+
+.search-form input::placeholder{
+    color: #a0aec0;
+}
+
+.search-form input:hover{
+    color: #cbd5e0;
+}
+
+.search-form button,
+.header-actions > .btn{
+    height: 42px;
+    min-width: 100px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    box-sizing: border-box;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .search-form button{
@@ -588,15 +643,6 @@ input[type="checkbox"] {
         padding: 24px;
     }
 
-    .dashboard-cards{
-        flex-wrap: wrap;
-    }
-
-    .card{
-        min-width: calc(50% -12px);
-        flex: 1 1 calc(50% - 12 px);
-    }
-
     .category-layout{
         grid-template-columns: 1fr;
         gap: 16px;
@@ -622,22 +668,10 @@ input[type="checkbox"] {
         overflow-x: auto;
     }
 
-    .job-table,
-    .admin-table,
-    .category-table,
-    .jobs-table,
-    .affiliate-table{
+    .job-table{
         display: block;
         overflow-x: auto;
         white-space: nowrap;
-    }
-
-    .jobs-table th,
-    .job-table td,
-    .admin-table th,
-    .admin-table td{
-        padding: 8px 10px;
-        font-size: 13px;
     }
 
     header h1{
@@ -650,18 +684,6 @@ input[type="checkbox"] {
         gap: 12px;
     }
 
-    .admin-nav {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 8px;
-    }
-
-    .nav-item{
-        min-width: auto;
-        flex: 1 1 auto;
-        padding: 8px 16px;
-        font-size: 14px;
-    }
 
     .site-header{
         flex-direction: column;
@@ -713,30 +735,6 @@ input[type="checkbox"] {
         width: 100%;
     }
 
-    .dashboard {
-        padding: 1px;
-    }
-
-    .dashboard h2{
-        font-size: 20px;
-    }
-
-    .dashboard-cards{
-        flex-direction: column;
-        gap: 16px
-    }
-
-    .card{
-        min-width: 100%;
-        flex: 1 1 100%;
-        padding: 16px;
-    }
-
-    .card p{
-        font-size: 32px;
-    }
-
-    .admin-form,
     .job-form{
         padding: 20px;
         min-width: auto;
@@ -829,16 +827,9 @@ input[type="checkbox"] {
         font-size: 20px;
     }
 
-    .admin-title h1{
-        margin: 16px 0;
-        font-size: 24px;
-        text-align: center;
-    }
 
-    .jobs-table th,
-    .job-table td,
-    .admin-table th,
-    .admin-table td{
+    .job-table th,
+    .job-table td{
         padding: 6px 8px;
         font-size: 12px;
     }
@@ -847,17 +838,6 @@ input[type="checkbox"] {
         font-size: 12px;
     }
 
-    .admin-nav {
-        flex-direction: column;
-        gap: 6px;
-        padding: 8px;
-    }
-
-    .nav-item{
-        width: 100%;
-        padding: 10px 12px;
-        font-size: 14px;
-    }
 
     .job-form{
         padding: 16px;
@@ -906,10 +886,6 @@ input[type="checkbox"] {
         padding: 0 12px;
     }
 
-    .badge{
-        font-size: 11px;
-        padding: 3px 8px;
-    }
 
     .job-title,
     .company-name{
@@ -926,29 +902,6 @@ input[type="checkbox"] {
 
     .page-info{
         font-size: 13px;
-    }
-    
-
-    .dashboard h2{
-        font-size: 18px;
-    }
-
-    .card{
-        padding: 14px;
-    }
-
-    .card h3{
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-
-    .card p{
-        font-size: 28px;
-        margin: 8px 0;
-    }
-
-    .card small{
-        font-size: 12px;
     }
 
     .btn{
@@ -973,9 +926,7 @@ input[type="checkbox"] {
     }
 
     .job-table th,
-    .job-table td,
-    .admin-table th,
-    .admin-table td{
+    .job-table td{
         padding: 4px 6px;
         font-size: 11px;
     }
@@ -986,9 +937,6 @@ input[type="checkbox"] {
         min-height: 32px;
     }
 
-    .card p{
-        font-size: 24px;
-    }
 
     .site-logo h1{
         font-size: 20px;
