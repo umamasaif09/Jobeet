@@ -4,19 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller 
 {
-    public function __construct() {
-        parent::__construct();
+    
 
+    public function dashboard()
+    {
         $this->lang->load('admin', 'english');
         $this->lang->load('categories', 'english');
         $this->lang->load('affiliates', 'english');
         $this->lang->load('jobs', 'english');
-        $this->lang->load('common', 'english');
 
-    }
-
-    public function dashboard()
-    {
         $data["title"] = "Admin Dashboard";
         $data["active"] = "dashboard";
         $data["content"] = "admin/dashboard";
@@ -35,7 +31,10 @@ class Admin extends CI_Controller
     }
 
     public function categories()
-    {
+    {   
+        $this->lang->load('admin', 'english');
+        $this->lang->load('categories', 'english');
+        $this->lang->load('common', 'english');
         $this->load->model("mdl_category");
         
         $data["categories"] = $this->mdl_category->getCategories();
@@ -49,6 +48,7 @@ class Admin extends CI_Controller
 
     public function createCategory() 
     {
+
         $data["name"] = $this->input->post("category_name");
         $this->load->model("mdl_category");
         $this->mdl_category->createCategory($data);
@@ -59,6 +59,8 @@ class Admin extends CI_Controller
 
     public function editCategory($id)
     {
+        $this->lang->load('admin', 'english');
+        $this->lang->load('categories', 'english');
         $this->load->model("mdl_category");
         $data["category"]= $this->mdl_category->getCategoryById($id);
         $data["title"]="Edit category";
@@ -91,7 +93,10 @@ class Admin extends CI_Controller
     }
 
     public function jobs()
-    {
+    {   
+        $this->lang->load('admin', 'english');
+        $this->lang->load('jobs', 'english');
+        $this->lang->load('common', 'english');
         $this->load->model("mdl_job");
         
         $data["jobs"] = $this->mdl_job->getJobs();
@@ -109,6 +114,7 @@ class Admin extends CI_Controller
     }
 
     public function createJob() {
+        $this->lang->load('admin', 'english');
         $this->load->model("mdl_job");
 
         $data= [
@@ -123,6 +129,7 @@ class Admin extends CI_Controller
 
     public function editJob($id)
     {
+        $this->lang->load('admin', 'english');
         $this->load->model("mdl_job");
         $job= $this->mdl_job->getJobById($id);
 
@@ -151,6 +158,7 @@ class Admin extends CI_Controller
     
     public function viewJob($id) 
     {
+        $this->lang->load('admin', 'english');
         $data["title"] ="Job";
         $this->load->model("mdl_job");
         $data["job"]= $this->mdl_job->getJobById($id);
@@ -170,7 +178,11 @@ class Admin extends CI_Controller
     }
 
     public function affiliates()
-    {
+    {   
+        $this->lang->load('admin', 'english');
+        $this->lang->load('affiliates', 'english');
+        $this->lang->load('common', 'english');
+        
         $this->load->model("mdl_affiliate");
         $this->load->model("mdl_category");
 
@@ -189,6 +201,8 @@ class Admin extends CI_Controller
 
     public function addAffiliate() 
     {
+        $this->lang->load('admin', 'english');
+        $this->lang->load('affiliates', 'english');
         $this->load->model("mdl_job");
 
         $data= [
@@ -204,7 +218,6 @@ class Admin extends CI_Controller
     public function createAffiliate() 
     {
         
-
         $affiliate = [
             "name" => $this->input->post("name"),
             "email" => $this->input->post("email"),
@@ -227,6 +240,9 @@ class Admin extends CI_Controller
 
     public function editAffiliate($id)
     {
+        $this->lang->load('admin', 'english');
+        $this->lang->load('affiliates', 'english');
+
        $this->load->model("mdl_affiliate");
        $this->load->model("mdl_category");
 
