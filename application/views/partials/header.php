@@ -1,20 +1,21 @@
 
-<header>
-    <a href="<?php echo site_url("jobs/index"); ?>">
+<header class="site-header">
+    <a href="<?php echo site_url("jobs/index"); ?>" class="site-logo">
         <h1>Jobeet</h1>
     </a>
+    <div class=header-actions>
+        <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">
+        <input type="text" name="keyword" placeholder = "Live Search" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+        </form>
 
-<nav class="top-bar">
+        <a href="<?php echo site_url("jobs/createJob"); ?>" class="btn btn-primary">
+            Post a Job
+        </a>
 
-    <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">
-    <input type="text" name="keyword" placeholder = "Live Search" required>
-    <button type="submit" class="btn btn-primary">Search Keyword</button>
-    </form>
+    </div>
+    
 
-    <a href="<?php echo site_url("jobs/createJob"); ?>" class="btn btn-primary">
-        Post a Job
-    </a>
-</nav>
 </header>    
 
 

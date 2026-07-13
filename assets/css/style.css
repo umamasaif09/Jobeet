@@ -258,8 +258,8 @@ textarea{
     align-items: center;
     justify-content: center;
 
-    padding: 10px 20px;
-    border-radius:10px;
+    padding: 10px 22px;
+    border-radius:8px;
     border: none;
     font-size: 15px;
     font-weight: 600;
@@ -273,7 +273,7 @@ textarea{
     color: inherit;
     background: transparent;
     font-family: inherit;
-    line-height: inherit;
+    line-height: 1;
 
     appearance: none;
     -webkit-appearance: none;
@@ -480,6 +480,84 @@ footer a:hover{
 .nav-item.active:hover{
     background: #1d6fd3;
 }
+
+/* ===== PUBLIC SITE HEADER/NAV ===== */
+
+.site-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 16px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+
+    margin-bottom: 24px;
+}
+
+.site-logo{
+    text-decoration: none;
+    color: inherit;
+}
+
+.site-logo h1{
+    margin: 0;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.header-actions{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.search-form input,
+.search-form .btn,
+.site-header > .btn{
+    height: 42px;
+    box-sizing: border-box;
+}
+
+.search-form input{
+    width: 380px;
+    padding: 10 16px;
+    margin: 0;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+.search-form button{
+    white-space: nowrap;
+}
+
+.search-form .btn,
+.header-actions > .btn{
+    height: 42px;
+    min-width:120px;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    line-height: 1;
+}
+
+.search-form input,
+.search-form .btn{
+    height: 42px;
+}
+
 /* ===== ADMIN FORM ===== */
 .admin-form,
 .job-form{
