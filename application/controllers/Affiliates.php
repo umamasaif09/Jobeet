@@ -26,13 +26,11 @@ class affiliates extends CI_Controller
     {
         $this->lang->load('affiliates', 'english');
         $this->lang->load('common', 'english');
-        $token= bin2hex(random_bytes(16));
 
         $affiliateData= [
             "name"=> $this->input->post("name"),
             "email" => $this->input->post("email"),
             "site_url" => $this->input->post("url"),
-            "token" => $token,
             "is_active" => 0,
             "created_at" => date("Y-m-d H:i:s")
         ];
