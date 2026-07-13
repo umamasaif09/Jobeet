@@ -248,7 +248,7 @@ class Jobs extends CI_Controller
         }
         
 
-        $daysRemaining= $this->mdl_job->getRemainingDays($id, $token); //job expiry
+        $daysRemaining= $this->mdl_job->getRemainingDays($id); //job expiry
 
         if($daysRemaining >=5) {
             show_error("Job validity cannot be extended yet.");

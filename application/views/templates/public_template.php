@@ -13,9 +13,9 @@
             <?php $this->load->view("partials/pageHeader"); ?>
         <?php endif; ?>
 
-        <div>
-            <?php $this->load->view($content); ?>
-        </div>
+
+        <?php $this->load->view($content); ?>
+
 
         <?php $this->load->view("partials/footer"); ?>
         </div>

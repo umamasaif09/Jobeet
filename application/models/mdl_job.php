@@ -175,7 +175,7 @@ class mdl_job extends CI_Model
     }
 
     public function extendJob($id) {
-        $days = $this->Config->item('job_expiry');
+        $days = $this->config->item('job_expiry');
 
         $newDate= date(
             "Y-m-d H:i:s", strtotime("+{$days} days") //udpate job expiry with 30 days
