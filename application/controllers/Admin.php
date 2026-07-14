@@ -8,6 +8,7 @@ class Admin extends CI_Controller
 
     public function dashboard()
     {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('categories', 'english');
         $this->lang->load('affiliates', 'english');
@@ -32,6 +33,7 @@ class Admin extends CI_Controller
 
     public function categories()
     {   
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('categories', 'english');
         $this->lang->load('common', 'english');
@@ -48,7 +50,7 @@ class Admin extends CI_Controller
 
     public function createCategory() 
     {
-
+        $this->requireLogin();
         $data["name"] = $this->input->post("category_name");
         $this->load->model("mdl_category");
         $this->mdl_category->createCategory($data);
@@ -59,6 +61,7 @@ class Admin extends CI_Controller
 
     public function editCategory($id)
     {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('categories', 'english');
         $this->load->model("mdl_category");
@@ -73,6 +76,7 @@ class Admin extends CI_Controller
 
     public function updateCategory() 
     {
+        $this->requireLogin();
         $category["id"]=$this->input->post("id");
         $category["name"]=$this->input->post("category_name");
 
@@ -85,6 +89,7 @@ class Admin extends CI_Controller
 
     public function deleteCategory($id)
     {
+        $this->requireLogin();
         $this->load->model("mdl_category");
         $this->mdl_category->deleteCategory($id);
 
@@ -94,6 +99,7 @@ class Admin extends CI_Controller
 
     public function jobs()
     {   
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('jobs', 'english');
         $this->lang->load('common', 'english');
@@ -114,6 +120,7 @@ class Admin extends CI_Controller
     }
 
     public function createJob() {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->load->model("mdl_job");
 
@@ -129,6 +136,7 @@ class Admin extends CI_Controller
 
     public function editJob($id)
     {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->load->model("mdl_job");
         $job= $this->mdl_job->getJobById($id);
@@ -158,6 +166,7 @@ class Admin extends CI_Controller
     
     public function viewJob($id) 
     {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $data["title"] ="Job";
         $this->load->model("mdl_job");
@@ -171,6 +180,7 @@ class Admin extends CI_Controller
 
     public function deleteJob($id) 
     {
+        $this->requireLogin();
         $this->load->model("mdl_job");
         $this->mdl_job->deleteJob($id);
 
@@ -179,6 +189,7 @@ class Admin extends CI_Controller
 
     public function affiliates()
     {   
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('affiliates', 'english');
         $this->lang->load('common', 'english');
@@ -201,6 +212,7 @@ class Admin extends CI_Controller
 
     public function addAffiliate() 
     {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('affiliates', 'english');
         $this->load->model("mdl_job");
@@ -217,7 +229,7 @@ class Admin extends CI_Controller
 
     public function createAffiliate() 
     {
-        
+        $this->requireLogin();
         $affiliate = [
             "name" => $this->input->post("name"),
             "email" => $this->input->post("email"),
@@ -240,6 +252,7 @@ class Admin extends CI_Controller
 
     public function editAffiliate($id)
     {
+        $this->requireLogin();
         $this->lang->load('admin', 'english');
         $this->lang->load('affiliates', 'english');
 
@@ -263,6 +276,7 @@ class Admin extends CI_Controller
 
     public function updateAffiliate() 
     {
+        $this->requireLogin();
 
         $affiliate["id"]=$this->input->post("id");
         $affiliate["name"]=$this->input->post("name");
@@ -278,6 +292,7 @@ class Admin extends CI_Controller
     }
 
     public function disableAffiliate($id) {
+        $this->requireLogin();
         $this->load->model("mdl_affiliate");
         $this->mdl_affiliate->disable($id);
 
@@ -285,6 +300,7 @@ class Admin extends CI_Controller
     }
 
     public function activateAffiliate($id) {
+        $this->requireLogin();
         $token = bin2hex(random_bytes(16));
 
         $this->load->model("mdl_affiliate");
@@ -317,9 +333,110 @@ class Admin extends CI_Controller
 
     public function deleteAffiliate($id) 
     {
+        $this->requireLogin();
         $this->load->model("mdl_affiliate");
         $this->mdl_affiliate->delete($id);
 
         redirect("admin/affiliates");
+    }
+
+
+    private function loginValidationRules() 
+    {
+        return [
+            ["field" => "email",
+            "label" => "Email",
+            "rules" => "required|valid_email"]
+            ,
+            ["field" => "password",
+            "label" => "Password",
+            "rules" => "required"]
+        ];
+    }
+
+    private function createSession($admin) 
+    {
+        $this->session->sess_regenerate(TRUE);
+
+        $this->session->set_userdata([
+            'admin_id' => $admin["id"],
+            'admin_name' => $admin["name"],
+            'admin_email' => $admin["email"],
+            'logged_in' => TRUE
+        ]);
+    }
+
+    public function login()
+    {
+        if($this->session->userdata('logged_in') || 
+            !$this->session->userdata('admin_id'))
+            {
+                redirect("admin/dashboard");
+                return;
+            }
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules($this->loginValidationRules());
+
+
+        if($this->input->method() =="get" ){
+            // $this->lang->load('admin', 'english');
+            $data["content"] = "admin/login";
+            $data["showPageHeader"]= false;
+
+            $this->load->view("templates/admin_template", $data);
+
+        } else if($this->input->method() == "post") {
+
+            if($this->form_validation->run() === false) {
+                $data["content"] = "admin/login";
+                $data["showPageHeader"]= false;
+
+                $this->load->view("templates/admin_template", $data);
+                return;
+            }
+
+            $email= $this->input->post("email");
+            $password=$this->input->post("password");
+
+            
+            $this->load->model("mdl_admin");
+            $admin= $this->mdl_admin->getAdminByEmail($email);
+
+            if(!$admin){
+                $this->session->set_flashdata("error", "Incorrect email or password.");
+                redirect("admin/login");
+                return;
+            } else if(!password_verify($password, $admin["password"])) {
+                $this->session->set_flashdata("error", "Incorrect email or password.");
+                redirect("admin/login");
+                return;
+            } else if(!$admin["is_active"]) {
+                    $this->session->set_flashdata("error", "Account disabled.");
+                    redirect("admin/login");
+                    return;
+            }
+
+            $this->createSession($admin);
+            $this->session->set_flashdata("success", "Login successful.");
+            redirect("admin/dashboard");
+            return;
+        }
+
+    }
+
+    private function requireLogin()
+    {
+        if(!$this->session->userdata('logged_in') || 
+            !$this->session->userdata('admin_id')    
+        ) {
+            redirect("admin/login");
+            return;
+        }
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect("admin/login");
     }
 }
