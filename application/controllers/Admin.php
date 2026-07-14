@@ -341,6 +341,7 @@ class Admin extends CI_Controller
     }
 
 
+
     private function loginValidationRules() 
     {
         return [
@@ -350,7 +351,7 @@ class Admin extends CI_Controller
             ,
             ["field" => "password",
             "label" => "Password",
-            "rules" => "required"]
+            "rules" => "required|min_length[8]"]
         ];
     }
 
@@ -358,7 +359,7 @@ class Admin extends CI_Controller
     {
         $this->session->sess_regenerate(TRUE);
 
-        $this->session->set_userdata([
+        $this->session->set_userdata([ //session details
             'admin_id' => $admin["id"],
             'admin_name' => $admin["name"],
             'admin_email' => $admin["email"],
@@ -366,24 +367,36 @@ class Admin extends CI_Controller
         ]);
     }
 
+    // private function loadAuthView($view, $data=[], $title)
+    // {
+    //     $data["content"] = $view;
+    //     $data["showPageHeader"]= false;
+    //     $data["showAdminHeader"] =false;
+    //     $data["title"] = $title;
+
+    //     $this->load->view("templates/admin_template", $data)
+    // }
+
     public function login()
     {
-        if($this->session->userdata('logged_in') || 
-            !$this->session->userdata('admin_id'))
+        if($this->session->userdata('logged_in') && 
+            $this->session->userdata('admin_id'))
             {
-                redirect("admin/dashboard");
+                redirect("admin/dashboard"); //if already logged in redirect
                 return;
             }
         $this->load->library("form_validation");
-        $this->form_validation->set_rules($this->loginValidationRules());
+        $this->form_validation->set_rules($this->loginValidationRules()); //set rules
 
 
         if($this->input->method() =="get" ){
             // $this->lang->load('admin', 'english');
             $data["content"] = "admin/login";
             $data["showPageHeader"]= false;
+            $data["showAdminHeader"] =false;
+            $data["title"] = "Administrator Login";
 
-            $this->load->view("templates/admin_template", $data);
+            $this->load->view("templates/admin_template", $data); //show login page
 
         } else if($this->input->method() == "post") {
 
@@ -402,20 +415,20 @@ class Admin extends CI_Controller
             $this->load->model("mdl_admin");
             $admin= $this->mdl_admin->getAdminByEmail($email);
 
-            if(!$admin){
+            if(!$admin){ //invalid admin
                 $this->session->set_flashdata("error", "Incorrect email or password.");
                 redirect("admin/login");
                 return;
-            } else if(!password_verify($password, $admin["password"])) {
+            } else if(!password_verify($password, $admin["password"])) { //incorrect password
                 $this->session->set_flashdata("error", "Incorrect email or password.");
                 redirect("admin/login");
                 return;
-            } else if(!$admin["is_active"]) {
+            } else if(!$admin["is_active"]) { //valid credentials but account not active
                     $this->session->set_flashdata("error", "Account disabled.");
                     redirect("admin/login");
                     return;
             }
-
+            // all conditions fulfilled
             $this->createSession($admin);
             $this->session->set_flashdata("success", "Login successful.");
             redirect("admin/dashboard");
@@ -426,6 +439,7 @@ class Admin extends CI_Controller
 
     private function requireLogin()
     {
+        //if session expired
         if(!$this->session->userdata('logged_in') || 
             !$this->session->userdata('admin_id')    
         ) {
@@ -438,5 +452,150 @@ class Admin extends CI_Controller
     {
         $this->session->sess_destroy();
         redirect("admin/login");
+    }
+
+    private function forgotPasswordValidationRules() 
+    {
+        return [
+            ["field" => "email",
+            "label" => "Email",
+            "rules" => "required|valid_email"]
+        ];
+    }
+
+    public function forgotPassword()
+    {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules($this->forgotPasswordValidationRules());
+
+        if($this->input->method()=="get") {
+            $data["content"] = "admin/forgotPassword";
+            $data["showPageHeader"]= false;
+            $data["showAdminHeader"] =false;
+            $data["title"] = "Administrator Password Reset";
+
+            $this->load->view("templates/admin_template", $data); //show forgot password page
+        }
+        else if($this->input->method()=="post") {
+            if($this->form_validation->run() === false) {
+                $data["content"] = "admin/forgotPassword";
+                $data["showPageHeader"]= false;
+
+                $this->load->view("templates/admin_template", $data);
+                return;
+            }
+            $email= $this->input->post("email");
+
+            $this->load->model("mdl_admin");
+            $admin= $this->mdl_admin->getAdminByEmail($email);
+
+            if(!$admin) {
+                $this->session->set_flashdata("success",
+                "If an account with this email exists, a password reset link has been sent.");
+
+                redirect("admin/login");
+                return;
+            }
+            $token= bin2hex(random_bytes(32));
+
+            $this->mdl_admin->updateResetToken($admin["id"], $token);
+
+            $resetLink = site_url("admin/resetPassword?token=".$token);
+
+            log_message("debug", $resetLink); //temporarily
+
+            $this->email->from("noreply@jobeet.com", "Jobeet");
+            $this->email->to($admin["email"]);
+            $this->email->subject("Reset Password");
+
+            $this->email->message(
+                "Click here to reset your password: \n\n".$resetLink
+            );
+
+            $this->email->send();
+
+             $this->session->set_flashdata("success",
+                "If an account with this email exists, a password reset link has been sent.");
+
+                redirect("admin/login");
+        }
+    }
+
+   private function resetPasswordValidationRules() 
+    {
+        return [
+            ["field" => "password",
+            "label" => "Password",
+            "rules" => "required|min_length[8]"]
+            ,
+            ["field" => "confirm_password",
+            "label" => "Confirm Password",
+            "rules" => "required|matches[password]"]
+        ];
+    }
+
+    public function resetPassword()
+    {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules($this->resetPasswordValidationRules());
+
+        $this->load->model("mdl_admin");
+        
+
+        if($this->input->method() == "get"){
+            $token = $this->input->get("token");
+
+            $admin= $this->mdl_admin->getAdminByResetToken($token);
+
+            if(!$admin || $admin["reset_token_expires_at"] < date("Y-m-d H:i:s")) {
+            $this->session->set_flashdata("error", "Invalid or expired reset link.");
+
+            redirect("admin/login");
+            return;
+            }
+
+            $data["content"] ="admin/resetPassword";
+            $data["showPageHeader"]=false;
+            $data["showAdminHeader"] =false;
+            $data["title"] = "Reset Password";
+            $data["token"] =$token;
+
+            $this->load->view("templates/admin_template", $data); //show reset password form
+        }
+        else if($this->input->method()== "post") {
+
+            if($this->form_validation->run() === false) {
+                $data["content"] ="admin/resetPassword";
+                $data["showPageHeader"]=false;
+                $data["showAdminHeader"] =false;
+                $data["title"] = "Reset Password";
+
+                $this->load->view("templates/admin_template", $data);
+                return;
+            }
+
+            $password=$this->input->post("password");
+            $token= $this->input->post("token"); //check again
+
+            $admin = $this->mdl_admin->getAdminByResetToken($token);
+
+            if(!$admin || $admin["reset_token_expires_at"] < date("Y-m-d H:i:s")) {
+            $this->session->set_flashdata("error", "Invalid or expired reset link.");
+
+            redirect("admin/login");
+            return;
+            }
+
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+            $this->mdl_admin->updatePassword($admin["id"], $passwordHash);
+
+            $this->session->set_flashdata("success", "Password updated successfully.");
+            redirect("admin/login");
+        }
+
+        
+
+        
     }
 }

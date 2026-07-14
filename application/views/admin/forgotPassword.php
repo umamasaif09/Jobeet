@@ -13,7 +13,8 @@
     </div>
     <?php endif; ?>
 
-<form action="<?php echo site_url("admin/login");?>" method="POST" class="auth-form">
+<form action="<?php echo site_url("admin/forgotPassword");?>" method="POST" class="auth-form">
+    <input type="hidden" name="token" value="<?php echo $token ?>">
     <h2><?php echo $title; ?></h2>   
     
     <?php if(validation_errors()): ?>
@@ -28,14 +29,5 @@
         <input type="email" name= "email" placeholder = "Enter your email" required value= "<?php echo set_value('email'); ?>">
     </div>
 
-    <div class = "form-group">
-        <label>Password</label>
-        <input type="password" name= "password" placeholder= "Enter your password" required>
-    </div>
-
-    <a href="<?php echo site_url("admin/forgotPassword"); ?>">Forgot your password?</a>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-    
-</form>
-
+    <button type="submit" class="btn btn-primary">Send Password Reset Link</button>
+</form>   

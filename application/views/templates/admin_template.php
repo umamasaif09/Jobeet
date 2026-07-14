@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <?php $this->load->view("partials/adminHeader"); ?>
+        <?php if(!isset($showAdminHeader) || $showAdminHeader): ?>
+            <?php $this->load->view("partials/adminHeader"); ?>
+        <?php endif; ?>
 
         <?php if(!empty($showPageHeader)): ?>
             <?php $this->load->view("partials/pageHeader"); ?>
