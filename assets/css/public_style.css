@@ -388,38 +388,47 @@ footer a:hover{
     justify-content: space-between;
 
     padding: 12px 24px;
-    background: #f8fafc;
-    border: 1px solid #e9edf2;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
-
+    background: transparent;
+    border-bottom: 1px solid #e1e4e8;
     margin-bottom: 24px;
-    transition: all 0.2 ease;
+    
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .site-logo{
     text-decoration: none;
-    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     flex-shrink: 0;
+    transition: opacity 0.15s ease;
 }
 
-.site-logo h1{
-    margin: 0;
-    font-size: 28px;
+.site-logo:hover{
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+
+.logo-text{
+    font-size: 24px;
     font-weight: 600;
-    letter-spacing: -0.025em;
-    background: linear-gradient(135deg, #2d89ef 0%, #1a6fd3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-
-    line-height: 1.2;
+    color: #24292e;
+    letter-spacing: -0.5px;
+    margin: 0%;
 }
+
 
 .header-actions{
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 
     flex: 1;
     justify-content: flex-end;
@@ -428,84 +437,122 @@ footer a:hover{
 .search-form{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0;
     margin: 0;
-    flex: 0 1 auto;
-}
-
-.search-form input,
-.search-form .btn,
-.site-header > .btn{
-    height: 42px;
-    box-sizing: border-box;
+    position: relative;
+    max-width: 400px;
+    width: 100%;
 }
 
 .search-form input{
-    width: 320px;
-    padding: 0 16px;
-    height: 42px;
+    width: 100%;
+    padding: 8 12px;
+    padding-right: 80px;
+    height: 38px;
     margin: 0;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px 0 0 6px;
 
-    font-size: 0.9rem;
-    color: #1a202c;
-    background: #fff;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 14px;
+    color: #24292e;
+    background: #ffffff;
+    transition: all 0.15s ease;
 
-
+    outline: none;
     box-sizing: border-box;
 }
 
 .search-form input::placeholder{
-    color: #a0aec0;
+    color: #57606a;
 }
 
 .search-form input:hover{
-    color: #cbd5e0;
+    background: #f6f8fa;
+    border-color: #8b949e;
 }
 
-.search-form button,
-.header-actions > .btn{
-    height: 42px;
-    min-width: 100px;
-    padding: 0 24px;
-    border: none;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.9rem;
+.search-form input:focus{
+    background: #ffffff;
+    border-color: #2d89ef;
+    box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
+}
 
-    letter-spacing: 0.01em;
+.search-form input:focus + .btn{
+    border-color: #2d89ef;
+    box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
+}
+
+.search-form .btn{
+    height: 38px;
+    min-width: 70px;
+    padding: 0 16px;
+    border-radius: 0 6px 6px 0;
+    border: 1px solid #d0d7de;
+    border-left: none;
+    background: #f6f8fa;
+    color: #24292e;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-
-    box-sizing: border-box;
+    transition: all 0.15s ease;
     white-space: nowrap;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
+    gap: 4px;
 }
 
-.search-form button{
-    white-space: nowrap;
+.search-form .btn:hover{
+    background: #f3f4f6;
+    border-color: #8b949e;
+    transform: none;
 }
 
-.search-form .btn,
-.header-actions > .btn{
-    height: 42px;
-    min-width:120px;
+.search-form .btn:active{
+    background: #e8eaed;
+}
 
+.post-job-btn{
+    height: 38px;
     padding: 0 20px;
-    box-sizing: border-box;
-
-    line-height: 1;
+    border-radius: 6px;
+    border: none;
+    background: #2d89ef;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
 }
 
-.search-form input,
-.search-form .btn{
-    height: 42px;
+.post-job-btn:hover{
+    background: #1d6fd3;
+    transform: none;
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
+
+.post-job-btn:active{
+    background: #1a6fd3;
+    transform: scale(0.98);
+}
+
+.site-header .btn-primary{
+    height: 38px;
+    padding: 0 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.site-header .btn-primary:hover{
+    transform: none;
+}
+
 
 /* ===== FORM ===== */
 .job-form{
@@ -688,35 +735,53 @@ input[type="checkbox"] {
     .site-header{
         flex-direction: column;
         align-items: stretch;
-        gap: 12px;
-        padding: 16px;
+        gap: 16px;
+        padding: 12px 16px;
+        position: relative;
+        max-width: 100%;
     }
 
-    .site-logo h1{
-        font-size: 24px;
-        text-align: center;
+    .site-logo{
+        justify-content: center;
+    }
+
+    .logo-text{
+        font-size: 22px;
     }
 
     .header-actions{
         flex-direction: column;
         gap: 12px;
-        width: auto;
+        width: 100%;
     }
 
     .search-form{
-        flex-wrap: wrap;
+        max-width: none;
         width: 100%;
     }
 
     .search-form input{
-        width: 100%;
-        flex: 1;
+        height: 36px;
+        font-size: 13px;
+        padding-right: 70px;
     }
 
-    .search-form .btn,
-    .header-actions > .btn{
+    .search-form .btn{
+        height: 36px;
+        min-width: 60px;
+        padding: 0 12px;
+        font-size: 13px;
+    }
+
+    .post-job-btn{
+        height: 36px;
         width: 100%;
-        min-width: auto;
+        justify-content: center;
+        font-size: 13px;
+    }
+
+    .site-header .btn-primary{
+        height: 36px;
     }
 
     .top-bar{
@@ -827,6 +892,38 @@ input[type="checkbox"] {
         font-size: 20px;
     }
 
+    .site-header {
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .search-form input {
+        height: 34px;
+        font-size: 13px;
+        padding: 6px 10px;
+        padding-right: 60px;
+    }
+
+    .search-form .btn {
+        height: 34px;
+        min-width: 50px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+
+    .post-job-btn {
+        height: 34px;
+        font-size: 13px;
+        padding: 0 16px;
+    }
+
+    .site-header .btn-primary {
+        height: 34px;
+    }
 
     .job-table th,
     .job-table td{
