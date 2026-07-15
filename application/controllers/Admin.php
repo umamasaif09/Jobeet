@@ -43,7 +43,11 @@ class Admin extends CI_Controller
         $data["title"] = "Manage Categories";
         $data["active"] ="categories";
         $data["content"] = "admin/categories";
-        $data["showPageHeader"] = true; //back button
+        $data["showPageHeader"] = true; //back 
+        $data["pageAction"] = [
+            "text" => "Create Category",
+            "id" => "openCategoryModal"
+        ];
 
         $this->load->view("templates/admin_template", $data);
     }
@@ -266,7 +270,10 @@ class Admin extends CI_Controller
         $data["content"] = "admin/editAffiliate";
         $data["showPageHeader"] = true;
 
+        $data["selectedCategories"] = $this->mdl_affiliate->getAffiliateCategoryIds($id);
+
         $categories= $this->input->post("categories");
+
         //save selected categories
         if(!empty($categories)) {
             $this->mdl_affiliate->saveCategories($id, $categories);

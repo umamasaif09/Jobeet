@@ -1,7 +1,10 @@
 
-<div class = "admin-title">
-    <h1><?php echo $this->lang->line("dashboard"); ?></h1>
+<div class="admin-header">
+    <div class = "admin-title">
+        <h2><?php echo $this->lang->line("dashboard"); ?></h2>
+    </div>
 </div>
+
 
 
     <section class="dashboard">
@@ -9,20 +12,20 @@
     <div class= "dashboard-cards">
         <div class= "card">
             <h3><?= $this->lang->line("categories"); ?></h3>
-            <p><?php echo $totalCategories; ?></p>
-            <small><?= $this->lang->line("total_categories"); ?></small>
+            <p class = "card-number"><?php echo $totalCategories; ?></p>
+            <span class="card-label"><?= $this->lang->line("total_categories"); ?></span>
         </div>
 
         <div class= "card">
             <h3><?= $this->lang->line("jobs"); ?></h3>
-            <p><?php echo $totalJobs; ?></p>
-            <small><?= $this->lang->line("total_jobs"); ?></small>
+            <p class = "card-number"><?php echo $totalJobs; ?></p>
+            <span class="card-label"><?= $this->lang->line("total_jobs"); ?></span>
         </div>
 
         <div class= "card">
             <h3><?= $this->lang->line("affiliates"); ?></h3>
-            <p><?php echo $totalAffiliates; ?></p>
-            <small><?= $this->lang->line("total_affiliates"); ?></small>
+            <p class = "card-number"><?php echo $totalAffiliates; ?></p>
+            <span class="card-label"><?= $this->lang->line("total_affiliates"); ?></span>
         </div>
 
     </div>

@@ -78,4 +78,15 @@ class mdl_affiliate extends CI_Model
     public function getAffiliatesCount() {
         return $this->db->count_all_results("affiliates");
     }
+
+    public function getAffiliateCategoryIds($affiliateId)
+    {
+        $this->db->select("category_id");
+        $this->db->from("affiliate_categories");
+        $this->db->where("affiliate_id", $affiliateId);
+        $query= $this->db->get()->result_array();
+
+       
+        return array_column($query, "category_id");
+    }
 }
