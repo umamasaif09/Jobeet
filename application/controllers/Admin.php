@@ -310,7 +310,7 @@ class Admin extends CI_Controller
         
         $this->load->library("email");
 
-        $this->email->from("jobeetgmail@gmail.com", "Jobeet"); 
+        $this->email->from("alaina83@ethereal.email", "Jobeet"); 
         $this->email->to($affiliate["email"]);
         $this->email->subject("Affiliate Account Activated");
 
@@ -468,6 +468,9 @@ class Admin extends CI_Controller
         $this->load->library("form_validation");
         $this->form_validation->set_rules($this->forgotPasswordValidationRules());
 
+        $this->load->library("email");
+        $this->load->config("email");
+
         if($this->input->method()=="get") {
             $data["content"] = "admin/forgotPassword";
             $data["showPageHeader"]= false;
@@ -504,15 +507,22 @@ class Admin extends CI_Controller
 
             log_message("debug", $resetLink); //temporarily
 
-            $this->email->from("noreply@jobeet.com", "Jobeet");
+            $this->email->from("alaina83@ethereal.email", "Jobeet");
             $this->email->to($admin["email"]);
             $this->email->subject("Reset Password");
 
-            $this->email->message(
-                "Click here to reset your password: \n\n".$resetLink
-            );
+            $this->email->message("
+                <h2>Password Reset</h2>
+                <p>Click the link below to reset your password: </p>
+                <p><a href='{$resetLink}'>{$resetLink}</a></p>
+                
+            ");
 
-            $this->email->send();
+            if ($this->email->send()) {
+                $this->session->set_flashdata("success", "Email sent!");
+            } else {
+                $this->session->set_flashdata("error", $this->email->print_debugger());
+            }
 
              $this->session->set_flashdata("success",
                 "If an account with this email exists, a password reset link has been sent.");
@@ -593,9 +603,151 @@ class Admin extends CI_Controller
             $this->session->set_flashdata("success", "Password updated successfully.");
             redirect("admin/login");
         }
-
         
+    }
 
+    public function admins()
+    {
+        $this->requireLogin();
+        $this->lang->load('admin', 'english');
+        $this->load->model("mdl_admin");
+        $admins = $this->mdl_admin->getAdmins();
+
+        $data["admins"] = $admins;
+        $data["content"] = "admin/admins";
+        $data["showPageHeader"] = true;
+        $data["ShowAdminHeader"] = true;
+
+        $this->load->view("templates/admin_template", $data);
+    }
+
+    private function registerAdminValidation()
+    {
+        return [
+            ["field" => "name",
+            "label" => "Name",
+            "rules" => "required"]
+            ,
+            ["field" => "email",
+            "label" => "Email",
+            "rules" => "required|valid_email"]
+            ,
+            ["field" => "password",
+            "label" => "Password",
+            "rules" => "required|min_length[8]"]
+            ,
+            ["field" => "confirm_password",
+            "label" => "Confirm Password",
+            "rules" => "required|matches[password]"]
+        ];
+    }
+
+    public function addAdmin() 
+    {
+
+        $this->requireLogin();
+        $this->lang->load('admin', 'english');
+        $this->load->model("mdl_admin");
+
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules($this->registerAdminValidation());
+
+        if($this->input->method()=="get"){
+            $data= [
+            "title" => "Register Admin",
+            "content" => "admin/registerAdmin",
+            "showPageHeader" => true
+            ];
+
+            $this->load->view("templates/admin_template", $data);
+        }
+        else if($this->input->method()=="post") {
+
+
+            if($this->form_validation->run() === false) {
+                $data= [
+                "title" => "Register Admin",
+                "content" => "admin/registerAdmin",
+                "showPageHeader" => true
+                ];
+
+                $this->load->view("templates/admin_template", $data);
+                return;
+            }
+
+            $admin = [
+                "name" => $this->input->post("name"),
+                "email" => $this->input->post("email"),
+                "password" => password_hash($this->input->post("password"), PASSWORD_DEFAULT)
+            ];
+
+            $this->mdl_admin->registerAdmin($admin);
+            redirect("admin/admins");
+        }  
+    } 
+
+    public function editAdmin()
+    {
+        $this->requireLogin();
+        $this->lang->load('admin', 'english');
+        $this->load->model("mdl_admin");
+
+        if($this->input->method()=="get"){
+            $id = $this->input->get("id");
         
+            $data["admin"]= $this->mdl_admin->getAdminById($id);
+            $data["title"]="Edit Admin";
+
+            $data["content"] = "admin/editAdmin";
+            $data["showPageHeader"] = true;
+            
+            $this->load->view("templates/admin_template", $data);
+        } else if($this->input->method()=="post") {
+            $admin = [
+                "id" => $this->input->post("id"),
+                "name" => $this->input->post("name"),
+                "email" => $this->input->post("email")
+            ];
+
+            $this->mdl_admin->updateAdmin($admin);
+
+            redirect("admin/admins");
+        }
+
+    }
+
+    public function deleteAdmin()
+    {
+        $this->requireLogin();
+
+        $id = $this->input->get("id");
+
+        $this->load->model("mdl_admin");
+        $this->mdl_admin->deleteAdmin($id);
+
+        redirect("admin/admins");
+
+    }
+
+    public function disableAdmin() {
+        $this->requireLogin();
+
+        $id = $this->input->get("id");
+
+        $this->load->model("mdl_admin");
+        $this->mdl_admin->disable($id);
+
+        redirect("admin/admins");
+    }
+
+    public function activateAdmin() {
+        $this->requireLogin();
+
+        $id = $this->input->get("id");
+
+        $this->load->model("mdl_admin");
+        $this->mdl_admin->activate($id);
+
+        redirect("admin/admins");
     }
 }

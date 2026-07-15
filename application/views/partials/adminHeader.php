@@ -14,6 +14,9 @@
             <a href="<?php echo site_url("admin/affiliates"); ?>" class="nav-item <?php echo($active == 'affiliates')? 'active' : ''; ?>">
                 <?= $this->lang->line("manage_affiliates"); ?>
             </a>
+            <a href="<?php echo site_url("admin/admins"); ?>" class="nav-item <?php echo($active == 'admins')? 'active' : ''; ?>">
+                Manage Admins
+            </a>
         
     </nav>
 

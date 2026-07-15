@@ -36,4 +36,47 @@
                 "reset_token_expires_at" => NULL //clear token so link cannot be reused
             ]);
         }
+
+        public function getAdmins()
+        {
+            return $this->db->get("admins")->result_array();
+        }
+
+        public function registerAdmin($admin)
+        {
+            return $this->db->insert("admins", $admin);
+        }
+
+        public function getAdminById($id) 
+        {
+            $this->db->where("id", $id);
+            return $this->db->get("admins")->row_array();
+        }
+
+        public function updateAdmin($admin) 
+        {
+            $this->db->where("id", $admin["id"]);
+            return $this->db->update("admins", [
+                "name" => $admin["name"],
+                "email" => $admin["email"]
+            ]);
+        }
+
+        public function deleteAdmin($id) 
+        {
+            $this->db->where("id", $id);
+            return $this->db->delete("admins");
+        }
+
+        public function activate($id) 
+        {
+            $this->db->where("id",$id);
+            return $this->db->update("admins", ["is_active" => 1]);
+        }
+
+        public function disable($id) 
+        {
+            $this->db->where("id",$id);
+            return $this->db->update("admins", ["is_active" => 0]);
+        }
     }

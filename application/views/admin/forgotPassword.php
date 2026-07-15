@@ -14,7 +14,6 @@
     <?php endif; ?>
 
 <form action="<?php echo site_url("admin/forgotPassword");?>" method="POST" class="auth-form">
-    <input type="hidden" name="token" value="<?php echo $token ?>">
     <h2><?php echo $title; ?></h2>   
     
     <?php if(validation_errors()): ?>
