@@ -66,6 +66,8 @@ class Jobs extends CI_Controller
 
         $data["content"] = "jobs/createjob";
         $data["showPageHeader"] = true;
+        $data["formAction"] = site_url("jobs/preview");
+        $data["submitButtonText"] = "Preview Job";
 
         $this->load->view("templates/public_template", $data);
     }

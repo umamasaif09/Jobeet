@@ -139,10 +139,39 @@ class Admin extends CI_Controller
             "title" => "Create Job",
             "categories" => $this->mdl_job->getJobCategories(),
             "content" => "jobs/createJob",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "formAction" => site_url("admin/createJobPost"),
+            "submitButtonText" => "Create Job"
         ];
 
         $this->load->view("templates/admin_template", $data);
+    }
+
+     public function createJobPost() {
+       
+        
+        $jobData =[
+            
+            "category_id" => $this->input->post("category_id"),
+            "type" => $this->input->post("type"),
+            "company" => $this->input->post("company"),
+            "logo" => $this->input->post("logo"),
+            "url" => $this->input->post("url"),
+            "position" => $this->input->post("position"),
+            "location" => $this->input->post("location"),
+            "email" => $this->input->post("email"),
+            "description" => $this->input->post("description"),
+            "how_to_apply" => $this->input->post("how_to_apply"),
+            "is_public" => $this->input->post("is_public"),
+            "created_at" => date("Y-m-d H:i:s"),
+            "is_active" => 1,
+            "expires_at" => date("Y-m-d H:i:s", strtotime("+30 days"))
+        ];
+
+        $this->load->model("mdl_job");
+        $jobId= $this->mdl_job->createJob($jobData);
+        redirect("admin/jobs");
+       
     }
 
     public function editJob($id)
@@ -174,6 +203,7 @@ class Admin extends CI_Controller
             $this->load->view("templates/admin_template", $data);
         }
     }
+    
     
     public function viewJob($id) 
     {
