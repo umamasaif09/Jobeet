@@ -1,76 +1,81 @@
-<div class="admin-section">
 
-    <div class="section-header">
-
-        <a href="<?php echo site_url("admin/addAdmin"); ?>" class="btn btn-primary">
-                Register Admin
-        </a>
-
-    </div>
 
     <div class="table-wrapper">
-        <table class="admin-table affiliate-table">
-            <thead>
-                <tr>
-
-                    <th><strong>Name</strong></th>
-                    <th><strong>Email</strong></th>
-                    <th><strong>Status</strong></th>
-                    <th class="actions-column">Actions</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php foreach($admins as $admin) { ?>
-
+        <div class= "jobs-table-card">
+                <table class="admin-table jobs-table admin-table">
+                <thead>
                     <tr>
-                        <td>
-                            <?php echo $admin["name"];?>
-                        </td>
+                        <th><strong>Admin ID</strong></th>
+                        <th><strong>Name</strong></th>
+                        <th><strong>Email</strong></th>
+                        <th><strong>Status</strong></th>
+                        <th><strong>Created At</strong></th>
+                        <th class="menu-column"></th>
+                    </tr>
+                </thead>
 
-                        <td>
-                            <?php echo $admin["email"];?>
-                        </td>
-                        
-                        <td>
-                            <div class="job-meta">
-                                    <?php if($admin["is_active"]) {?>
+                <tbody>
+                    <?php foreach($admins as $admin) { ?>
+
+                        <tr>
+                            <td class="id-column"><?php echo $admin["id"]; ?></td>
+                            <td>
+                                <div class="job-title">
+                                    <?php echo $admin["name"]; ?>
+                                </div>
+                            </td>
+
+                             <td>
+                                <div class="job-meta">
+                                    <?php echo $admin["email"]; ?>
+                                </div>
+                            </td>
+                            
+                            <td>
+                                <?php if($admin["is_active"]) { ?>
                                     <span class="badge active">Active</span>
+                                <?php } else { ?>
+                                    <span class="badge inactive">Inactive</span>
+                                <?php } ?>
+                            </td>
+
+                            <td>
+                                <span class="expiry-date">
+                                    <?php echo date("d M Y", strtotime($admin["created_at"] ?? date('Y-m-d H:i:s'))); ?>
+                                </span>
+                            </td>
+
+                            <td class="row-menu">
+                                <button type="button" class="menu-toggle">⋮</button>
+                                <div class="menu-dropdown">
+                                    <a href="<?php echo site_url("admin/editAdmin?id=" . $admin["id"]); ?>" class="btn btn-warning menu-btn">
+                                        <?= $this->lang->line("edit"); ?>
+                                    </a>
+                                    
+                                    <a href="<?php echo site_url("admin/deleteAdmin?id=" . $admin["id"]); ?>" 
+                                       onclick="return confirm('Delete this admin?')" 
+                                       class="btn btn-danger menu-btn">
+                                        <?= $this->lang->line("delete"); ?>
+                                    </a>
+                                    
+                                    <?php if($admin["is_active"]) { ?> 
+                                        <a href="<?php echo site_url("admin/disableAdmin?id=" . $admin["id"]); ?>" class="btn btn-warning menu-btn">
+                                            <?= $this->lang->line("disable"); ?>
+                                        </a>
                                     <?php } else { ?>
-                                        <span class="badge inactive">Active</span>
+                                        <a href="<?php echo site_url("admin/activateAdmin?id=" . $admin["id"]); ?>" class="btn btn-success menu-btn">
+                                            <?= $this->lang->line("activate"); ?>
+                                        </a>
                                     <?php } ?>
                                 </div>
-                        </td>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
 
-                        <td class ="actions">
-                            <a href="<?php echo site_url("admin/editAdmin?id=" .$admin["id"]); ?>" class="btn btn-warning"> 
-                                Edit
-                            </a>
-
-                            <a href="<?php echo site_url("admin/deleteAdmin?id=" .$admin["id"]) ?>" 
-                                onclick="return confirm('Delete this admin?')"
-                                class="btn btn-danger">
-                                
-                                Delete
-                            </a>
-
-                            <?php if($admin["is_active"]) {?> 
-                                <a href="<?php echo site_url("admin/disableAdmin?id=" .$admin["id"]) ?>" class="btn btn-warning">
-                                
-                                        Disable
-                                </a>
-                            <?php } else { ?>
-                                <a href="<?php echo site_url("admin/activateAdmin?id=" .$admin["id"]) ?>" class="btn btn-success" >
-                                
-                                        Activate
-                                </a>
-                            <?php }?>
-
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        </div>
+        
     </div>
-</div>
+
 

@@ -28,6 +28,9 @@ class Admin extends CI_Controller
         $this->load->model("mdl_affiliate");
         $data["totalAffiliates"] = $this->mdl_affiliate->getAffiliatesCount();
 
+        $this->load->model("mdl_admin");
+        $data["totalAdmins"] = $this->mdl_admin->getAdminsCount();
+
         $this->load->view("templates/admin_template", $data);
     }
 
@@ -625,13 +628,19 @@ class Admin extends CI_Controller
     {
         $this->requireLogin();
         $this->lang->load('admin', 'english');
+        $this->lang->load('common', 'english');
         $this->load->model("mdl_admin");
         $admins = $this->mdl_admin->getAdmins();
 
         $data["admins"] = $admins;
+        $data["active"] ="admins";
         $data["content"] = "admin/admins";
         $data["showPageHeader"] = true;
         $data["ShowAdminHeader"] = true;
+        $data["pageAction"] = [
+            "text" => "Register Admin",
+            "url" => "admin/addAdmin"
+        ];
 
         $this->load->view("templates/admin_template", $data);
     }

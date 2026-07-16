@@ -79,4 +79,8 @@
             $this->db->where("id",$id);
             return $this->db->update("admins", ["is_active" => 0]);
         }
+
+        public function getAdminsCount() {
+        return $this->db->count_all_results("admins");
+    }
     }

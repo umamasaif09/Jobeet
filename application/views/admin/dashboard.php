@@ -28,6 +28,12 @@
             <span class="card-label"><?= $this->lang->line("total_affiliates"); ?></span>
         </div>
 
+        <div class= "card">
+            <h3>Admins</h3>
+            <p class = "card-number"><?php echo $totalAdmins; ?></p>
+            <span class="card-label">Total Admins</span>
+        </div>
+
     </div>
 </section>
 

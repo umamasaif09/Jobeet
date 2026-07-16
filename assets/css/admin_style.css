@@ -627,6 +627,170 @@ legend {
     background: #eef6ff;
 }
 
+.admin-table .id-column{
+    width: 60px;
+    font-weight: 500;
+    color: #57606a;
+    font-size: 13px;
+}
+
+.admin-table .menu-column{
+    width: 50px;
+    text-align: right !important;
+}
+
+.admin-table .job-title{
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+
+}
+
+.admin-table .job-meta{
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.admin-table .job-meta strong{
+    color: #374151;
+    font-weight: 600;
+}
+
+.admin-table .expiry-date{
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.admin-table tbody tr:last-child .menu-dropdown{
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.admin-table tbody tr:last-child .row-menu{
+    overflow: visible !important;
+}
+
+.admin-table .row-menu{
+    position: relative;
+    width: 50px;
+    text-align: right !important;
+    padding-right: 16px !important;
+    overflow: visible !important;
+}
+
+.admin-table .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #57606a;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.admin-table .menu-toggle:hover {
+    background: #f0f2f5;
+    color: #24292e;
+}
+
+.admin-table .menu-toggle:focus {
+    outline: none;
+    background: #e8eaed;
+}
+
+.admin-table .menu-dropdown {
+    display: none;
+    position: absolute;
+    right: 8px;
+    top: 100%;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    min-width: 140px;
+    padding: 6px;
+    z-index: 100;
+    animation: dropdownFadeIn 0.15s ease;
+}
+
+.admin-table .menu-dropdown.show {
+    display: block;
+}
+
+.admin-table .menu-dropdown .menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.admin-table .menu-dropdown .btn-warning {
+    background: transparent;
+    color: #24292e;
+}
+
+.admin-table .menu-dropdown .btn-warning:hover {
+    background: #f0f2f5;
+    color: #1a202c;
+    transform: none;
+}
+
+.admin-table .menu-dropdown .btn-danger {
+    background: transparent;
+    color: #cf222e;
+}
+
+.admin-table .menu-dropdown .btn-danger:hover {
+    background: #ffebe9;
+    color: #cf222e;
+    transform: none;
+}
+
+.admin-table .menu-dropdown .btn-success {
+    background: transparent;
+    color: #1a7f37;
+}
+
+.admin-table .menu-dropdown .btn-success:hover {
+    background: #dafbe1;
+    color: #1a7f37;
+    transform: none;
+}
+
+.admin-table .menu-dropdown .btn::before {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.admin-table .menu-dropdown .btn-warning::before {
+    content: "✎";
+}
+
+.admin-table .menu-dropdown .btn-danger::before {
+    content: "×";
+}
+
+.admin-table .menu-dropdown .btn-success::before {
+    content: "✓";
+}
+
 .actions-column {
     width: 224px;
 }
@@ -1255,6 +1419,118 @@ legend {
     margin-bottom: 4px;
 }
 
+
+/* ========================================
+   DROPDOWN FIX - COMPLETE SOLUTION
+   ======================================== */
+
+/* 1. Ensure all containers allow overflow */
+.table-wrapper {
+    overflow: visible !important;
+    padding-bottom: 20px; /* Add space at bottom for dropdowns */
+    position: relative;
+}
+
+.jobs-table-card,
+.category-table-card {
+    overflow: visible !important;
+}
+
+/* 2. Tables should allow overflow */
+.jobs-table,
+.category-table,
+.affiliate-table,
+.admin-table {
+    overflow: visible !important;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.jobs-table tbody,
+.category-table tbody,
+.affiliate-table tbody,
+.admin-table tbody {
+    overflow: visible !important;
+}
+
+/* 3. Make rows position relative */
+.jobs-table tbody tr,
+.category-table tbody tr,
+.affiliate-table tbody tr,
+.admin-table tbody tr {
+    position: relative;
+}
+
+/* 4. Row menu should allow overflow */
+.jobs-table .row-menu,
+.category-table .row-menu,
+.affiliate-table .row-menu,
+.admin-table .row-menu {
+    overflow: visible !important;
+    position: relative;
+}
+
+/* 5. Dropdown styling */
+.jobs-table .menu-dropdown,
+.category-table .menu-dropdown,
+.affiliate-table .menu-dropdown,
+.admin-table .menu-dropdown {
+    position: absolute;
+    right: 8px;
+    min-width: 140px;
+    padding: 6px;
+    background: white;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 9999 !important;
+    max-height: 400px;
+    overflow-y: auto;
+    animation: dropdownFadeIn 0.15s ease;
+}
+
+/* 6. Default - position below */
+.jobs-table .menu-dropdown,
+.category-table .menu-dropdown,
+.affiliate-table .menu-dropdown,
+.admin-table .menu-dropdown {
+    top: 100%;
+    bottom: auto;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+/* 7. Position above for rows that would overflow below */
+/* For last 2 rows in normal tables */
+.jobs-table tbody tr:nth-last-child(-n+2) .menu-dropdown,
+.category-table tbody tr:nth-last-child(-n+2) .menu-dropdown,
+.affiliate-table tbody tr:nth-last-child(-n+2) .menu-dropdown,
+.admin-table tbody tr:nth-last-child(-n+2) .menu-dropdown {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+/* 8. EXCEPTION: For tables with 2 or fewer rows, position below */
+.jobs-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown,
+.category-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown,
+.affiliate-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown,
+.admin-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown {
+    top: 100% !important;
+    bottom: auto !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
+}
+
+/* 9. Add extra bottom padding to the last row to show dropdown */
+.jobs-table tbody tr:last-child td,
+.category-table tbody tr:last-child td,
+.affiliate-table tbody tr:last-child td,
+.admin-table tbody tr:last-child td {
+    padding-bottom: 20px !important;
+}
+
 /* ========================================
    DASHBOARD
    ======================================== */
@@ -1331,6 +1607,10 @@ legend {
 
 .card:nth-child(3) {
     border-top: 3px solid #f9826c;
+}
+
+.card:nth-child(4) {
+    border-top: 3px solid #2d89ef;
 }
 
 .card:hover {
@@ -1761,6 +2041,20 @@ legend {
     .affiliate-table .job-meta {
         font-size: 11px;
     }
+
+    .admin-table thead th,
+    .admin-table tbody td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .admin-table .job-title {
+        font-size: 13px;
+    }
+    
+    .admin-table .job-meta {
+        font-size: 11px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1944,6 +2238,25 @@ legend {
     }
     
     .affiliate-table .menu-toggle {
+        font-size: 16px;
+        padding: 2px 6px;
+    }
+
+    .admin-table thead th,
+    .admin-table tbody td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    
+    .admin-table .job-title {
+        font-size: 12px;
+    }
+    
+    .admin-table .job-meta {
+        font-size: 10px;
+    }
+    
+    .admin-table .menu-toggle {
         font-size: 16px;
         padding: 2px 6px;
     }
