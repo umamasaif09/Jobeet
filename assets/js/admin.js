@@ -27,6 +27,49 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    //edit category model
+    const editCategoryModal = document.getElementById("editCategoryModal");
+    const closeEditCategoryModal= document.getElementById("closeEditCategoryModal");
+
+    const editCategoryForm = document.getElementById("editCategoryForm");
+    const editCatgeoryId = document.getElementById("edit_category_id");
+    const editCategoryName= document.getElementById("edit_category_name");
+
+    document.querySelectorAll(".edit-category-btn").forEach(function(button) {
+        button.addEventListener("click", function(e) {
+            e.stopPropagation();
+
+            const categoryId = this.getAttribute("data-id");
+            const categoryName = this.getAttribute("data-name");
+
+            if(editCatgeoryId) editCatgeoryId.value= categoryId;
+            if(editCategoryName) editCategoryName.value=categoryName;
+
+            if(editCategoryModal) {
+                editCategoryModal.classList.add("show");
+                document.body.style.overflow = "hidden";
+            }
+
+            const dropdown = this.closest(".menu-dropdown");
+            if(dropdown) {
+                dropdown.classList.remove("show");
+            }
+        });
+    });
+
+    if(closeEditCategoryModal && editCategoryModal) {
+        closeEditCategoryModal.addEventListener("click", function() {
+            editCategoryModal.classList.remove("show");
+            document.body.style.overflow = "";
+        });
+    }
+
+    window.addEventListener("click", function(e) {
+        if(e.target == editCategoryModal) {
+            editCategoryModal.classList.remove("show");
+        }
+    });
+
     //dropdown menu for actions
     document.querySelectorAll(".menu-toggle").forEach(function(button) {
         button.addEventListener("click", function(e) {

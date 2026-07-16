@@ -18,9 +18,7 @@
         <?php endif; ?>
         
         <?php $this->load->view($content); ?>
-    <div>
+        </div>
         
-    </div>
-    </div>
 </body>
 </html>

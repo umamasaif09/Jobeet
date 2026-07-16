@@ -119,7 +119,7 @@ class Admin extends CI_Controller
         $data["showPageHeader"] = true;
         $data["pageAction"] = [
             "text" => "Add Job",
-            "url" => "jobs/createJob"
+            "url" => "admin/createJob"
         ];
         
         $this->load->model("mdl_category");

@@ -61,16 +61,17 @@
 
 <div class="form-group file-group">
     <?php if($isEdit) { ?>
-        <label for="current_logo">Current Logo</label> 
+         
         <div class="current-logo">
+            <label for="current_logo">Current Logo</label>
             <img src="<?php echo base_url("uploads/".$job["logo"]); ?>"  width= "150">
             <input type="hidden" name= "old_logo" value="<?php echo $job["logo"]; ?>">
         </div>
         
-        
-        <label for="logo">
-            Upload New Logo
-        </label> <input type="file" name="logo" >
+        <div>
+            <label for="logo">Upload New Logo</label> 
+            <input type="file" name="logo" >
+        </div>
     <?php } else { ?>
         <label for="logo">Logo</label> <input type="file" name="logo">
     <?php } ?>

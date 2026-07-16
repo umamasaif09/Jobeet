@@ -13,26 +13,32 @@
     </div>
     <?php endif; ?>
 
-<form action="<?php echo site_url("admin/resetPassword");?>" method="POST" class="auth-form">
-    <input type="hidden" name="token" value="<?php echo $token ?>">
-    <h2><?php echo $title; ?></h2>   
-    
-    <?php if(validation_errors()): ?>
-        <div class="flash-error">
-            <?php echo validation_errors(); ?>
-        </div>
-    
-    <?php endif; ?>
+    <div class="form-container">
+    <div class="form-card">
+        <form action="<?php echo site_url("admin/resetPassword");?>" method="POST" class="auth-form">
+            <input type="hidden" name="token" value="<?php echo $token ?>">
+            <h2><?php echo $title; ?></h2>   
+            
+            <?php if(validation_errors()): ?>
+                <div class="flash-error">
+                    <?php echo validation_errors(); ?>
+                </div>
+            
+            <?php endif; ?>
 
-     <div class = "form-group">
-        <label>Password</label>
-        <input type="password" name= "password" placeholder= "Enter new password" required>
+            <div class = "form-group">
+                <label>Password</label>
+                <input type="password" name= "password" placeholder= "Enter new password" required>
+            </div>
+
+            <div class = "form-group">
+                <label>Confirm Password</label>
+                <input type="password" name= "confirm_password" placeholder= "Confirm password" required>
+            </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Update Password</button>
+                </div>
+            
+        </form>   
     </div>
-
-     <div class = "form-group">
-        <label>Confirm Password</label>
-        <input type="password" name= "confirm_password" placeholder= "Confirm password" required>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Update Password</button>
-</form>   
+</div>
