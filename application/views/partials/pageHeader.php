@@ -14,7 +14,7 @@
     <?php if(isset($pageAction)) {?>
         <?php if(isset($pageAction['url'])) {?>
 
-            <a href="<?php echo $pageAction['url']; ?>"
+            <a href="<?php echo site_url($pageAction['url']); ?>"
             class= "btn btn-primary">
             <?php echo $pageAction['text']; ?>
             </a>

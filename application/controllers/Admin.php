@@ -45,7 +45,7 @@ class Admin extends CI_Controller
         $data["content"] = "admin/categories";
         $data["showPageHeader"] = true; //back 
         $data["pageAction"] = [
-            "text" => "Create Category",
+            "text" => "Add Category",
             "id" => "openCategoryModal"
         ];
 
@@ -114,6 +114,10 @@ class Admin extends CI_Controller
         $data["active"] ="jobs";
         $data["content"] = "admin/jobs";
         $data["showPageHeader"] = true;
+        $data["pageAction"] = [
+            "text" => "Add Job",
+            "url" => "jobs/createJob"
+        ];
         
         $this->load->model("mdl_category");
         $data["categories"]= $this->mdl_category->getCategories();
