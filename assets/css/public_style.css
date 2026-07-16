@@ -1,4 +1,3 @@
-
 /* ===== BASE & RESET ===== */
 body {
     margin:0;
@@ -80,77 +79,20 @@ section h2{
     font-size: 24px;
 }
 
-/* ===== JOB TABLE ===== */
-.job-table{
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    margin-top: 16px;
-    border: 2px solid #ddd;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-.job-table th{
-    background-color: #2c3e50;
-    color: white;
-    padding: 8px;
-    text-align: center;
-    font-weight: 600;
-}
-.job-table th:nth-child(1),
-.job-table td:nth-child(1){
-    width: 24%;
-}
-
-.job-table th:nth-child(2),
-.job-table td:nth-child(2){
-    width: 48%;
-}
-
-.job-table th:nth-child(3),
-.job-table td:nth-child(3){
-    width: 32%;
-}
-
-.job-table tbody tr:nth-child(even){
-    background: #fafafa;
-}
-
-.job-table td{
-    padding: 12px;
-    border-bottom: 2px solid #ddd;
-    vertical-align: middle;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: center;
-}
-
-.job-table td a{
-    color: #2c3e50;
-    text-decoration: none;
-    font-weight: 400;
-}
-
-.job-table td a:hover{
-    color: #3498db;
-    text-decoration: underline;
-}
-
-.job-table tr:nth-child(even) {
-    background: #f8f8f8;
-}
-
-.job-table tr:hover{
-    background: #eef6ff;
-}
-
-
-
-
 /* ===== FORMS ===== */
+/* .form-container{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: transparent;
+}
+
+.form-card{
+    background: transparent;
+    padding: 0;
+} */
+
+
 form{
     margin-top: 16px;
 }
@@ -328,6 +270,36 @@ color: white;
     transform: translateY(-1px);
 }
 
+/* Back button - subtle and less prominent */
+.btn-back {
+    background: transparent;
+    color: #57606a;
+    border: 1px solid transparent;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 14px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+    border-radius: 6px;
+}
+
+.btn-back:hover {
+    background: #f0f2f4;
+    border-color: #d0d7de;
+    color: #24292e;
+    transform: none;
+    text-decoration: none;
+}
+
+.btn-back:active {
+    background: #e1e4e8;
+    transform: scale(0.97);
+}
+
+
 
 
 /* ===== FOOTER ===== */
@@ -392,7 +364,7 @@ footer a:hover{
     border-bottom: 1px solid #e1e4e8;
     margin-bottom: 24px;
     
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 100;
     max-width: 1280px;
@@ -446,7 +418,7 @@ footer a:hover{
 
 .search-form input{
     width: 100%;
-    padding: 8 12px;
+    padding: 8px 12px;
     padding-right: 80px;
     height: 38px;
     margin: 0;
@@ -560,9 +532,9 @@ footer a:hover{
     min-width: 224px;
     margin: 0;
     padding: 32px;
-    background: #fff;
+    /* background: #fff;
     border: 2px solid #ddd;
-    border-radius: 10px;
+    border-radius: 10px; */
 }
 
 .extend-form{
@@ -611,17 +583,58 @@ input[type="checkbox"] {
     margin: 0;
 }
 
-/* ===== PAGE HEADER ===== */
-.page-header{
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+.page-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 4px;
+    margin-bottom: 24px;
     gap: 16px;
-    margin-bottom: 16px;
+    flex-wrap: wrap;
 }
 
-.page-header h2{
+.page-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.page-header-left.back-button {
+    flex-shrink: 0;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 14px;
+    background: transparent;
+    color: #24292e;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.5s ease;
+}
+
+.page-header-left .back-button:hover {
+    background: #f6f8fa;
+    border-color: #8b949e;
+    transform: none;
+    text-decoration: none;
+}
+
+.page-header h2 {
     margin: 0;
     font-size: 24px;
+    font-weight: 600;
+    color: #24292e;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -652,12 +665,6 @@ input[type="checkbox"] {
     color: #2c3e50;
 }
 
-.category-title{
-    margin: 32px 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #2c3e50;
-}
-
 .category-title a{
     text-decoration: none;
     color: #2c3e50;
@@ -679,6 +686,161 @@ input[type="checkbox"] {
     text-align: center;
 }
 
+/* ===== GITHUB-INSPIRED HOME PAGE STYLES ===== */
+
+/* Category Section */
+.category-section {
+    margin-bottom: 36px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0 16px 0;
+    padding: 0 4px;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a202c;
+    letter-spacing: -0.02em;
+}
+
+.category-title {
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+}
+
+.category-title a {
+    text-decoration: none;
+    color: #1a202c;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.category-title a:hover {
+    color: #2d89ef;
+    text-decoration: none;
+}
+
+/* Jobs Table Card - GitHub Inspired */
+.jobs-table-card {
+    display: flex;
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.jobs-table-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.jobs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    border: none;
+}
+
+.jobs-table thead th {
+    background: #f6f8fa;
+    color: #24292e;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid #e1e4e8;
+    white-space: nowrap;
+}
+
+.jobs-table tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f2f5;
+    text-align: left;
+    font-size: 14px;
+    color: #24292e;
+    vertical-align: middle;
+}
+
+.jobs-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.jobs-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.jobs-table .job-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    text-decoration: none;
+}
+
+.jobs-table .job-title:hover {
+    color: #2d89ef;
+    text-decoration: underline;
+}
+
+.jobs-table .company-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.jobs-table .location-text {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* Responsive adjustments for home page */
+@media screen and (max-width: 768px) {
+    .jobs-table-card {
+        border-radius: 8px;
+    }
+    
+    .jobs-table thead th,
+    .jobs-table tbody td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .jobs-table .job-title {
+        font-size: 13px;
+    }
+    
+    .jobs-table .company-name {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .jobs-table thead th,
+    .jobs-table tbody td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    
+    .jobs-table .job-title {
+        font-size: 12px;
+    }
+    
+    .section-header h2,
+    .category-title a {
+        font-size: 18px;
+    }
+}
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media screen and (max-width: 1024px) {
@@ -715,12 +877,6 @@ input[type="checkbox"] {
         overflow-x: auto;
     }
 
-    .job-table{
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
     header h1{
         font-size: 24px;
     }
@@ -730,7 +886,6 @@ input[type="checkbox"] {
         align-items: flex-start;
         gap: 12px;
     }
-
 
     .site-header{
         flex-direction: column;
@@ -826,7 +981,6 @@ input[type="checkbox"] {
         gap: 6px;
     }
 
-
     .btn{
         padding: 8px 16px;
         font-size: 14px;
@@ -866,7 +1020,6 @@ input[type="checkbox"] {
         font-size: 14px;
     }
 }
-
 
 @media screen and (max-width: 480px) {
     .container{
@@ -925,17 +1078,6 @@ input[type="checkbox"] {
         height: 34px;
     }
 
-    .job-table th,
-    .job-table td{
-        padding: 6px 8px;
-        font-size: 12px;
-    }
-
-    .job-table td a {
-        font-size: 12px;
-    }
-
-
     .job-form{
         padding: 16px;
         border-width: 1px;
@@ -950,7 +1092,6 @@ input[type="checkbox"] {
     .form-group textarea{
         padding: 10px;
         font-size: 14px;
-
     }
 
     fieldset{
@@ -983,7 +1124,6 @@ input[type="checkbox"] {
         padding: 0 12px;
     }
 
-
     .job-title,
     .company-name{
         font-size: 14px;
@@ -1014,7 +1154,6 @@ input[type="checkbox"] {
         flex: 1;
         min-width: 60px;
     }
-
 }
 
 @media screen and (max-width: 360px) {
@@ -1022,18 +1161,11 @@ input[type="checkbox"] {
         padding: 8px;
     }
 
-    .job-table th,
-    .job-table td{
-        padding: 4px 6px;
-        font-size: 11px;
-    }
-
     .btn{
         font-size: 12px;
         padding: 6px 10px;
         min-height: 32px;
     }
-
 
     .site-logo h1{
         font-size: 20px;

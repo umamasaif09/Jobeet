@@ -2,7 +2,7 @@
 
     <div class="category-section">
         <h2><?php echo $result["category"]["name"] ?></h2>
-        <table class="job-table">
+        <table class="jobs-table">
             <thead>
                     <tr>
                         <th>Location</th>

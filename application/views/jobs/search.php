@@ -3,7 +3,7 @@
         <p> No Results Found for this Search. </p>
         <?php } else { ?> 
 
-            <table class="job-table">
+            <table class="jobs-table">
                 <thead>
                         <tr>
                             <th>Location</th>

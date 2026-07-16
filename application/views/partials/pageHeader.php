@@ -3,7 +3,7 @@
 
 <div class ="page-header-left">
 
-    <button class="btn btn-primary back-button">← Back</button>
+    <button class="btn btn-back back-button">← Back</button>
 
     <?php if(isset($title)) {?>
         
