@@ -847,12 +847,14 @@ legend {
    ======================================== */
 
 .jobs-table-card{
+
+
     display: flex;
     background: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 12px;
     padding: 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     overflow: visible !important;
     transition: box-shadow 0.2s ease;
 }
@@ -866,6 +868,7 @@ legend {
     border-collapse: collapse;
     margin: 0;
     border: none;
+    
 }
 
 .jobs-table thead th{
@@ -920,7 +923,7 @@ legend {
     font-size: 13px;
 }
 
-.jobs-table .memu-column{
+.jobs-table .menu-column{
     width: 50px;
     text-align: right !important;
 }
@@ -1076,6 +1079,161 @@ legend {
 
 .jobs-table .menu-dropdown .btn-primary::before {
     content: "👁";
+}
+
+/* Affiliate Table */
+
+.affiliate-table .id-column{
+    width: 60px;
+    font-weight: 500;
+    color: #57606a;
+    font-size: 13px;
+}
+
+.affiliate-table .menu-column{
+    width: 50px;
+    text-align: right !important;
+}
+
+.affiliate-table .job-title{
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.affiliate-table .job-meta{
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.affiliate-table .job-meta strong{
+    color: #374151;
+    font-weight: 600;
+}
+
+.affiliate-table .job-meta strong{
+    columns: #374151;
+    font-weight: 600;
+}
+
+.affiliate-table .expiry-date{
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.affiliate-table tbody tr:last-child .menu-dropdown{
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 4px;
+
+}
+
+.affiliate-table tbody tr:last-child .row-menu{
+    overflow: visible !important;
+}
+
+.affiliate-table .row-menu{
+    position: relative;
+    width: 50px;
+    text-align: right !important;
+    padding-right: 16px !important;
+    overflow: visible !important;
+}
+
+.affiliate-table .menu-toggle{
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #57606a;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.affiliate-table .menu-toggle:hover{
+    background: #f0f2f5;
+    color: #24292e;
+}
+
+.affiliate-table .menu-toggle:focus{
+    outline: none;
+    background: #e8eaed;
+}
+
+.affiliate-table .menu-dropdown.show {
+    display: block;
+}
+
+.affiliate-table .menu-dropdown .menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    border: none;
+}
+
+.affiliate-table .menu-dropdown .btn-warning {
+    background: transparent;
+    color: #24292e;
+}
+
+.affiliate-table .menu-dropdown .btn-warning:hover {
+    background: #f0f2f5;
+    color: #1a202c;
+    transform: none;
+}
+
+.affiliate-table .menu-dropdown .btn-danger {
+    background: transparent;
+    color: #cf222e;
+}
+
+.affiliate-table .menu-dropdown .btn-danger:hover {
+    background: #ffebe9;
+    color: #cf222e;
+    transform: none;
+}
+
+.affiliate-table .menu-dropdown .btn-success {
+    background: transparent;
+    color: #1a7f37;
+}
+
+.affiliate-table .menu-dropdown .btn-success:hover {
+    background: #dafbe1;
+    color: #1a7f37;
+    transform: none;
+}
+
+.affiliate-table .menu-dropdown .btn::before {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.affiliate-table .menu-dropdown .btn-warning::before {
+    content: "✎";
+}
+
+.affiliate-table .menu-dropdown .btn-danger::before {
+    content: "×";
+}
+
+.affiliate-table .menu-dropdown .btn-success::before {
+    content: "✓";
 }
 
 
@@ -1589,6 +1747,20 @@ legend {
         font-size: 11px;
         padding: 3px 8px;
     }
+
+    .affiliate-table thead th,
+    .affiliate-table tbody td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .affiliate-table .job-title {
+        font-size: 13px;
+    }
+    
+    .affiliate-table .job-meta {
+        font-size: 11px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1753,6 +1925,25 @@ legend {
     }
     
     .jobs-table .menu-toggle {
+        font-size: 16px;
+        padding: 2px 6px;
+    }
+
+    .affiliate-table thead th,
+    .affiliate-table tbody td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    
+    .affiliate-table .job-title {
+        font-size: 12px;
+    }
+    
+    .affiliate-table .job-meta {
+        font-size: 10px;
+    }
+    
+    .affiliate-table .menu-toggle {
         font-size: 16px;
         padding: 2px 6px;
     }

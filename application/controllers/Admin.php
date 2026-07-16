@@ -210,6 +210,10 @@ class Admin extends CI_Controller
         $data["title"] = "Manage Affiliates";
         $data["content"] = "admin/affiliates";
         $data["showPageHeader"] = true;
+        $data["pageAction"] = [
+            "text" => "Add Affiliate",
+            "url" => "admin/addAffiliate"
+        ];
         
         $data["active"] ="affiliates";
         //to display in view

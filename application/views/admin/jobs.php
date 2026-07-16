@@ -1,4 +1,4 @@
-<div class="admin-section">
+
         
 
     <div class="table-wrapper">
@@ -9,11 +9,9 @@
                         <th><strong><?= $this->lang->line("job_id"); ?></strong></th>
                         <th><strong><?= $this->lang->line("position"); ?></strong></th>
                         <th><strong><?= $this->lang->line("company_name"); ?></strong></th>
-                        <th><strong><?= $this->lang->line("category_id"); ?></strong></th>
                         <th><strong><?= $this->lang->line("type"); ?></strong></th>
                         <th><strong><?= $this->lang->line("location"); ?></strong></th>
-                        <th><strong><?= $this->lang->line("active_status"); ?></strong></th>
-                        <th><strong><?= $this->lang->line("public_status"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("status"); ?></strong></th>
                         <th><strong><?= $this->lang->line("expires_at"); ?></strong></th>
                         <th class="menu-column"></th>
                     </tr>
@@ -35,11 +33,6 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="category-badge">
-                                    <?php echo $job["category_id"]; ?>
-                                </span>
-                            </td>
-                            <td>
                                 <span class="type-badge">
                                     <?php echo $job["type"]; ?>
                                 </span>
@@ -55,9 +48,8 @@
                                 <?php } else { ?>
                                     <span class="badge inactive">Inactive</span>
                                 <?php } ?>
-                            </td>
-                            <td>
-                                <?php if($job["is_public"]) { ?>
+
+                                 <?php if($job["is_public"]) { ?>
                                     <span class="badge public">Public</span>
                                 <?php } else { ?>
                                     <span class="badge private">Private</span>
@@ -94,5 +86,4 @@
         </div>
         
     </div>
-</div>
-            
+           
