@@ -372,7 +372,7 @@ class Admin extends CI_Controller
             "Your affiliate account has been activated. \n\n". 
             "Your API token is: ".$token."\n\n". 
             "You can use this token to access the Jobeet API via this link: \n". 
-            "http://jobeet.test/index.php/api/jobs?token=".$token."&limit=&category="
+            "http://jobeet.test/index.php/job_api/jobs?token=".$token."&limit=&category="
         );
 
         if ($this->email->send()) {
