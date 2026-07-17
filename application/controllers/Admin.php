@@ -163,7 +163,7 @@ class Admin extends CI_Controller
             "email" => $this->input->post("email"),
             "description" => $this->input->post("description"),
             "how_to_apply" => $this->input->post("how_to_apply"),
-            "is_public" => $this->input->post("is_public"),
+            "is_public" => $this->input->post("is_public") ? 1 : 0,
             "created_at" => date("Y-m-d H:i:s"),
             "is_active" => 1,
             "expires_at" => date("Y-m-d H:i:s", strtotime("+30 days"))
