@@ -1,7 +1,7 @@
 
 
     <div class="category-section">
-        <h2><?php echo $result["category"]["name"] ?></h2>
+        <h2 class="category_title" ><?php echo $result["category"]["name"] ?></h2>
         <table class="jobs-table">
             <thead>
                     <tr>
@@ -32,7 +32,7 @@
         
     <div class="pagination">
         <?php if($currentPage >1 ) { ?>
-            <a class="btn-primary" href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>"> ← Previous </a>
+            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>"> ← Previous </a>
         <?php } else {?>
             <span></span>
         <?php }?>

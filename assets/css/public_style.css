@@ -524,7 +524,25 @@ footer a:hover{
 .site-header .btn-primary:hover{
     transform: none;
 }
+/* Category Headings */
 
+.category_title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #2d89ef;
+}
+
+.category_title a {
+    color: #2d89ef;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.category_title a:hover {
+    color: #1d6fd3;
+    text-decoration: none;
+}
 
 /* ===== FORM ===== */
 .job-form{
