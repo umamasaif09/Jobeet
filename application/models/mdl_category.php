@@ -11,7 +11,8 @@ class mdl_category extends CI_Model
     }
 
     public function createCategory($data) {
-        return $this->db->insert("categories",$data);
+        $this->db->insert("categories",$data);
+        return $this->db->insert_id();
 
     }
 

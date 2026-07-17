@@ -15,10 +15,6 @@ class jobs extends CI_Controller
     {
         $jobs = $this->mdl_job->getJobs();
 
-        if(!$jobs) {
-            show_error("Does not Exist", 404);
-        }
-
         header("Content-Type: application/json");
         echo json_encode($jobs, JSON_PRETTY_PRINT);
     }
@@ -84,6 +80,14 @@ class jobs extends CI_Controller
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
+        if(empty($data)){
+            http_response_code(400);
+            echo json_encode([
+                "message" => "Invalid request"
+            ]);
+            return;
+        }
+
         $token= bin2hex(random_bytes(16));
 
         $jobData = [
@@ -135,7 +139,11 @@ class jobs extends CI_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            show_404();
+            http_response_code(400);
+            echo json_encode([
+                "message" => "Invalid request"
+            ]);
+            return;
         }
 
         $jobData = [
@@ -162,6 +170,8 @@ class jobs extends CI_Controller
 
             return;
         }
+
+        $job = $this->mdl_job->getJobById($jobId);
 
         http_response_code(200);
         header("Content-Type: application/json");
@@ -190,5 +200,34 @@ class jobs extends CI_Controller
             "id" =>$id,
             "job" => $job
         ]);
+    }
+
+    public function delete($jobId)
+    {
+        $deleted = $this->mdl_job->deleteJob($jobId);
+
+        if(!$deleted) {
+            http_response_code(404);
+            echo json_encode([
+                "message" => "Category not found"
+            ]);
+            return; 
+        }
+
+        http_response_code(200);
+        header("Content-Type: application/json");
+        echo json_encode([
+            "message" => "Job deleted successfully",
+            "id" =>$jobId
+        ]);
+
+    }
+
+    public function count()
+    {
+        $count = $this->mdl_job->getJobsCount();
+
+        header("Content-Type: application/json");
+        echo json_encode($count, JSON_PRETTY_PRINT);
     }
 }
