@@ -21,6 +21,11 @@
                 </a>
             </div>
         
+            <div class="nav-right">
+                <a href="<?php echo site_url('admin/logout'); ?>" class="nav-item logout-btn" onclick="return confirm('Are you sure you want to logout?')">
+                Logout
+            </a>
+            </div>
     </nav>
 
 </div>

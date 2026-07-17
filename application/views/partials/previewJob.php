@@ -5,8 +5,10 @@
     <p><strong>Company: </strong><?php echo $job["company"];?></p>
 
     <p><strong>Logo: </strong></p>
-    <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="150">
-
+    <?php if(!empty($job["logo"])) { ?>
+        <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="150">
+    <?php } ?>
+    
     <p><strong>Webiste: </strong><a href="<?php echo $job["url"]; ?>"><?php echo $job["url"];?></a></p>
 
     <p><strong>Position: </strong><?php echo $job["position"];?></p>
