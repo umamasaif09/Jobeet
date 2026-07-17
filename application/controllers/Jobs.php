@@ -26,6 +26,7 @@ class Jobs extends CI_Controller
 
         $data["content"] = "jobs/category";
         $data["showPageHeader"] = true;
+        $data["showBackButton"] = true;
 
         $this->load->view("templates/public_template", $data);
 
@@ -38,6 +39,7 @@ class Jobs extends CI_Controller
         $data["keyword"]= $keyword;
         $data["content"] ="jobs/search";
         $data["showPageHeader"]=true;
+        $data["showBackButton"] = true;
 
         $this->load->model("mdl_job");
         $data["jobs"]= $this->mdl_job->searchJobs($keyword);
@@ -52,6 +54,7 @@ class Jobs extends CI_Controller
 
         $data["content"] = "jobs/job";
         $data["showPageHeader"] = true;
+        $data["showBackButton"] = true;
         
 
         $this->load->view("templates/public_template", $data);
@@ -66,6 +69,7 @@ class Jobs extends CI_Controller
 
         $data["content"] = "jobs/createjob";
         $data["showPageHeader"] = true;
+        $data["showBackButton"] = true;
         $data["formAction"] = site_url("jobs/preview");
         $data["submitButtonText"] = "Preview Job";
 
@@ -127,7 +131,8 @@ class Jobs extends CI_Controller
             "category" => $category,
             "job" => $job,
             "content" => "jobs/preview",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "showBackButton" => true
         ];
         $this->load->view("templates/public_template", $data);
     }
@@ -168,7 +173,8 @@ class Jobs extends CI_Controller
             "job" => $job,
             "category" => $category,
             "content" => "jobs/success",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "showBackButton" => true
         ];
 
         $this->load->view("templates/public_template", $viewData);
@@ -195,6 +201,7 @@ class Jobs extends CI_Controller
             "categories" => $this->mdl_job->getJobCategories(),
             "daysRemaining" => $daysRemaining,
             "content" => "jobs/editForm",
+            "showBackButton" => true,
             "showPageHeader" => true
             ];
             $this->load->view("templates/public_template", $data);

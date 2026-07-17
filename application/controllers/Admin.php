@@ -46,7 +46,7 @@ class Admin extends CI_Controller
         $data["title"] = "Manage Categories";
         $data["active"] ="categories";
         $data["content"] = "admin/categories";
-        $data["showPageHeader"] = true; //back 
+        $data["showPageHeader"] = true;
         $data["pageAction"] = [
             "text" => "Add Category",
             "id" => "openCategoryModal"
@@ -140,6 +140,7 @@ class Admin extends CI_Controller
             "categories" => $this->mdl_job->getJobCategories(),
             "content" => "jobs/createJob",
             "showPageHeader" => true,
+            "showBackButton" => true,
             "formAction" => site_url("admin/createJobPost"),
             "submitButtonText" => "Create Job"
         ];
@@ -198,7 +199,8 @@ class Admin extends CI_Controller
             "daysRemaining" =>$daysRemaining,
             "categories" => $this->mdl_category->getCategories(),
             "content" => "jobs/editForm",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "showBackButton" => true
             ];
             $this->load->view("templates/admin_template", $data);
         }
@@ -215,6 +217,7 @@ class Admin extends CI_Controller
 
         $data["content"] = "jobs/job";
         $data["showPageHeader"] = true;
+        $data["showBackButton"] = true;
 
         $this->load->view("templates/admin_template", $data);
     }
@@ -266,7 +269,8 @@ class Admin extends CI_Controller
             "title" => "Create Affiliate",
             "categories" => $this->mdl_job->getJobCategories(),
             "content" => "admin/createAffiliate",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "showBackButton" => true
         ];
 
         $this->load->view("templates/admin_template", $data);
@@ -310,6 +314,7 @@ class Admin extends CI_Controller
         $data["title"]="Edit Affiliate";
         $data["content"] = "admin/editAffiliate";
         $data["showPageHeader"] = true;
+        $data["showBackButton"] = true;
 
         $data["selectedCategories"] = $this->mdl_affiliate->getAffiliateCategoryIds($id);
 
@@ -665,6 +670,7 @@ class Admin extends CI_Controller
         $data["admins"] = $admins;
         $data["active"] ="admins";
         $data["content"] = "admin/admins";
+        $data["title"] = "Manage Admins";
         $data["showPageHeader"] = true;
         $data["ShowAdminHeader"] = true;
         $data["pageAction"] = [
@@ -710,7 +716,8 @@ class Admin extends CI_Controller
             $data= [
             "title" => "Register Admin",
             "content" => "admin/registerAdmin",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "showBackButton" => true,
             ];
 
             $this->load->view("templates/admin_template", $data);
@@ -754,6 +761,7 @@ class Admin extends CI_Controller
 
             $data["content"] = "admin/editAdmin";
             $data["showPageHeader"] = true;
+            $data["showBackButton"] = true;
             
             $this->load->view("templates/admin_template", $data);
         } else if($this->input->method()=="post") {

@@ -16,7 +16,8 @@ class affiliates extends CI_Controller
             "title" => "Affiliate Application",
             "categories" => $this->mdl_category->getCategories(),
             "content" => "affiliates/apply",
-            "showPageHeader" => true
+            "showPageHeader" => true,
+            "showBackButton" => true
         ];
 
         $this->load->view("templates/public_template", $data);
@@ -52,7 +53,8 @@ class affiliates extends CI_Controller
             "title" => "Affiliation Request Submitted",
             "affiliate"=>$affiliate,
             "content" => "affiliates/success",
-            "showPageHeader" => true //back button
+            "showPageHeader" => true,
+            "showBackButton" => true
         ];
 
         $this->load->view("templates/public_template", $viewData);

@@ -3,7 +3,9 @@
 
 <div class ="page-header-left">
 
-    <button class="btn btn-back back-button">← Back</button>
+    <?php if (isset($showBackButton)) { ?>
+        <button class="btn btn-back back-button">← Back</button>
+    <?php } ?>
 
     <?php if(isset($title)) {?>
         
@@ -16,7 +18,7 @@
 
             <a href="<?php echo site_url($pageAction['url']); ?>"
             class= "btn btn-primary">
-            <?php echo $pageAction['text']; ?>
+                <?php echo $pageAction['text']; ?>
             </a>
         <?php } else {?>
             <button type="button" class= "btn btn-primary" id="<?php echo $pageAction["id"]; ?>">
