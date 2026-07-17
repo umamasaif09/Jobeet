@@ -1137,6 +1137,12 @@ textarea {
     width: 224px;
 }
 
+/* Admin table specific override */
+.admin-table.jobs-table.admin-table tbody td {
+    padding-bottom: 25px !important;
+}
+
+
 .actions {
     display: flex;
     gap: 8px;

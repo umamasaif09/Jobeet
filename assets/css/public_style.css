@@ -193,6 +193,10 @@ textarea{
     gap: 6px;
 }
 
+.form-actions{
+    display: flex;
+    justify-content: flex-end;
+}
 
 /* ===== BUTTONS ===== */
 
