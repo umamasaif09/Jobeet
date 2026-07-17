@@ -626,27 +626,29 @@ class Admin extends CI_Controller
             $this->load->view("templates/admin_template", $data); //show reset password form
         }
         else if($this->input->method()== "post") {
+            $token= $this->input->post("token"); //check again
 
             if($this->form_validation->run() === false) {
                 $data["content"] ="admin/resetPassword";
                 $data["showPageHeader"]=false;
                 $data["showAdminHeader"] =false;
                 $data["title"] = "Reset Password";
+                $data["token"] = $token;
 
                 $this->load->view("templates/admin_template", $data);
                 return;
             }
 
             $password=$this->input->post("password");
-            $token= $this->input->post("token"); //check again
+            
 
             $admin = $this->mdl_admin->getAdminByResetToken($token);
 
             if(!$admin || $admin["reset_token_expires_at"] < date("Y-m-d H:i:s")) {
-            $this->session->set_flashdata("error", "Invalid or expired reset link.");
+                $this->session->set_flashdata("error", "Invalid or expired reset link.");
 
-            redirect("admin/login");
-            return;
+                redirect("admin/login");
+                return;
             }
 
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
