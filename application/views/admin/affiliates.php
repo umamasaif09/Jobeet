@@ -8,9 +8,11 @@
 
                     <th><strong><?= $this->lang->line("affiliate_id"); ?></strong></th>
                         <th><strong><?= $this->lang->line("affiliate_name"); ?></strong></th>
-                        <th><strong><?= $this->lang->line("contact_information"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("affiliate_email"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("affiliate_website"); ?></strong></th>
                         <th><strong><?= $this->lang->line("status"); ?></strong></th>
-                        <th><strong><?= $this->lang->line("created_at"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("affiliate_token"); ?></strong></th>
+                        <!-- <th><strong><?= $this->lang->line("created_at"); ?></strong></th> -->
                         <th class="menu-column"></th>
                 </tr>
             </thead>
@@ -29,29 +31,32 @@
                             
                             <td>
                                 <div class="job-meta">
-                                    <strong>Email:</strong> <?php echo $affiliate["email"]; ?>
-                                </div>
-                               <div class="job-meta">
-                                    <strong>Website:</strong> <?php echo $affiliate["site_url"]; ?>
+                                    <?php echo $affiliate["email"]; ?>
                                 </div>
                             </td>
+
+                            <td>
+                                <div class="job-meta">
+                                    <?php echo $affiliate["site_url"]; ?>
+                                </div>
+                            </td>
+
                             <td>
                                 <?php if($affiliate["is_active"]) { ?>
                                     <span class="badge active">Active</span>
 
-                                    <div class="job-meta">
-                                        <strong>Token:</strong> <?php echo $affiliate["token"]; ?>
-                                    </div>
+                                    
                                 <?php } else { ?>
                                     <span class="badge inactive">Inactive</span>
                                 <?php } ?>
                             </td>
-                            
+
                             <td>
-                                <span class="expiry-date">
-                                    <?php echo date("d M Y", strtotime($affiliate["created_at"])); ?>
-                                </span>
+                                <div class="job-meta">
+                                         <?php echo $affiliate["token"]; ?>
+                                </div>
                             </td>
+                            
 
                         <td class="row-menu">
                                 <button type="button" class="menu-toggle">⋮</button>

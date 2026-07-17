@@ -954,7 +954,7 @@ textarea {
 }
 
 .admin-table .job-title{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 4px;
@@ -1361,17 +1361,17 @@ textarea {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    padding: 14px 16px;
+    padding: 10px 10px;
     text-align: left;
     border-bottom: 2px solid #e1e4e8;
     white-space: nowrap;
 }
 
 .jobs-table tbody td{
-    padding: 14px 16px;
+    padding: 10px 10px;
     border-bottom: 1px solid #f0f2f5;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
     color: #24292e;
     vertical-align: middle;
 }
@@ -1400,7 +1400,7 @@ textarea {
 }
 
 .jobs-table.id-column{
-    width: 60px;
+    width: 40px;
     font-weight: 500;
     color: #57606a;
     font-size: 13px;
@@ -1418,7 +1418,7 @@ textarea {
 }
 
 .jobs-table .company-name{
-    font-weight: 14px;
+    font-weight: 13px;
     font-weight: 500;
     color: #374151;
 }
@@ -1446,7 +1446,7 @@ textarea {
 
 .location-text{
     color: #6b7280;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .expiry-date{
@@ -1567,8 +1567,14 @@ textarea {
 
 /* Affiliate Table */
 
+.affiliate-table td,
+.affiliate-table th{
+    padding: 8px 8px;
+    font-size: 12px;
+}
+
 .affiliate-table .id-column{
-    width: 60px;
+    width: 40px;
     font-weight: 500;
     color: #57606a;
     font-size: 13px;
@@ -1580,7 +1586,7 @@ textarea {
 }
 
 .affiliate-table .job-title{
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 4px;
@@ -1588,7 +1594,7 @@ textarea {
 
 .affiliate-table .job-meta{
     color: #6b7280;
-    font-size: 13px;
+    font-size: 11px;
     margin-bottom: 2px;
 }
 
@@ -1604,7 +1610,7 @@ textarea {
 
 .affiliate-table .expiry-date{
     color: #6b7280;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
 }
 
@@ -1747,14 +1753,15 @@ textarea {
 
 /* 1. Ensure all containers allow overflow */
 .table-wrapper {
-    overflow: visible !important;
+    overflow: hidden !important;
     padding-bottom: 20px; /* Add space at bottom for dropdowns */
     position: relative;
+    padding: 0;
 }
 
 .jobs-table-card,
 .category-table-card {
-    overflow: visible !important;
+    overflow: hidden !important;
 }
 
 /* 2. Tables should allow overflow */
@@ -2184,7 +2191,7 @@ textarea {
 
      .jobs-table thead th,
     .jobs-table tbody td {
-        padding: 10px 12px;
+        padding: 10px 10px;
         font-size: 13px;
     }
     

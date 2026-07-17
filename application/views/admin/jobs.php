@@ -11,7 +11,8 @@
                         <th><strong><?= $this->lang->line("company_name"); ?></strong></th>
                         <th><strong><?= $this->lang->line("type"); ?></strong></th>
                         <th><strong><?= $this->lang->line("location"); ?></strong></th>
-                        <th><strong><?= $this->lang->line("status"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("active_status"); ?></strong></th>
+                        <th><strong><?= $this->lang->line("public_status"); ?></strong></th>
                         <th><strong><?= $this->lang->line("expires_at"); ?></strong></th>
                         <th class="menu-column"></th>
                     </tr>
@@ -49,7 +50,10 @@
                                     <span class="badge inactive">Inactive</span>
                                 <?php } ?>
 
-                                 <?php if($job["is_public"]) { ?>
+                                 
+                            </td>
+                            <td>
+                                <?php if($job["is_public"]) { ?>
                                     <span class="badge public">Public</span>
                                 <?php } else { ?>
                                     <span class="badge private">Private</span>
