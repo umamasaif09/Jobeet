@@ -992,8 +992,8 @@ textarea {
 .admin-table .row-menu{
     position: relative;
     width: 50px;
-    text-align: right !important;
-    padding-right: 16px !important;
+    text-align: left !important;
+     /* padding-left: 16px !important; */
     overflow: visible !important;
 }
 
@@ -1053,6 +1053,7 @@ textarea {
     text-align: left;
     transition: all 0.15s ease;
     border: none;
+    justify-content: flex-start;
 }
 
 .admin-table .menu-dropdown .btn-warning {
@@ -1093,7 +1094,7 @@ textarea {
     opacity: 0.7;
 }
 
-.admin-table .menu-dropdown .btn-warning::before {
+/* .admin-table .menu-dropdown .btn-warning::before {
     content: "✎";
 }
 
@@ -1103,7 +1104,7 @@ textarea {
 
 .admin-table .menu-dropdown .btn-success::before {
     content: "✓";
-}
+} */
 
 .actions-column {
     width: 224px;
@@ -1194,9 +1195,13 @@ textarea {
 .row-menu {
     position: relative;
     width: 50px;
-    text-align: right !important;
-    padding-right: 16px !important;
+    text-align: left !important;
+    padding-left: 16px !important;
     overflow: visible !important;
+}
+
+.category-table .menu-dropdown .btn{
+    justify-content: flex-start;
 }
 
 .menu-toggle {
@@ -1296,13 +1301,13 @@ textarea {
     opacity: 0.7;
 }
 
-.menu-dropdown .btn-warning::before {
+/* .menu-dropdown .btn-warning::before {
     content: "✎";
 }
 
 .menu-dropdown .btn-danger::before {
     content: "×";
-}
+} */
 
 /* Table Wrapper */
 .table-wrapper {
@@ -1403,7 +1408,7 @@ textarea {
 
 .jobs-table .menu-column{
     width: 50px;
-    text-align: right !important;
+    text-align: left!important;
 }
 
 .jobs-table .job-title{
@@ -1504,6 +1509,7 @@ textarea {
     font-size: 500;
     text-align: left;
     transition: all 0.15s ease;
+    justify-content: flex-start;
 }
 
 .jobs-table .menu-dropdown .btn-warning {
@@ -1547,7 +1553,7 @@ textarea {
     opacity: 0.7;
 }
 
-.jobs-table .menu-dropdown .btn-warning::before {
+/* .jobs-table .menu-dropdown .btn-warning::before {
     content: "✎";
 }
 
@@ -1557,7 +1563,7 @@ textarea {
 
 .jobs-table .menu-dropdown .btn-primary::before {
     content: "👁";
-}
+} */
 
 /* Affiliate Table */
 
@@ -1570,7 +1576,7 @@ textarea {
 
 .affiliate-table .menu-column{
     width: 50px;
-    text-align: right !important;
+    text-align: left !important;
 }
 
 .affiliate-table .job-title{
@@ -1617,8 +1623,8 @@ textarea {
 .affiliate-table .row-menu{
     position: relative;
     width: 50px;
-    text-align: right !important;
-    padding-right: 16px !important;
+    text-align: left !important;
+    padding-left: 16px !important;
     overflow: visible !important;
 }
 
@@ -1662,6 +1668,7 @@ textarea {
     text-align: left;
     transition: all 0.15s ease;
     border: none;
+    justify-content: flex-start;
 }
 
 .affiliate-table .menu-dropdown .btn-warning {
@@ -1702,7 +1709,7 @@ textarea {
     opacity: 0.7;
 }
 
-.affiliate-table .menu-dropdown .btn-warning::before {
+/* .affiliate-table .menu-dropdown .btn-warning::before {
     content: "✎";
 }
 
@@ -1712,7 +1719,7 @@ textarea {
 
 .affiliate-table .menu-dropdown .btn-success::before {
     content: "✓";
-}
+} */
 
 
 .affiliate-table .actions-column {
