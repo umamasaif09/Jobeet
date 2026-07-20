@@ -2,7 +2,7 @@
 
 defined("BASEPATH") or exit("No direct script access allowed");
 
-class admins extends CI_Controller
+class admins extends api_controller
 {
     public function __construct()
     {
@@ -12,6 +12,8 @@ class admins extends CI_Controller
 
     public function index()
     {
+        $this->requireLogin();
+        
         $admins = $this->mdl_admin->getAdmins();
 
         header("Content-Type: application/json");
@@ -20,6 +22,8 @@ class admins extends CI_Controller
 
     public function create()
     {
+        $this->requireLogin();
+
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
@@ -61,6 +65,8 @@ class admins extends CI_Controller
 
     public function update($adminId)
     {
+        $this->requireLogin();
+        
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
@@ -102,6 +108,8 @@ class admins extends CI_Controller
 
     public function disable($adminId)
     {
+        $this->requireLogin();
+        
         $disabled = $this->mdl_admin->disable($adminId);
 
         if(!$disabled) {
@@ -125,7 +133,8 @@ class admins extends CI_Controller
 
     public function activate($adminId)
     {
-
+        $this->requireLogin();
+        
         $activated = $this->mdl_admin->activate($adminId);
         if(!$activated) {
             http_response_code(404);
@@ -149,12 +158,14 @@ class admins extends CI_Controller
 
     public function delete($adminId)
     {
+        $this->requireLogin();
+        
         $deleted = $this->mdl_admin->deleteAdmin($adminId);
 
         if(!$deleted) {
             http_response_code(404);
             echo json_encode([
-                "message" => "admin not found"
+                "message" => "Admin not found"
             ]);
             return; 
         }
@@ -162,7 +173,7 @@ class admins extends CI_Controller
         http_response_code(200);
         header("Content-Type: application/json");
         echo json_encode([
-            "message" => "admin deleted successfully",
+            "message" => "Admin deleted successfully",
             "id" =>$adminId
         ]);
 
@@ -170,6 +181,8 @@ class admins extends CI_Controller
 
     public function count()
     {
+        $this->requireLogin();
+        
         $count = $this->mdl_admin->getAdminsCount();
 
         header("Content-Type: application/json");

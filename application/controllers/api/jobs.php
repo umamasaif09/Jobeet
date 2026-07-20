@@ -2,7 +2,7 @@
 
 defined("BASEPATH") or exit("No direct script access allowed");
 
-class jobs extends CI_Controller 
+class jobs extends api_controller 
 {
 
     public function __construct()
@@ -13,6 +13,7 @@ class jobs extends CI_Controller
 
     public function index()
     {
+        
         $jobs = $this->mdl_job->getJobs();
 
         header("Content-Type: application/json");
@@ -95,6 +96,7 @@ class jobs extends CI_Controller
             "type" => $data["type"],
             "company" => $data["company"],
             "url" => $data["url"],
+            "logo" => $data["logo"],
             "position" => $data["position"],
             "location"=> $data["location"],
             "email" => $data["email"],
@@ -125,9 +127,7 @@ class jobs extends CI_Controller
         header("Content-Type: application/json");
         echo json_encode([
             "message" => "Job created successfully",
-            "id" =>$jobId,
             "job" => $job,
-            "category" => $category,
             "token" => $token
         ]);
     }
@@ -151,6 +151,7 @@ class jobs extends CI_Controller
             "type" => $data["type"],
             "company" => $data["company"],
             "url" => $data["url"],
+            "logo" => $data["logo"],
             "position" => $data["position"],
             "location"=> $data["location"],
             "email" => $data["email"],
@@ -177,7 +178,6 @@ class jobs extends CI_Controller
         header("Content-Type: application/json");
         echo json_encode([
             "message" => "Job updated successfully",
-            "id" =>$jobId,
             "job" => $job
         ]);
     }
@@ -204,6 +204,8 @@ class jobs extends CI_Controller
 
     public function delete($jobId)
     {
+        $this->requireLogin();
+
         $deleted = $this->mdl_job->deleteJob($jobId);
 
         if(!$deleted) {
@@ -225,6 +227,8 @@ class jobs extends CI_Controller
 
     public function count()
     {
+        $this->requireLogin();
+        
         $count = $this->mdl_job->getJobsCount();
 
         header("Content-Type: application/json");

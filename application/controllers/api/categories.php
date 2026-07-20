@@ -2,7 +2,7 @@
 
 defined("BASEPATH") or exit("No direct script access allowed");
 
-class categories extends CI_Controller
+class categories extends api_controller
 {
     public function __construct()
     {
@@ -20,6 +20,8 @@ class categories extends CI_Controller
 
     public function create()
     {
+        $this->requireLogin();
+        
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
@@ -59,6 +61,8 @@ class categories extends CI_Controller
 
     public function update($categoryId)
     {
+        $this->requireLogin();
+        
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
@@ -99,6 +103,8 @@ class categories extends CI_Controller
 
     public function delete($categoryId)
     {
+        $this->requireLogin();
+        
         $deleted = $this->mdl_category->deleteCategory($categoryId);
 
         if(!$deleted) {
@@ -120,6 +126,8 @@ class categories extends CI_Controller
 
     public function count()
     {
+        $this->requireLogin();
+        
         $count = $this->mdl_category->getCategoriesCount();
 
         header("Content-Type: application/json");

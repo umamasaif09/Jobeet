@@ -2,7 +2,7 @@
 
 defined("BASEPATH") or exit("No direct script access allowed");
 
-class affiliates extends CI_Controller
+class affiliates extends api_controller
 {
     public function __construct()
     {
@@ -12,6 +12,8 @@ class affiliates extends CI_Controller
 
     public function index()
     {
+        $this->requireLogin();
+        
         $affiliates = $this->mdl_affiliate->getAffiliates();
 
         header("Content-Type: application/json");
@@ -78,6 +80,8 @@ class affiliates extends CI_Controller
 
     public function create()
     {
+        $this->requireLogin();
+        
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
@@ -134,6 +138,8 @@ class affiliates extends CI_Controller
 
     public function update($affiliateId)
     {
+        $this->requireLogin();
+        
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 
@@ -176,6 +182,8 @@ class affiliates extends CI_Controller
 
     public function disable($affiliateId)
     {
+        $this->requireLogin();
+        
         $disabled = $this->mdl_affiliate->disable($affiliateId);
 
         if(!$disabled) {
@@ -218,6 +226,8 @@ class affiliates extends CI_Controller
 
     public function activate($affiliateId)
     {
+        $this->requireLogin();
+        
         $token = bin2hex(random_bytes(16));
 
         $activated = $this->mdl_affiliate->activate($affiliateId, $token);
@@ -247,6 +257,8 @@ class affiliates extends CI_Controller
 
     public function delete($affiliateId)
     {
+        $this->requireLogin();
+        
         $deleted = $this->mdl_affiliate->deleteAffiliate($affiliateId);
 
         if(!$deleted) {
@@ -268,6 +280,8 @@ class affiliates extends CI_Controller
 
     public function count()
     {
+        $this->requireLogin();
+        
         $count = $this->mdl_affiliate->getAffiliatesCount();
 
         header("Content-Type: application/json");
