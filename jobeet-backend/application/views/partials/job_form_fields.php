@@ -74,7 +74,12 @@
             <label for="logo"><?php echo !empty($job["logo"]) ? 'Upload New Logo' : 'Upload Logo'; ?></label> 
             <input type="file" name="logo" >
         </div>
-    <?php } ?>
+    <?php } else {?> 
+        <div>
+            <label for="logo">Upload Logo</label> 
+            <input type="file" name="logo" >
+        </div>
+    <?php }?>
 </div>
 
 <div class="form-group">

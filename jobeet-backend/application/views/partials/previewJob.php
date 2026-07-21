@@ -1,11 +1,11 @@
-
 <section>
-    <p><strong>Category: </strong><?php echo $category["name"];?></p>
+     <p><strong>Category: </strong><?php echo $category["name"];?></p>
     <p><strong>Type: </strong><?php echo $job["type"];?></p>
     <p><strong>Company: </strong><?php echo $job["company"];?></p>
 
-    <p><strong>Logo: </strong></p>
+    
     <?php if(!empty($job["logo"])) { ?>
+        <p><strong>Logo: </strong></p>
         <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="150">
     <?php } ?>
     
@@ -22,6 +22,9 @@
     <p><?php echo nl2br($job["how_to_apply"]); ?></p>
 
     <p><strong>Public: </strong><?php echo $job["is_public"] ? "Yes" : "No"; ?></p>
-    
-    
 </section>
+   
+    
+
+
+    

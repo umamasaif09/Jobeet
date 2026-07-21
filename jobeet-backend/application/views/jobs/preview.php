@@ -1,5 +1,4 @@
-<div class="form-container">
-    <div class="form-card">
+
         <?php $this->load->view("partials/previewJob"); ?>
 
         <form method="POST" action="<?php echo site_url("jobs/postJob"); ?>" enctype= "multipart/form-data">
@@ -10,6 +9,6 @@
             </div>
             
         </form>
-    </div>
-</div>
+
+
     

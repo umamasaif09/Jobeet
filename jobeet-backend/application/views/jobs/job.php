@@ -3,7 +3,7 @@
 <h2>
     <?php echo $job["company"]; ?>
     <?php if(!empty($job["logo"])): ?>
-        <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="100" style="float: right;">
+        <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="85" style="float: right;">
     <?php endif; ?>
 </h2>
 <h3><?php echo $job["location"]; ?></h3>

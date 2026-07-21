@@ -1,12 +1,16 @@
 
-
-    <div class="category-section">
-        <h2 class="category_title" ><?php echo $result["category"]["name"] ?></h2>
+<div class="category-section">
+    <div class="section-header">
+        <h2 class="category-title" ><?php echo $result["category"]["name"] ?></h2>
+    </div>
+    
+        
+    <div class="jobs-table-card">
         <table class="jobs-table">
             <thead>
                     <tr>
-                        <th>Location</th>
                         <th>Position</th>
+                        <th>Location</th>
                         <th>Company</th>
                     </tr>
             </thead>
@@ -15,14 +19,16 @@
                 <?php foreach($result["jobs"] as $job) {?>
         
                     <tr>
+                        <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>" class="job-title"> <?php echo $job["position"]; ?></a></td>
                         <td> <?php echo $job["location"]; ?></td>
-                        <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>"> <?php echo $job["position"]; ?></a></td>
                         <td> <?php echo $job["company"]; ?></td>
                     </tr>
                 
                 <?php }?>
             </tbody>
         </table>
+</div>
+    
 
          
         

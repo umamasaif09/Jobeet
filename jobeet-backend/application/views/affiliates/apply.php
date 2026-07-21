@@ -1,5 +1,4 @@
-<div class="form-container">
-    <div class="form-card">
+
         <form method="POST" action="<?php echo site_url("affiliates/submitApplication"); ?>" class="job-form">
             <?php $this->load->view("partials/affiliates_form_fields"); ?>
             <div class="form-actions">
@@ -7,7 +6,6 @@
             </div>
            
         </form>
-    </div>
-</div>
+
     
 
