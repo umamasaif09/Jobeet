@@ -33,3 +33,16 @@ export async function getJobsByCategory(categoryId: number, page:number=1): Prom
     
     return transformCategoryJobsResponse(response.data);
 }
+
+export async function getJobsByKeyword(keyword: string) {
+    const response = await api.get<JobApi[]>(
+        "/jobs/search",
+        {
+            params: {
+                keyword,
+            },
+        }
+    );
+
+    return response.data.map(job => transformJob(job));
+}

@@ -1,4 +1,4 @@
-import Container from "@/components/layout/Container";
+import Container from "@/components/public/Container";
 import CategorySection from "@/components/categories/CategorySection";
 import { getLatestJobs } from "@/services/jobs";
 

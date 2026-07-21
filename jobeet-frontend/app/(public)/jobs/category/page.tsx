@@ -1,5 +1,5 @@
 import { getJobsByCategory } from "@/services/jobs";
-import Container from "@/components/layout/Container";
+import Container from "@/components/public/Container";
 import JobTable from "@/components/jobs/JobTable";
 interface JobsPageProps {
     searchParams: Promise<{
@@ -15,7 +15,6 @@ export default async function CategoryPage({searchParams}: JobsPageProps) {
     const page= Number(params.page ?? "1");
 
     const data = await getJobsByCategory(categoryId, page);
-    console.log(data.jobs.map(job => job.id));
     return(
        <Container>
              <h1>{data.category.name}</h1>

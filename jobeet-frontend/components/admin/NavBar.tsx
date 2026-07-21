@@ -2,21 +2,25 @@ import Link from "next/link";
 import Logo from "./Logo";
 
 const navigation = [
-    {
-        label: "Home",
-        href: "./",
-    },
-    {
-        label: "Jobs",
-        href: "/jobs",
+     {
+        label: "Dashboard",
+        href: "/admin",
     },
     {
         label: "Categories",
-        href: "categories",
+        href: "/admin/categories",
     },
     {
-        label: "Login",
-        href: "/login",
+        label: "Jobs",
+        href: "/admin/jobs",
+    },
+    {
+        label: "Affiliates",
+        href: "/admin/affiliates",
+    },
+    {
+        label: "Admins",
+        href: "/admin/admins",
     },
 ];
 

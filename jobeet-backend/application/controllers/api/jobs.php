@@ -77,7 +77,7 @@ class jobs extends MY_Controller
     public function create()
     {
 
-        //TODO: logo upload separate Api
+       
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
 

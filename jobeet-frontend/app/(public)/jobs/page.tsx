@@ -1,6 +1,6 @@
 import { getJobs } from "@/services/jobs";
 import { getJobsByCategory } from "@/services/jobs";
-import Container from "@/components/layout/Container";
+import Container from "@/components/public/Container";
 import JobTable from "@/components/jobs/JobTable";
 
 
