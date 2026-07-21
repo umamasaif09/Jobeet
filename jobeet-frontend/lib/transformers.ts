@@ -1,5 +1,7 @@
 import { Job, JobApi } from "@/types/job";
 import { CategoryWithJobs, CategoryWithJobsApi } from "@/types/category-with-jobs";
+import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
+import { CategoryApi, Category } from "@/types/category";
 
 export function transformJob(job: JobApi): Job {
     return {
@@ -11,11 +13,24 @@ export function transformJob(job: JobApi): Job {
     };
 }
 
-export function transformCategoryWithJobs(category: CategoryWithJobsApi): CategoryWithJobs {
+export function transformCategoryWithJobs(api: CategoryWithJobsApi): CategoryWithJobs {
     return {
-        ...category,
-        id: Number(category.id),
-        name: category.name,
-        jobs: category.jobs.map(transformJob),
+        id: Number(api.id),
+        name: api.name,
+        jobs: api.jobs.map(transformJob),
+    };
+}
+
+export function transformCategory(api: CategoryApi): Category {
+    return {
+        id: Number(api.id),
+        name: api.name
+    };
+}
+
+export function transformCategoryJobsResponse(data: CategoryJobsResponseApi): CategoryJobsResponse {
+    return {
+        category: transformCategory(data.category),
+        jobs: data.jobs.map(transformJob)
     };
 }

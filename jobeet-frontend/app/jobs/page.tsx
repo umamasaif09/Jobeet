@@ -1,11 +1,15 @@
-import { getJobs } from "@/lib/api";
+import { getJobs } from "@/services/jobs";
+import { getJobsByCategory } from "@/services/jobs";
+import Container from "@/components/layout/Container";
+import JobTable from "@/components/jobs/JobTable";
 
-export default async function JobsPage() {
+
+export async function JobsPage() {
     const jobs= await getJobs();
 
     return(
         <div>
-            {jobs.map((job:any) => (
+            {jobs.map((job) => (
                 <div key={job.id}>
                     {job.position}
                 </div>
@@ -13,3 +17,4 @@ export default async function JobsPage() {
         </div>
     );
 }
+
