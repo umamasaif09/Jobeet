@@ -1,10 +1,10 @@
-const API_URL = "http://jobeet.test/api";
+import axios from "axios";
 
-export async function getJobs() {
-    const response = await fetch(`${API_URL}/jobs`);
+const api = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
+    headers: {
+        "Content-Type" : "application/json",
+    },
+});
 
-    if(!response.ok) {
-        throw new Error("Failed to fetch jobs");
-    }
-    return response.json();
-}
+export default api;
