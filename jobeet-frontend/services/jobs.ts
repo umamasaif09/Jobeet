@@ -5,8 +5,8 @@ import { transformCategoryJobsResponse, transformJob } from "@/lib/transformers"
 import { transformCategoryWithJobs } from "@/lib/transformers";
 import { Category } from "@/types/category";
 import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
-
-
+import { JobFormData } from "@/types/job-form-data";
+import { CreateJobRequest } from "@/types/create-job-request";
 export async function getJobs(): Promise<Job[]> {
     const response = await api.get<JobApi[]>("/jobs");
 
@@ -45,4 +45,10 @@ export async function getJobsByKeyword(keyword: string) {
     );
 
     return response.data.map(job => transformJob(job));
+}
+
+export async function createJob(job: CreateJobRequest) {
+    const response = await api.post("/jobs/create", job);
+
+    return response.data;
 }

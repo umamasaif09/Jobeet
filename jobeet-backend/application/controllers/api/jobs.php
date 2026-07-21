@@ -234,4 +234,5 @@ class jobs extends MY_Controller
         header("Content-Type: application/json");
         echo json_encode($count, JSON_PRETTY_PRINT);
     }
+    
 }

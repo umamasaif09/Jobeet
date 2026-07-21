@@ -6,6 +6,7 @@ export async function getCategories(): Promise<Category[]> {
     return response.data.map((category) => ({
         ...category,
         id: Number(category.id),
+        name: category.name,
     }));
 }
 
