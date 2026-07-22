@@ -71,7 +71,7 @@ header a, footer a{
 /* ===== SECTIONS ===== */
 section {
     background: white;
-    padding: 24px;
+    padding: 9px 24px;
     margin-bottom: 24px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -125,7 +125,15 @@ textarea{
 }
 
 .form-group {
+    margin-bottom: 12px;
+}
+
+.form-group.file-group{
     margin-bottom: 24px;
+}
+
+.form-group.file-group label{
+    margin-bottom: 12px;
 }
 
 .form-group label{
@@ -340,7 +348,8 @@ footer {
     max-width: 1280px;
     margin: 0 auto;
     margin-top: 10px;
-    bottom: 0;
+    top: 12px;
+    position: relative;
 }
 footer a{
     display: inline;
@@ -430,6 +439,8 @@ footer a:hover{
     height: 100%;
     display: flex;
     align-items: center;
+    top: 12px;
+    position: relative;
 }
 
 
@@ -898,7 +909,7 @@ input[type="checkbox"] {
 .edit-preview {
     background: #ffffff;
     border-radius: 12px;
-    padding: 24px;
+    padding: 0 24px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 24px;

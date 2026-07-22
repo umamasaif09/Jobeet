@@ -206,7 +206,7 @@ footer a {
    ======================================== */
 section {
     background: white;
-    padding: 24px;
+    padding: 9px 24px;
     margin-bottom: 24px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -336,7 +336,15 @@ textarea {
 }
 
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
+}
+
+.form-group.file-group{
+    margin-bottom: 12px 0;
+}
+
+.form-group.file-group label{
+    margin-bottom: 0px;
 }
 
 .form-group:last-of-type{
@@ -454,7 +462,7 @@ textarea {
 
 .file-group input[type="file"] {
     width: auto;
-    padding: 8px;
+
     cursor: pointer;
 }
 
@@ -671,7 +679,7 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
 }
 
 .auth-form .form-group label{
