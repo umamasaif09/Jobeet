@@ -66,8 +66,10 @@ export default function JobCreate({categories}: Props) {
             alert("Please enter a position.");
             return;
         }
-
         try{
+            console.log(job);
+            console.log(job.logo);
+            console.log(job.logo instanceof File);
             let logoFileName="";
             if(job.logo) {
                 const upload = await uploadLogo(job.logo);
@@ -85,8 +87,9 @@ export default function JobCreate({categories}: Props) {
             await createJob(request);
 
             alert("Job created successfully!");
-        } catch(error) {
-            console.error(error);
+        } catch(error:any) {
+            
+            console.error(error.response?.data);
             alert("Unable to create job.");
         }
     }

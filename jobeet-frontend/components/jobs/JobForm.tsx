@@ -94,8 +94,11 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
 
                     <Input
                         type="file"
-                        accept="image"
-                        onChange={(e) => updateField("logo", e.target.files?.[0] ?? null)}
+                        accept="image/*"
+                        onChange={(e) => {
+                            const file = e.target.files?.[0] ?? null;
+                            console.log("Selected", file);
+                            updateField("logo", file)}}
                     />
     
                 </div>
