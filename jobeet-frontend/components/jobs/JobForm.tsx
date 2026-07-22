@@ -91,7 +91,23 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
 
                 <div className="space-y-2">
                     <Label>Company Logo</Label>
-
+                      {job.logo && (
+                        <div className="mb-3">
+                          {job.logo instanceof File ? (
+                             <img
+                              src={URL.createObjectURL(job.logo)}
+                              alt="Company logo"
+                              className="h-24 rounded border"
+                          />
+                          ) : (
+                             <img
+                                src={`${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
+                                alt="Company logo"
+                                className="h-24 rounded border"
+                            />
+                          )}
+                        </div>
+                      )}
                     <Input
                         type="file"
                         accept="image/*"

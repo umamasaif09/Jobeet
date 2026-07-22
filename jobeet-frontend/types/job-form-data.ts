@@ -3,7 +3,7 @@ export type JobFormData = {
     type: string;
     company: string;
     url: string;
-    logo: File | null;
+    logo: File | string | null;
     position: string;
     location: string;
     email: string;

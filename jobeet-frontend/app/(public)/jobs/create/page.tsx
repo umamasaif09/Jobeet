@@ -1,12 +1,26 @@
 import { getCategories } from "@/services/categories";
-import JobCreate from "@/components/jobs/JobCreate";
+import JobEditor from "@/components/jobs/JobEditor";
 
 export default async function CreateJobPage() {
     const categories = await getCategories();
 
     return (
-        <JobCreate
+        <JobEditor
+            mode="create"
             categories={categories}
+            initialJob={{
+              category_id: "",
+              type: "Full-time",
+              company: "",
+              url: "",
+              logo: null,
+              position: "",
+              location: "",
+              email: "",
+              description: "",
+              how_to_apply: "",
+              is_public: true,
+            }}
         />
     );
 }

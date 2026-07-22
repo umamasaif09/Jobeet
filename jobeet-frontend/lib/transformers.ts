@@ -2,6 +2,7 @@ import { Job, JobApi } from "@/types/job";
 import { CategoryWithJobs, CategoryWithJobsApi } from "@/types/category-with-jobs";
 import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
 import { CategoryApi, Category } from "@/types/category";
+import { JobFormData } from "@/types/job-form-data";
 
 export function transformJob(job: JobApi): Job {
     return {
@@ -33,4 +34,20 @@ export function transformCategoryJobsResponse(data: CategoryJobsResponseApi): Ca
         category: transformCategory(data.category),
         jobs: data.jobs.map(transformJob)
     };
+}
+
+export function transformToJobForm(job: Job):JobFormData {
+  return {
+    category_id: job.category_id.toString(),
+    type: job.type,
+        company: job.company,
+        url: job.url ?? "",
+        logo: job.logo,
+        position: job.position,
+        location: job.location,
+        email: job.email,
+        description: job.description,
+        how_to_apply: job.how_to_apply,
+        is_public: job.is_public, 
+  };
 }

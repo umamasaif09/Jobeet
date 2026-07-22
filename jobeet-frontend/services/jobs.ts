@@ -54,3 +54,8 @@ export async function createJob(job: CreateJobRequest) {
 
     return response.data;
 }
+
+export async function updateJob(id:number, token: string, job: CreateJobRequest){
+  const response = await api.put(`/jobs/update/${id}/${token}`, job);
+  return response.data;
+}

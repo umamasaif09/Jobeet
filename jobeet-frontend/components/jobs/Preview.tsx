@@ -56,11 +56,18 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
                 </div>
 
                 <div>
-                    {job.logo && (
+                  {job.logo && (
+                    job.logo instanceof File ? (
                         <img src={URL.createObjectURL(job.logo)}
-                        alt="logo"
+                        alt="Logo"
                         className="h-24 rounded"/>
-                    )}
+                    ) : (
+                        <img src={`${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
+                        alt="Logo"
+                        className="h-24 rounded"
+                      />
+                    )
+                  )}
                 </div>
                 <p>
 
