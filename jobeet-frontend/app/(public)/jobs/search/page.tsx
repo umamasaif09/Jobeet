@@ -1,5 +1,6 @@
 import JobTable from "@/components/jobs/JobTable";
 import { getJobsByKeyword } from "@/services/jobs";
+import Container from "@/components/public/Container";
 
 type Props = {
     searchParams: Promise <{
@@ -16,7 +17,10 @@ export default async function SearchPage({searchParams}: Props) {
 
     return(
         <>
-        <JobTable jobs = {jobs}/>
+        <Container>
+            <JobTable jobs = {jobs}/>
+        </Container>
+        
         </>
     );
 }

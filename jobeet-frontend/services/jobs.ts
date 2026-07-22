@@ -7,6 +7,8 @@ import { Category } from "@/types/category";
 import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
 import { JobFormData } from "@/types/job-form-data";
 import { CreateJobRequest } from "@/types/create-job-request";
+
+
 export async function getJobs(): Promise<Job[]> {
     const response = await api.get<JobApi[]>("/jobs");
 
