@@ -119,7 +119,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
     
                 </div>
 
-                <div className="sapce-y-2">
+                <div className="space-y-2">
                     <Label>Position</Label>
                     <Input
                         placeholder="position"
@@ -128,7 +128,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="sapce-y-2">
+                <div className="space-y-2">
                     <Label>Website</Label>
                     <Input
                         placeholder="url"
@@ -137,7 +137,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="sapce-y-2">
+                <div className="space-y-2">
                     <Label>Email</Label>
                     <Input
                         placeholder="email"
@@ -146,7 +146,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="sapce-y-2">
+                <div className="space-y-2">
                     <Label>Location</Label>
                     <Input
                         placeholder="location"

@@ -1,13 +1,9 @@
 "use client";
 
-import { JobFormData } from "@/types/job-form-data";
 import { Input } from "../ui/input";
 import { Category } from "@/types/category";
 import { Label } from "../ui/label";
-import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"; 
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Checkbox } from "../ui/checkbox";
 import {Card, CardContent} from "@/components/ui/card";
 import { AffiliateFormData } from "@/types/affiliate_form_data";

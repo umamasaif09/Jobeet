@@ -118,7 +118,7 @@ class auth extends MY_Controller
             return;
         }
 
-        $email = $data["email"];
+        $email = trim($data["email"]);
 
         $admin = $this->mdl_admin->getAdminByEmail($email);
 
@@ -134,11 +134,11 @@ class auth extends MY_Controller
 
         $this->mdl_admin->updateResetToken($admin["id"], $token);
 
-        $resetLink = site_url("admin/resetPassword?token=".$token); // needs to be updated after frontend is configured
+        $resetLink = "http://localhost:3000/auth/reset-password?token=".$token; // needs to be updated after frontend is configured
 
         $emailSent = $this->sendPasswordResetEmail($admin, $resetLink);
 
-        if($emailSent) {
+        if(!$emailSent) {
             http_response_code(500);
             echo json_encode([
                 "message" => "Unable to send email"

@@ -6,8 +6,8 @@ $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'smtp.ethereal.email';
 $config['smtp_port'] = '587';
 $config['smtp_crypto'] = 'tls';
-$config['smtp_user'] = 'gerald.gleason58@ethereal.email';
-$config['smtp_pass'] = '2AWGcDnwHexWeryNM9';
+$config['smtp_user'] = 'ramiro.halvorson51@ethereal.email';
+$config['smtp_pass'] = 'wbjjpY28cak9N4aT6d';
 
 $config['mailtype'] = 'html';
 $config['charset'] = 'utf-8';
