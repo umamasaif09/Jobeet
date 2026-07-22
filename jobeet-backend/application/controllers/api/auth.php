@@ -198,4 +198,18 @@ class auth extends MY_Controller
         ]);
 
     }
+
+    public function me()
+    {
+        $this->requireLogin();
+
+        http_response_code(200);
+        header("Content-Type: application/json");
+
+        echo json_encode([
+            "id" => $this->session->userdata("admin_id"),
+            "name" => $this->session->userdata("admin_name"),
+            "email" => $this->session->userdata("admin_email")
+        ]);
+    }
 }

@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "../ui/Container";
 import Link from "next/link";
 
 export default function Footer() {

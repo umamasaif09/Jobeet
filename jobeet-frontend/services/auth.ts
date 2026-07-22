@@ -20,3 +20,13 @@ export async function resetPassword(data: ResetPasswordData) {
   return response.data;
 
 }
+
+export async function logout() {
+  const response = await api.get("/auth/logout");
+  return response.data;
+}
+
+export async function getCurrentAdmin() {
+    const response = await api.get("/auth/me");
+    return response.data;
+}

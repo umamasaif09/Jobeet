@@ -1,7 +1,7 @@
 
 
-import ForgotPasswordForm from "@/components/auth/forgotPasswordForm";
-import Container from "@/components/public/Container";
+import ForgotPasswordForm from "@/components/auth/ForgotPasswordForm";
+import Container from "@/components/ui/Container";
 
 
 export default async function ForgotPasswordPage() {

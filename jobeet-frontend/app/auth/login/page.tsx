@@ -1,5 +1,5 @@
 import LoginForm from "@/components/auth/LoginForm";
-import Container from "@/components/public/Container";
+import Container from "@/components/ui/Container";
 
 
 export default async function LoginPage() {

@@ -1,5 +1,5 @@
 import { getJobsByCategory } from "@/services/jobs";
-import Container from "@/components/public/Container";
+import Container from "@/components/ui/Container";
 import JobTable from "@/components/jobs/JobTable";
 interface JobsPageProps {
     searchParams: Promise<{

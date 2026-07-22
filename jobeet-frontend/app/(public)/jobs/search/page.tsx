@@ -1,6 +1,6 @@
 import JobTable from "@/components/jobs/JobTable";
 import { getJobsByKeyword } from "@/services/jobs";
-import Container from "@/components/public/Container";
+import Container from "@/components/ui/Container";
 
 type Props = {
     searchParams: Promise <{

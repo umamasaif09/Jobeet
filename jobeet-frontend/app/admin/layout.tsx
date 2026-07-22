@@ -1,6 +1,6 @@
 // app/admin/layout.tsx
 
-// import AdminHeader from "@/components/admin/Header";
+import Header from "@/components/admin/Header";
 
 export default function AdminLayout({
     children,
@@ -9,8 +9,11 @@ export default function AdminLayout({
 }) {
     return (
         <>
-            {/* <AdminHeader /> */}
-            <main>{children}</main>
+
+          <Header />  
+          <main className="flex-1">
+            {children}
+            </main>
         </>
     );
 }

@@ -1,6 +1,6 @@
 import { getJob } from "@/services/jobs";
 import { Separator } from "@/components/ui/separator";
-import Container from "@/components/public/Container";
+import Container from "@/components/ui/Container";
 interface JobPageProps {
     params: Promise <{
         id:string;
