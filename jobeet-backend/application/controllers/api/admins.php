@@ -188,4 +188,28 @@ class admins extends MY_Controller
         header("Content-Type: application/json");
         echo json_encode($count, JSON_PRETTY_PRINT);
     }
+
+    public function dashboard() {
+      $this->requireLogin();
+
+      $this->load->model("mdl_category");
+      $categories = $this->mdl_category->getCategoriesCount();
+
+      $this->load->model("mdl_job");
+      $jobs = $this->mdl_job->getJobsCount();
+
+      $this->load->model("mdl_affiliate");
+      $affiliates = $this->mdl_affiliate->getAffiliatesCount();
+
+      $admins = $this->mdl_admin->getAdminsCount();
+
+      http_response_code(200);
+      header("Content-Type: application/json");
+      echo json_encode([
+          "categories" => $categories,
+          "jobs" => $jobs,
+          "affiliates" => $affiliates,
+          "admins" => $admins
+      ]);
+    }
 }

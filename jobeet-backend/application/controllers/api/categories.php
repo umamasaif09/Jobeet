@@ -78,9 +78,9 @@ class categories extends MY_Controller
             "name" => $data["category_name"]
         ];
 
-        $category = $this->mdl_category->editCategory($categoryData);
+        $updated = $this->mdl_category->editCategory($categoryId, $categoryData);
 
-        if(!$category) {
+        if(!$updated) {
             http_response_code(500);
             echo json_encode([
                 "message"=> "Unable to update category"

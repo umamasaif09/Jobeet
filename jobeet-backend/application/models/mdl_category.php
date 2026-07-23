@@ -23,8 +23,8 @@ class mdl_category extends CI_Model
         return $categoryQuery->row_array();
     }
 
-    public function editCategory($data) {
-        $this->db->where("id", $data["id"]);
+    public function editCategory($id, $data) {
+        $this->db->where("id", $id);
         //only update name, id remains same
         return $this->db->update("categories", [
             "name" => $data["name"]

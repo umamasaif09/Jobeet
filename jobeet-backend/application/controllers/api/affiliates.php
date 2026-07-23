@@ -12,7 +12,7 @@ class affiliates extends MY_Controller
 
     public function index()
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin(); 
         
         $affiliates = $this->mdl_affiliate->getAffiliates();
 
@@ -80,7 +80,7 @@ class affiliates extends MY_Controller
 
     public function create()
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin(); 
         
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
@@ -138,7 +138,7 @@ class affiliates extends MY_Controller
 
     public function update($affiliateId)
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin(); 
         
         $json= file_get_contents("php://input");
         $data = json_decode($json, true);
@@ -182,7 +182,7 @@ class affiliates extends MY_Controller
 
     public function disable($affiliateId)
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin(); 
         
         $disabled = $this->mdl_affiliate->disable($affiliateId);
 
@@ -226,7 +226,7 @@ class affiliates extends MY_Controller
 
     public function activate($affiliateId)
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin(); 
         
         $token = bin2hex(random_bytes(16));
 
@@ -257,7 +257,7 @@ class affiliates extends MY_Controller
 
     public function delete($affiliateId)
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin(); 
         
         $deleted = $this->mdl_affiliate->deleteAffiliate($affiliateId);
 
@@ -280,7 +280,7 @@ class affiliates extends MY_Controller
 
     public function count()
     {
-        // $this->requireLogin(); // Temporarily disabled until auth is implemented
+        $this->requireLogin();
         
         $count = $this->mdl_affiliate->getAffiliatesCount();
 

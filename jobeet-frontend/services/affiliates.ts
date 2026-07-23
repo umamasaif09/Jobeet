@@ -1,5 +1,5 @@
 import api from "@/lib/api";
-import { AffiliateFormData } from "@/types/affiliate_form_data";
+import { AffiliateFormData } from "@/types/affiliate-form-data";
 
 export async function getAffiliates(){
     const response = await api.get("/affiliates");

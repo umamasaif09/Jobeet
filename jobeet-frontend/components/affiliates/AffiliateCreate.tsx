@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Category } from "@/types/category";
 import { Affiliate } from "@/types/affiliate";
-import { AffiliateFormData } from "@/types/affiliate_form_data";
+import { AffiliateFormData } from "@/types/affiliate-form-data";
 import { applyAffiliate } from "@/services/affiliates";
 import AffiliateForm from "./AffiliateForm";
 
