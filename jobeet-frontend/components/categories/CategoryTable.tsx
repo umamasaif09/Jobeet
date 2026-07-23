@@ -28,7 +28,7 @@ export default function CategoryTable({categories}: Props) {
       <p className="text-muted-foreground">
         No Categories Available.
       </p>
-    )
+    );
   }
   return(
     <>

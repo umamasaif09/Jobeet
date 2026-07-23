@@ -59,3 +59,13 @@ export async function updateJob(id:number, token: string, job: CreateJobRequest)
   const response = await api.put(`/jobs/update/${id}/${token}`, job);
   return response.data;
 }
+
+export async function adminUpdateJob(id:number, token: string, job: CreateJobRequest){
+  const response = await api.put(`/jobs/adminApdate/${id}`, job);
+  return response.data;
+}
+
+export async function deleteJob(id: number) {
+  const response= await api.delete(`/jobs/delete/${id}`);
+  return response.data;
+}

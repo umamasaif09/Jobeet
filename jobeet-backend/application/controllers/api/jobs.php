@@ -182,6 +182,56 @@ class jobs extends MY_Controller
         ]);
     }
 
+    public function adminUpdate($jobId)
+    {
+
+        $json= file_get_contents("php://input");
+        $data = json_decode($json, true);
+
+        if(empty($data)){
+            http_response_code(400);
+            echo json_encode([
+                "message" => "Invalid request"
+            ]);
+            return;
+        }
+
+        $jobData = [
+            "category_id" => $data["category_id"],
+            "type" => $data["type"],
+            "company" => $data["company"],
+            "url" => $data["url"],
+            "logo" => $data["logo"],
+            "position" => $data["position"],
+            "location"=> $data["location"],
+            "email" => $data["email"],
+            "description" => $data["description"],
+            "how_to_apply" => $data["how_to_apply"],
+            "is_public" => $data["is_public"],
+            "is_active" => 1
+        ];
+
+        $job = $this->mdl_job->updatejob($jobData, $jobId, $token);
+
+        if(!$job) {
+            http_response_code(500);
+            echo json_encode([
+                "message"=> "Unable to update job"
+            ]);
+
+            return;
+        }
+
+        $job = $this->mdl_job->getJobById($jobId);
+
+        http_response_code(200);
+        header("Content-Type: application/json");
+        echo json_encode([
+            "message" => "Job updated successfully",
+            "job" => $job
+        ]);
+    }
+
     public function validity($id) 
     {
        
