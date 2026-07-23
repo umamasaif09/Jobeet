@@ -202,7 +202,6 @@ class auth extends MY_Controller
     public function me()
     {
         $this->requireLogin();
-
         http_response_code(200);
         header("Content-Type: application/json");
 

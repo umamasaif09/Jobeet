@@ -22,8 +22,8 @@ export async function resetPassword(data: ResetPasswordData) {
 }
 
 export async function logout() {
-  const response = await api.get("/auth/logout");
-  return response.data;
+  return await api.post("/auth/logout");
+  
 }
 
 export async function getCurrentAdmin() {
