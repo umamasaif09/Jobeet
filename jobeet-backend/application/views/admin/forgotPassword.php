@@ -13,7 +13,8 @@
     </div>
     <?php endif; ?>
 
-    <div class="form-container">
+<div class="auth-page">
+  <div class="form-container">
     <div class="form-card">
         <form action="<?php echo site_url("admin/forgotPassword");?>" method="POST" class="auth-form">
             <h2><?php echo $title; ?></h2>   
@@ -36,3 +37,6 @@
         </form>   
     </div>
 </div>
+
+</div>
+    

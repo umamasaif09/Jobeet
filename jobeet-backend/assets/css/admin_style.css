@@ -27,7 +27,8 @@ a:hover {
 img {
     border-radius: 10px;
     border: 2px solid #ddd;
-    width: 80px;
+    max-width: 100%;
+    height: auto;
 }
 
 /* ========================================
@@ -36,38 +37,16 @@ img {
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 32px;
-}
-
-.table-container {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 32px;
+    padding: 0 32px;
 }
 
 /* ========================================
    HEADER & NAVIGATION
    ======================================== */
-header {
-    margin-bottom: 32px;
-    border-bottom: 4px solid #ddd;
-    padding-bottom: 16px;
-}
 
-header h1 {
-    margin: 0;
-    color: #2c3e50;
-    font-size: 32px;
-}
-
-header a,
-footer a {
-    margin-right: 16px;
-}
 
 .admin-header {
     margin-bottom: 24px;
-    padding: 0;
     border-bottom: 1px solid #e1e4e8;
 }
 
@@ -84,31 +63,20 @@ footer a {
 }
 
 .admin-nav {
-    max-width: 1280px;
-    margin: 0 auto;
     padding: 0 24px;
     background: transparent;
-    border: none;
-    box-shadow: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     min-height: 56px;
-    position: relative;
 }
 
 .nav-left {
     display: flex;
     align-items: center;
     gap: 4px;
-    flex-wrap: wrap;
-    padding-bottom: 2px;
 }
 
-.nav-right {
-    display: flex;
-    align-items: center;
-}
 .logout-btn {
     flex-shrink: 0;
     height: 36px;
@@ -118,9 +86,6 @@ footer a {
     color: #24292e;
     border: 1px solid #d0d7de;
     border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
     transition: all 0.5s ease;
     text-decoration: none;
 }
@@ -133,21 +98,15 @@ footer a {
 }
 
 .nav-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
     padding: 8px 16px;
     color: #24292e;
     font-size: 14px;
     font-weight: 500;
-    text-decoration: none;
-    background: transparent;
     border-radius: 6px;
     border: 1px solid transparent;
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.15s ease;
     position: relative;
     white-space: nowrap;
-    margin: 0;
 }
 
 .nav-item:hover {
@@ -164,8 +123,6 @@ footer a {
 .nav-item.active {
     color: #24292e;
     font-weight: 600;
-    background: transparent;
-    border-color: transparent;
 }
 
 .nav-item.active:hover {
@@ -207,7 +164,7 @@ footer a {
 section {
     background: white;
     padding: 9px 24px;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
@@ -218,30 +175,6 @@ section h2 {
     font-size: 24px;
 }
 
-.admin-section {
-    background: #fff;
-    border-radius: 10px;
-    padding: 24px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    margin-bottom: 32px;
-    text-align: left;
-    overflow: visible !important;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 24px 0 16px 0;
-    padding: 0 4px;
-}
-
-.section-header h2 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: #1a202c;
-}
 
 /* ========================================
    PAGE HEADER
@@ -249,19 +182,14 @@ section h2 {
 .page-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 0 4px;
     margin-bottom: 24px;
-    gap: 16px;
-    flex-wrap: wrap;
 }
 
 .page-header-left {
     display: flex;
     align-items: center;
     gap: 12px;
-    flex: 1;
-    min-width: 0;
 }
 
 .page-header-left .back-button {
@@ -275,7 +203,6 @@ section h2 {
     border-radius: 6px;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
     transition: all 0.5s ease;
 }
 
@@ -292,94 +219,46 @@ section h2 {
     font-weight: 600;
     color: #24292e;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /* ========================================
    FORMS
    ======================================== */
 
-/* .form-container{
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 20px;
-    background: transparent;
-}
-
-.form-card{
-    background: transparent;
-    padding: 0;
-} */
-
-
-input:not([type="file"]),
-textarea,
-select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    margin-bottom: 12px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-
-input:not([type="file"]):hover,
-select:hover,
-textarea:hover {
-    border-color: #e5e7eb;
-}
-
 textarea {
     min-height: 124px;
 }
 
-.form-group {
+.form-group,
+.form-group.file-group {
     margin-bottom: 12px;
 }
 
-.form-group.file-group{
-    margin-bottom: 12px 0;
-}
-
-.form-group.file-group label{
+.form-group.file-group label,
+.form-group:last-of-type,
+.checkbox-group:last-child{
     margin-bottom: 0px;
 }
 
-.form-group:last-of-type{
-    margin-bottom: 0;
-}
 
 .form-group label {
-    display: inline;
-    margin-bottom: 6px;
+    /* margin-bottom: 6px; */
     font-weight: 600;
     color: #24292e;
     font-size: 14px;
-}
-
-.form-group label .required{
-    color: #cf222e;
-    margin-left: 2px;
-}
-
-.form-group label .optional{
-    font-weight: 400;
-    color: #57606a;
-    font-size: 12px;
 }
 
 
 .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .form-group select,
 .form-group textarea {
+    margin-top: 4px;
+    /* margin-bottom: 12px; */
     width: 100%;
     padding: 8px 14px;
     border: 2px solid #e1e4e8;
     border-radius: 8px;
     font-size: 15px;
-    box-sizing: border-box;
     color: #24292e;
     background: #ffffff;
     transition: all 0.15s ease;
@@ -406,38 +285,15 @@ textarea {
     color: #a0a8b4;
 }
 
-.form-text{
-   display: block;
-    margin-top: 6px;
-    font-size: 13px;
-    color: #57606a; 
-}
-
-.form-row {
-    margin-bottom: 24px;
-}
-
-.form-action {
-    margin-bottom: 24px;
-}
-
-.file-group {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-}
-
 .file-group .current-logo {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     align-items: flex-start;
 }
 
 .file-group .current-logo img {
     display: block;
-    max-width: 150px;
+    /* max-width: 150px; */
     height: auto;
 }
 
@@ -467,21 +323,18 @@ textarea {
 }
 
 
-.file-group label {
-    margin-bottom: 0;
-}
-
 .radio-row{
     display: flex;
     flex-direction: column;
-    gap:8px;
+    /* gap:8px; */
 }
 
+.checkbox-group,
 .radio-options {
     display: flex;
-    gap: 30px;
+    gap: 10px;
     align-items: center;
-    padding: 8px 0;
+    padding: 4px 0;
 }
 
 .radio-group{
@@ -497,31 +350,13 @@ textarea {
     height: 16px;
     margin: 0;
     flex-shrink: 0;
-    accent-color: #2d89ef;
     cursor: pointer;
-}
-
-.radio-group label {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-    color: #24292e;
-    cursor: pointer;
-    line-height: 1.4;
 }
 
 .radio-options .radio-group {
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.checkbox-group,
-.radio-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
 }
 
 .checkbox-group input[type="checkbox"],
@@ -534,25 +369,14 @@ textarea {
     accent-color: #2d89ef;
 }
 
-.checkbox-group:last-child{
-    margin-bottom: 0;
-}
-
-/* .checkbox-group input,
-.radio-group input {
-    width: auto;
-    margin: 0;
-    cursor: pointer;
-} */
-
 .checkbox-group label,
 .radio-group label {
    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-    color: #24292e;
-    cursor: pointer;
-    line-height: 1.4;
+  font-size: 14px;
+  font-weight: 400;
+  color: #24292e;
+  cursor: pointer;
+  line-height: 1.4;
 }
 
 .checkbox-group label:hover{
@@ -562,7 +386,7 @@ textarea {
 .form-group fieldset {
     border: 2px solid #e1e4e8;
     border-radius: 8px;
-    padding: 16px;
+    padding: 0 16px;
     margin: 0;
     background: #f6f8fa;
 }
@@ -572,50 +396,6 @@ textarea {
     color: #24292e;
     padding: 0 8px;
     font-size: 14px;
-}
-
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 4px;
-    max-height: 240px;
-    overflow-y: auto;
-    padding: 4px 0;
-}
-
-.categories-grid .checkbox-group {
-    margin-bottom: 4px;
-    padding: 2px 4px;
-    border-radius: 4px;
-}
-
-.categories-grid .checkbox-group:hover {
-    background: #f0f2f5;
-}
-
-/* Form Validation */
-.form-group.error input,
-.form-group.error select,
-.form-group.error textarea {
-    border-color: #cf222e;
-}
-
-.form-group.error input:focus,
-.form-group.error select:focus,
-.form-group.error textarea:focus {
-    box-shadow: 0 0 0 3px rgba(207, 34, 46, 0.12);
-}
-
-.form-group.success input,
-.form-group.success select,
-.form-group.success textarea {
-    border-color: #1a7f37;
-}
-
-.form-group.success input:focus,
-.form-group.success select:focus,
-.form-group.success textarea:focus {
-    box-shadow: 0 0 0 3px rgba(26, 127, 55, 0.12);
 }
 
 .form-group .error-message {
@@ -630,13 +410,11 @@ textarea {
 }
 
 /* Admin & Job Forms */
-.admin-form{
-    min-width: 224px;
-    margin: 0;
-    padding:  0;
-    /* background: #fff; */
-    /* border: 2px solid #ddd; */
-    /* border-radius: 10px; */
+
+.admin-form,
+.job-form{
+  margin-bottom: 24px;
+  padding: 0 40px;
 }
 
 .extend-form {
@@ -655,6 +433,13 @@ textarea {
 }
 
 /* Auth Form */
+.auth-page{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .auth-form {
     max-width: 420px;
     margin: 60px auto;
@@ -665,13 +450,14 @@ textarea {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    /* gap: 12px; */
 }
 
 .auth-form h2 {
     margin: 0;
+    padding: 2px;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #1f2937;
 }
 
@@ -734,10 +520,7 @@ textarea {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
-    max-width: 1400px;
-    margin: 0 auto;
     padding: 0 24px;
-    align-items: start;
 }
 
 .edit-preview {
@@ -745,15 +528,11 @@ textarea {
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    position: sticky;
-    top: 24px;
+  
     max-height: calc(100vh - 48px);
     overflow-y: auto;
 }
 
-.edit-form {
-    min-width: 0;
-}
 
 .edit-preview .extend-wrapper {
     margin-bottom: 20px;
@@ -778,9 +557,7 @@ textarea {
 
 /* Override form container for edit layout */
 .edit-form .form-container {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 24px;
 }
 
 .edit-form .form-card {
@@ -817,134 +594,19 @@ textarea {
     background: transparent;
     font-family: inherit;
     line-height: 1;
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-.btn-lg {
-    padding: 12px 28px;
-    font-size: 16px;
     
-}
-
-.btn-secondary {
-    background: #f6f8fa;
-    color: #24292e;
-    border: 1px solid #e1e4e8;
-}
-
-.btn-secondary:hover {
-    background: #e8eaed;
-    border-color: #d0d7de;
-    transform: none;
-}
-
-.btn-block {
-    width: 100%;
-    justify-content: center;
-}
-
-.btn:hover {
-    text-decoration: none;
-    transform: translateY(-1px);
 }
 
 .btn-primary {
     background: #2d89ef;
     color: white;
+    
 }
 
 .btn-primary:hover {
     background: #1d6fd3;
     transform: translateY(-1px);
-}
-
-.btn-danger {
-    background: #d9534f;
-    color: white;
-}
-
-.btn-danger:hover {
-    background: #c9302c;
-    transform: translateY(-1px);
-}
-
-.btn-warning {
-    background: #f0ad4e;
-    color: white;
-}
-
-.btn-warning:hover {
-    background: #ec971f;
-    transform: translateY(-1px);
-}
-
-.btn-success {
-    background: #5cb85c;
-    color: white;
-}
-
-.btn-success:hover {
-    background: #449d44;
-    transform: translateY(-1px);
-}
-
-.page-header .btn-primary {
-    flex-shrink: 0;
-    height: 36px;
-    padding: 0 20px;
-    font-weight: 500;
-    background: #2d89ef;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.15s ease;
     text-decoration: none;
-    cursor: pointer;
-}
-
-.page-header .btn-primary:hover {
-    background: #1d6fd3;
-    transform: none;
-    text-decoration: none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-.page-header .btn-primary:active {
-    background: #1a5cb3;
-    transform: scale(0.98);
-}
-
-/* Back button - subtle and less prominent */
-.btn-back {
-    background: transparent;
-    color: #57606a;
-    border: 1px solid transparent;
-    padding: 8px 16px;
-    font-weight: 500;
-    font-size: 14px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.15s ease;
-    border-radius: 6px;
-}
-
-.btn-back:hover {
-    background: #f0f2f4;
-    border-color: #d0d7de;
-    color: #24292e;
-    transform: none;
-    text-decoration: none;
-}
-
-.btn-back:active {
-    background: #e1e4e8;
-    transform: scale(0.97);
 }
 
 /* ========================================
@@ -990,10 +652,6 @@ textarea {
     font-size: 13px;
 }
 
-.admin-table .menu-column{
-    width: 50px;
-    text-align: right !important;
-}
 
 .admin-table .job-title{
     font-size: 13px;
@@ -1028,15 +686,14 @@ textarea {
 }
 
 .admin-table tbody tr:last-child .row-menu{
-    overflow: visible !important;
+    overflow: visible ;
 }
 
 .admin-table .row-menu{
     position: relative;
     width: 50px;
-    text-align: left !important;
-     /* padding-left: 16px !important; */
-    overflow: visible !important;
+    text-align: left ;
+    overflow: visible ;
 }
 
 .admin-table .menu-toggle {
@@ -1062,107 +719,6 @@ textarea {
     background: #e8eaed;
 }
 
-.admin-table .menu-dropdown {
-    display: none;
-    position: absolute;
-    right: 8px;
-    top: 100%;
-    margin-top: 4px;
-    background: white;
-    border: 1px solid #e1e4e8;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    min-width: 140px;
-    padding: 6px;
-    z-index: 100;
-    animation: dropdownFadeIn 0.15s ease;
-}
-
-.admin-table .menu-dropdown.show {
-    display: block;
-}
-
-.admin-table .menu-dropdown .menu-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    border: none;
-    justify-content: flex-start;
-}
-
-.admin-table .menu-dropdown .btn-warning {
-    background: transparent;
-    color: #24292e;
-}
-
-.admin-table .menu-dropdown .btn-warning:hover {
-    background: #f0f2f5;
-    color: #1a202c;
-    transform: none;
-}
-
-.admin-table .menu-dropdown .btn-danger {
-    background: transparent;
-    color: #cf222e;
-}
-
-.admin-table .menu-dropdown .btn-danger:hover {
-    background: #ffebe9;
-    color: #cf222e;
-    transform: none;
-}
-
-.admin-table .menu-dropdown .btn-success {
-    background: transparent;
-    color: #1a7f37;
-}
-
-.admin-table .menu-dropdown .btn-success:hover {
-    background: #dafbe1;
-    color: #1a7f37;
-    transform: none;
-}
-
-.admin-table .menu-dropdown .btn::before {
-    font-size: 14px;
-    opacity: 0.7;
-}
-
-/* .admin-table .menu-dropdown .btn-warning::before {
-    content: "✎";
-}
-
-.admin-table .menu-dropdown .btn-danger::before {
-    content: "×";
-}
-
-.admin-table .menu-dropdown .btn-success::before {
-    content: "✓";
-} */
-
-.actions-column {
-    width: 224px;
-}
-
-/* Admin table specific override */
-.admin-table.jobs-table.admin-table tbody td {
-    padding-bottom: 25px !important;
-}
-
-
-.actions {
-    display: flex;
-    gap: 8px;
-    white-space: nowrap;
-    justify-content: center;
-}
 
 /* Category Table */
 .category-table-card {
@@ -1172,19 +728,12 @@ textarea {
     border-radius: 12px;
     padding: 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    overflow: visible !important;
     transition: box-shadow 0.2s ease;
+    margin-bottom: 24px;
 }
 
 .category-table-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.category-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    border: none;
 }
 
 .category-table thead th {
@@ -1209,7 +758,7 @@ textarea {
 }
 
 .category-table tbody td.row-menu{
-    overflow: visible !important;
+    overflow: visible ;
 }
 
 .category-table tbody tr {
@@ -1224,7 +773,7 @@ textarea {
 }
 
 .category-table tbody tr:last-child .row-menu{
-    overflow: visible !important;
+    overflow: visible ;
 }
 
 .category-table tbody tr:hover {
@@ -1241,13 +790,14 @@ textarea {
 .row-menu {
     position: relative;
     width: 50px;
-    text-align: left !important;
-    padding-left: 16px !important;
-    overflow: visible !important;
+    text-align: left ;
+    padding-left: 16px ;
+    overflow: visible ;
 }
 
 .category-table .menu-dropdown .btn{
     justify-content: flex-start;
+    text-decoration: none;
 }
 
 .menu-toggle {
@@ -1346,57 +896,19 @@ textarea {
     opacity: 0.7;
 }
 
-/* .menu-dropdown .btn-warning::before {
-    content: "✎";
-}
-
-.menu-dropdown .btn-danger::before {
-    content: "×";
-} */
-
-/* Table Wrapper */
-.table-wrapper {
-    overflow-x: auto;
-    overflow-y: visible !important;
-    padding-bottom: 10px;
-    position: relative;
-}
-
-/* Wide Table */
-.wide-table {
-    width: calc(100vw - 60px);
-    max-width: 1600px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-}
-
 /* ========================================
    JOBS TABLE - CONSISTENT WITH CATEGORIES
    ======================================== */
 
 .jobs-table-card{
-
-
-    display: flex;
     background: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 12px;
-    padding: 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    overflow: visible !important;
-    transition: box-shadow 0.2s ease;
+    margin-bottom: 24px;
 }
 
 .jobs-table-card:hover{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);;
-}
-
-.jobs-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0;
-    border: none;
-    
 }
 
 .jobs-table thead th{
@@ -1421,7 +933,7 @@ textarea {
 }
 
 .jobs-table tbody td.row-menu{
-    overflow: visible !important;
+    overflow: visible ;
 }
 
 .jobs-table tbody tr{
@@ -1436,7 +948,8 @@ textarea {
 }
 
 .jobs-table tbody tr:last-child .row-menu{
-    overflow: visible !important;
+    overflow: visible ;
+    z-index: 100;
 }
 
 .jobs-table tbody tr:hover{
@@ -1452,7 +965,7 @@ textarea {
 
 .jobs-table .menu-column{
     width: 50px;
-    text-align: left!important;
+    text-align: left ;
 }
 
 .jobs-table .job-title{
@@ -1465,17 +978,6 @@ textarea {
     font-weight: 13px;
     font-weight: 500;
     color: #374151;
-}
-
-.category-badge{
-    display: inline-block;
-    padding: 4px 10px;
-    background: #e8ecf1;
-    color: #374151;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-
 }
 
 .type-badge{
@@ -1559,24 +1061,42 @@ textarea {
     background: transparent;
     color: #24292e;
     border: none;
+    text-decoration: none;
+}
+
+.jobs-table .menu-dropdown .btn-success{
+  background: transparent;
+  color: #1a7f37;
+  border: none;
+  text-decoration: none;
+}
+
+.jobs-table .menu-dropdown .btn-success:hover{
+    background: #dafbe1;
+    color: #1a7f37;
+    transform: none;
+    text-decoration: none;
 }
 
 .jobs-table .menu-dropdown .btn-warning:hover {
     background: #f0f2f5;
     color: #1a202c;
     transform: none;
+    text-decoration: none;
 }
 
 .jobs-table .menu-dropdown .btn-danger {
     background: transparent;
     color: #cf222e;
     border: none;
+    
 }
 
 .jobs-table .menu-dropdown .btn-danger:hover {
     background: #ffebe9;
     color: #cf222e;
     transform: none;
+    text-decoration: none;
 }
 
 .jobs-table .menu-dropdown .btn-primary {
@@ -1596,18 +1116,6 @@ textarea {
     opacity: 0.7;
 }
 
-/* .jobs-table .menu-dropdown .btn-warning::before {
-    content: "✎";
-}
-
-.jobs-table .menu-dropdown .btn-danger::before {
-    content: "×";
-}
-
-.jobs-table .menu-dropdown .btn-primary::before {
-    content: "👁";
-} */
-
 /* Affiliate Table */
 
 .affiliate-table td,
@@ -1625,7 +1133,7 @@ textarea {
 
 .affiliate-table .menu-column{
     width: 50px;
-    text-align: left !important;
+    text-align: left ;
 }
 
 .affiliate-table .job-title{
@@ -1666,15 +1174,15 @@ textarea {
 }
 
 .affiliate-table tbody tr:last-child .row-menu{
-    overflow: visible !important;
+    overflow: visible ;
 }
 
 .affiliate-table .row-menu{
     position: relative;
     width: 50px;
-    text-align: left !important;
-    padding-left: 16px !important;
-    overflow: visible !important;
+    text-align: left ;
+    padding-left: 16px ;
+    overflow: visible ;
 }
 
 .affiliate-table .menu-toggle{
@@ -1733,6 +1241,7 @@ textarea {
 .affiliate-table .menu-dropdown .btn-danger {
     background: transparent;
     color: #cf222e;
+    text-decoration: none;
 }
 
 .affiliate-table .menu-dropdown .btn-danger:hover {
@@ -1756,18 +1265,6 @@ textarea {
     font-size: 14px;
     opacity: 0.7;
 }
-
-/* .affiliate-table .menu-dropdown .btn-warning::before {
-    content: "✎";
-}
-
-.affiliate-table .menu-dropdown .btn-danger::before {
-    content: "×";
-}
-
-.affiliate-table .menu-dropdown .btn-success::before {
-    content: "✓";
-} */
 
 
 .affiliate-table .actions-column {
@@ -1795,15 +1292,10 @@ textarea {
 
 /* 1. Ensure all containers allow overflow */
 .table-wrapper {
-    overflow: hidden !important;
+    overflow: hidden ;
     padding-bottom: 20px; /* Add space at bottom for dropdowns */
     position: relative;
     padding: 0;
-}
-
-.jobs-table-card,
-.category-table-card {
-    overflow: hidden !important;
 }
 
 /* 2. Tables should allow overflow */
@@ -1811,16 +1303,7 @@ textarea {
 .category-table,
 .affiliate-table,
 .admin-table {
-    overflow: visible !important;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-.jobs-table tbody,
-.category-table tbody,
-.affiliate-table tbody,
-.admin-table tbody {
-    overflow: visible !important;
+    margin: 0;
 }
 
 /* 3. Make rows position relative */
@@ -1836,7 +1319,7 @@ textarea {
 .category-table .row-menu,
 .affiliate-table .row-menu,
 .admin-table .row-menu {
-    overflow: visible !important;
+    overflow: visible ;
     position: relative;
 }
 
@@ -1853,7 +1336,7 @@ textarea {
     border: 1px solid #e1e4e8;
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    z-index: 9999 !important;
+    z-index: 9999 ;
     max-height: 400px;
     overflow-y: auto;
     animation: dropdownFadeIn 0.15s ease;
@@ -1887,10 +1370,10 @@ textarea {
 .category-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown,
 .affiliate-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown,
 .admin-table tbody tr:first-child:nth-last-child(-n+2) .menu-dropdown {
-    top: 100% !important;
-    bottom: auto !important;
-    margin-top: 4px !important;
-    margin-bottom: 0 !important;
+    top: 100% ;
+    bottom: auto ;
+    margin-top: 4px ;
+    margin-bottom: 0 ;
 }
 
 /* 9. Add extra bottom padding to the last row to show dropdown */
@@ -1898,7 +1381,7 @@ textarea {
 .category-table tbody tr:last-child td,
 .affiliate-table tbody tr:last-child td,
 .admin-table tbody tr:last-child td {
-    padding-bottom: 20px !important;
+    padding-bottom: 20px ;
 }
 
 /* ========================================
@@ -1908,7 +1391,7 @@ textarea {
     padding: 0 4px;
     background: transparent;
     box-shadow: none;
-    border-radius: 0;
+    /* border-radius: 0; */
 }
 
 .dashboard h2 {
@@ -1926,7 +1409,6 @@ textarea {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
-    margin-top: 8px;
 }
 
 .card {
@@ -1936,8 +1418,6 @@ textarea {
     padding: 24px 20px;
     text-align: center;
     transition: all 0.15s ease;
-    position: relative;
-    overflow: hidden;
     box-shadow: none;
     max-width: auto;
     flex: none;
@@ -2077,7 +1557,7 @@ textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 24px;
+    padding: 10px 24px;
     border-bottom: 1px solid #e1e4e8;
     background: #fafbfc;
 }
@@ -2087,13 +1567,11 @@ textarea {
     font-size: 20px;
     font-weight: 600;
     color: #24292e;
-    letter-spacing: -0.3px;
 }
 
 .modal-close {
     background: none;
     border: none;
-    font-size: 28px;
     line-height: 1;
     color: #57606a;
     cursor: pointer;
@@ -2109,11 +1587,6 @@ textarea {
 
 .modal .admin-form {
     padding: 24px;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    min-width: auto;
-    margin: 0;
 }
 
 .modal .form-group {
@@ -2151,13 +1624,6 @@ textarea {
 .modal .btn-primary {
     width: 100%;
     padding: 12px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 8px;
-    background: #2d89ef;
-    color: white;
-    border: none;
-    transition: all 0.15s ease;
 }
 
 .modal .btn-primary:hover {

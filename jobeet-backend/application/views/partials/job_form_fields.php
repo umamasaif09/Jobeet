@@ -19,11 +19,11 @@
 </div>
 
 <div class= "form-group radio-row">
-        <label for="form-label">Job Type </label>
+        <label for="type">Job Type </label>
 
         <div class="radio-options">
             <div class="radio-group">
-                <input type="radio" name="type" value="Full-time"  id="full_time"
+                <input type="radio" name="type" id="type" value="Full-time"  id="full_time"
                     <?php if($isEdit && $job["type"]=="Full-time"){
                         echo "checked";
                     } ?>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="radio-group">
-                <input type="radio" name="type" value="Part-time"  id="part_time"
+                <input type="radio" name="type" id="type" value="Part-time"  id="part_time"
                         <?php if($isEdit && $job["type"]=="Part-time"){
                             echo "checked";
                         } ?>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="radio-group">
-                <input type="radio" name="type" value="Freelance"  id="freelance"
+                <input type="radio" name="type" id="type" value="Freelance"  id="freelance"
                         <?php if($isEdit && $job["type"]=="Freelance"){
                             echo "checked";
                         } ?>
@@ -54,7 +54,7 @@
 
 <div class="form-group">
     <label for="company">Company Name</label>
-    <input type="text" name="company" placeholder="Enter company name"
+    <input type="text" name="company" id="company" placeholder="Enter company name"
         value="<?php echo $isEdit ? $job["company"] : ''; ?>" required
     >
 </div>
@@ -66,45 +66,45 @@
             <div class="current-logo">
                 <label for="current_logo">Current Logo</label>
                 <img src="<?php echo base_url("uploads/".$job["logo"]); ?>"  width= "150">
-                <input type="hidden" name= "old_logo" value="<?php echo $job["logo"]; ?>">
+                <input type="hidden" name= "old_logo" id="current_logo" value="<?php echo $job["logo"]; ?>">
             </div>
         <?php } ?>
         
         <div>
             <label for="logo"><?php echo !empty($job["logo"]) ? 'Upload New Logo' : 'Upload Logo'; ?></label> 
-            <input type="file" name="logo" >
+            <input type="file" name="logo" id="logo">
         </div>
     <?php } else {?> 
         <div>
             <label for="logo">Upload Logo</label> 
-            <input type="file" name="logo" >
+            <input type="file" name="logo" id="logo">
         </div>
     <?php }?>
 </div>
 
 <div class="form-group">
     <label for="url">Website Url</label>
-    <input type="url" name="url" placeholder= "Enter website url"
+    <input type="url" name="url" id="url" placeholder= "Enter website url"
         value="<?php echo $isEdit ? $job["url"] : ''; ?>" required>
 </div>
 
 <div class="form-group">
     <label for="position">Position</label>
-    <input type="text" name="position" placeholder= "Enter position"
+    <input type="text" name="position" id="position" placeholder= "Enter position"
         value="<?php echo $isEdit ? $job["position"] : ''; ?>" required
         >
 </div>
 
 <div class="form-group">
     <label for="location">Location</label>
-    <input type="text" name="location" placeholder="Enter location"
+    <input type="text" name="location" id="location" placeholder="Enter location"
                 value="<?php echo $isEdit ? $job["location"] : ''; ?>" required
             >
 </div>
 
 <div class="form-group">
     <label for="email">Company Email</label>
-    <input type="email" name="email" placeholder="Enter company email"
+    <input type="email" name="email" id="email" placeholder="Enter company email"
                 value="<?php echo $isEdit ? $job["email"] : ''; ?>" required
             >
 </div>

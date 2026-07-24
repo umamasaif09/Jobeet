@@ -38,7 +38,7 @@
         
     <div class="pagination">
         <?php if($currentPage >1 ) { ?>
-            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>"> ← Previous </a>
+            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>" class="back-button"> ← Previous </a>
         <?php } else {?>
             <span></span>
         <?php }?>
@@ -48,7 +48,7 @@
         </span>
     
         <?php if($currentPage < $result["totalPages"] ) { ?>
-            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage+1)); ?>"> Next → </a>
+            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage+1)); ?>" class="back-button"> Next → </a>
         <?php } ?>
     </div>
 </div>

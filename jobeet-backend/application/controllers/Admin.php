@@ -420,16 +420,6 @@ class Admin extends CI_Controller
         ]);
     }
 
-    // private function loadAuthView($view, $data=[], $title)
-    // {
-    //     $data["content"] = $view;
-    //     $data["showPageHeader"]= false;
-    //     $data["showAdminHeader"] =false;
-    //     $data["title"] = $title;
-
-    //     $this->load->view("templates/admin_template", $data)
-    // }
-
     public function login()
     {
         if($this->session->userdata('logged_in') && 

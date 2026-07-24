@@ -12,8 +12,8 @@
         <?php echo $success; ?>
     </div>
     <?php endif; ?>
-
-    <div class="form-container">
+<div class="auth-page">
+  <div class="form-container">
     <div class="form-card">
         <form action="<?php echo site_url("admin/resetPassword");?>" method="POST" class="auth-form">
             <input type="hidden" name="token" value="<?php echo $token ?>">
@@ -42,3 +42,6 @@
         </form>   
     </div>
 </div>
+
+</div>
+    

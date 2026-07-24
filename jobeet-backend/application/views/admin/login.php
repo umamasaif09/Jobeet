@@ -12,7 +12,7 @@
         <?php echo $success; ?>
     </div>
     <?php endif; ?>
-
+<div class="auth-page">
 <div class="form-container">
     <div class="form-card">
         <form action="<?php echo site_url("admin/login");?>" method="POST" class="auth-form">
@@ -45,5 +45,5 @@
 
     </div>
 </div>
-
+</div>
 

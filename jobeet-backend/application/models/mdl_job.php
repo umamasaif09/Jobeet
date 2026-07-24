@@ -12,6 +12,7 @@ class mdl_job extends CI_Model
         $this->db->limit($this->config->item('latest_jobs_limit'));
         $this->db->select("jobs.* , categories.name AS category_name");
         $this->db->from("jobs");
+        //  INNER JOIN, for left join "left keyword is used"
         $this->db->join("categories", "jobs.category_id = categories.id" ); //join johs table and category table
         $jobsQuery = $this->db->get();
         $jobs= $jobsQuery->result_array(); //latest jobs

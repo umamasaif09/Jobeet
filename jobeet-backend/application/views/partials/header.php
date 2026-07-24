@@ -1,7 +1,7 @@
 
 <header class="site-header">
-    <a href="<?php echo site_url("jobs/index"); ?>" class="site-logo">
-        <p class="logo-text">Jobeet</p>
+    <a href="<?php echo site_url("jobs/index"); ?>" class="site-logo logo-text">
+        Jobeet
     </a>
     <div class=header-actions>
         <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">

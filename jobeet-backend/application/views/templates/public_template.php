@@ -18,7 +18,11 @@
         <?php $this->load->view($content); ?>
 
 
-        <?php $this->load->view("partials/footer"); ?>
+        
+        </div>
+
+        <div class="container">
+          <?php $this->load->view("partials/footer"); ?>
         </div>
 </body>
 </html>
