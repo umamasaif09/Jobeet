@@ -17,14 +17,14 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
     );
 
     return(
-        <Card className="max-w-4xl mx-auto">
-            <CardContent className="space-y-6 p-8">
+        <Card>
+            <CardContent>
                 <div>
-                    <h2 className="text-2xl font-bold">
+                    <h2>
                         {job.position}
                     </h2>
 
-                    <p className="text-muted-foreground">
+                    <p>
                         {job.company}
                     </p>    
                     <p><strong>Category</strong> {category?.name}</p>
@@ -36,21 +36,21 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
                 </div>
 
                 <div>
-                    <h3 className="font-semibold mb-2">
+                    <h3>
                         Description
                     </h3>
 
-                    <p className="whitespace-pre-wrap">
+                    <p>
                         {job.description}
                     </p>
                 </div>
 
                 <div>
-                    <h3 className="font-semibold mb-2">
+                    <h3>
                         How to Apply?
                     </h3>
 
-                    <p className="whitespace-pre-wrap">
+                    <p>
                         {job.how_to_apply}
                     </p>
                 </div>
@@ -60,11 +60,11 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
                     job.logo instanceof File ? (
                         <img src={URL.createObjectURL(job.logo)}
                         alt="Logo"
-                        className="h-24 rounded"/>
+                        />
                     ) : (
                         <img src={`${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
                         alt="Logo"
-                        className="h-24 rounded"
+                        
                       />
                     )
                   )}
@@ -77,7 +77,7 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
 
                 </p>
 
-                <div className="flex justify-end gap-3">
+                <div>
                     <Button
                         variant="outline"
                         onClick={onEdit}

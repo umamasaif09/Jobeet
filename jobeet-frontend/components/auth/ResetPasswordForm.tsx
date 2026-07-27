@@ -57,14 +57,14 @@ export default function ResetPasswordForm() {
   }
 
   return (
-    <Card className="w-full max-w-md">
+    <Card>
       <CardHeader>
         <CardTitle>Reset Password</CardTitle>
       </CardHeader>
 
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
+        <form onSubmit={handleSubmit} >
+          <div>
             <Label>New Passowrd</Label>
             <Input
               type="password"
@@ -74,7 +74,7 @@ export default function ResetPasswordForm() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div>
             <Label>Confirm Passowrd</Label>
             <Input
               type="password"
@@ -84,16 +84,15 @@ export default function ResetPasswordForm() {
             />
           </div>
           {message && (
-            <p className="text-sm text-green-600">{message}</p>
+            <p>{message}</p>
           )}
 
           {error && (
-            <p className="text-sm text-red-600">{error}</p>
+            <p>{error}</p>
           )}
 
           <Button
             type="submit"
-            className="w-full"
             disabled={loading}
           >
            {loading ? "Updating..." : "Update Password"}

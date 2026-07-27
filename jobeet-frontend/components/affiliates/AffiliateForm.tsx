@@ -18,16 +18,20 @@ type Props = {
     ) => void;
 
     onSubmit: () => void;
+
+    mode: "create" | "edit";
+
+    userType: "admin" | "public";
 };
 
-export default function AffiliateForm({affiliate, updateField, categories, onSubmit}: Props) {
+export default function AffiliateForm({affiliate, updateField, categories, onSubmit, mode, userType}: Props) {
 
     return (
 
-        <Card className="max-w-4xl mx-auto">
-            <CardContent className="space-y-6 p-8">
+        <Card>
+            <CardContent>
 
-                <div className="sapce-y-2">
+                <div>
                     <Label>Name</Label>
                     <Input
                         placeholder="Name"
@@ -36,7 +40,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
                 
-                <div className="sapce-y-2">
+                <div>
                     <Label>Email</Label>
                     <Input
                         placeholder="email"
@@ -45,7 +49,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
 
-                <div className="sapce-y-2">
+                <div>
                     <Label>Website</Label>
                     <Input
                         placeholder="url"
@@ -54,7 +58,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Categories</Label>
                     {categories.map(category => (
                       <div key={category.id}
@@ -86,12 +90,12 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     ))}
                 </div>
                 
-                <div className="flex justify-end">
+                <div>
                     <Button
                         type="button"
                         onClick={onSubmit}
                         >
-                        Apply
+                        {mode == "create" && userType== "public" ? "Apply" : mode== "create" && userType == "admin" ? "Create" : "Update"}
                     </Button>
                 </div>
             </CardContent>

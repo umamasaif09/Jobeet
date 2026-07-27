@@ -25,7 +25,7 @@ export default function CategoryTable({categories}: Props) {
 
   if(categories.length === 0) {
     return (
-      <p className="text-muted-foreground">
+      <p>
         No Categories Available.
       </p>
     );
@@ -40,11 +40,11 @@ export default function CategoryTable({categories}: Props) {
       </Button>
       
       <Table>
-      <TableHeader className="font-bold text-primary">
+      <TableHeader>
         <TableRow>
           <TableHead>Category ID</TableHead>
           <TableHead>Category Name</TableHead>
-          <TableHead className="w-0"></TableHead>
+          <TableHead></TableHead>
         </TableRow>
       </TableHeader>
 

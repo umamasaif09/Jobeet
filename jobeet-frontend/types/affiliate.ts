@@ -6,6 +6,7 @@ export interface AffiliateApi{
     token: string;
     is_active: string
     created_at: string;
+    categories: [];
 }
 
 export interface Affiliate{

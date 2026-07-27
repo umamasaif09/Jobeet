@@ -6,14 +6,14 @@ import { TableCell
 import JobAction from "./JobAction";
 import { Badge } from "../ui/badge";
 
- interface JobRowProps{
+type JobRowProps = {
     job: Job;
     onDelete: (job: Job) =>void;
  }
 
  export default function JobRow({job, onDelete}: JobRowProps) {
     return (
-        <TableRow className="hover:bg-muted/50">
+        <TableRow>
             <TableCell>
                 {job.id}
             </TableCell>
@@ -55,7 +55,7 @@ import { Badge } from "../ui/badge";
                 {job.created_at}
             </TableCell>
 
-            <TableCell  className="w-0 text-right">
+            <TableCell>
               <JobAction
                 job={job}
                 onDelete ={onDelete}

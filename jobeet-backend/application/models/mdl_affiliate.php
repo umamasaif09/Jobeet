@@ -20,6 +20,9 @@ class mdl_affiliate extends CI_Model
 
     public function saveCategories($affiliateId, $categories) 
     {
+        // to avoid duplicates
+        $this->db->where("affiliate_id", $affiliateId);
+        $this->db->delete("affiliate_categories");
         //save all categories selected by user with respective affiliate id
         foreach($categories as $categoryId) {
 
@@ -38,13 +41,13 @@ class mdl_affiliate extends CI_Model
         return $query->result_array();
     }
 
-    public function editAffiliate($data) {
-        $this->db->where("id", $data["id"]);
+    public function editAffiliate($id ,$data) {
+        $this->db->where("id", $id);
         //update only the non default fields
         return $this->db->update("affiliates", [
             "name" => $data["name"],
             "email" => $data["email"],
-            "site_url" => $data["url"]
+            "site_url" => $data["site_url"]
             ]);
     }
 
@@ -61,7 +64,7 @@ class mdl_affiliate extends CI_Model
         return $this->db->update("affiliates", ["is_active" => 0]);
     }
 
-    public function delete($id) {
+    public function deleteAffiliate($id) {
         $this->db->where("id", $id);
         return $this->db->delete("affiliates");
     }

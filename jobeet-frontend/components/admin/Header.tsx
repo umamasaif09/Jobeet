@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container"
 
 export default function Header() {
     return (
-        <header className="border-b bg-background">
+        <header>
             <Container>
                 <NavBar />
                 <LogoutButton/>

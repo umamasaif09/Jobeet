@@ -10,14 +10,13 @@ import { TableCell
 
  export default function JobRow({job}: JobRowProps) {
     return (
-        <TableRow className="hover:bg-muted/50">
+        <TableRow>
             <TableCell>
                 {job.location}
             </TableCell>
 
             <TableCell>
-                <Link href={`/jobs/${job.id}`}
-                className="font-semibold text-primary hover:underline">
+                <Link href={`/jobs/${job.id}`}>
                     {job.position}
                 </Link>
             </TableCell>

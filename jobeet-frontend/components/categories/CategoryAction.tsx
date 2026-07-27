@@ -14,15 +14,15 @@ export default function CategoryAction({category, onEdit, onDelete}: Props) {
   <>
     <DropdownMenu>
       <DropdownMenuTrigger>
-          <MoreVertical className="h-4 w-4" />
+          <MoreVertical />
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent>
         <DropdownMenuItem onClick={()=> onEdit(category)}>
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="text-red-600" onClick={()=> onDelete(category)}>
+        <DropdownMenuItem onClick={()=> onDelete(category)}>
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent> 

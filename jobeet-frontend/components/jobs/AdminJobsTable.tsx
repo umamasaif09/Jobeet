@@ -38,7 +38,7 @@ export default function JobTable({jobs}: JobTableProps) {
       </Link>
       
       <Table>
-            <TableHeader className="font-bold text-primary">
+            <TableHeader>
                 <TableRow>
                     <TableHead>Job ID</TableHead>
                     <TableHead>Position</TableHead>
@@ -48,7 +48,7 @@ export default function JobTable({jobs}: JobTableProps) {
                     <TableHead>Active Status</TableHead>
                     <TableHead>Public Status</TableHead>
                     <TableHead>Created At</TableHead>
-                    <TableHead className="w-0"></TableHead>
+                    <TableHead></TableHead>
                 </TableRow>
             </TableHeader>
 

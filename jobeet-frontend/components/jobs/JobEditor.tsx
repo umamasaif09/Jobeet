@@ -23,7 +23,7 @@ type Props = {
 };
 
 
-export default function JobEditor({categories, initialJob, mode, jobId, token, isAdmin}: Props) {
+export default function JobEditor({categories, initialJob, mode, jobId, token, isAdmin}: Props) { //TODO: handle admin and public requests differently
 
     const [preview, setPreview] = useState(false);
 
@@ -99,20 +99,20 @@ export default function JobEditor({categories, initialJob, mode, jobId, token, i
     }
 
     if(createdJob) {
-      return (<div className="max-w-2xl mx-auto">
+      return (<div>
         <Card>
-          <CardContent className="space-y-6 p-8">
+          <CardContent>
             <div>
-              <h2 className="text-2xl font-bold text-green-600">
+              <h2>
                 Job Created Successfully
               </h2>
 
-              <p className="text-muted-foreground mt-2">
+              <p>
                 Your job has been posted successfully.
               </p>
             </div>
 
-            <div className="space-y-2">
+            <div>
               <Label>Save this edit link</Label>
 
               <Input
@@ -121,7 +121,7 @@ export default function JobEditor({categories, initialJob, mode, jobId, token, i
               />
             </div>
 
-            <div className="flex gap-3">
+            <div>
               <Button onClick={()=> navigator.clipboard.writeText(createdJob.editLink)}>
                 Copy Link
               </Button>

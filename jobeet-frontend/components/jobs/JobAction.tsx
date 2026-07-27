@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 
-interface Props{
+type Props = {
   job: Job;
   onDelete: (job: Job) =>void;
 }
@@ -18,10 +18,10 @@ export default function JobAction({job, onDelete}: Props) {
   <>
     <DropdownMenu>
       <DropdownMenuTrigger>
-          <MoreVertical className="h-4 w-4" />
+          <MoreVertical />
       </DropdownMenuTrigger>
     
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent>
         <DropdownMenuItem
           onClick={()=> router.push(`/admin/jobs/${job.id}`)}
         >

@@ -60,7 +60,7 @@ export async function updateJob(id:number, token: string, job: CreateJobRequest)
   return response.data;
 }
 
-export async function adminUpdateJob(id:number, token: string, job: CreateJobRequest){
+export async function adminUpdateJob(id:number, job: CreateJobRequest){
   const response = await api.put(`/jobs/adminApdate/${id}`, job);
   return response.data;
 }

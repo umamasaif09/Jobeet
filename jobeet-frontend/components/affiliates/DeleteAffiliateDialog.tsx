@@ -1,5 +1,6 @@
-import { deleteJob } from "@/services/jobs";
-import { Job } from "@/types/job";
+import affiliatesPage from "@/app/admin/affiliates/page";
+import { deleteAffiliate } from "@/services/affiliates";
+import { Affiliate } from "@/types/affiliate";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "../ui/alert-dialog";
 
 
@@ -7,29 +8,29 @@ type Props = {
   open: boolean;
   onOpenChange: (open:boolean) => void;
   onSuccess: () => void;
-  job: Job | null;
+  affiliate: Affiliate | null;
 }
 
-export default function DeleteJobDialog({open, onOpenChange,job, onSuccess}: Props) {
+export default function DeleteAffiliateDialog({open, onOpenChange, onSuccess, affiliate}: Props) {
   async function handleDelete() {
-    if(!job) return;
+    if(!affiliate) return;
 
-    await deleteJob(job.id);
+    await deleteAffiliate(affiliate.id);
     onSuccess();
     onOpenChange(false);
   }
 
-  return (
+  return(
     <AlertDialog open = {open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Delete Job
+            Delete Affiliate
           </AlertDialogTitle>
 
           <AlertDialogDescription>
             Are you sure you want to delete{" "}
-            <strong>{job?.position}</strong>?
+            <strong>{affiliate?.name}</strong>?
             <br />
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -46,5 +47,5 @@ export default function DeleteJobDialog({open, onOpenChange,job, onSuccess}: Pro
         
       </AlertDialogContent>
     </AlertDialog>
-  );
-}
+  )
+} 

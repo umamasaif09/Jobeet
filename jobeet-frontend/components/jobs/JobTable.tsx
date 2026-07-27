@@ -10,14 +10,14 @@ interface JobTableProps{
 export default function JobTable({jobs}: JobTableProps) {
     if(jobs.length === 0) {
         return (
-            <p className="text-muted-foreground">
+            <p>
                 No jobs available.
             </p>
         )
     }
     return(
         <Table>
-            <TableHeader className="font-bold text-primary">
+            <TableHeader>
                 <TableRow>
                     <TableHead>Location</TableHead>
                     <TableHead>Position</TableHead>

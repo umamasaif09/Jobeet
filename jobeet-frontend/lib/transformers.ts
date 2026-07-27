@@ -3,6 +3,8 @@ import { CategoryWithJobs, CategoryWithJobsApi } from "@/types/category-with-job
 import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
 import { CategoryApi, Category } from "@/types/category";
 import { JobFormData } from "@/types/job-form-data";
+import { AffiliateApi } from "@/types/affiliate";
+import { AffiliateFormData } from "@/types/affiliate-form-data";
 
 export function transformJob(job: JobApi): Job {
     return {
@@ -49,5 +51,14 @@ export function transformToJobForm(job: Job):JobFormData {
         description: job.description,
         how_to_apply: job.how_to_apply,
         is_public: job.is_public, 
+  };
+}
+
+export function transformAffiliate(affiliate: AffiliateApi) : AffiliateFormData{
+  return {
+    affiliate_name: affiliate.name,
+    affiliate_email: affiliate.email,
+    affiliate_url: affiliate.site_url!,
+    categories: affiliate.categories.map(String)
   };
 }

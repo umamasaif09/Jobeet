@@ -20,6 +20,18 @@ class affiliates extends MY_Controller
         echo json_encode($affiliates, JSON_PRETTY_PRINT);
     }
 
+    public function detail($id) {
+      $this->requireLogin();
+
+      $affiliate = $this->mdl_affiliate->getAffiliateById($id);
+      $categories = $this->mdl_affiliate->getAffiliateCategoryIds($id);
+
+      $affiliate["categories"] = $categories;
+
+      header("Content-Type: application/json");
+      echo json_encode($affiliate, JSON_PRETTY_PRINT);
+    }
+
     public function apply()
     {
         $json= file_get_contents("php://input");
@@ -154,10 +166,14 @@ class affiliates extends MY_Controller
         $affiliateData = [
             "name" => $data["affiliate_name"],
             "email" => $data["affiliate_email"],
-            "site_url" => $data["affiliate_url"]
+            "site_url" => $data["affiliate_url"],
+            
         ];
 
-        $affiliate = $this->mdl_affiliate->editAffiliate($affiliateData);
+        $categories = $data["categories"];
+        $this->mdl_affiliate->saveCategories($affiliateId, $categories);
+
+        $affiliate = $this->mdl_affiliate->editAffiliate($affiliateId ,$affiliateData);
 
         if(!$affiliate) {
             http_response_code(500);

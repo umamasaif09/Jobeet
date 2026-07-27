@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import { CategoryWithJobs } from "@/types/category-with-jobs";
 import JobTable from "../jobs/JobTable";
-
-import {Button} from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 interface CategorySectionProps{
@@ -12,9 +10,9 @@ interface CategorySectionProps{
 
 export default function CategorySection({category,}: CategorySectionProps) {
     return (
-        <section className="space-y-4">
-            <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold">
+        <section>
+            <div>
+                <h2>
                     <Link href={`/jobs/category?category=${category.id}`}>
                         {category.name}
                     </Link> 

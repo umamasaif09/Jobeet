@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NavBar() {
     return(
-        <nav className="flex items-center justify-between py-4">
+        <nav>
             <Logo/>
             <SearchBar/>
 

@@ -29,10 +29,10 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
 
     return (
 
-        <Card className="max-w-4xl mx-auto">
-            <CardContent className="space-y-6 p-8">
+        <Card>
+            <CardContent>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Category</Label>
                     <Select
                         value={job.category_id ?? ""}
@@ -60,27 +60,27 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                 </Select>
                 </div>
 
-                <div className="space-y-3">
+                <div>
                     <Label>Job Type</Label>
                     <RadioGroup value={job.type}
                         onValueChange={(value) => updateField("type", value)}
                     >
-                        <div className="flex items-center gap-2">
+                        <div>
                             <RadioGroupItem value="Full-time" id="full"/>
                             <Label htmlFor="full">Full Time</Label>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div>
                             <RadioGroupItem value="Part-time" id="part"/>
                             <Label htmlFor="part">Part Time</Label>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div>
                             <RadioGroupItem value="Freelance" id="free"/>
                             <Label htmlFor="free">Freelance</Label>
                         </div>
                     </RadioGroup>
                 </div>
 
-                <div className="sapce-y-2">
+                <div>
                     <Label>Company</Label>
                     <Input
                         placeholder="Company"
@@ -89,10 +89,10 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Company Logo</Label>
                       {job.logo && (
-                        <div className="mb-3">
+                        <div>
                           {job.logo instanceof File ? (
                              <img
                               src={URL.createObjectURL(job.logo)}
@@ -119,7 +119,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
     
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Position</Label>
                     <Input
                         placeholder="position"
@@ -128,7 +128,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Website</Label>
                     <Input
                         placeholder="url"
@@ -137,7 +137,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Email</Label>
                     <Input
                         placeholder="email"
@@ -146,7 +146,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Location</Label>
                     <Input
                         placeholder="location"
@@ -155,7 +155,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div>
                     <Label>Description</Label>
                     <Textarea
                         rows={6}
@@ -165,7 +165,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                         }
                     />
                 </div>
-                <div className="space-y-2">
+                <div>
                      <Label>How to Apply</Label>
                         <Textarea
                             rows={5}
@@ -176,7 +176,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                         />
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div>
                     <Checkbox
                         checked={job.is_public}
                         onCheckedChange={(checked)=>
@@ -190,7 +190,7 @@ export default function JobForm({job, updateField, categories, onPreview}: Props
                     <Label>Publish publicly</Label>
                 </div>
                 
-                <div className="flex justify-end">
+                <div>
                     <Button
                         type="button"
                         onClick={onPreview}

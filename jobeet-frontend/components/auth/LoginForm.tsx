@@ -37,21 +37,22 @@ export default function LoginForm() {
     <Card>
       <CardContent>
         {error && (
-          <p className="text-sm text-red-500">
+          <p>
             {error}
           </p>
         )}
         <form onSubmit={handleSubmit}>
-          <div className="space-y-2">
+          <div>
             <Label>Email</Label>
             <Input
+                type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
-          <div className="space-y-2">
+          <div>
             <Label>Password</Label>
             <Input
                 type="password"
@@ -61,16 +62,15 @@ export default function LoginForm() {
             />
           </div>
 
-          <div className="flex justify-end">
+          <div>
             <Link
                 href="/auth/forgot-password"
-                className="text-sm text-blue-600 hover:underline"
             >
                 Forgot password?
             </Link>
         </div>
           
-          <Button type="submit" className="w-full">
+          <Button type="submit">
             Login
           </Button>
         </form>

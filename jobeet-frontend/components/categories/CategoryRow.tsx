@@ -3,7 +3,7 @@ import { TableCell, TableRow } from "../ui/table";
 import CategoryAction from "./CategoryAction";
 
 
-interface Props {
+type Props = {
   category: Category;
   onEdit: (category: Category) => void;
   onDelete: (category: Category) =>void;
@@ -11,7 +11,7 @@ interface Props {
 
 export default function CategoryRow({category, onEdit, onDelete}: Props){
   return(
-    <TableRow className="hover:bg-muted/50">
+    <TableRow>
       <TableCell>
         {category.id}
       </TableCell>
@@ -20,7 +20,7 @@ export default function CategoryRow({category, onEdit, onDelete}: Props){
         {category.name}
       </TableCell>
 
-      <TableCell className="w-0 text-right">
+      <TableCell>
         <CategoryAction
           category={category}
           onEdit={onEdit}
