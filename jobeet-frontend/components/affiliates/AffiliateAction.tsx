@@ -28,13 +28,14 @@ export default function AffiliateAction({affiliate, onDelete, onStatus}: Props) 
           Edit
         </DropdownMenuItem>
 
+        <DropdownMenuItem onClick= {()=> onStatus(affiliate)}>
+          {affiliate.is_active == true? "Disbale" : "Activate"}
+        </DropdownMenuItem>
+
         <DropdownMenuItem onClick={()=> onDelete(affiliate)}>
           Delete
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick= {()=> onStatus(affiliate)}>
-          {affiliate.is_active == true? "Disbale" : "Activate"}
-        </DropdownMenuItem>
       </DropdownMenuContent> 
     </DropdownMenu>
   </>

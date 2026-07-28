@@ -20,6 +20,15 @@ class admins extends MY_Controller
         echo json_encode($admins, JSON_PRETTY_PRINT);
     }
 
+    public function detail($id) {
+      $this->requireLogin();
+
+      $admin= $this->mdl_admin->getAdminById();
+
+      header("Content-Type: application/json");
+      echo json_encode($admin, JSON_PRETTY_PRINT);
+    }
+
     public function create()
     {
         $this->requireLogin();
@@ -83,7 +92,7 @@ class admins extends MY_Controller
             "email" => $data["admin_email"]
         ];
 
-        $admin = $this->mdl_admin->updateAdmin($adminData);
+        $admin = $this->mdl_admin->updateAdmin($adminId,$adminData);
 
         if(!$admin) {
             http_response_code(500);

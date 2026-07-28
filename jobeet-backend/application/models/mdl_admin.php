@@ -53,9 +53,9 @@
             return $this->db->get("admins")->row_array();
         }
 
-        public function updateAdmin($admin) 
+        public function updateAdmin($id, $admin) 
         {
-            $this->db->where("id", $admin["id"]);
+            $this->db->where("id", $id);
             return $this->db->update("admins", [
                 "name" => $admin["name"],
                 "email" => $admin["email"]

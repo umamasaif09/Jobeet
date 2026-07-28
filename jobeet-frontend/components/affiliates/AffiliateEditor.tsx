@@ -30,7 +30,7 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
         }));
     }
 
-    async function create() {
+    async function handleSubmit() {
       console.log("Affiliate state:", affiliate);
 
         if (affiliate.categories.length === 0) {
@@ -64,7 +64,7 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
             <AffiliateForm affiliate={affiliate}
               updateField = {updateField}
               categories={categories}
-              onSubmit={create}
+              onSubmit={handleSubmit}
               mode= {mode}
               userType={userType}
             />

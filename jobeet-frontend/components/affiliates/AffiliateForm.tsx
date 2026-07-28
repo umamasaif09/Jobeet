@@ -43,6 +43,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                 <div>
                     <Label>Email</Label>
                     <Input
+                        type="email"
                         placeholder="email"
                         value={affiliate.affiliate_email}
                         onChange={(e) => updateField("affiliate_email", e.target.value)}
