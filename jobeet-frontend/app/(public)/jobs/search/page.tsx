@@ -1,6 +1,6 @@
 import JobTable from "@/components/jobs/JobTable";
+import BackButton from "@/components/ui/BackButton";
 import { getJobsByKeyword } from "@/services/jobs";
-import Container from "@/components/ui/Container";
 
 type Props = {
     searchParams: Promise <{
@@ -16,11 +16,14 @@ export default async function SearchPage({searchParams}: Props) {
     const jobs = await getJobsByKeyword(keyword);
 
     return(
-        <>
-        <Container>
-            <JobTable jobs = {jobs}/>
-        </Container>
-        
-        </>
+        <div className="space-y-6">
+          <div className="flex gap-4 items-center">
+            <BackButton/>
+            <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+              Search Results
+            </h1>
+          </div>
+          <JobTable jobs = {jobs}/>
+        </div>
     );
 }

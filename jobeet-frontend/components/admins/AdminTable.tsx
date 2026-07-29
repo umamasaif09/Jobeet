@@ -25,46 +25,53 @@ export default function AdminTable({admins}: Props) {
   const router = useRouter();
 
   return (
-    <>
-      <Link href={`/admin/admins/create`}>
-        <Button>
-          New Admin
-        </Button>
-      </Link>
-      
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+          Manage Admins
+        </h1>
+        <Link href={`/admin/admins/create`}>
+          <Button>
+            New Admin
+          </Button>
+        </Link>
+    </div>  
+    <div className="rounded-md border "> 
       <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead>Admin ID</TableHead>
-                    <TableHead>Admin Name</TableHead>
-                    <TableHead>Admin Email</TableHead>
-                    <TableHead>Active Status</TableHead>
-                    <TableHead>Created At</TableHead>
-                    <TableHead></TableHead>
-                </TableRow>
-            </TableHeader>
+        <TableHeader>
+          <TableRow>
+              <TableHead className="w-[100px]">Admin ID</TableHead>
+              <TableHead>Admin Name</TableHead>
+              <TableHead>Admin Email</TableHead>
+              <TableHead>Active Status</TableHead>
+              <TableHead>Created At</TableHead>
+              <TableHead className="w-[80px]"></TableHead>
+          </TableRow>
+        </TableHeader>
 
-            <TableBody>
-                
-                {admins.map((admin) => (
-                    <AdminRow key={admin.id} admin={admin}
+        <TableBody>
+            
+            {admins.map((admin) => (
+                <AdminRow key={admin.id} admin={admin}
 
-                    onEdit = {(admin) => {
-                      setSelectedAdmin(admin);
-                      setEditDialogOpen(true);
-                    }}
+                onEdit = {(admin) => {
+                  setSelectedAdmin(admin);
+                  setEditDialogOpen(true);
+                }}
 
-                    onDelete={(admin) => {
-                      setSelectedAdmin(admin);
-                      setDeleteDialogOpen(true);
-                    }}
-                    onStatus = {(admin) => {
-                      setSelectedAdmin(admin);
-                      setStatusDialogOpen(true);
-                    }}/>
-                ))}
-            </TableBody>
-        </Table>
+                onDelete={(admin) => {
+                  setSelectedAdmin(admin);
+                  setDeleteDialogOpen(true);
+                }}
+                onStatus = {(admin) => {
+                  setSelectedAdmin(admin);
+                  setStatusDialogOpen(true);
+                }}/>
+            ))}
+        </TableBody>
+      </Table>
+    </div>
+      
 
         <EditAdminDialog
           open= {editDialogOpen}
@@ -86,6 +93,6 @@ export default function AdminTable({admins}: Props) {
           admin = {selectedAdmin}
           onSuccess ={()=> router.refresh()}
         />
-      </>
+      </div>
   )
 }

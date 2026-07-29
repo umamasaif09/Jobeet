@@ -1,6 +1,6 @@
 import { getJobsByCategory } from "@/services/jobs";
-import Container from "@/components/ui/Container";
 import JobTable from "@/components/jobs/JobTable";
+import BackButton from "@/components/ui/BackButton";
 interface JobsPageProps {
     searchParams: Promise<{
     category?: string;
@@ -16,9 +16,16 @@ export default async function CategoryPage({searchParams}: JobsPageProps) {
 
     const data = await getJobsByCategory(categoryId, page);
     return(
-       <Container>
-             <h1>{data.category.name}</h1>
-             <JobTable jobs={data.jobs}/>
-           </Container>
+      <div className="space-y-6">
+        <div className="flex gap-4 items-center">
+          <BackButton/>
+          <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+            {data.category.name}
+          </h1>
+        </div>
+        
+        <JobTable jobs={data.jobs}/>
+      </div>
+             
     );
 }

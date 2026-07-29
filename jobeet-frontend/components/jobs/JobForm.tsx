@@ -10,6 +10,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Checkbox } from "../ui/checkbox";
 import {Card, CardContent} from "@/components/ui/card";
+import BackButton from "../ui/BackButton";
 
 type Props = {
     job: JobFormData;
@@ -21,185 +22,230 @@ type Props = {
     ) => void;
 
     onPreview: () => void;
+    userType: "admin" | "public";
+    onSubmit: () => void;
+    mode: "create" | "edit";
 };
 
-export default function JobForm({job, updateField, categories, onPreview}: Props) {
+export default function JobForm({job, updateField, categories, onPreview, userType, onSubmit, mode}: Props) {
 
     
 
     return (
+      <div className="flex items-baseline gap-4">
+        <BackButton/>
+        <div className="flex-1">
+          <div className="max-w-5xl space-y-6">
+            <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+              {mode == "create" ? "Create Job" : "Edit Job"}
+            </h1>
 
-        <Card>
-            <CardContent>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                      <Label>Category</Label>
+                        <Select
+                            value={job.category_id ?? ""}
+                            onValueChange={(value) => {
+                                if(value !== null){
+                                    updateField("category_id", value)}
+                                }
+                              }
+                        >
 
-                <div>
-                    <Label>Category</Label>
-                    <Select
-                        value={job.category_id ?? ""}
-                        onValueChange={(value) => {
-                            if(value !== null){
-                                 updateField("category_id", value)}
-                            }
-                           }
-                    >
+                        <SelectTrigger>
+                            {categories.find(c => c.id.toString() === job.category_id)?.name ?? "Select Category"}
+                        </SelectTrigger>
 
-                    <SelectTrigger>
-                        <SelectValue placeholder="Select Category" />
-                    </SelectTrigger>
+                        <SelectContent>
+                            {categories.map(category => 
+                                <SelectItem
+                                    key={category.id}
+                                    value={category.id.toString()}
+                                >
+                                    {category.name}
+                                </SelectItem>
+                            )}
+                        </SelectContent>
+                    </Select>
+                    </div>
 
-                    <SelectContent>
-                        {categories.map(category => 
-                            <SelectItem
-                                key={category.id}
-                                value={category.id.toString()}
-                            >
-                                {category.name}
-                            </SelectItem>
-                        )}
-                    </SelectContent>
-                </Select>
-                </div>
+                    <div className="space-y-2">
+                        <Label>Job Type</Label>
+                        <RadioGroup value={job.type}
+                            onValueChange={(value) => updateField("type", value)}
+                        >
+                          <div className="flex gap-4">
+                            <div className="flex gap-2">
+                                <RadioGroupItem value="Full-time" id="full"/>
+                                <Label htmlFor="full">Full Time</Label>
+                            </div>
+                            <div className="flex gap-2">
+                                <RadioGroupItem value="Part-time" id="part"/>
+                                <Label htmlFor="part">Part Time</Label>
+                            </div>
+                            <div className="flex gap-2">
+                                <RadioGroupItem value="Freelance" id="free"/>
+                                <Label htmlFor="free">Freelance</Label>
+                            </div>
+                          </div>
+                            
+                        </RadioGroup>
+                    </div>
 
-                <div>
-                    <Label>Job Type</Label>
-                    <RadioGroup value={job.type}
-                        onValueChange={(value) => updateField("type", value)}
-                    >
-                        <div>
-                            <RadioGroupItem value="Full-time" id="full"/>
-                            <Label htmlFor="full">Full Time</Label>
-                        </div>
-                        <div>
-                            <RadioGroupItem value="Part-time" id="part"/>
-                            <Label htmlFor="part">Part Time</Label>
-                        </div>
-                        <div>
-                            <RadioGroupItem value="Freelance" id="free"/>
-                            <Label htmlFor="free">Freelance</Label>
-                        </div>
-                    </RadioGroup>
-                </div>
-
-                <div>
-                    <Label>Company</Label>
-                    <Input
-                        placeholder="Company"
-                        value={job.company}
-                        onChange={(e) => updateField("company", e.target.value)}
-                    />
-                </div>
-
-                <div>
-                    <Label>Company Logo</Label>
-                      {job.logo && (
-                        <div>
-                          {job.logo instanceof File ? (
-                             <img
-                              src={URL.createObjectURL(job.logo)}
-                              alt="Company logo"
-                              className="h-24 rounded border"
+                    <div className="grid gap-4 md:grid-cols-2">
+                        <div className="space-y-2">
+                          <Label>Company</Label>
+                          <Input
+                              placeholder="Company"
+                              value={job.company}
+                              onChange={(e) => updateField("company", e.target.value)}
                           />
-                          ) : (
-                             <img
-                                src={`${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
-                                alt="Company logo"
-                                className="h-24 rounded border"
-                            />
-                          )}
                         </div>
-                      )}
-                    <Input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => {
-                            const file = e.target.files?.[0] ?? null;
-                            console.log("Selected", file);
-                            updateField("logo", file)}}
-                    />
-    
-                </div>
 
-                <div>
-                    <Label>Position</Label>
-                    <Input
-                        placeholder="position"
-                        value={job.position}
-                        onChange={(e) => updateField("position", e.target.value)}
-                    />
-                </div>
+                        <div className="space-y-2">
+                          <Label>Position</Label>
+                          <Input
+                              placeholder="position"
+                              value={job.position}
+                              onChange={(e) => updateField("position", e.target.value)}
+                          />
+                      </div>
 
-                <div>
-                    <Label>Website</Label>
-                    <Input
-                        placeholder="url"
-                        value={job.url}
-                        onChange={(e) => updateField("url", e.target.value)}
-                    />
-                </div>
+                      <div className="space-y-2">
+                          <Label>Website</Label>
+                          <Input
+                              type="url"
+                              placeholder="url"
+                              value={job.url}
+                              onChange={(e) => updateField("url", e.target.value)}
+                          />
+                      </div>
 
-                <div>
-                    <Label>Email</Label>
-                    <Input
-                        placeholder="email"
-                        value={job.email}
-                        onChange={(e) => updateField("email", e.target.value)}
-                    />
-                </div>
+                      <div className="space-y-2">
+                          <Label>Email</Label>
+                          <Input
+                          type="email"
+                              placeholder="email"
+                              value={job.email}
+                              onChange={(e) => updateField("email", e.target.value)}
+                          />
+                      </div>
 
-                <div>
-                    <Label>Location</Label>
-                    <Input
-                        placeholder="location"
-                        value={job.location}
-                        onChange={(e) => updateField("location", e.target.value)}
-                    />
-                </div>
+                      <div className="space-y-2">
+                          <Label>Location</Label>
+                          <Input
+                              placeholder="location"
+                              value={job.location}
+                              onChange={(e) => updateField("location", e.target.value)}
+                          />
+                      </div>
+                    </div>
 
-                <div>
-                    <Label>Description</Label>
-                    <Textarea
-                        rows={6}
-                        value={job.description}
-                        onChange={(e)=>
-                            updateField("description",e.target.value)
-                        }
-                    />
-                </div>
-                <div>
-                     <Label>How to Apply</Label>
+                    
+
+                    <div className="space-y-2">
+                        <Label>Company Logo</Label>
+                            <div className="flex flex-col items-start gap-4">
+                              {job.logo && (
+                                    <img
+                                      src={job.logo instanceof File ? URL.createObjectURL(job.logo)
+                                        : `${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`
+                                      }
+                                      alt="Company logo"
+                                      className="h-24 w-24 rounded-md border object-contain"
+                                  />
+                                  
+                                  )}
+
+                                  <Label 
+                                  htmlFor="logo-upload"
+                                  className="cursor-pointer rounded-md border px-2.5 py-1 text-sm hover:bg-muted">
+                                    {job.logo ? "Change Logo" : "Upload Logo"}
+                                  </Label>
+                            </div>
+                          
+                        <Input
+                            id="logo-upload"
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => {
+                                const file = e.target.files?.[0] ?? null;
+                                console.log("Selected", file);
+                                updateField("logo", file)}}
+                            className="hidden"
+                        />
+        
+                    </div>
+
+                    
+
+                    <div className="space-y-2">
+                        <Label>Description</Label>
                         <Textarea
-                            rows={5}
-                            value={job.how_to_apply}
+                            rows={6}
+                            value={job.description}
                             onChange={(e)=>
-                                updateField("how_to_apply",e.target.value)
+                                updateField("description",e.target.value)
                             }
                         />
+                    </div>
+                    <div className="space-y-2">
+                        <Label>How to Apply</Label>
+                            <Textarea
+                                rows={5}
+                                value={job.how_to_apply}
+                                onChange={(e)=>
+                                    updateField("how_to_apply",e.target.value)
+                                }
+                            />
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                        <Checkbox
+                            id="checked"
+                            checked={job.is_public}
+                            onCheckedChange={(checked)=>
+                                updateField(
+                                    "is_public",
+                                    Boolean(checked)
+                                )
+                            }
+                        />
+
+                        <Label htmlFor="checked">Publish publicly</Label>
+                    </div>
+                    
+                    <div className="flex justify-end">
+
+                      {userType == "public" &&(
+                        <Button
+                            type="button"
+                            onClick={mode == "create" ? onPreview : onSubmit}
+                            >
+                          {mode == "create" ? "Create Job" : "Update Job"}
+                        </Button>
+                      )}
+
+                      {userType == "admin" &&(
+                        <Button
+                            type="button"
+                            onClick={onSubmit}
+                            >
+                          {mode == "create" ? "Create Job" : "Update Job"}
+                        </Button>
+                      )}
+
+                      
+                        
+                    </div>
                 </div>
 
-                <div>
-                    <Checkbox
-                        checked={job.is_public}
-                        onCheckedChange={(checked)=>
-                            updateField(
-                                "is_public",
-                                Boolean(checked)
-                            )
-                        }
-                    />
-
-                    <Label>Publish publicly</Label>
-                </div>
-                
-                <div>
-                    <Button
-                        type="button"
-                        onClick={onPreview}
-                        >
-                        Preview Job
-                    </Button>
-                </div>
-            </CardContent>
-        </Card>
+          </div>
+          
+        </div>
+        
+      </div>
+        
 
         
     );

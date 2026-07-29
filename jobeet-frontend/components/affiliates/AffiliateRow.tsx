@@ -42,7 +42,7 @@ export default function AffiliateRow({affiliate, onDelete, onStatus} : Props) {
         {affiliate.token}
     </TableCell>
 
-    <TableCell>
+    <TableCell className="w-[80px] text-right">
       <AffiliateAction
         affiliate={affiliate}
         onDelete ={onDelete}

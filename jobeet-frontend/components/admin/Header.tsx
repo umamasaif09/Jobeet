@@ -1,4 +1,5 @@
-import LogoutButton from "../auth/LogoutButton";
+
+import { Separator } from "../ui/separator";
 import NavBar from "./NavBar";
 import Container from "@/components/ui/Container"
 
@@ -7,7 +8,7 @@ export default function Header() {
         <header>
             <Container>
                 <NavBar />
-                <LogoutButton/>
+                <Separator/>
             </Container>
         </header>
     );

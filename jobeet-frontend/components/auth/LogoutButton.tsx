@@ -15,7 +15,7 @@ export default function LogoutButton() {
     }
   }
   return (
-    <Button onClick={handleLogout}>
+    <Button onClick={handleLogout} variant={"ghost"}>
       Logout
     </Button>
   );

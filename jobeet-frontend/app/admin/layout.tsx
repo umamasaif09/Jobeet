@@ -1,9 +1,11 @@
 "use client";
 
 import Header from "@/components/admin/Header";
+import Container from "@/components/ui/Container";
 import { getCurrentAdmin } from "@/services/auth";
 import { redirect, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Toaster } from "sonner";
 
 export default function AdminLayout({
   children,
@@ -21,6 +23,7 @@ export default function AdminLayout({
       }
       catch{
         router.replace("/auth/login");
+        return;
       }
     }
     checkAuth();
@@ -33,13 +36,15 @@ export default function AdminLayout({
   }
 
   return(
-    <>
+    <div className="min-h-screen flex flex-col">
         <Header />
-
-            <main className="flex-1">
-            {children}
+        <Toaster />
+            <main className="flex-1 py-6">
+              <Container>
+                {children}
+              </Container>
             </main>
 
-    </>
+    </div>
   );
 }

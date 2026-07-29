@@ -31,38 +31,46 @@ export default function CategoryTable({categories}: Props) {
     );
   }
   return(
-    <>
-      <Button onClick={()=> {
-        setSelectedCategory(null);
-        setCategoryDialogOpen(true);
-      }}>
-        New Category
-      </Button>
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+          Manage Categories
+        </h1>
+          <Button onClick={()=> {
+            setSelectedCategory(null);
+            setCategoryDialogOpen(true);
+          }}>
+            New Category
+        </Button>
+      </div>
       
-      <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Category ID</TableHead>
-          <TableHead>Category Name</TableHead>
-          <TableHead></TableHead>
-        </TableRow>
-      </TableHeader>
+      <div className="rounded-md border ">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Category ID</TableHead>
+              <TableHead>Category Name</TableHead>
+              <TableHead className="w-[80px]"></TableHead>
+            </TableRow>
+          </TableHeader>
 
-      <TableBody>
-        {categories.map((category) => (
-          <CategoryRow key={category.id} category={category} 
-            onEdit={(category) => {
-              setSelectedCategory(category);
-              setCategoryDialogOpen(true);
-            }}
-            onDelete={(category) => {
-              setSelectedCategory(category);
-              setDeleteDialogOpen(true);
-            }}
-          />
-        ))}
-      </TableBody>
-    </Table>
+          <TableBody>
+            {categories.map((category) => (
+              <CategoryRow key={category.id} category={category} 
+                onEdit={(category) => {
+                  setSelectedCategory(category);
+                  setCategoryDialogOpen(true);
+                }}
+                onDelete={(category) => {
+                  setSelectedCategory(category);
+                  setDeleteDialogOpen(true);
+                }}
+              />
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      
 
     <CategoryDialog 
         open={categoryDialogOpen}
@@ -77,6 +85,6 @@ export default function CategoryTable({categories}: Props) {
         category={selectedCategory}
         onSuccess= {()=> router.refresh()}
       />
-    </>
+    </div>
   );
 }

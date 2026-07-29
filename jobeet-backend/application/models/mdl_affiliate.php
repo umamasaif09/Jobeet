@@ -61,7 +61,7 @@ class mdl_affiliate extends CI_Model
     public function disable($id) 
     {
         $this->db->where("id",$id);
-        return $this->db->update("affiliates", ["is_active" => 0]);
+        return $this->db->update("affiliates", ["is_active" => 0, "token" => NULL]);
     }
 
     public function deleteAffiliate($id) {

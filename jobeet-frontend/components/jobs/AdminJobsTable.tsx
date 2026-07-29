@@ -30,17 +30,24 @@ export default function JobTable({jobs}: JobTableProps) {
     }
 
     return(
-      <>
-      <Link href={`/admin/jobs/create`}>
-        <Button>
-          New Job
-        </Button>
-      </Link>
+      <div className="space-y-6">
+        <div className="flex justify-between items-center">
+          <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+            Manage Jobs
+          </h1>
+
+          <Link href={`/admin/jobs/create`}>
+            <Button>
+              New Job
+            </Button>
+        </Link>
+        </div>
       
-      <Table>
+      <div className="rounded-md border ">
+        <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>Job ID</TableHead>
+                    <TableHead className="w-[100px]">Job ID</TableHead>
                     <TableHead>Position</TableHead>
                     <TableHead>Company Name</TableHead>
                     <TableHead>Job Type</TableHead>
@@ -48,7 +55,7 @@ export default function JobTable({jobs}: JobTableProps) {
                     <TableHead>Active Status</TableHead>
                     <TableHead>Public Status</TableHead>
                     <TableHead>Created At</TableHead>
-                    <TableHead></TableHead>
+                    <TableHead className="w-[80px]"></TableHead>
                 </TableRow>
             </TableHeader>
 
@@ -63,6 +70,8 @@ export default function JobTable({jobs}: JobTableProps) {
                 ))}
             </TableBody>
         </Table>
+      </div>
+      
 
         <DeleteJobDialog
           open={deleteDialogOpen}
@@ -70,6 +79,6 @@ export default function JobTable({jobs}: JobTableProps) {
           job= {selectedJob}
           onSuccess= {()=> router.refresh()}
         />
-      </>
+      </div>
     );
 }

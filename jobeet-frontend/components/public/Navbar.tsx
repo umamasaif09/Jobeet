@@ -5,14 +5,17 @@ import { Button } from "@/components/ui/button";
 
 export default function NavBar() {
     return(
-        <nav>
+        <nav className="flex justify-between items-center border-b py-4">
             <Logo/>
-            <SearchBar/>
 
+            <div className="flex items-center gap-2 ">
+              <SearchBar/>
 
-            <Link href="/jobs/create">
-                <Button>Post a Job</Button>
-            </Link>
+              <Link href="/jobs/create">
+                  <Button>Post a Job</Button>
+              </Link>
+            </div>
+           
         </nav>
     );
 }

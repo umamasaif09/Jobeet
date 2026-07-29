@@ -1,5 +1,8 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import LogoutButton from "../auth/LogoutButton";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 const navigation = [
      {
@@ -25,13 +28,16 @@ const navigation = [
 ];
 
 export default function NavBar() {
+  const pathname= usePathname();
     return(
-        <nav>
+        <nav className="flex justify-between items-center border-b py-4">
             <Logo/>
 
-            <div>
+            <div className="flex items-center gap-2 ">
                 {navigation.map((item)=> (
-                    <Link
+                    <Link className={`text-sm font-medium px-2.5 py-1.5 transition-colors rounded-md ${
+                      pathname === item.href ? "bg-accent text-accent-foreground" : "hover:bg-accent hover:text-accent-foreground"
+                    }`}
                         key={item.href}
                         href={item.href}
                         
@@ -39,6 +45,7 @@ export default function NavBar() {
                             {item.label}
                         </Link>
                 ))}
+                <LogoutButton/>
             </div>
         </nav>
     );

@@ -14,7 +14,7 @@ export default function CategoryAction({category, onEdit, onDelete}: Props) {
   <>
     <DropdownMenu>
       <DropdownMenuTrigger>
-          <MoreVertical />
+          <MoreVertical className="cursor-pointer"/>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>

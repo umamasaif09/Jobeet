@@ -12,7 +12,7 @@ type Props = {
 export default function CategoryRow({category, onEdit, onDelete}: Props){
   return(
     <TableRow>
-      <TableCell>
+      <TableCell className="text-center">
         {category.id}
       </TableCell>
 
@@ -20,7 +20,7 @@ export default function CategoryRow({category, onEdit, onDelete}: Props){
         {category.name}
       </TableCell>
 
-      <TableCell>
+      <TableCell className="w-[80px] text-right">
         <CategoryAction
           category={category}
           onEdit={onEdit}

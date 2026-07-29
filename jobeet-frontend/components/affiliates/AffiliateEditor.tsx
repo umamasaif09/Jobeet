@@ -5,6 +5,8 @@ import { Category } from "@/types/category";
 import { AffiliateFormData } from "@/types/affiliate-form-data";
 import { applyAffiliate, createAffiliate, updateAffiliate } from "@/services/affiliates";
 import AffiliateForm from "./AffiliateForm";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type Props = {
     categories: Category[];
@@ -19,6 +21,7 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
 
 
     const [affiliate, setAffiliate] = useState(initialAffiliate);
+    const router = useRouter();
 
     function updateField<K extends keyof AffiliateFormData> (
         field: K,
@@ -34,7 +37,7 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
       console.log("Affiliate state:", affiliate);
 
         if (affiliate.categories.length === 0) {
-          alert("Please select atleast one category.");
+          toast.error("Please select atleast one category.")
           return;
         }
 
@@ -42,18 +45,24 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
           if(mode=="create") {
             if(userType == "admin") {
               await createAffiliate(affiliate);
+              toast.success("Affiliate created successfully")
+              router.replace("/admin/affiliates");
+
             }
             else if(userType == "public") {
               await applyAffiliate(affiliate);
-              alert("Affiliate application submitted successfully!");
+              toast.success("Affiliate application submitted successfully");
+              router.replace("/");
             }
           }
           else {
               await updateAffiliate(affiliateId!, affiliate);
+              toast.success("Affiliate updated successfully");
+              router.replace("/admin/affiliates");
             }
         } catch(error: any) {
           console.error(error.response?.data);
-          alert("Unable to save affiliate.");
+          toast.error("Unable to save affiliate");
         }
         
     }

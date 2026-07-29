@@ -55,7 +55,7 @@ type JobRowProps = {
                 {job.created_at}
             </TableCell>
 
-            <TableCell>
+            <TableCell className="w-[80px] text-right">
               <JobAction
                 job={job}
                 onDelete ={onDelete}

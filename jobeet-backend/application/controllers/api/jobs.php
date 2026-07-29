@@ -211,7 +211,7 @@ class jobs extends MY_Controller
             "is_active" => 1
         ];
 
-        $job = $this->mdl_job->updatejob($jobData, $jobId, $token);
+        $job = $this->mdl_job->adminUpdatejob($jobData, $jobId);
 
         if(!$job) {
             http_response_code(500);

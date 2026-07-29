@@ -1,8 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Container from "@/components/ui/Container";
-import { Label } from "@/components/ui/label";
+import StatCard from "@/components/admin/StatCard";
 import { getDashboardStats } from "@/services/admins";
 import { useEffect, useState } from "react";
 
@@ -31,26 +29,34 @@ export default function HomePage() {
   }
 
   return (
-    <Container>
-      <Card>
-        <CardHeader>
-          <CardTitle>Admin Dashboard</CardTitle>
-        </CardHeader>
+    <div className="space-y-6">
+       <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+        Dashboard
+      </h1>
 
-        <CardContent>
-          <Label>Total Categories</Label>
-          {stats.categories}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <StatCard
+          title="Categories"
+          value={stats.categories}
+        />
 
-          <Label>Total Jobs</Label>
-          {stats.jobs}
-          
-          <Label>Total Affiliates</Label>
-          {stats.affiliates}
+        <StatCard
+          title="Jobs"
+          value={stats.jobs}
+        />
 
-          <Label>Total Admins</Label>
-          {stats.admins}
-        </CardContent>
-      </Card>
-    </Container>
+        <StatCard
+          title="Affiliates"
+          value={stats.affiliates}
+        />
+
+        <StatCard
+          title="Admins"
+          value={stats.admins}
+        />
+      </div>
+    </div>
+   
+      
   );
 }

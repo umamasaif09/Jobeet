@@ -38,7 +38,7 @@ export default function AdminRow({admin, onEdit, onDelete, onStatus}: Props) {
         {admin.created_at}
       </TableCell>
 
-      <TableCell>
+      <TableCell className="w-[80px] text-right">
         <AdminAction
           admin = {admin}
           onEdit = {onEdit}

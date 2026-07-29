@@ -18,12 +18,14 @@ export default async function EditJobPage({params}: Props) {
   const categories = await getCategories();
 
   return(
-    <JobEditor
+      <JobEditor
       mode="edit"
+      userType="public"
       initialJob={transformToJobForm(job)}
       categories={categories}
       jobId={job.id}
       token={token}
     />
+    
   );
 }

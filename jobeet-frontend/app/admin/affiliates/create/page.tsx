@@ -8,7 +8,7 @@ export default async function CreateAffiliatePage() {
   const categories = await getCategories();
 
   return(
-    <AffiliateEditor categories={categories} 
+      <AffiliateEditor categories={categories} 
       mode="create"
       userType="admin"
       initialAffiliate={{
@@ -18,5 +18,6 @@ export default async function CreateAffiliatePage() {
               categories: []
             }}
       />
+    
   )
 }

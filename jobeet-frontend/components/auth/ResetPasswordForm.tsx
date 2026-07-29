@@ -8,6 +8,7 @@ import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 
 
 export default function ResetPasswordForm() {
@@ -18,37 +19,32 @@ export default function ResetPasswordForm() {
 
   const [password, setPassword] =useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [message, setMessage] =useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError("");
-    setMessage("");
 
     if(!token) {
-      setError("Invalid reset link.");
+      toast.error("Invalid reset link.");
       return;
 
     }
 
     if(password != confirmPassword) {
-      setError("Passwords do not match.")
+      toast.error("Passwords do not match.")
     }
 
     setLoading(true);
 
     try{
       const response = await resetPassword({token, password});
-      setMessage(response.message);
+      toast.message(response.message);
 
       setTimeout(()=> {
         router.push("/auth/login");
       }, 1500)
     } catch (error:any) {
-      setError(
+      toast.error(
         error.response?.data?.message ?? "Unable to reset password."
       );
     } finally {
@@ -83,14 +79,6 @@ export default function ResetPasswordForm() {
               placeholder="Confirm new password"
             />
           </div>
-          {message && (
-            <p>{message}</p>
-          )}
-
-          {error && (
-            <p>{error}</p>
-          )}
-
           <Button
             type="submit"
             disabled={loading}

@@ -20,13 +20,14 @@ export default async function editAffiliatePage({params} : Props) {
   const categories = await getCategories();
 
   return (
-    <AffiliateEditor 
-    categories={categories}
-    mode="edit"
-    userType="admin"
-    initialAffiliate= {transformAffiliate(affiliate)}
-    affiliateId={affiliate.id}
-    />
+      <AffiliateEditor 
+        categories={categories}
+        mode="edit"
+        userType="admin"
+        initialAffiliate= {transformAffiliate(affiliate)}
+        affiliateId={affiliate.id}
+        />
+    
   );
 
 }

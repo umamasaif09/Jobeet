@@ -20,16 +20,20 @@ export default function SearchBar() {
     return (
         
         <form onSubmit={handleSubmit}>
+          <div className="flex items-center">
             <Input
                 type="text"
                 placeholder="Search jobs..."
-                className="p1-10"
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
-            />
-            <Button type="submit">
-                Search
-            </Button>
+                className="rounded-r-none"
+              />
+              <Button type="submit"
+                className="rounded-l-none">
+                  Search
+              </Button>
+          </div>
+            
         </form>
         
     );

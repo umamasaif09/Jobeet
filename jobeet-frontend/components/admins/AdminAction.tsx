@@ -19,7 +19,7 @@ export default function AdminAction({admin, onEdit, onDelete, onStatus}: Props) 
   return(
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <MoreVertical />
+        <MoreVertical className="cursor-pointer"/>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>

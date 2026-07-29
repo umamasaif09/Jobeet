@@ -18,7 +18,7 @@ export default function AffiliateAction({affiliate, onDelete, onStatus}: Props) 
     <>
     <DropdownMenu>
       <DropdownMenuTrigger>
-          <MoreVertical />
+          <MoreVertical className="cursor-pointer" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
@@ -29,7 +29,7 @@ export default function AffiliateAction({affiliate, onDelete, onStatus}: Props) 
         </DropdownMenuItem>
 
         <DropdownMenuItem onClick= {()=> onStatus(affiliate)}>
-          {affiliate.is_active == true? "Disbale" : "Activate"}
+          {affiliate.is_active == true? "Disable" : "Activate"}
         </DropdownMenuItem>
 
         <DropdownMenuItem onClick={()=> onDelete(affiliate)}>

@@ -6,29 +6,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Input } from "@base-ui/react";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
+import { toast } from "sonner";
 
 
 export default function ForgotPasswordForm() {
   const [email, setEmail] =useState("");
-  const [message, setMessage] =useState("");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     setLoading(true);
-    setError("");
-    setMessage("");
 
     try{
       const response = await forgotPassword(email);
-      setMessage(response.message);
-      console.log(response.message);
+      toast.message(response.message);
     } catch (error:any) {
-      setError(
-        error.response?.data?.message ?? "Unable to send reset email."
-      );
+      toast.error(error.response?.data?.message ?? "Unable to send reset email");
     } finally {
       setLoading(false);
     }
@@ -51,13 +45,6 @@ export default function ForgotPasswordForm() {
               placeholder="Enter your email"
             />
           </div>
-          {message && (
-            <p>{message}</p>
-          )}
-
-          {error && (
-            <p>{error}</p>
-          )}
 
           <Button
             type="submit"

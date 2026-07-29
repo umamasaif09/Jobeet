@@ -16,12 +16,13 @@ export default function JobTable({jobs}: JobTableProps) {
         )
     }
     return(
-        <Table>
+      <div className="rounded-md border "> 
+        <Table className="table-fixed w-full">
             <TableHeader>
                 <TableRow>
-                    <TableHead>Location</TableHead>
-                    <TableHead>Position</TableHead>
-                    <TableHead>Company</TableHead>
+                    <TableHead className="w-[150px]">Position</TableHead>
+                    <TableHead className="w-[100px]">Location</TableHead>
+                    <TableHead className="w-[100px]">Company</TableHead>
                 </TableRow>
             </TableHeader>
 
@@ -32,5 +33,6 @@ export default function JobTable({jobs}: JobTableProps) {
                 ))}
             </TableBody>
         </Table>
+      </div>
     );
 }

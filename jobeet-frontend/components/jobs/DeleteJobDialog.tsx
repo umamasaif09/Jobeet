@@ -29,7 +29,7 @@ export default function DeleteJobDialog({open, onOpenChange,job, onSuccess}: Pro
 
           <AlertDialogDescription>
             Are you sure you want to delete{" "}
-            <strong>{job?.position}</strong>?
+            <strong>{job?.position}</strong> job post?
             <br />
           </AlertDialogDescription>
         </AlertDialogHeader>

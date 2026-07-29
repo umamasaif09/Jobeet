@@ -150,6 +150,13 @@ class mdl_job extends CI_Model
         return true;
     }
 
+    public function adminUpdateJob($data, $id) {
+        $this->db->where("id", $id);
+        $this->db->update("jobs", $data);
+
+        return true;
+    }
+
     public function getJobs()
     {
         $query = $this->db->get("jobs");

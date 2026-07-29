@@ -5,26 +5,24 @@ export default function Footer() {
     return (
         <footer>
             <Container>
-                <div>
-                    <p>
-                        © {new Date().getFullYear()} Jobeet. All rights reserved.
-                    </p>
 
-                    <div>
+                    <div className="flex justify-center items-center gap-2 border-t py-4">
                         <Link href="/about"
+                              className="text-sm font-medium px-2.5 py-1.5"
                         >
                             About Jobeet
                         </Link>
 
                         <Link
                             href="/rss"
-                            
+                            className="text-sm font-medium px-2.5 py-1.5"
                         >
                             Full RSS Feed
                         </Link>
 
                         <Link
-                            href="/api"
+                          className="text-sm font-medium px-2.5 py-1.5"
+                          href="/api"
                             
                         >
                             Jobeet API
@@ -32,12 +30,13 @@ export default function Footer() {
 
                         <Link
                             href="/affiliates"
+                            className="text-sm font-medium px-2.5 py-1.5"
                             
                         >
                             Affiliates
                         </Link>
                     </div>
-                </div>
+
             </Container>
         </footer>
     );

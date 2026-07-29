@@ -18,7 +18,7 @@ export default function JobAction({job, onDelete}: Props) {
   <>
     <DropdownMenu>
       <DropdownMenuTrigger>
-          <MoreVertical />
+          <MoreVertical className="cursor-pointer"/>
       </DropdownMenuTrigger>
     
       <DropdownMenuContent>
@@ -34,7 +34,7 @@ export default function JobAction({job, onDelete}: Props) {
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem className="text-red-600" onClick={()=> onDelete(job)}>
+        <DropdownMenuItem onClick={()=> onDelete(job)}>
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent> 

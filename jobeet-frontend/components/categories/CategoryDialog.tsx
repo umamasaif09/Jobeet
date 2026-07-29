@@ -47,7 +47,7 @@ export default function CategoryDialog({open, onOpenChange, category, onSuccess}
           </DialogTitle>
         </DialogHeader>
 
-        <div>
+        <div className="space-y-2">
           <Label>Name</Label>
 
           <Input value={name} onChange = {(e) => setName(e.target.value)}/>

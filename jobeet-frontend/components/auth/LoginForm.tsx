@@ -8,6 +8,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { toast } from "sonner";
 
 
 export default function LoginForm() {
@@ -15,32 +16,26 @@ export default function LoginForm() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try{
-      setError("");
       await login({
         email, password,
       });
 
       router.push("/admin");
     } catch(error:any) {
-      setError(
-        error.response?.data?.message ?? "Something went wrong."
-      );
+
+        toast.error(error.response?.data?.message ?? "Something went wrong.");
+
     }
   }
   return (
     <Card>
       <CardContent>
-        {error && (
-          <p>
-            {error}
-          </p>
-        )}
         <form onSubmit={handleSubmit}>
           <div>
             <Label>Email</Label>

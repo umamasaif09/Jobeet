@@ -5,6 +5,9 @@ import { AdminFormData } from "@/types/admin-form-data";
 import { AdminRegisterData } from "@/types/register-admin-data";
 import { useState } from "react";
 import AdminForm from "./AdminForm";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
 
 export default function AdminEditor() {
   const [admin, setAdmin] = useState<AdminFormData>({
@@ -14,6 +17,7 @@ export default function AdminEditor() {
     confirmPassword: ""
   });
   const [error, setError] = useState("");
+  const router = useRouter();
 
   function updateField<K extends keyof AdminFormData>(field: K, value: AdminFormData[K]) {
     
@@ -30,7 +34,7 @@ export default function AdminEditor() {
   async function hanleSubmit(){
 
     if(admin.password !== admin.confirmPassword) {
-      setError("Passwords do not match");
+      toast.error("Passwords do not match")
       return;
     }
 
@@ -41,6 +45,8 @@ export default function AdminEditor() {
     }
 
     await createAdmin(data);
+    toast.success("Admin regsitered")
+    router.replace("/admin/admins");
   }
 
   return(

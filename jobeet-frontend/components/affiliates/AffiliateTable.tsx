@@ -22,23 +22,29 @@ export default function AffiliateTable({affiliates} : Props) {
   const router = useRouter();
 
   return(
-    <>
-      <Link href={`/admin/affiliates/create`}>
-        <Button>
-          New Affiliate
-        </Button>
-      </Link>
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+          Manage Affiliates
+        </h1>
+        <Link href={`/admin/affiliates/create`}>
+          <Button>
+            New Affiliate
+          </Button>
+        </Link>
+      </div>
       
-      <Table>
+      <div className="rounded-md border ">
+        <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead>Affiliate ID</TableHead>
+                    <TableHead className="w-[100px]">Affiliate ID</TableHead>
                     <TableHead>Affiliate Name</TableHead>
                     <TableHead>Affiliate Email</TableHead>
                     <TableHead>Affiliate Website</TableHead>
                     <TableHead>Active Status</TableHead>
                     <TableHead>Affiliate Token</TableHead>
-                    <TableHead></TableHead>
+                    <TableHead className="w-[80px]"></TableHead>
                 </TableRow>
             </TableHeader>
 
@@ -57,6 +63,8 @@ export default function AffiliateTable({affiliates} : Props) {
                 ))}
             </TableBody>
         </Table>
+      </div>
+      
 
         <DeleteAffiliateDialog
           open={deleteDialogOpen}
@@ -71,6 +79,6 @@ export default function AffiliateTable({affiliates} : Props) {
           affiliate = {selectedAffiliate}
           onSuccess ={()=> router.refresh()}
         />
-      </>
+      </div>
   )
 }

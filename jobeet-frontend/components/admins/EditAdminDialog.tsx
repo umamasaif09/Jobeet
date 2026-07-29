@@ -48,13 +48,13 @@ export default function EditAdminDialog({open, onOpenChange, onSuccess, admin}: 
           </DialogTitle>
         </DialogHeader>
 
-        <div>
+        <div className="space-y-2">
           <Label>Name</Label>
 
           <Input value= {name} onChange= {(e) => setName(e.target.value)}/>
         </div>
 
-        <div>
+        <div className="space-y-2">
           <Label>Email</Label>
 
           <Input value={email} onChange = {(e) => setEmail(e.target.value)} type="email"/>

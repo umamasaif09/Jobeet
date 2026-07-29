@@ -7,6 +7,7 @@ export default async function CreateJobPage() {
     return (
         <JobEditor
             mode="create"
+            userType="admin"
             categories={categories}
             initialJob={{
               category_id: "",
@@ -21,6 +22,6 @@ export default async function CreateJobPage() {
               how_to_apply: "",
               is_public: true,
             }}
-        />
+        /> 
     );
 }
