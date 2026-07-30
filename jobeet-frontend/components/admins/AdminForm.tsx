@@ -1,5 +1,4 @@
 
-import { Card, CardContent } from "../ui/card";
 import { AdminFormData } from "@/types/admin-form-data";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
@@ -17,6 +16,13 @@ type Props ={
 
 export default function AdminForm({onSubmit, updateField, admin}: Props) {
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+
+      onSubmit();
+    }
+
+
   return(
     <div className="flex items-baseline gap-4">
       <BackButton/>
@@ -25,13 +31,15 @@ export default function AdminForm({onSubmit, updateField, admin}: Props) {
           <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
             Register Admin
           </h1>
-                <div className="space-y-4">
+          <form onSubmit={handleSubmit}>
+            <div className="space-y-4">
                   <div className="space-y-2">
                       <Label>Name</Label>
                       <Input
                           placeholder="Name"
                           value={admin.name}
                           onChange={(e) => updateField("name", e.target.value)}
+                          required
                       />
                   </div>
                   
@@ -42,6 +50,7 @@ export default function AdminForm({onSubmit, updateField, admin}: Props) {
                           placeholder="Email"
                           value={admin.email}
                           onChange={(e) => updateField("email", e.target.value)}
+                          required
                       />
                   </div>
 
@@ -52,6 +61,7 @@ export default function AdminForm({onSubmit, updateField, admin}: Props) {
                           placeholder="Password"
                           value={admin.password}
                           onChange={(e) => updateField("password", e.target.value)}
+                          required
                       />
                   </div>
 
@@ -62,18 +72,20 @@ export default function AdminForm({onSubmit, updateField, admin}: Props) {
                           placeholder="Confirm Password"
                           value={admin.confirmPassword}
                           onChange={(e) => updateField("confirmPassword", e.target.value)}
+                          required
                       />
                   </div>
 
                   <div className="flex justify-end">
                     <Button
-                    type="button"
-                    onClick={onSubmit}
+                    type="submit"
                     >
                       Register Admin
                     </Button>
                   </div>
                 </div>
+          </form>
+                
           </div>
         </div>
   </div>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Logo from "./Logo";
 import LogoutButton from "../auth/LogoutButton";
 import { usePathname } from "next/navigation";
-import path from "path";
 
 const navigation = [
      {

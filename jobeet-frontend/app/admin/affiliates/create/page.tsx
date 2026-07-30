@@ -1,5 +1,4 @@
 
-
 import AffiliateEditor from "@/components/affiliates/AffiliateEditor";
 import { getCategories } from "@/services/categories";
 

@@ -5,7 +5,6 @@ import { Category } from "@/types/category";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
-import {Card, CardContent} from "@/components/ui/card";
 import { AffiliateFormData } from "@/types/affiliate-form-data";
 import BackButton from "../ui/BackButton";
 
@@ -27,6 +26,12 @@ type Props = {
 
 export default function AffiliateForm({affiliate, updateField, categories, onSubmit, mode, userType}: Props) {
 
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+
+      onSubmit();
+    }
+
     return (
       <div className="flex items-baseline gap-4">
         <BackButton/>
@@ -35,7 +40,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
             <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
               {mode == "create" ? "Create Affiliate" : "Edit Affiliate"}
             </h1>
-
+            <form onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <div className="space-y-2">
                     <Label>Name</Label>
@@ -43,6 +48,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                         placeholder="Name"
                         value={affiliate.affiliate_name}
                         onChange={(e) => updateField("affiliate_name", e.target.value)}
+                        required
                     />
                 </div>
                 
@@ -53,15 +59,18 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                         placeholder="email"
                         value={affiliate.affiliate_email}
                         onChange={(e) => updateField("affiliate_email", e.target.value)}
+                        required
                     />
                 </div>
 
                 <div className="space-y-2">
                     <Label>Website</Label>
                     <Input
+                        type="url"
                         placeholder="url"
                         value={affiliate.affiliate_url}
                         onChange={(e) => updateField("affiliate_url", e.target.value)}
+                        required
                     />
                 </div>
 
@@ -92,6 +101,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                               );
                             }
                           }}
+                          
                         />
                         <Label htmlFor={`category-${category.id}`}>{category.name}</Label>
                       </div>
@@ -100,14 +110,13 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                 
                 <div className="flex justify-end">
                     <Button
-                        type="button"
-                        onClick={onSubmit}
+                        type="submit"
                         >
                         {mode == "create" && userType== "public" ? "Apply" : mode== "create" && userType == "admin" ? "Create" : "Update"}
                     </Button>
                 </div>
-              </div>
-                
+                </div>
+            </form>
 
         </div>
       </div>

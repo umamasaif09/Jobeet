@@ -34,7 +34,11 @@ export function transformCategory(api: CategoryApi): Category {
 export function transformCategoryJobsResponse(data: CategoryJobsResponseApi): CategoryJobsResponse {
     return {
         category: transformCategory(data.category),
-        jobs: data.jobs.map(transformJob)
+        jobs: data.jobs.map(transformJob),
+        totalItems: data.totalItems,
+        totalPages: data.totalPages,
+        page: data.page,
+        perPage: data.perPage
     };
 }
 

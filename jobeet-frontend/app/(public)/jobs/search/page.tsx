@@ -1,6 +1,7 @@
 import JobTable from "@/components/jobs/JobTable";
 import BackButton from "@/components/ui/BackButton";
 import { getJobsByKeyword } from "@/services/jobs";
+import { toast } from "sonner";
 
 type Props = {
     searchParams: Promise <{
@@ -23,7 +24,11 @@ export default async function SearchPage({searchParams}: Props) {
               Search Results
             </h1>
           </div>
-          <JobTable jobs = {jobs}/>
+          {jobs ? (
+            <JobTable jobs = {jobs}/>
+          ) : toast.error("No results available")
+          }
+          
         </div>
     );
 }

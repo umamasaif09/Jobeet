@@ -2,10 +2,7 @@ import api from "@/lib/api";
 import { Job, JobApi } from "@/types/job";
 import { CategoryWithJobs, CategoryWithJobsApi } from "@/types/category-with-jobs";
 import { transformCategoryJobsResponse, transformJob } from "@/lib/transformers";
-import { transformCategoryWithJobs } from "@/lib/transformers";
-import { Category } from "@/types/category";
 import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
-import { JobFormData } from "@/types/job-form-data";
 import { CreateJobRequest } from "@/types/create-job-request";
 
 
@@ -32,7 +29,7 @@ export async function getJob(id: number): Promise<Job> {
 
 export async function getJobsByCategory(categoryId: number, page:number=1): Promise<CategoryJobsResponse> {
     const response = await api.get<CategoryJobsResponseApi>(`jobs/category?category=${categoryId}&page=${page}`);
-    
+    console.log("API RESPONSE", response.data);
     return transformCategoryJobsResponse(response.data);
 }
 

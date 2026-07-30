@@ -47,18 +47,20 @@ export default function EditAdminDialog({open, onOpenChange, onSuccess, admin}: 
             Edit Admin
           </DialogTitle>
         </DialogHeader>
-
-        <div className="space-y-2">
+        <form onSubmit={handleSubmit} id="edit-form">
+          <div className="space-y-2">
           <Label>Name</Label>
 
-          <Input value= {name} onChange= {(e) => setName(e.target.value)}/>
+          <Input value= {name} onChange= {(e) => setName(e.target.value)} required/>
         </div>
 
         <div className="space-y-2">
           <Label>Email</Label>
 
-          <Input value={email} onChange = {(e) => setEmail(e.target.value)} type="email"/>
+          <Input value={email} onChange = {(e) => setEmail(e.target.value)} type="email" required/>
         </div>
+        </form>
+        
 
         <DialogFooter>
           <Button variant="outline"
@@ -68,7 +70,7 @@ export default function EditAdminDialog({open, onOpenChange, onSuccess, admin}: 
           </Button>
 
           <Button
-            onClick= {handleSubmit}
+          type="submit" form="edit-form"
           >
             Update
           </Button>

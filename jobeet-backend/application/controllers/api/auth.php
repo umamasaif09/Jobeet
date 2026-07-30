@@ -134,7 +134,7 @@ class auth extends MY_Controller
 
         $this->mdl_admin->updateResetToken($admin["id"], $token);
 
-        $resetLink = "http://localhost:3000/auth/reset-password?token=".$token; // needs to be updated after frontend is configured
+        $resetLink = "http://jobeet.test:3000/auth/reset-password?token=".$token; // needs to be updated after frontend is configured
 
         $emailSent = $this->sendPasswordResetEmail($admin, $resetLink);
 

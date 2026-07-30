@@ -1,4 +1,4 @@
-import affiliatesPage from "@/app/admin/affiliates/page";
+
 import { deleteAffiliate } from "@/services/affiliates";
 import { Affiliate } from "@/types/affiliate";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "../ui/alert-dialog";

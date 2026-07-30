@@ -65,6 +65,8 @@ class mdl_job extends CI_Model
         return [
             "category" => $category,
             "jobs" => $jobs,
+            "page" => $page,
+            "perPage" => $limit,
             "totalJobs" => $totalJobs,
             "totalPages" => $totalPages
         ];

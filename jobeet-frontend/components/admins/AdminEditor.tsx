@@ -16,7 +16,6 @@ export default function AdminEditor() {
     password: "",
     confirmPassword: ""
   });
-  const [error, setError] = useState("");
   const router = useRouter();
 
   function updateField<K extends keyof AdminFormData>(field: K, value: AdminFormData[K]) {

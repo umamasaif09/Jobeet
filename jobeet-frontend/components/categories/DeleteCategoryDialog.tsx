@@ -1,7 +1,7 @@
 import { deleteCategory } from "@/services/categories";
 import { Category } from "@/types/category";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "../ui/alert-dialog";
-import { open } from "node:inspector/promises";
+
 
 interface Props{
   open: boolean;

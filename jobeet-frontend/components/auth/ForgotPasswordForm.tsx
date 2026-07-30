@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { forgotPassword } from "@/services/auth";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Input } from "@base-ui/react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { toast } from "sonner";
@@ -29,34 +29,42 @@ export default function ForgotPasswordForm() {
   }
 
   return (
-    <Card>
+    <div className="flex min-h-screen justify-center items-center">
+    <Card className="w-[300px] max-w-full">
       <CardHeader>
         <CardTitle>Forgot Password</CardTitle>
+        <CardDescription>
+          Enter your email below to get password reset email
+        </CardDescription>
       </CardHeader>
-
       <CardContent>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <Label>Email</Label>
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-            />
-          </div>
-
-          <Button
+        <form onSubmit={handleSubmit} id="forgot-form">
+          
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+        <Button
             type="submit"
             disabled = {loading}
+            form="forgot-form"
           >
             {loading
               ? "Sending..."
-              : "Sent Reset Link"}
+              : "Send Reset Link"}
           </Button>
-        </form>
-      </CardContent>
-
+      </CardFooter>
     </Card>
-  )
+    </div>
+  );
 }

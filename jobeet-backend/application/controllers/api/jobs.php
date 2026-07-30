@@ -53,9 +53,6 @@ class jobs extends MY_Controller
 
         $jobs = $this->mdl_job->searchJobs($keyword);
 
-        if(!$jobs) {
-            show_error("Does not Exist", 404);
-        }
 
         header("Content-Type: application/json");
         echo json_encode($jobs, JSON_PRETTY_PRINT);

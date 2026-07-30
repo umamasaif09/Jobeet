@@ -46,14 +46,16 @@ export default function CategoryDialog({open, onOpenChange, category, onSuccess}
             {category ? "Edit Category" : "Create Category"}
           </DialogTitle>
         </DialogHeader>
+        <form onSubmit={handleSubmit} id="category-form">
+          <div className="space-y-2">
+            <Label>Name</Label>
 
-        <div className="space-y-2">
-          <Label>Name</Label>
+            <Input value={name} onChange = {(e) => setName(e.target.value)} required/>
 
-          <Input value={name} onChange = {(e) => setName(e.target.value)}/>
+          </div>
 
-        </div>
-
+        </form>
+        
         <DialogFooter>
           <Button variant = "outline"
             onClick={()=>onOpenChange(false)}>
@@ -61,7 +63,7 @@ export default function CategoryDialog({open, onOpenChange, category, onSuccess}
           </Button>
 
           <Button
-            onClick={handleSubmit}
+           type="submit" form="category-form"
           >
             {category? "Update" : "Create"}
           </Button>

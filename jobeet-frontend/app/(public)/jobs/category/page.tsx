@@ -1,6 +1,7 @@
 import { getJobsByCategory } from "@/services/jobs";
 import JobTable from "@/components/jobs/JobTable";
 import BackButton from "@/components/ui/BackButton";
+import JobsPagination from "@/components/jobs/JobsPagination";
 interface JobsPageProps {
     searchParams: Promise<{
     category?: string;
@@ -25,6 +26,15 @@ export default async function CategoryPage({searchParams}: JobsPageProps) {
         </div>
         
         <JobTable jobs={data.jobs}/>
+
+        {data.totalPages > 1 && (
+          <JobsPagination
+          categoryId={categoryId}
+          page={page}
+          totalPages={data.totalPages}
+        />
+        )}
+        
       </div>
              
     );

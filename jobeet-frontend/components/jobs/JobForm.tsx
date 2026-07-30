@@ -9,7 +9,6 @@ import { Button } from "../ui/button";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"; 
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Checkbox } from "../ui/checkbox";
-import {Card, CardContent} from "@/components/ui/card";
 import BackButton from "../ui/BackButton";
 
 type Props = {
@@ -29,7 +28,19 @@ type Props = {
 
 export default function JobForm({job, updateField, categories, onPreview, userType, onSubmit, mode}: Props) {
 
-    
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+
+      if (userType === "public") {
+        if (mode === "create") {
+          onPreview();
+        } else {
+          onSubmit();
+        }
+      } else {
+        onSubmit();
+      }
+    }
 
     return (
       <div className="flex items-baseline gap-4">
@@ -39,7 +50,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
             <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
               {mode == "create" ? "Create Job" : "Edit Job"}
             </h1>
-
+              <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div className="space-y-2">
                       <Label>Category</Label>
@@ -50,6 +61,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                                     updateField("category_id", value)}
                                 }
                               }
+                              required
                         >
 
                         <SelectTrigger>
@@ -72,7 +84,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                     <div className="space-y-2">
                         <Label>Job Type</Label>
                         <RadioGroup value={job.type}
-                            onValueChange={(value) => updateField("type", value)}
+                            onValueChange={(value) => updateField("type", value)} required
                         >
                           <div className="flex gap-4">
                             <div className="flex gap-2">
@@ -98,7 +110,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           <Input
                               placeholder="Company"
                               value={job.company}
-                              onChange={(e) => updateField("company", e.target.value)}
+                              onChange={(e) => updateField("company", e.target.value)} required
                           />
                         </div>
 
@@ -107,7 +119,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           <Input
                               placeholder="position"
                               value={job.position}
-                              onChange={(e) => updateField("position", e.target.value)}
+                              onChange={(e) => updateField("position", e.target.value)} required
                           />
                       </div>
 
@@ -117,17 +129,17 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                               type="url"
                               placeholder="url"
                               value={job.url}
-                              onChange={(e) => updateField("url", e.target.value)}
+                              onChange={(e) => updateField("url", e.target.value)} 
                           />
                       </div>
 
                       <div className="space-y-2">
                           <Label>Email</Label>
                           <Input
-                          type="email"
+                              type="email"
                               placeholder="email"
                               value={job.email}
-                              onChange={(e) => updateField("email", e.target.value)}
+                              onChange={(e) => updateField("email", e.target.value)} required
                           />
                       </div>
 
@@ -136,7 +148,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           <Input
                               placeholder="location"
                               value={job.location}
-                              onChange={(e) => updateField("location", e.target.value)}
+                              onChange={(e) => updateField("location", e.target.value)} required
                           />
                       </div>
                     </div>
@@ -216,38 +228,21 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                     </div>
                     
                     <div className="flex justify-end">
-
-                      {userType == "public" &&(
                         <Button
-                            type="button"
-                            onClick={mode == "create" ? onPreview : onSubmit}
+                            type="submit"
                             >
                           {mode == "create" ? "Create Job" : "Update Job"}
                         </Button>
-                      )}
-
-                      {userType == "admin" &&(
-                        <Button
-                            type="button"
-                            onClick={onSubmit}
-                            >
-                          {mode == "create" ? "Create Job" : "Update Job"}
-                        </Button>
-                      )}
-
-                      
-                        
+   
                     </div>
                 </div>
-
-          </div>
-          
+              </form>
+                
+           </div>
         </div>
         
       </div>
-        
 
-        
     );
 }
 
