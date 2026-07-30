@@ -65,12 +65,6 @@
                                         <?= $this->lang->line("edit"); ?>
                                     </a>
                                     
-                                    <a href="<?php echo site_url("admin/deleteAffiliate/".$affiliate["id"]) ?>" 
-                                       onclick="return confirm('Delete this affiliate?')" 
-                                       class="btn btn-danger menu-btn">
-                                        <?= $this->lang->line("delete"); ?>
-                                    </a>
-                                    
                                     <?php if($affiliate["is_active"]) { ?> 
                                         <a href="<?php echo site_url("admin/disableAffiliate/".$affiliate["id"]) ?>" class="btn btn-warning menu-btn">
                                             <?= $this->lang->line("disable"); ?>
@@ -80,6 +74,13 @@
                                             <?= $this->lang->line("activate"); ?>
                                         </a>
                                     <?php } ?>
+
+                                    <a href="<?php echo site_url("admin/deleteAffiliate/".$affiliate["id"]) ?>" 
+                                       onclick="return confirm('Delete this affiliate?')" 
+                                       class="btn btn-danger menu-btn">
+                                        <?= $this->lang->line("delete"); ?>
+                                    </a>
+                                    
                                 </div>
                             </td>
                     </tr>

@@ -88,7 +88,7 @@ class Admin extends CI_Controller
         $category["name"]=$this->input->post("category_name");
 
         $this->load->model("mdl_category");
-        $this->mdl_category->editCategory($category);
+        $this->mdl_category->editCategory($category["id"],$category);
 
         redirect("admin/categories");
         
@@ -150,13 +150,31 @@ class Admin extends CI_Controller
 
      public function createJobPost() {
        
+     $config["upload_path"] = $this->config->item("upload_path");
+        $config["allowed_types"] = $this->config->item("allowed_types");
+        $config["encrypt_name"]=  $this->config->item("encrypt_name");
+        $config["max_size"]= $this->config->item("max_size");
+
+        //location to save images
+        $this->load->library("upload", $config);
+
+        //if logo is added then save file name
+        if($this->upload->do_upload("logo"))
+            {
+                $uploadData= $this->upload->data();
+                $logo = $uploadData["file_name"];
+            }
+            else 
+                {   //else keep empty
+                    $logo="";
+                }
         
         $jobData =[
             
             "category_id" => $this->input->post("category_id"),
             "type" => $this->input->post("type"),
             "company" => $this->input->post("company"),
-            "logo" => $this->input->post("logo"),
+            "logo" => $logo,
             "url" => $this->input->post("url"),
             "position" => $this->input->post("position"),
             "location" => $this->input->post("location"),
@@ -334,11 +352,11 @@ class Admin extends CI_Controller
         $affiliate["id"]=$this->input->post("id");
         $affiliate["name"]=$this->input->post("name");
         $affiliate["email"]=$this->input->post("email");
-        $affiliate["url"]=$this->input->post("url");
+        $affiliate["site_url"]=$this->input->post("site_url");
 
         $this->load->model("mdl_affiliate");
         //save the edit
-        $this->mdl_affiliate->editAffiliate($affiliate);
+        $this->mdl_affiliate->editAffiliate($affiliate["id"],$affiliate);
 
         redirect("admin/affiliates");
         
@@ -388,7 +406,7 @@ class Admin extends CI_Controller
     {
         $this->requireLogin();
         $this->load->model("mdl_affiliate");
-        $this->mdl_affiliate->delete($id);
+        $this->mdl_affiliate->deleteAffiliate($id);
 
         redirect("admin/affiliates");
     }
@@ -763,7 +781,7 @@ class Admin extends CI_Controller
                 "email" => $this->input->post("email")
             ];
 
-            $this->mdl_admin->updateAdmin($admin);
+            $this->mdl_admin->updateAdmin($admin["id"] ,$admin);
 
             redirect("admin/admins");
         }

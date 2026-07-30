@@ -225,14 +225,16 @@ section h2 {
    FORMS
    ======================================== */
 
+   .form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+   }
+
 textarea {
     min-height: 124px;
 }
 
-.form-group,
-.form-group.file-group {
-    margin-bottom: 12px;
-}
 
 .form-group.file-group label,
 .form-group:last-of-type,
@@ -252,7 +254,6 @@ textarea {
 .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .form-group select,
 .form-group textarea {
-    margin-top: 4px;
     /* margin-bottom: 12px; */
     width: 100%;
     padding: 8px 14px;
@@ -306,7 +307,7 @@ textarea {
 .file-group > div {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     width: 100%;
 }
 
@@ -413,8 +414,10 @@ textarea {
 
 .admin-form,
 .job-form{
-  margin-bottom: 24px;
-  padding: 0 40px;
+  padding: 0 95px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .extend-form {
@@ -430,6 +433,7 @@ textarea {
 .form-actions{
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 12px;
 }
 
 /* Auth Form */
@@ -450,7 +454,7 @@ textarea {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    /* gap: 12px; */
+    gap: 8px;
 }
 
 .auth-form h2 {
@@ -464,13 +468,12 @@ textarea {
 .auth-form .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 4px;
+    gap: 4px;
 }
 
 .auth-form .form-group label{
     display: block;
-    margin-bottom: 4px; /* Reduced from 8px */
+    /* margin-bottom: 4px; Reduced from 8px */
     font-weight: 600;
     font-size: 14px;
     color: #24292e;
@@ -511,7 +514,6 @@ textarea {
 
 .auth-form .btn {
     width: 100%;
-    margin-top: 8px;
 }
 
 /* Edit Form Page */

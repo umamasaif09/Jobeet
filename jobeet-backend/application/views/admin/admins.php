@@ -51,13 +51,7 @@
                                     <a href="<?php echo site_url("admin/editAdmin?id=" . $admin["id"]); ?>" class="btn btn-warning menu-btn">
                                         <?= $this->lang->line("edit"); ?>
                                     </a>
-                                    
-                                    <a href="<?php echo site_url("admin/deleteAdmin?id=" . $admin["id"]); ?>" 
-                                       onclick="return confirm('Delete this admin?')" 
-                                       class="btn btn-danger menu-btn">
-                                        <?= $this->lang->line("delete"); ?>
-                                    </a>
-                                    
+
                                     <?php if($admin["is_active"]) { ?> 
                                         <a href="<?php echo site_url("admin/disableAdmin?id=" . $admin["id"]); ?>" class="btn btn-warning menu-btn">
                                             <?= $this->lang->line("disable"); ?>
@@ -67,6 +61,13 @@
                                             <?= $this->lang->line("activate"); ?>
                                         </a>
                                     <?php } ?>
+                                    
+                                    <a href="<?php echo site_url("admin/deleteAdmin?id=" . $admin["id"]); ?>" 
+                                       onclick="return confirm('Delete this admin?')" 
+                                       class="btn btn-danger menu-btn">
+                                        <?= $this->lang->line("delete"); ?>
+                                    </a>
+                                    
                                 </div>
                             </td>
                         </tr>

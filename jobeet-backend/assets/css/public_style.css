@@ -68,11 +68,9 @@ textarea{
 }
 
 .form-group {
-    margin-bottom: 12px;
-}
-
-.form-group.file-group{
-    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .file-group .current-logo
@@ -82,9 +80,10 @@ textarea{
     align-items: flex-start;
 }
 
-.form-group.file-group label{
-  margin-top: 4px;
-    margin-bottom: 12px;
+.form-group.file-group{
+ display: flex;
+ flex-direction: column;
+ gap: 8px;
 }
 .file-group .current-logo img {
     display: block;
@@ -93,9 +92,12 @@ textarea{
 }
 .form-group label{
     display:block;
-    margin-bottom: 8px;
     font-weight: bold;
     color: #333;
+}
+
+.category-label{
+  margin-bottom: 8px;;
 }
 
 
@@ -132,7 +134,7 @@ textarea{
 } */
 
 .file-group label{
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 
 .radio-row{
@@ -204,6 +206,7 @@ textarea{
 /* ===== FOOTER ===== */
 
 
+
 footer {
     display: flex;
     justify-content: center;
@@ -273,7 +276,6 @@ footer a:hover{
 .search-form input{
     width: 100%;
     padding: 8px 12px;
-    padding-right: 80px;
     height: 38px;
     margin: 0;
     border: 1px solid #d0d7de;
@@ -398,7 +400,10 @@ footer a:hover{
 
     min-width: 224px;
     margin: 0;
-    padding: 0 24px;
+    padding: 0 95px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .extend-form{
@@ -531,7 +536,7 @@ input[type="checkbox"] {
 /* Category Section */
 .category-section {
     width: 100%;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
 }
 
 .section-header {
@@ -694,78 +699,167 @@ input[type="checkbox"] {
     margin: 0;
 }
 
-/* Responsive adjustments for home page */
-@media screen and (max-width: 768px) {
-    .jobs-table-card {
-        border-radius: 8px;
-    }
-    
-    .jobs-table thead th,
-    .jobs-table tbody td {
-        padding: 8px 10px;
-        font-size: 12px;
-    }
-    
-    .jobs-table .job-title {
-        font-size: 13px;
-    }
-    
-    .jobs-table .company-name {
-        font-size: 12px;
-    }
+/* Fixes */
+
+/* .container .footer{
+  padding: 0;
+} */
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media screen and (max-width: 680px) {
+  .container{
+    padding: 0 24px;
+  }
+
+  .search-form{
+    max-width: 300px;
+  }
+  .site-header .btn-primary{
+    padding: 0 8px;
+  }
+
+  
+}
+
+@media screen and (max-width: 660px){
+  .container{
+    padding:0 12px;
+  }
+
+  footer{
+    gap: 0px;
+    padding:12px 0px;
+    margin-top: 12PX;
+    flex-wrap: wrap;
+  }
+
+  footer a{
+    margin: 0;
+    width: calc(50% - 8px);
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .site-header{
+    margin-bottom: 12px;
+  }
+
+  .search-form{
+    max-width: 250px;
+  }
+
+  .jobs-table-card{
+    margin-bottom: 12px;
+  }
+
+  .jobs-table tbody td {
+    padding: 8px 6px;
+
+  }
+
+  .section-header{
+    margin-bottom: 8px;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
-    .jobs-table thead th,
-    .jobs-table tbody td {
-        padding: 6px 8px;
-        font-size: 11px;
-    }
-    
-    .jobs-table .job-title {
-        font-size: 12px;
-    }
-    
-    .section-header h2,
-    .category-title a {
-        font-size: 18px;
-    }
+  .post-job-btn{
+    height: 32px;
+    padding:  0 4px;
+  }
+
+  .site-header{
+    padding: 8px 4px;
+    gap: 8px;
+  }
+
+  .search-form input{
+    height: 32px;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .search-form .btn{
+    height: 32px;
+  }
+
+  .site-logo.logo-text{
+    font-size: 18px;
+  }
+
+  .section-header h2.category-title a {
+    font-size: 16px;
+  }
+
+  .jobs-table thead th{
+    font-size: 12px;
+  }
+
+  .jobs-table .job-title{
+    font-size: 12px;
+  }
+
+  .jobs-table tbody td{
+    font-size: 12px;
+  }
+
+  footer a{
+    font-size: small;
+  }
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media screen and (max-width: 1024px) {
-    .container{
-        padding: 24px;
-    }
+@media screen and (max-width:360px) {
+  .site-logo.logo-text{
+    font-size: 16px;
+  }
 
-    .table-container{
-        padding: 24px;
-    }
+  .search-form{
+    max-width: 190px;
+  }
 
-    .category-layout{
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
+  .post-job-btn{
+    height: 30px;
+    padding:  0 4px;
+  }
 
-    .site-header{
-        flex-wrap: wrap;
-        gap: 12px;
-    }
+  .search-form input{
+    height: 30px;
+    padding: 4px 8px;
+    font-size: 10px;
+  }
 
-    .search-form input{
-        width: 250px;
-    }
+  .search-form .btn{
+    height: 30px;
+  }
+
+  .header-actions{
+    gap: 8px;
+  }
+
+  .section-header{
+    margin-bottom: 4px;
+  }
+
+  .section-header h2.category-title a {
+    font-size: 16px;
+  }
+
+  .jobs-table-card{
+    margin-bottom: 4px;
+  }
+
 }
 
+
+/*
 @media screen and (max-width: 768px) {
-    .container{
+     .container{
         padding: 16px;
     }
 
-    .table-container{
-        padding: 16px;
-        overflow-x: auto;
-    }
 
     header h1{
         font-size: 24px;
@@ -892,10 +986,22 @@ input[type="checkbox"] {
         font-size: 20px;
     }
 
-    .wide-table{
-        width: 100%;
-        margin-left: 0;
-        transform: none;
+    .jobs-table-card {
+        border-radius: 8px;
+    }
+    
+    .jobs-table thead th,
+    .jobs-table tbody td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .jobs-table .job-title {
+        font-size: 13px;
+    }
+    
+    .jobs-table .company-name {
+        font-size: 12px;
     }
 
     footer{
@@ -909,16 +1015,12 @@ input[type="checkbox"] {
         margin: 0 8px;
         font-size: 14px;
     }
-}
+        } */
 
-@media screen and (max-width: 480px) {
+
+/* @media screen and (max-width: 480px) {
     .container{
         padding: 12px;
-    }
-
-    .table-container{
-        padding: 8px;
-        overflow-x: auto;
     }
 
     section{
@@ -1044,9 +1146,24 @@ input[type="checkbox"] {
         flex: 1;
         min-width: 60px;
     }
-}
 
-@media screen and (max-width: 360px) {
+     .jobs-table thead th,
+    .jobs-table tbody td {
+        padding: 6px 8px;
+        font-size: 11px;
+    }
+    
+    .jobs-table .job-title {
+        font-size: 12px;
+    }
+    
+    .section-header h2,
+    .category-title a {
+        font-size: 18px;
+    }
+} */
+
+/* @media screen and (max-width: 360px) {
     .container{
         padding: 8px;
     }
@@ -1064,4 +1181,4 @@ input[type="checkbox"] {
     header h1{
         font-size: 18px;
     }
-}
+} */

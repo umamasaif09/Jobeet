@@ -15,12 +15,12 @@
 
         <div class = "form-group">
             <label>Website</label>
-            <input type="url" name= "url" placeholder= "Enter affiliate website url" required value="<?php echo $isEdit ? $affiliate["site_url"] : ''; ?>">
+            <input type="url" name= "site_url" placeholder= "Enter affiliate website url" required value="<?php echo $isEdit ? $affiliate["site_url"] : ''; ?>">
         </div>
 
         <div class = "form-group">
-            <fieldset>
-                <legend>Categories</legend>
+            <div>
+                <Label class="category-label">Categories</Label>
                 
                 <?php foreach($categories as $category) { ?>
                 
@@ -40,7 +40,7 @@
                     </div>
                     
                 <?php } ?>
-            </fieldset>
+</div>
                     
         </div>
 

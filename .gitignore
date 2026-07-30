@@ -18,55 +18,55 @@ nbproject/
 *.sublime-project
 
 # ==========================
-# Backend (CodeIgniter)
+# jobeet-backend (CodeIgniter)
 # ==========================
 
-backend/application/cache/*
-!backend/application/cache/index.html
+jobeet-backend/application/cache/*
+!jobeet-backend/application/cache/index.html
 
-backend/application/logs/*
-!backend/application/logs/index.html
+jobeet-backend/application/logs/*
+!jobeet-backend/application/logs/index.html
 
-!backend/application/*/.htaccess
+!jobeet-backend/application/*/.htaccess
 
-backend/vendor/
-backend/composer.lock
+jobeet-backend/vendor/
+jobeet-backend/composer.lock
 
-backend/tests/mocks/database/ci_test.sqlite
+jobeet-backend/tests/mocks/database/ci_test.sqlite
 
-backend/user_guide_src/build/*
-backend/user_guide_src/cilexer/build/*
-backend/user_guide_src/cilexer/dist/*
-backend/user_guide_src/cilexer/pycilexer.egg-info/*
+jobeet-backend/user_guide_src/build/*
+jobeet-backend/user_guide_src/cilexer/build/*
+jobeet-backend/user_guide_src/cilexer/dist/*
+jobeet-backend/user_guide_src/cilexer/pycilexer.egg-info/*
 
-backend/tests/tests/
-backend/tests/results/
+jobeet-backend/tests/tests/
+jobeet-backend/tests/results/
 
 # Uploads
-backend/uploads/
+jobeet-backend/uploads/
 
 # ==========================
-# Frontend (Next.js)
+# jobeet-frontend (Next.js)
 # ==========================
 
-frontend/node_modules/
-frontend/.next/
-frontend/out/
-frontend/build/
-frontend/coverage/
+jobeet-frontend/node_modules/
+jobeet-frontend/.next/
+jobeet-frontend/out/
+jobeet-frontend/build/
+jobeet-frontend/coverage/
 
-frontend/.pnp
-frontend/.pnp.*
-frontend/.yarn/*
-!frontend/.yarn/patches
-!frontend/.yarn/plugins
-!frontend/.yarn/releases
-!frontend/.yarn/versions
+jobeet-frontend/.pnp
+jobeet-frontend/.pnp.*
+jobeet-frontend/.yarn/*
+!jobeet-frontend/.yarn/patches
+!jobeet-frontend/.yarn/plugins
+!jobeet-frontend/.yarn/releases
+!jobeet-frontend/.yarn/versions
 
-frontend/.vercel/
+jobeet-frontend/.vercel/
 
-frontend/*.tsbuildinfo
-frontend/next-env.d.ts
+jobeet-frontend/*.tsbuildinfo
+jobeet-frontend/next-env.d.ts
 
 # ==========================
 # Logs
@@ -81,5 +81,5 @@ yarn-error.log*
 # Environment
 # ==========================
 
-frontend/.env*
+jobeet-frontend/.env*
 *.pem
