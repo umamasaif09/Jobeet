@@ -22,6 +22,23 @@
     <p><?php echo nl2br($job["how_to_apply"]); ?></p>
 
     <p><strong>Public: </strong><?php echo $job["is_public"] ? "Yes" : "No"; ?></p>
+
+    
+    <?php if(
+      isset($daysRemaining) &&
+      isset($job["id"]) &&
+      isset($job["token"]) &&
+      $daysRemaining <= 5
+    ) { ?> 
+            <form action="<?php echo site_url("jobs/extendJob/".$job["id"]."/".$job["token"]); ?>" method="POST" class="extend-form">
+                <input type="hidden" name="id" value= "<?php echo $job["id"]; ?>">
+                <input type="hidden" name="token" value= "<?php echo $job["token"]; ?>">
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Extend Job for 30 days</button>
+                </div>
+                
+            </form>
+        <?php }?>
 </section>
    
     

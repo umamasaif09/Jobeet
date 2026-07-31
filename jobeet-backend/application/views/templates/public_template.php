@@ -10,19 +10,28 @@
 <body>
     <div class="container">
         <?php $this->load->view("partials/header"); ?>
-        <?php if(!empty($showPageHeader)): ?>
+</div>
+  <main>
+    <div class="container">
+      <?php if(!empty($showPageHeader)): ?>
             <?php $this->load->view("partials/pageHeader"); ?>
         <?php endif; ?>
 
 
         <?php $this->load->view($content); ?>
+    </div>
+    
+
+  </main>
+        
 
 
         
         </div>
-
         <div class="container">
           <?php $this->load->view("partials/footer"); ?>
         </div>
+        
 </body>
+          
 </html>

@@ -23,7 +23,7 @@
 
         <div class="radio-options">
             <div class="radio-group">
-                <input type="radio" name="type" id="type" value="Full-time"  id="full_time"
+                <input type="radio" name="type" value="Full-time"  id="full_time"
                     <?php if($isEdit && $job["type"]=="Full-time"){
                         echo "checked";
                     } ?>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="radio-group">
-                <input type="radio" name="type" id="type" value="Part-time"  id="part_time"
+                <input type="radio" name="type" value="Part-time"  id="part_time"
                         <?php if($isEdit && $job["type"]=="Part-time"){
                             echo "checked";
                         } ?>
@@ -41,7 +41,7 @@
             </div>
 
             <div class="radio-group">
-                <input type="radio" name="type" id="type" value="Freelance"  id="freelance"
+                <input type="radio" name="type" value="Freelance"  id="freelance"
                         <?php if($isEdit && $job["type"]=="Freelance"){
                             echo "checked";
                         } ?>

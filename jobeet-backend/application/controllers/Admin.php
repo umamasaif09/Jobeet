@@ -218,7 +218,8 @@ class Admin extends CI_Controller
             "categories" => $this->mdl_category->getCategories(),
             "content" => "jobs/editForm",
             "showPageHeader" => true,
-            "showBackButton" => true
+            "showBackButton" => true,
+            "is_admin" => true
             ];
             $this->load->view("templates/admin_template", $data);
         }
@@ -300,7 +301,7 @@ class Admin extends CI_Controller
         $affiliate = [
             "name" => $this->input->post("name"),
             "email" => $this->input->post("email"),
-            "site_url" =>$this->input->post("url")
+            "site_url" =>$this->input->post("site_url")
         ];
 
         $categories= $this->input->post("categories");

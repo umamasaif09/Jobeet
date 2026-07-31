@@ -202,7 +202,8 @@ class Jobs extends CI_Controller
             "daysRemaining" => $daysRemaining,
             "content" => "jobs/editForm",
             "showBackButton" => true,
-            "showPageHeader" => true
+            "showPageHeader" => true, 
+            "is_admin" => false
             ];
             $this->load->view("templates/public_template", $data);
         }
@@ -212,6 +213,7 @@ class Jobs extends CI_Controller
     {
         $id = $this->input->post("id");
         $token = $this->input->post("token");
+        $admin_flag= $this->input->post("admin-flag");
 
         $this->load->config("jobeet");
         $this->load->library("upload");
@@ -251,6 +253,11 @@ class Jobs extends CI_Controller
 
         $this->load->model("mdl_job");
         $job= $this->mdl_job->updatejob($jobData, $id, $token);
+
+        if($admin_flag == "true") {
+          redirect("admin/jobs");
+          return;
+        }
 
         redirect("jobs/job/".$id);
 

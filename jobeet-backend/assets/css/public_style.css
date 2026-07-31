@@ -8,6 +8,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f9fafb;
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+  flex: 1;;
 }
 
 /* body::after {
@@ -40,9 +47,16 @@ img {
 
 /* ===== CONTAINERS ===== */
 .container{
+  width: 100%;
     max-width: 1100px;
     margin:0 auto;
     padding: 0 32px;
+}
+
+.preview-container{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 
@@ -50,7 +64,7 @@ img {
 section {
     background: white;
     padding: 9px 24px;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
@@ -156,7 +170,6 @@ textarea{
     width: 100%;
     text-align: left;
     margin: 0 auto;
-    padding: 0 20px;
 }
 .checkbox-group,
 .radio-options {
@@ -407,13 +420,10 @@ footer a:hover{
 }
 
 .extend-form{
-    margin: 0 0 0 12px;
     padding: 0;
     background: transparent;
     border: none;
     box-shadow: none;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 
@@ -645,7 +655,6 @@ input[type="checkbox"] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
-    padding: 0 24px;
 }
 
 .edit-preview {
@@ -707,18 +716,31 @@ input[type="checkbox"] {
 
 /* ===== RESPONSIVE DESIGN ===== */
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 768) {
+  .search-form{
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   .container{
     padding: 0 24px;
+  }
+
+  
+  .site-header .btn-primary,
+  .back-button{
+    padding: 0 8px;
   }
 
   .search-form{
     max-width: 300px;
   }
-  .site-header .btn-primary{
-    padding: 0 8px;
-  }
 
+  .edit-layout{
+    grid-template-columns: 1fr;
+    gap: 24px
+  }
   
 }
 
@@ -763,10 +785,27 @@ input[type="checkbox"] {
     margin-bottom: 8px;
   }
 
+  .radio-options{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+  }
+
+  .job-form{
+    padding: 0 80px;
+  }
+
+  p{
+    overflow: auto;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
-  .post-job-btn{
+  .post-job-btn,
+  .back-button,
+  .btn{
     height: 32px;
     padding:  0 4px;
   }
@@ -790,28 +829,66 @@ input[type="checkbox"] {
     font-size: 18px;
   }
 
-  .section-header h2.category-title a {
+  .section-header h2.category-title a ,
+  .section-header h2.category-title,
+  .page-header h2, h2{
     font-size: 16px;
   }
 
-  .jobs-table thead th{
+  .jobs-table thead th,
+  .jobs-table .job-title,
+  .jobs-table tbody td,
+  .page-number,
+  .page-info,
+  .back-button,
+  .post-job-btn,
+  .search-form .btn,
+  .btn, h3, h4, h5, p,
+  .form-group label,
+  .checkbox-group label{
     font-size: 12px;
   }
 
-  .jobs-table .job-title{
-    font-size: 12px;
-  }
-
-  .jobs-table tbody td{
-    font-size: 12px;
+  img{
+    width: 55px;
   }
 
   footer a{
     font-size: small;
   }
+
+  .site-header .btn-primary,
+  .back-button{
+    padding: 0 6px;
+  }
+
+  .job-form{
+    padding: 0 67px;
+  }
+
+  .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), .form-group select, .form-group textarea{
+    padding: 8px;
+    font-size: 12px;
+  }
+  .page-header{
+    margin: 12px 0;
+  }
+
+  .edit-layout{
+    gap: 12px;
+  }
+  
 }
 
 @media screen and (max-width:360px) {
+
+  .post-job-btn,
+  .back-button,
+  .search-form .btn,
+  .btn{
+    height: 25px;
+  }
+
   .site-logo.logo-text{
     font-size: 16px;
   }
@@ -820,20 +897,12 @@ input[type="checkbox"] {
     max-width: 190px;
   }
 
-  .post-job-btn{
-    height: 30px;
-    padding:  0 4px;
-  }
-
   .search-form input{
-    height: 30px;
+    height: 25px;
     padding: 4px 8px;
     font-size: 10px;
   }
 
-  .search-form .btn{
-    height: 30px;
-  }
 
   .header-actions{
     gap: 8px;
@@ -843,14 +912,13 @@ input[type="checkbox"] {
     margin-bottom: 4px;
   }
 
-  .section-header h2.category-title a {
-    font-size: 16px;
-  }
-
   .jobs-table-card{
     margin-bottom: 4px;
   }
 
+  .page-header{
+    margin: 6px 0;
+  }
 }
 
 
