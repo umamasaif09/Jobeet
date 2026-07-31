@@ -142,11 +142,9 @@ export default function JobEditor({categories, initialJob, mode, jobId, token, u
 
                 <div className="space-y-2">
                   <Label>Save this link to edit job post later</Label>
-
-                  <Input
-                    readOnly
-                    value={createdJob.editLink}
-                  />
+                <Link href={createdJob.editLink} className="cursor-pointer">
+                  {createdJob.editLink}
+                  </Link>
                 </div>
 
                 <div className="">

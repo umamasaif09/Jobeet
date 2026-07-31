@@ -4,6 +4,7 @@ import { getCategories } from "@/services/categories";
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import BackButton from "../ui/BackButton";
+import Image from "next/image";
 
 type Props = {
     job: JobFormData;
@@ -47,10 +48,14 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
                     {job.logo && (
                       <>
                         <h3 className="font-semibold">Company Logo</h3>
-                        <img src={job.logo instanceof File ? 
+                        <Image src={job.logo instanceof File ? 
                           URL.createObjectURL(job.logo) :
                         `${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
                         alt="Logo"
+                        width={80}
+                        height={80}
+                        unoptimized
+                        className="rounded-md border object-contain"
                         />
                       </>
                     )}
