@@ -4,7 +4,7 @@
 
 
         <div  class = "form-group">
-            <label>Affiliate Name</label>
+            <label>Name</label>
             <input type="text" name= "name" placeholder = "Enter affiliate name" required value="<?php echo $isEdit ? $affiliate["name"] : ''; ?>">
         </div>
                 

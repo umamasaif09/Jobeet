@@ -1,0 +1,15 @@
+.categoryHeading{
+  margin: 16px 0;
+  padding: 0 4px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3498db;
+  text-decoration: none;
+}
+
+.categoryHeading:hover{
+  color: #3d89ef;
+  text-decoration: none;
+}
+
+/* Category Page */

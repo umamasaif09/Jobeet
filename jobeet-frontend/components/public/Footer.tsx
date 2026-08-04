@@ -1,27 +1,28 @@
 import Container from "../ui/Container";
 import Link from "next/link";
+import styles from "./layout.module.css";
 
 export default function Footer() {
     return (
         <footer>
             <Container>
 
-                    <div className="flex justify-center items-center gap-2 border-t py-4">
+                    <div className={styles.footer}>
                         <Link href="/about"
-                              className="text-sm font-medium px-2.5 py-1.5"
+                              className={styles.footerText}
                         >
                             About Jobeet
                         </Link>
 
                         <Link
                             href="/rss"
-                            className="text-sm font-medium px-2.5 py-1.5"
+                            className={styles.footerText}
                         >
                             Full RSS Feed
                         </Link>
 
                         <Link
-                          className="text-sm font-medium px-2.5 py-1.5"
+                          className={styles.footerText}
                           href="/api"
                             
                         >
@@ -30,7 +31,7 @@ export default function Footer() {
 
                         <Link
                             href="/affiliates"
-                            className="text-sm font-medium px-2.5 py-1.5"
+                            className={styles.footerText}
                             
                         >
                             Affiliates

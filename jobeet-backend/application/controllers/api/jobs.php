@@ -28,8 +28,18 @@ class jobs extends MY_Controller
            show_error("Does not Exist", 404);
         }
 
+        $result = [];
+        
+        foreach($categories as $id => $category) {
+          $result[] = [
+            "id" => (int)$id,
+            "name" => $category["name"],
+            "jobs" => $category["jobs"]
+          ];
+        }
+
         header("Content-Type: application/json");
-        echo json_encode($categories, JSON_PRETTY_PRINT);
+        echo json_encode($result, JSON_PRETTY_PRINT);
     }
 
     public function category()

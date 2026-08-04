@@ -5,7 +5,7 @@
     </a>
     <div class=header-actions>
         <form method = "GET" action="<?php echo site_url("jobs/search"); ?>" class="search-form">
-        <input type="text" name="keyword" placeholder = "Live Search" required>
+        <input type="text" name="keyword" placeholder = "Live Search" value="<?php echo htmlspecialchars($this->input->get("keyword")?? "")?>" required>
         <button type="submit" class="btn btn-primary">Search</button>
         </form>
 

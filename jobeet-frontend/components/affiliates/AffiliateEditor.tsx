@@ -7,10 +7,17 @@ import { applyAffiliate, createAffiliate, updateAffiliate } from "@/services/aff
 import AffiliateForm from "./AffiliateForm";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import BackButton from "../ui/BackButton";
+import { Card, CardContent } from "../ui/card";
+import { Label } from "../ui/label";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./affiliates.module.css";
 
 type Props = {
     categories: Category[];
-    mode: "create" | "edit";
+    mode: "create" | "edit" | "apply";
     userType: "admin" | "public";
     affiliateId? : number;
     initialAffiliate: AffiliateFormData;
@@ -22,6 +29,7 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
 
     const [affiliate, setAffiliate] = useState(initialAffiliate);
     const router = useRouter();
+    const [affiliateApplied, setAffiliateApplied] = useState<AffiliateFormData | null>(null);
 
     function updateField<K extends keyof AffiliateFormData> (
         field: K,
@@ -49,12 +57,13 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
               router.replace("/admin/affiliates");
 
             }
-            else if(userType == "public") {
-              await applyAffiliate(affiliate);
-              toast.success("Affiliate application submitted successfully");
-              router.replace("/");
-            }
+            
           }
+          else if(mode == "apply") {
+              await applyAffiliate(affiliate);
+              setAffiliateApplied(affiliate);
+              toast.success("Affiliate application submitted successfully");
+            }
           else {
               await updateAffiliate(affiliateId!, affiliate);
               toast.success("Affiliate updated successfully");
@@ -65,6 +74,37 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
           toast.error("Unable to save affiliate");
         }
         
+    }
+
+    if(affiliateApplied) {
+      return(
+        <>
+           <div className="flex items-baseline gap-4 my-[24px]">
+          <BackButton/>
+            <h1 className={pageStyles.pageTitle}>
+              Affiliation Request Submitted
+            </h1>
+        </div>
+
+          <Card className="bg-white rounded-[10px] border-[#ececec] shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+            <CardContent className="py-[9px] px-[24px]">
+              <div className="space-y-4">
+
+                <h4 className={styles.h4}>
+                    {`Thank you, ${affiliateApplied.affiliate_name}`}
+                </h4>
+
+                <p>Your affiliate application has been submitted.</p>
+
+                <p>Your account will be activated by an administrator.</p>
+               
+              </div>
+            </CardContent>
+          </Card>
+        </>
+       
+       
+      );
     }
 
     return(

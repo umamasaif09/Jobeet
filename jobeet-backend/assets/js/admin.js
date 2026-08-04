@@ -91,4 +91,19 @@ document.addEventListener("DOMContentLoaded", function() {
             d.classList.remove("show");
         });
     });
+
+    const button= document.querySelector(".nav-menu");
+    const menu = document.querySelector(".mobile-menu");
+
+    button.addEventListener("click", ()=> {
+      menu.classList.toggle("show");
+    });
+
+    window.addEventListener("click", function(e) {
+        if(!menu.contains(e.target) &&
+        !button.contains(e.target)) {
+            menu.classList.remove("show");
+        }
+    });
+
 });

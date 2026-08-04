@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
-import { ArrowLeft, Ghost } from "lucide-react";
+import { ArrowLeft} from "lucide-react";
+import styles from "@/app/styles/jobeet.module.css"
 
 
 export default function BackButton() {
@@ -10,8 +11,7 @@ export default function BackButton() {
 
   return(
     <Button
-      variant="ghost"
-      className="bg-accent"
+      className={styles.backButton}
       onClick={()=> router.back()}
     >
       <ArrowLeft />

@@ -8,13 +8,12 @@ import { JobFormData } from "@/types/job-form-data";
 import { uploadLogo } from "@/services/upload";
 import { adminUpdateJob, createJob, updateJob } from "@/services/jobs";
 import { Card, CardContent } from "../ui/card";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import BackButton from "../ui/BackButton";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./jobs.module.css";
 
 type Props = {
     categories: Category[];
@@ -125,45 +124,31 @@ export default function JobEditor({categories, initialJob, mode, jobId, token, u
 
     if(createdJob) {
       return (
-      <div className="flex items-baseline gap-4">
+        <>
+          <div className="flex items-baseline gap-4 my-[24px]">
           <BackButton/>
-          <div className="flex-1">
-          <div className="max-w-5xl space-y-6">
-            <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+            <h1 className={pageStyles.pageTitle}>
               Job Created
             </h1>
-        
-          <Card>
-            <CardContent>
+        </div>
+          <Card className="bg-white rounded-[10px] border-[#ececec] shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+            <CardContent className="py-[9px] px-[24px]">
               <div className="space-y-4">
-                <p>
-                  Your job has been posted successfully.
-                </p>
 
-                <div className="space-y-2">
-                  <Label>Save this link to edit job post later</Label>
-                <Link href={createdJob.editLink} className="cursor-pointer">
+                <h3 className={styles.h3}>Job Created Successfully</h3>
+
+                <p className="text-[16px]">Save this link to edit your job later: </p>
+
+                <Link href={createdJob.editLink} className="text-[#3498db] hover:underline cursor-pointer text-[16px]">
                   {createdJob.editLink}
                   </Link>
-                </div>
-
-                <div className="">
-                  <Button>
-                    <Link href={`/jobs/${createdJob.id}`}>
-                      View Job
-                    </Link>
-                  </Button>  
-                </div>
+                
               </div>
-
-              
-
-              
             </CardContent>
           </Card>
-        </div>
-      </div>
-      </div>
+        </>
+      
+
       );
     }
 

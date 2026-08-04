@@ -1,19 +1,19 @@
 import Link from "next/link";
-import { Job } from "@/types/job";
+import {SearchResults } from "@/types/search-results";
 import { TableCell
     , TableRow
  } from "../ui/table";
  import styles from "./jobs.module.css"
 
  interface JobRowProps{
-    job: Job;
+    job: SearchResults;
  }
 
- export default function JobRow({job}: JobRowProps) {
+ export default function SearchResultsRow({job}: JobRowProps) {
     return (
     <TableRow className={styles.jobsTableBodyTr}>
-      <TableCell className={styles.jobsTableBodyTd}>
-        <Link href={`/jobs/${job.id}`} className={styles.jobTitle}>
+      <TableCell className={`${styles.jobsTableBodyTd} ${styles.jobTitle}`}>
+        <Link href={`/jobs/${job.id}`}>
             {job.position}
         </Link>
     </TableCell>
@@ -24,6 +24,9 @@ import { TableCell
 
     <TableCell className={styles.jobsTableBodyTd}>
         {job.company}
+    </TableCell>
+    <TableCell className={styles.jobsTableBodyTd}>
+        {job.name}
     </TableCell>
         </TableRow>
     )

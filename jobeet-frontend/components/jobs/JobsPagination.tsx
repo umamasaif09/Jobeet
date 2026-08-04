@@ -1,5 +1,6 @@
-import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from "../ui/pagination";
-
+import Link from "next/link";
+import paginationStyles from "./jobs.module.css";
+import buttonStyles from "@/app/styles/jobeet.module.css";
 
 type Props = {
   categoryId: number;
@@ -9,42 +10,28 @@ type Props = {
 
 export default function JobsPagination({categoryId, page, totalPages} : Props) {
   return(
-    <Pagination>
-      <PaginationContent>
-        <PaginationItem>
+    <div className={paginationStyles.pagination}>
           {page > 1 ? (
-            <PaginationPrevious
+            <Link
             href={`/jobs/category?category=${categoryId}&page=${page - 1}`}
-            aria-disabled= {page===1}
-          />
+            className={buttonStyles.backButton}
+          > ← Previous </Link> 
           ) : (
-            <PaginationPrevious
-              className="pointer-events-none opacity-50"
-          />
+            <span/>
           )}
           
-        </PaginationItem>
-
-        <PaginationItem>
-          <span>
+          <span className={paginationStyles.pageNumber}>
             Page {page} of {totalPages}
           </span>
-        </PaginationItem>
 
-        <PaginationItem>
           {page < totalPages ? (
-            <PaginationNext
+            <Link
               href={`/jobs/category?category=${categoryId}&page=${page + 1}`}
-              aria-disabled= {page === totalPages}
-            />
+              className={buttonStyles.backButton}
+            > Next → </Link>
           ) : (
-            <PaginationNext
-              className="pointer-events-none opacity-50"
-            />
+            <></>
           )}
-          
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+    </div>
   );
 }

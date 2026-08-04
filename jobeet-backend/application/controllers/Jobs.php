@@ -20,9 +20,9 @@ class Jobs extends CI_Controller
     {
         
         $this->load->model("mdl_job");
-        $data["title"] ="Category";
         $data["result"]= $this->mdl_job->getJobsByCategory($id, $page);
         $data["currentPage"]= $page;
+        $data["title"] =$data["result"]["category"]["name"];
 
         $data["content"] = "jobs/category";
         $data["showPageHeader"] = true;
@@ -35,7 +35,7 @@ class Jobs extends CI_Controller
     public function search() {
         $keyword= trim($this->input->get("keyword"));
 
-        $data["title"] ="Search";
+        $data["title"] ="Search Results";
         $data["keyword"]= $keyword;
         $data["content"] ="jobs/search";
         $data["showPageHeader"]=true;
@@ -48,7 +48,7 @@ class Jobs extends CI_Controller
     }
 
     public function job($id) {
-        $data["title"] ="Job";
+        $data["title"] ="Job Detail";
         $this->load->model("mdl_job");
         $data["job"]= $this->mdl_job->getJobById($id);
 

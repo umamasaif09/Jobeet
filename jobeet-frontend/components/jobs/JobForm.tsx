@@ -10,6 +10,8 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/c
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Checkbox } from "../ui/checkbox";
 import BackButton from "../ui/BackButton";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./jobs.module.css";
 
 type Props = {
     job: JobFormData;
@@ -46,15 +48,15 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
       <div className="flex items-baseline gap-4">
         <BackButton/>
         <div className="flex-1">
-          <div className="max-w-5xl space-y-6">
-            <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+          <div className="max-w-5xl space-y-6 my-[24px]">
+            <h1 className={pageStyles.pageTitle}>
               {mode == "create" ? "Create Job" : "Edit Job"}
             </h1>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className={styles.form}>
                 <div className="space-y-4">
                   <div className="space-y-2">
-                      <Label>Category</Label>
-                        <Select
+                      <Label className={styles.formLabel}>Category</Label>
+                        <Select 
                             value={job.category_id ?? ""}
                             onValueChange={(value) => {
                                 if(value !== null){
@@ -62,13 +64,14 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                                 }
                               }
                               required
+                              
                         >
 
-                        <SelectTrigger>
+                        <SelectTrigger className={styles.formTextInput}>
                             {categories.find(c => c.id.toString() === job.category_id)?.name ?? "Select Category"}
                         </SelectTrigger>
 
-                        <SelectContent>
+                        <SelectContent >
                             {categories.map(category => 
                                 <SelectItem
                                     key={category.id}
@@ -82,81 +85,41 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                     </div>
 
                     <div className="space-y-2">
-                        <Label>Job Type</Label>
+                        <Label className={styles.formLabel}>Job Type</Label>
                         <RadioGroup value={job.type}
                             onValueChange={(value) => updateField("type", value)} required
                         >
                           <div className="flex gap-4">
                             <div className="flex gap-2">
                                 <RadioGroupItem value="Full-time" id="full"/>
-                                <Label htmlFor="full">Full Time</Label>
+                                <Label htmlFor="full" className={styles.radioLabel}>Full Time</Label>
                             </div>
                             <div className="flex gap-2">
                                 <RadioGroupItem value="Part-time" id="part"/>
-                                <Label htmlFor="part">Part Time</Label>
+                                <Label htmlFor="part" className={styles.radioLabel}>Part Time</Label>
                             </div>
                             <div className="flex gap-2">
                                 <RadioGroupItem value="Freelance" id="free"/>
-                                <Label htmlFor="free">Freelance</Label>
+                                <Label htmlFor="free" className={styles.radioLabel}>Freelance</Label>
                             </div>
                           </div>
                             
                         </RadioGroup>
                     </div>
 
-                    <div className="grid gap-4 md:grid-cols-2">
+                    
                         <div className="space-y-2">
-                          <Label>Company</Label>
+                          <Label className={styles.formLabel}>Company</Label>
                           <Input
-                              placeholder="Company"
+                              placeholder="Enter company name"
                               value={job.company}
                               onChange={(e) => updateField("company", e.target.value)} required
+                              className={styles.formTextInput}
                           />
                         </div>
 
                         <div className="space-y-2">
-                          <Label>Position</Label>
-                          <Input
-                              placeholder="position"
-                              value={job.position}
-                              onChange={(e) => updateField("position", e.target.value)} required
-                          />
-                      </div>
-
-                      <div className="space-y-2">
-                          <Label>Website</Label>
-                          <Input
-                              type="url"
-                              placeholder="url"
-                              value={job.url}
-                              onChange={(e) => updateField("url", e.target.value)} 
-                          />
-                      </div>
-
-                      <div className="space-y-2">
-                          <Label>Email</Label>
-                          <Input
-                              type="email"
-                              placeholder="email"
-                              value={job.email}
-                              onChange={(e) => updateField("email", e.target.value)} required
-                          />
-                      </div>
-
-                      <div className="space-y-2">
-                          <Label>Location</Label>
-                          <Input
-                              placeholder="location"
-                              value={job.location}
-                              onChange={(e) => updateField("location", e.target.value)} required
-                          />
-                      </div>
-                    </div>
-
-                    
-
-                    <div className="space-y-2">
-                        <Label>Company Logo</Label>
+                        <Label className={styles.formLabel}>Upload Logo</Label>
                             <div className="flex flex-col items-start gap-4">
                               {job.logo && (
                                     <img
@@ -164,15 +127,15 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                                         : `${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`
                                       }
                                       alt="Company logo"
-                                      className="h-24 w-24 rounded-md border object-contain"
+                                      className="h-20 w-20 rounded-[10px] border-2 border-[#ddd] object-contain"
                                   />
                                   
                                   )}
 
                                   <Label 
                                   htmlFor="logo-upload"
-                                  className="cursor-pointer rounded-md border px-2.5 py-1 text-sm hover:bg-muted">
-                                    {job.logo ? "Change Logo" : "Upload Logo"}
+                                  className={styles.fileButton}>
+                                   Choose File
                                   </Label>
                             </div>
                           
@@ -186,29 +149,72 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                                 updateField("logo", file)}}
                             className="hidden"
                         />
-        
-                    </div>
-
-                    
 
                     <div className="space-y-2">
-                        <Label>Description</Label>
+                          <Label className={styles.formLabel}>Website Url</Label>
+                          <Input
+                              type="url"
+                              placeholder="Enter website url"
+                              value={job.url}
+                              onChange={(e) => updateField("url", e.target.value)} 
+                              className={styles.formTextInput}
+                          />
+                      </div>
+
+                        <div className="space-y-2">
+                          <Label className={styles.formLabel}>Position</Label>
+                          <Input
+                              placeholder="Enter position"
+                              value={job.position}
+                              onChange={(e) => updateField("position", e.target.value)} required
+                              className={styles.formTextInput}
+                          />
+                      </div>
+
+                      <div className="space-y-2">
+                          <Label className={styles.formLabel}>Location</Label>
+                          <Input
+                              placeholder="Enter location"
+                              value={job.location}
+                              onChange={(e) => updateField("location", e.target.value)} required
+                              className={styles.formTextInput}
+                          />
+                      </div>
+
+                      <div className="space-y-2">
+                          <Label className={styles.formLabel}>Company Email</Label>
+                          <Input
+                              type="email"
+                              placeholder="Enter company email"
+                              value={job.email}
+                              onChange={(e) => updateField("email", e.target.value)} required
+                              className={styles.formTextInput}
+                          />
+                      </div> 
+                    </div>
+                    
+                    <div className="space-y-2">
+                        <Label className={styles.formLabel}>Description</Label>
                         <Textarea
                             rows={6}
                             value={job.description}
+                            placeholder="Enter job description here"
                             onChange={(e)=>
                                 updateField("description",e.target.value)
                             }
+                            className={styles.formTextArea}
                         />
                     </div>
                     <div className="space-y-2">
-                        <Label>How to Apply</Label>
+                        <Label className={styles.formLabel}>How to Apply</Label>
                             <Textarea
                                 rows={5}
                                 value={job.how_to_apply}
+                                placeholder="Enter how to apply here"
                                 onChange={(e)=>
                                     updateField("how_to_apply",e.target.value)
                                 }
+                                className={styles.formTextArea}
                             />
                     </div>
 
@@ -224,14 +230,15 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                             }
                         />
 
-                        <Label htmlFor="checked">Publish publicly</Label>
+                        <Label htmlFor="checked" className={styles.checkboxLabel}>Public Job Listing</Label>
                     </div>
                     
                     <div className="flex justify-end">
                         <Button
                             type="submit"
+                            className={styles.jobButton}
                             >
-                          {mode == "create" ? "Create Job" : "Update Job"}
+                          {mode == "create" && userType=="admin" ? "Create Job" :mode=="create" && userType=="public"? "Preview Job" : "Update Job"}
                         </Button>
    
                     </div>

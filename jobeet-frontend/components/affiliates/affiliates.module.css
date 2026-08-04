@@ -1,0 +1,101 @@
+/* Affiliate Form */
+
+.formTextInput{
+  height: 45.6px;
+  line-height: normal;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px ;
+  font-size: 16px;
+  background: #ffffff;
+}
+
+.formTextInput:focus,
+.checkboxInput:focus{
+  outline: none;
+  border-color: #2d89ef;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+}
+
+.formLabel{
+  display:block;
+  font-weight: 700;
+  color: #333;
+  font-size: 16px;
+}
+
+.checkboxLabel{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #24292e;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.checkboxLabel:hover{
+  color: #2d89ef;
+}
+
+.checkboxInput{
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkboxInput[data-state="checked"]{
+  border-color: #2d89ef;
+  background-color: #2d89ef;
+}
+.checkboxInput[data-state="unchecked"] {
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.formGroup{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form{
+  min-width: 224px;
+  margin: 0;
+  padding: 0 95px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.applyButton{
+  padding: 0 20px;
+  border-radius:8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: .2s ease;
+
+  /* remove default styles */
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  line-height: 1;
+  background: #2d89ef;
+  color: white;
+  height: 38px;
+}
+
+.applyButton:hover{
+  background: #1d6fd3;
+    transform: translateY(-1px);
+}
+
+.h4 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 0 1.23em 0;
+}

@@ -3,6 +3,7 @@
 <div class="form-group">
     <label for="category_id">Category</label>
     <select name="category_id" id="category_id">
+      <option value="" disabled selected>Select Category</option>
          <?php foreach($categories as $category) { ?>
                     <option value="<?php echo $category["id"]; ?>"
                         <?php
@@ -59,27 +60,29 @@
     >
 </div>
 
-<div class="form-group file-group">
-    <?php if($isEdit) { ?>
-         
-         <?php if(!empty($job["logo"])) { ?>
-            <div class="current-logo">
-                <label for="current_logo">Current Logo</label>
-                <img src="<?php echo base_url("uploads/".$job["logo"]); ?>"  width= "150">
-                <input type="hidden" name= "old_logo" id="current_logo" value="<?php echo $job["logo"]; ?>">
-            </div>
-        <?php } ?>
-        
-        <div>
-            <label for="logo"><?php echo !empty($job["logo"]) ? 'Upload New Logo' : 'Upload Logo'; ?></label> 
-            <input type="file" name="logo" id="logo">
-        </div>
-    <?php } else {?> 
-        <div>
-            <label for="logo">Upload Logo</label> 
-            <input type="file" name="logo" id="logo">
-        </div>
-    <?php }?>
+<div class="form-group">
+    <label for="logo">Upload Logo</label>
+
+    <div class="logo-upload">
+        <img
+            id="logo-preview"
+            src="<?php echo !empty($job['logo']) ? base_url('uploads/'.$job['logo']) : ''; ?>"
+            alt="Company Logo"
+            <?php echo empty($job['logo']) ? 'style="display:none;"' : ''; ?>
+        >
+
+        <label for="logo" class="file-button">Choose File</label>
+<input type="file" name="logo" id="logo" accept="image/*" hidden>
+    </div>
+
+    <?php if ($isEdit && !empty($job["logo"])) { ?>
+        <input
+            type="hidden"
+            name="old_logo"
+            value="<?php echo $job["logo"]; ?>"
+        >
+    <?php } ?>
+
 </div>
 
 <div class="form-group">

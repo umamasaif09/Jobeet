@@ -7,6 +7,8 @@ import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 import { AffiliateFormData } from "@/types/affiliate-form-data";
 import BackButton from "../ui/BackButton";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./affiliates.module.css";
 
 type Props = {
     affiliate:AffiliateFormData;
@@ -19,7 +21,7 @@ type Props = {
 
     onSubmit: () => void;
 
-    mode: "create" | "edit";
+    mode: "create" | "edit" | "apply";
 
     userType: "admin" | "public";
 };
@@ -33,49 +35,52 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
     }
 
     return (
-      <div className="flex items-baseline gap-4">
+      <div className="flex items-baseline gap-4 my-[24px]">
         <BackButton/>
           <div className="flex-1">
             <div className="max-w-5xl space-y-6">
-            <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
-              {mode == "create" ? "Create Affiliate" : "Edit Affiliate"}
-            </h1>
-            <form onSubmit={handleSubmit}>
+              <h1 className={pageStyles.pageTitle}>
+                {mode == "create" ? "Create Affiliate" : mode == "edit" ? "Edit Affiliate" : "Affiliate Application"}
+              </h1>
+            <form onSubmit={handleSubmit} className={styles.form}>
               <div className="space-y-4">
                 <div className="space-y-2">
-                    <Label>Name</Label>
+                    <Label className={styles.formLabel}>Name</Label>
                     <Input
-                        placeholder="Name"
+                        placeholder="Enter affiliate name"
                         value={affiliate.affiliate_name}
                         onChange={(e) => updateField("affiliate_name", e.target.value)}
                         required
+                        className={styles.formTextInput}
                     />
                 </div>
                 
                 <div className="space-y-2">
-                    <Label>Email</Label>
+                    <Label className={styles.formLabel}>Email</Label>
                     <Input
                         type="email"
-                        placeholder="email"
+                        placeholder="Enter affiliate email"
                         value={affiliate.affiliate_email}
                         onChange={(e) => updateField("affiliate_email", e.target.value)}
                         required
+                        className={styles.formTextInput}
                     />
                 </div>
 
                 <div className="space-y-2">
-                    <Label>Website</Label>
+                    <Label className={styles.formLabel}>Website</Label>
                     <Input
                         type="url"
-                        placeholder="url"
+                        placeholder="Enter affiliate website url"
                         value={affiliate.affiliate_url}
                         onChange={(e) => updateField("affiliate_url", e.target.value)}
                         required
+                        className={styles.formTextInput}
                     />
                 </div>
 
                 <div className="space-y-2">
-                    <Label>Categories</Label>
+                    <Label className={styles.formLabel}>Categories</Label>
                     {categories.map(category => (
                       <div key={category.id}
                         className="flex items-center gap-2"
@@ -101,9 +106,11 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                               );
                             }
                           }}
-                          
+                          className={styles.checkboxInput}
                         />
-                        <Label htmlFor={`category-${category.id}`}>{category.name}</Label>
+                        <Label htmlFor={`category-${category.id}`}
+                          className={styles.checkboxLabel}
+                        >{category.name}</Label>
                       </div>
                     ))}
                 </div>
@@ -111,11 +118,12 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                 <div className="flex justify-end">
                     <Button
                         type="submit"
+                        className={styles.applyButton}
                         >
-                        {mode == "create" && userType== "public" ? "Apply" : mode== "create" && userType == "admin" ? "Create" : "Update"}
+                        {mode == "apply" && userType== "public" ? "Apply" : mode== "create" && userType == "admin" ? "Create" : "Update"}
                     </Button>
                 </div>
-                </div>
+              </div>
             </form>
 
         </div>

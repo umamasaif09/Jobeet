@@ -24,11 +24,11 @@
                         <tr>
                             <td><a href="<?php echo site_url("jobs/job/".$job["id"]); ?>" class="job-title"> <?php echo $job["position"]; ?></a></td>
 
-                            <td><span class=location-text>
+                            <td><span>
                                 <?php echo $job["location"]; ?>
                             </span></td>
                             
-                            <td><span class="company-name">
+                            <td><span>
                                 <?php echo $job["company"]; ?>
                             </span> </td>
                         </tr>

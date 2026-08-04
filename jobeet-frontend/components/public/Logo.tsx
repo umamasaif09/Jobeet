@@ -1,8 +1,9 @@
 import Link from "next/link";
+import styles from "./layout.module.css"
 
 export default function logo() {
     return (
-        <Link href= "/" className="font-heading text-xl font-semibold tracking-tight primary-text"
+        <Link href= "/" className={styles.logoText}
         >
             Jobeet
         </Link>

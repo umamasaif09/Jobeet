@@ -5,6 +5,7 @@ import { CategoryApi, Category } from "@/types/category";
 import { JobFormData } from "@/types/job-form-data";
 import { AffiliateApi } from "@/types/affiliate";
 import { AffiliateFormData } from "@/types/affiliate-form-data";
+import { SearchResults } from "@/types/search-results";
 
 export function transformJob(job: JobApi): Job {
     return {
@@ -13,6 +14,14 @@ export function transformJob(job: JobApi): Job {
         category_id: Number(job.category_id),
         is_active: job.is_active === "1",
         is_public: job.is_public === "1",
+    };
+}
+
+export function transformJobWithCategory(job: SearchResults): SearchResults {
+    return {
+        ...job,
+        id: Number(job.id),
+        category_id: Number(job.category_id),
     };
 }
 
@@ -35,7 +44,7 @@ export function transformCategoryJobsResponse(data: CategoryJobsResponseApi): Ca
     return {
         category: transformCategory(data.category),
         jobs: data.jobs.map(transformJob),
-        totalItems: data.totalItems,
+        totalJobs: data.totalJobs,
         totalPages: data.totalPages,
         page: data.page,
         perPage: data.perPage

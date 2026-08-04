@@ -1,9 +1,10 @@
 import api from "@/lib/api";
 import { Job, JobApi } from "@/types/job";
 import { CategoryWithJobs, CategoryWithJobsApi } from "@/types/category-with-jobs";
-import { transformCategoryJobsResponse, transformJob } from "@/lib/transformers";
+import { transformCategoryJobsResponse, transformCategoryWithJobs, transformJob, transformJobWithCategory } from "@/lib/transformers";
 import { CategoryJobsResponse, CategoryJobsResponseApi } from "@/types/category-jobs-response";
 import { CreateJobRequest } from "@/types/create-job-request";
+import { SearchResults } from "@/types/search-results";
 
 
 export async function getJobs(): Promise<Job[]> {
@@ -15,11 +16,7 @@ export async function getJobs(): Promise<Job[]> {
 export async function getLatestJobs(): Promise<CategoryWithJobs[]> {
     const response = await api.get<CategoryWithJobsApi[]>("/jobs/latest");
     
-    return Object.entries(response.data).map(([id, category]) => ({
-        id: Number(id),
-        name: category.name,
-        jobs: category.jobs.map(transformJob)
-    }));
+    return response.data.map(transformCategoryWithJobs);
 }
 
 export async function getJob(id: number): Promise<Job> {
@@ -29,12 +26,12 @@ export async function getJob(id: number): Promise<Job> {
 
 export async function getJobsByCategory(categoryId: number, page:number=1): Promise<CategoryJobsResponse> {
     const response = await api.get<CategoryJobsResponseApi>(`jobs/category?category=${categoryId}&page=${page}`);
-    console.log("API RESPONSE", response.data);
+   
     return transformCategoryJobsResponse(response.data);
 }
 
 export async function getJobsByKeyword(keyword: string) {
-    const response = await api.get<JobApi[]>(
+    const response = await api.get<SearchResults[]>(
         "/jobs/search",
         {
             params: {
@@ -43,7 +40,7 @@ export async function getJobsByKeyword(keyword: string) {
         }
     );
 
-    return response.data.map(job => transformJob(job));
+    return response.data.map(job => transformJobWithCategory(job));
 }
 
 export async function createJob(job: CreateJobRequest) {

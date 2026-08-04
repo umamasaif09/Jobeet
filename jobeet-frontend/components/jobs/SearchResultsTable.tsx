@@ -1,13 +1,14 @@
-import {Job} from "@/types/job";
+import {SearchResults} from "@/types/search-results";
 import JobRow from "./JobRow";
 import styles from "./jobs.module.css"
 import {Table, TableBody, TableHead, TableHeader, TableRow} from "@/components/ui/table";
+import SearchResultsRow from "./SearchResultsRow";
 
 interface JobTableProps{
-    jobs: Job[];
+    jobs: SearchResults[];
 }
 
-export default function JobTable({jobs}: JobTableProps) {
+export default function SearchResultsTable({jobs}: JobTableProps) {
     if(jobs.length === 0) {
         return (
             <p>
@@ -23,14 +24,14 @@ export default function JobTable({jobs}: JobTableProps) {
                     <TableHead className={styles.jobsTableHeaderTh}>Position</TableHead>
                     <TableHead className={styles.jobsTableHeaderTh}>Location</TableHead>
                     <TableHead className={styles.jobsTableHeaderTh}>Company</TableHead>
-                    
+                    <TableHead className={styles.jobsTableHeaderTh}>Category</TableHead>
                 </TableRow>
             </TableHeader>
 
             <TableBody className={styles.jobsTableBodyTr}>
                 
                 {jobs.map((job) => (
-                    <JobRow key={job.id} job={job}/>
+                    <SearchResultsRow key={job.id} job={job}/>
                 ))}
             </TableBody>
         </Table>

@@ -6,7 +6,7 @@ export interface CategoryJobsResponseApi {
     jobs: JobApi[];
       page: number;
       totalPages: number;
-      totalItems: number;
+      totalJobs: number;
       perPage: number;
 }
 
@@ -15,6 +15,6 @@ export interface CategoryJobsResponse {
     jobs: Job[];
       page: number;
       totalPages: number;
-      totalItems: number;
+      totalJobs: number;
       perPage: number;
 }

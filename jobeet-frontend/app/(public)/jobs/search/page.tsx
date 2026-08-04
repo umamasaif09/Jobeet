@@ -1,7 +1,10 @@
-import JobTable from "@/components/jobs/JobTable";
+
 import BackButton from "@/components/ui/BackButton";
 import { getJobsByKeyword } from "@/services/jobs";
 import { toast } from "sonner";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import SearchResultsTable from "@/components/jobs/SearchResultsTable";
+
 
 type Props = {
     searchParams: Promise <{
@@ -18,14 +21,14 @@ export default async function SearchPage({searchParams}: Props) {
 
     return(
         <div className="space-y-6">
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center my-[24px]">
             <BackButton/>
-            <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+            <h1 className={pageStyles.pageTitle}>
               Search Results
             </h1>
           </div>
           {jobs ? (
-            <JobTable jobs = {jobs}/>
+            <SearchResultsTable jobs = {jobs}/>
           ) : toast.error("No results available")
           }
           

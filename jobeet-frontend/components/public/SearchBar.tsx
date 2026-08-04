@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import styles from "./layout.module.css"
 
 export default function SearchBar() {
     const router = useRouter();
@@ -18,20 +19,21 @@ export default function SearchBar() {
     }
     return (
         
-        <form onSubmit={handleSubmit}>
-          <div className="flex items-center">
+        <form onSubmit={handleSubmit} className={styles.searchForm}>
+          
             <Input
                 type="text"
-                placeholder="Search jobs..."
+                placeholder="Live Search"
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
-                className="rounded-r-none"
+                className={styles.searchFormInput}
+                required
               />
               <Button type="submit"
-                className="rounded-l-none">
+                className={styles.searchBtn}>
                   Search
               </Button>
-          </div>
+         
             
         </form>
         

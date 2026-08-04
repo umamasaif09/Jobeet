@@ -8,7 +8,7 @@ export default async function ApplyAffiliatePage() {
     return (
         <AffiliateEditor
             categories={categories}
-            mode="create"
+            mode="apply"
             userType ="public"
             initialAffiliate={{
               affiliate_name: "",

@@ -10,6 +10,8 @@ import {
 import { Separator } from "../ui/separator";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./jobs.module.css";
 
 interface JobCardProps{
     job: Job;
@@ -18,56 +20,43 @@ interface JobCardProps{
 export default function JobCard({job}: JobCardProps) {
     return (
       <div className="space-y-6">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center my-[24px]">
           <BackButton/>
-          <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+          <h1 className={pageStyles.pageTitle}>
             Job Detail
           </h1>
         </div>
-        
-        <Card>
-            <CardHeader>
+  
               <div className="flex justify-between">
-                <div className="space-y-2">
-                  <CardTitle className="text-2xl font-semibold">
-                    {job.position}
-                  </CardTitle>
-
-                  <p className="text-lg">{job.company}</p>
-                  <p className="text-sm">{job.location}</p>
-
+                <div>
+                  <h2 className={styles.jobDetailsH2}>{job.position}</h2>
+                  <h3 className={styles.jobDetailsH3}>{job.company}</h3>
+                  <h4 className={styles.jobDetailsH4}>{job.location}</h4>
                 </div>
 
                   {job.logo && (
                     <Image src={`${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
-                  alt = "Company Logo"
-                  width={80}
-                  height={80}
-                  unoptimized
-                  className="rounded-md border object-contain"
+                      alt = "Company Logo"
+                      width={80}
+                      height={80}
+                      unoptimized
+                      className="rounded-[10px] border-2 border-[#ddd]"
                     />
                   )}
               </div>
-                
-            </CardHeader>
-                  <Separator/>
-            <CardContent>
-              <div className="space-y-4">
+
+                 <Separator/>
 
                 <div>
-                  <h3 className="font-semibold">Descrption</h3>
-                  <p className="text-sm">{job.description}</p>
+                  <strong>Descrption</strong>
+                  <p className={styles.jobDetailsP}>{job.description}</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold">How to Apply</h3>
-                  <p className="text-sm">{job.how_to_apply}</p>
+                  <strong>How to Apply</strong>
+                  <p className={styles.jobDetailsP}>{job.how_to_apply}</p>
                 </div>
-                
-                
+ 
             </div>
-            </CardContent>
-        </Card>
-      </div>
         
     )
 }

@@ -1,10 +1,5 @@
 
 <div class="category-section">
-    <div class="section-header">
-        <h2 class="category-title" ><?php echo $result["category"]["name"] ?></h2>
-    </div>
-    
-        
     <div class="jobs-table-card">
         <table class="jobs-table">
             <thead>

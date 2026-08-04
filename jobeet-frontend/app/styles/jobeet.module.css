@@ -1,0 +1,34 @@
+
+/* Category Page */
+
+.pageTitle{
+  font-size: 24px;
+  font-weight: 600;
+  color: #24292e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.backButton{
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  background: #e8f0fe;
+  color: #1a6fd3;
+  border: 1px solid #2d89ef;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.backButton:hover{
+  background: #d4e4fc;
+  border-color: #2d89ef;
+  transform: none;
+  text-decoration: none;
+}

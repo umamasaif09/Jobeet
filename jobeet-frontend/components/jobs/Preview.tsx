@@ -5,6 +5,10 @@ import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import BackButton from "../ui/BackButton";
 import Image from "next/image";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./jobs.module.css";
+import Link from "next/link";
+
 
 type Props = {
     job: JobFormData;
@@ -20,34 +24,25 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
 
     return(
 
-      <div className="flex items-baseline gap-4">
-        
+      <div className="space-y-6">
+        <div className="flex items-baseline gap-4 my-[24px] ">     
           <BackButton/>
-          <div className="flex-1">
-            <div className="max-w-5xl space-y-6">
-
-            
-          <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
-            Preview
+          <h1 className={pageStyles.pageTitle}>
+            Preview Job
           </h1>
-        
-        <Card>
-            <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="font-semibold">Position</h3>
-                    <p className="text-sm">{job.position}</p>
-                  </div>
-                   
-                  <div>
-                    <h3 className="font-semibold">Company</h3>
-                    <p className="text-sm">{job.company}</p>
-                  </div>
+        </div>
+        <Card className="bg-white rounded-[10px] border-[#ececec] shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+            <CardContent className="py-[9px] px-[24px]">
+                <div className="space-y-2.5">
+
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Category: </strong>{category?.name}</p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Type: </strong>{job.type}</p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Category: </strong>{job.company}</p>
 
                   <div>
                     {job.logo && (
                       <>
-                        <h3 className="font-semibold">Company Logo</h3>
+                        <p className="text-[16px]"><strong className="font-[700] text-[16px]">Logo: </strong></p>
                         <Image src={job.logo instanceof File ? 
                           URL.createObjectURL(job.logo) :
                         `${process.env.NEXT_PUBLIC_UPLOAD_URL}/${job.logo}`}
@@ -61,68 +56,37 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
                     )}
                   </div>
 
-                  <div>
-                    <h3 className="font-semibold">Location</h3>
-                    <p className="text-sm">{job.location}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-sm">{job.email}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">Website</h3>
-                    <p className="text-sm">{job.url}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">Category</h3>
-                    <p className="text-sm">{category?.name}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">Job Type</h3>
-                    <p className="text-sm">{job.type}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">Description</h3>
-                    <p className="text-sm">{job.description}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">How to Apply</h3>
-                    <p className="text-sm">{job.how_to_apply}</p>
-                  </div>
-
-                  <div>
-                    <h3 className="font-semibold">Public</h3>
-                    <p className="text-sm">{job.is_public ? "Yes" : "No"}</p>
-                  </div>
-
-
-                  <div className="flex justify-end gap-4">
-                    <Button
-                        variant="outline"
-                        onClick={onEdit}
-                    >
-                        Edit
-                    </Button>
-
-                    <Button
-                        onClick={onSubmit}
-                    >
-                        Post Job
-                    </Button>
-                  </div>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Website: </strong><Link
+                    className="text-[#3498db] hover:underline cursor-pointer"
+                    href={job.url}
+                  >
+                    {job.url}
+                  </Link></p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Position: </strong>{job.position}</p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Location: </strong>{job.location}</p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Email: </strong><Link href={`mailto:${job.email}`} className="text-[#3498db] hover:underline cursor-pointer">{job.email}</Link></p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Description: </strong></p>
+                  <p className="text-[16px]">{job.description}</p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">How To Apply: </strong></p>
+                  <p className="text-[16px]">{job.how_to_apply}</p>
+                  <p className="text-[16px]"><strong className="font-[700] text-[16px]">Public: </strong>{job.is_public ? "Yes" : "No"}</p>
 
                 </div>
             </CardContent>
 
         </Card>
-        </div>
-          </div>
+
+        <div className="flex justify-end gap-4">
+
+                    <Button
+                        onClick={onSubmit}
+                        className={styles.jobButton}
+                    >
+                        Create Job Post
+                    </Button>
+                  </div>
+
       </div>
+      
     );
 }
