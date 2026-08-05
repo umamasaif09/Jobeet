@@ -131,7 +131,7 @@ export default function JobEditor({categories, initialJob, mode, jobId, token, u
               Job Created
             </h1>
         </div>
-          <Card className="bg-white rounded-[10px] border-[#ececec] shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+          <Card className="bg-white rounded-[10px] border-0 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
             <CardContent className="py-[9px] px-[24px]">
               <div className="space-y-4">
 

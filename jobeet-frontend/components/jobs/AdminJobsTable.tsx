@@ -9,6 +9,8 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import AdminJobRow from "./AdminJobRow";
 import DeleteJobDialog from "./DeleteJobDialog";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./jobs.module.css";
 
 interface JobTableProps{
     jobs: Job[];
@@ -30,32 +32,34 @@ export default function JobTable({jobs}: JobTableProps) {
     }
 
     return(
-      <div className="space-y-6">
+      <div className="space-y-6 my-[24px]">
         <div className="flex justify-between items-center">
-          <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+          <h1 className={pageStyles.pageTitle}>
             Manage Jobs
           </h1>
 
           <Link href={`/admin/jobs/create`}>
-            <Button>
+            <Button
+              className={styles.jobButton}
+            >
               New Job
             </Button>
         </Link>
         </div>
       
-      <div className="rounded-md border ">
-        <Table>
+      <div className={styles.adminJobsTableCard}>
+        <Table className={styles.adminJobsTable}>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="w-[100px]">Job ID</TableHead>
-                    <TableHead>Position</TableHead>
-                    <TableHead>Company Name</TableHead>
-                    <TableHead>Job Type</TableHead>
-                    <TableHead>Location</TableHead>
-                    <TableHead>Active Status</TableHead>
-                    <TableHead>Public Status</TableHead>
-                    <TableHead>Created At</TableHead>
-                    <TableHead className="w-[80px]"></TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Job ID</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Position</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Company Name</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Job Type</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Location</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Active Status</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Public Status</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}>Expires At</TableHead>
+                    <TableHead className={styles.adminJobsTableHeaderTh}></TableHead>
                 </TableRow>
             </TableHeader>
 

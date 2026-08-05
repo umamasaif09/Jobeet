@@ -152,6 +152,10 @@ textarea{
   margin-bottom: 8px;;
 }
 
+p.logo-label{
+  margin: 0;
+}
+
 
 .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), 
 .form-group select,

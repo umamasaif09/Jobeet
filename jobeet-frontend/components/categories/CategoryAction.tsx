@@ -1,6 +1,7 @@
 import { Category } from "@/types/category";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "../ui/dropdown-menu";
 import { MoreVertical } from "lucide-react";
+import styles from "./categories.module.css";
 
 interface Props{
   category: Category;
@@ -18,11 +19,20 @@ export default function CategoryAction({category, onEdit, onDelete}: Props) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={()=> onEdit(category)}>
+        <DropdownMenuItem onClick={()=> onEdit(category)}
+          className={styles.menuDropdownBtnWarning}
+          >
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={()=> onDelete(category)}>
+        <DropdownMenuItem
+          className={styles.menuDropdownBtnDanger}
+          onClick={() => {
+            if (window.confirm("Delete this category?")) {
+              onDelete(category);
+            }
+          }}
+          >
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent> 

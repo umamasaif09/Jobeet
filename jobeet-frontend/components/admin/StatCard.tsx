@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-
+import styles from "./layout.module.css";
 type Props = {
   title: string;
   value: number;
@@ -7,14 +7,14 @@ type Props = {
 
 export default function StatCard({title, value}: Props) {
   return(
-    <Card >
+    <Card className={styles.card}>
         <CardHeader>
-          <CardTitle className="text-center">{title}</CardTitle>
+          <CardTitle className={styles.cardH3}>{title}</CardTitle>
         </CardHeader>
 
         <CardContent>
-          <p className="text-3xl font-bold text-center">{value}</p>
-          <p className="text-center">Total {title} </p>
+          <p className={styles.cardNumber}>{value}</p>
+          <p className={styles.cardLabel}>Total {title} </p>
         </CardContent>
       </Card>
   )

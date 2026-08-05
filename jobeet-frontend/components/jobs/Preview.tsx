@@ -24,7 +24,7 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
 
     return(
 
-      <div className="space-y-6">
+      <div className="flex flex-col gap-[12px]">
         <div className="flex items-baseline gap-4 my-[24px] ">     
           <BackButton/>
           <h1 className={pageStyles.pageTitle}>

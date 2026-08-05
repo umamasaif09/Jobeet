@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { toast } from "sonner";
+import styles from "./auth.module.css";
 
 
 export default function ForgotPasswordForm() {
@@ -30,41 +31,33 @@ export default function ForgotPasswordForm() {
 
   return (
     <div className="flex min-h-screen justify-center items-center">
-    <Card className="w-[300px] max-w-full">
-      <CardHeader>
-        <CardTitle>Forgot Password</CardTitle>
-        <CardDescription>
-          Enter your email below to get password reset email
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} id="forgot-form">
-          
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+    
+        <form onSubmit={handleSubmit} id="forgot-form" className={styles.authForm}>
+          <h2 className={styles.authFormH2}>Reset Password</h2>
+            <div className={styles.formGroup}>
+              <Label htmlFor="email" className={styles.formGroupLabel}>Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className={styles.authFormInput}
                 required
               />
             </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button
+
+            <Button
             type="submit"
             disabled = {loading}
             form="forgot-form"
+            className={styles.authFormButton}
           >
             {loading
               ? "Sending..."
-              : "Send Reset Link"}
+              : "Send Password Reset Link"}
           </Button>
-      </CardFooter>
-    </Card>
+        </form>
     </div>
   );
 }

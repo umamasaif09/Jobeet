@@ -28,7 +28,8 @@ img {
     border-radius: 10px;
     border: 2px solid #ddd;
     max-width: 100%;
-    height: auto;
+    width: 80px;
+    height: 80px;
 }
 
 /* ========================================
@@ -263,6 +264,7 @@ section h2 {
     display: inline-flex;
     align-items: center;
     transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .page-header-left .back-button:hover {
@@ -343,6 +345,38 @@ textarea {
 .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"])::placeholder,
 .form-group textarea::placeholder{
     color: #a0a8b4;
+}
+
+.logo-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.form-group .file-button {
+  height: 24px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  background: #f6f8fa;
+  color: #24292e;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 14px;
+}
+
+.form-group .file-button:hover {
+    background: #f3f4f6;
+    border-color: #8b949e;
+    transform: none;
+}
+
+
+.form-group .file-button:active{
+    background: #e8eaed;
 }
 
 .file-group .current-logo {
@@ -745,18 +779,18 @@ input[type="file"]::file-selector-button:active{
 }
 
 .admin-table .job-meta{
-    color: #6b7280;
+    color: #1f2937;
     font-size: 13px;
     margin-bottom: 2px;
 }
 
 .admin-table .job-meta strong{
-    color: #374151;
+    color: #1f2937;
     font-weight: 600;
 }
 
 .admin-table .expiry-date{
-    color: #6b7280;
+    color: #1f2937;
     font-size: 13px;
     font-weight: 500;
 }
@@ -1047,7 +1081,7 @@ input[type="file"]::file-selector-button:active{
     width: 40px;
     font-weight: 500;
     color: #57606a;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .jobs-table .menu-column{
@@ -1056,15 +1090,15 @@ input[type="file"]::file-selector-button:active{
 }
 
 .jobs-table .job-title{
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 600;
     color: #1f2937;
 }
 
 .jobs-table .company-name{
-    font-weight: 13px;
+    font-weight: 12px;
     font-weight: 500;
-    color: #374151;
+    color: #1f2937;
 }
 
 .type-badge{
@@ -1073,18 +1107,18 @@ input[type="file"]::file-selector-button:active{
     columns: #1e40af;
     background: #dbeafe;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
 }
 
 .location-text{
-    color: #6b7280;
+    color: #1f2937;
     font-size: 12px;
 }
 
 .expiry-date{
-    color: #6b7280;
-    font-size: 13px;
+    color: #1f2937;
+    font-size: 12px;
     font-weight: 500;
 }
 
@@ -1358,9 +1392,8 @@ input[type="file"]::file-selector-button:active{
     width: 280px;
 }
 
-.job-title,
-.company-name {
-    font-size: 16px;
+.job-title{
+    font-size: 12px;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 8px;
@@ -1368,7 +1401,7 @@ input[type="file"]::file-selector-button:active{
 
 .job-meta {
     color: #6b7280;
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 4px;
 }
 
@@ -1561,7 +1594,7 @@ input[type="file"]::file-selector-button:active{
     display: inline-block;
     padding: 4px 10px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -1647,6 +1680,7 @@ input[type="file"]::file-selector-button:active{
     padding: 10px 24px;
     border-bottom: 1px solid #e1e4e8;
     background: #fafbfc;
+    
 }
 
 .modal-header h2 {

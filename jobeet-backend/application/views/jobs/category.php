@@ -30,21 +30,23 @@
     <p class="page-info"><?php echo $result["totalJobs"]; ?> Jobs in this category</p>
         
         
-        
-    <div class="pagination">
-        <?php if($currentPage >1 ) { ?>
-            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>" class="back-button"> ← Previous </a>
-        <?php } else {?>
-            <span></span>
-        <?php }?>
+      <?php if ($result["totalPages"] > 1) {?> 
+        <div class="pagination">
+          <?php if($currentPage >1 ) { ?>
+              <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage-1)); ?>" class="back-button"> ← Previous </a>
+          <?php } else {?>
+              <span></span>
+          <?php }?>
 
-        <span class="page-number">
-            Page <?php echo $currentPage; ?> of <?php echo $result["totalPages"];?>
-        </span>
+          <span class="page-number">
+              Page <?php echo $currentPage; ?> of <?php echo $result["totalPages"];?>
+          </span>
+      
+          <?php if($currentPage < $result["totalPages"] ) { ?>
+              <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage+1)); ?>" class="back-button"> Next → </a>
+          <?php } ?>
+      </div>
+      <?php }?> 
     
-        <?php if($currentPage < $result["totalPages"] ) { ?>
-            <a href="<?php echo site_url("jobs/category/". $result["category"]["id"]."/".($currentPage+1)); ?>" class="back-button"> Next → </a>
-        <?php } ?>
-    </div>
 </div>
 

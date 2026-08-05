@@ -27,7 +27,7 @@
             <?php endif; ?>
 
             <div class = "form-group">
-                <label>Password</label>
+                <label>New Password</label>
                 <input type="password" name= "password" placeholder= "Enter new password" required>
             </div>
 

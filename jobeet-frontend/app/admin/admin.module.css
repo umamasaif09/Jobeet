@@ -1,0 +1,13 @@
+.dashboard {
+    padding: 0 4px;
+    background: transparent;
+    box-shadow: none;
+}
+
+.dashboardH2 {
+    margin: 19.92px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #24292e;
+    line-height: 38.4px;
+}

@@ -49,7 +49,7 @@
 <div class="modal" id="categoryModal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2><?php echo $this->lang->line("add_category"); ?></h2>
+            <h2>Create Category</h2>
 
             <button type="button" class="modal-close" id="closeCategoryModal">
                 &times;

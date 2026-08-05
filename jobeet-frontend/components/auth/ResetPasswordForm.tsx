@@ -9,6 +9,7 @@ import { Label } from "../ui/label";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import styles from "./auth.module.css";
 
 
 export default function ResetPasswordForm() {
@@ -56,46 +57,42 @@ export default function ResetPasswordForm() {
   return (
 
     <div className="flex min-h-screen justify-center items-center">
-    <Card className="w-[300px] max-w-full">
-      <CardHeader>
-        <CardTitle>Reset Password</CardTitle>
-        <CardDescription>
-          Change your password to access your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} id="reset-form">
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="password">New Password</Label>
+    
+        <form onSubmit={handleSubmit} id="reset-form" className={styles.authForm}>
+          <h2 className={styles.authFormH2}>Reset Password</h2>
+          
+            <div className={styles.formGroup}>
+              <Label htmlFor="password" className={styles.formGroupLabel}>New Password</Label>
               <Input
                 id="password"
                 type="password"
                 placeholder="Enter new password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className={styles.authFormInput}
                 required
               />
             </div>
-            <div className="grid gap-2">
-                <Label htmlFor="confirm-password">Confirm Password</Label>
+            <div className={styles.formGroup}>
+                <Label htmlFor="confirm-password" className={styles.formGroupLabel}>Confirm Password</Label>
                 <Input id="confirm-password" type="password" required value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirm new password"/>
+                placeholder="Confirm new password"
+                className={styles.authFormInput}
+                />
+                
               </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button
+         
+
+          <Button
             type="submit"
             disabled={loading}
+            className={styles.authFormButton}
             form="reset-form"
           >
            {loading ? "Updating..." : "Update Password"}
           </Button>
-      </CardFooter>
-    </Card>
+        </form>
     </div>
   )
 }

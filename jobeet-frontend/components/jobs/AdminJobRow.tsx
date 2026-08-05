@@ -5,6 +5,7 @@ import { TableCell
  } from "../ui/table";
 import JobAction from "./JobAction";
 import { Badge } from "../ui/badge";
+import styles from "./jobs.module.css";
 
 type JobRowProps = {
     job: Job;
@@ -13,49 +14,45 @@ type JobRowProps = {
 
  export default function JobRow({job, onDelete}: JobRowProps) {
     return (
-        <TableRow>
-            <TableCell>
+        <TableRow className={styles.adminJobsTableBodyTr}>
+            <TableCell className={`${styles.adminJobsTableIdColumn} ${styles.adminTableBodyTd}`}>
                 {job.id}
             </TableCell>
 
-            <TableCell>
+            <TableCell className={`${styles.adminJobTitle} ${styles.adminJobsTableBodyTd}`}>
                     {job.position}
             </TableCell>
 
-            <TableCell>
+            <TableCell className={`${styles.companyName} ${styles.adminJobsTableBodyTd}`}>
                 {job.company}
             </TableCell>
 
-            <TableCell>
-                {job.type}
+            <TableCell className={` ${styles.adminJobsTableBodyTd}`}>
+                <span className={styles.typeBadge}>{job.type}</span>
             </TableCell>
 
-            <TableCell>
+            <TableCell className={`${styles.locationText} ${styles.adminJobsTableBodyTd}`}>
                 {job.location}
             </TableCell>
 
-            <TableCell>
-              <Badge
-                variant={job.is_active ? "default": "secondary"}
-              >
-                {job.is_active ? "Active" : "Inactive"}
-              </Badge>
-                
+            <TableCell className={`${styles.adminJobsTableBodyTd}`}>
+                <span className={job.is_active ? styles.badgeActive : styles.BadgeInactive}>{job.is_active ? "Active" : "Inactive"}</span>                
+            </TableCell >
+
+            <TableCell className={` ${styles.adminJobsTableBodyTd}`}>
+                  <span className={job.is_public ? styles.badgePublic : styles.badgePrivate}>{job.is_public ? "Public" : "Private"}</span>
+                  
             </TableCell>
 
-            <TableCell>
-                <Badge
-                  variant={job.is_public ? "default" : "secondary"}
-                >
-                  {job.is_public ? "Public" : "Private"}
-                </Badge>
+            <TableCell className={`${styles.expiryDate} ${styles.adminJobsTableBodyTd}`}>
+                {new Date(job.expires_at).toLocaleDateString("en-GB",{
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric"
+                } )}
             </TableCell>
 
-            <TableCell>
-                {job.created_at}
-            </TableCell>
-
-            <TableCell className="w-[80px] text-right">
+            <TableCell className={styles.rowMenu}>
               <JobAction
                 job={job}
                 onDelete ={onDelete}

@@ -8,6 +8,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { toast } from "sonner";
+import styles from "./auth.module.css";
 
 
 export default function LoginForm() {
@@ -34,47 +35,40 @@ export default function LoginForm() {
   }
   return (
     <div className="flex min-h-screen justify-center items-center">
-    <Card className="w-[300px] max-w-full">
-      <CardHeader>
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>
-          Enter your email below to login to your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} id="login-form">
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
+    
+        <form onSubmit={handleSubmit} id="login-form" className={styles.authForm}>
+          <h2 className={styles.authFormH2}>Administrator Login</h2>
+            <div className={styles.formGroup}>
+              <Label htmlFor="email" className={styles.formGroupLabel}>Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className={styles.authFormInput}
                 required
               />
             </div>
-            <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+            <div className={styles.formGroup}>
+                <Label htmlFor="password" className={styles.formGroupLabel}>Password</Label>
                 <Input id="password" type="password" required value={password}
-                onChange={(e) => setPassword(e.target.value)}/>
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                className={styles.authFormInput}
+                />
               </div>
                 <a
                   href="/auth/forgot-password"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  className={styles.authFormLink}
                 >
                   Forgot your password?
                 </a>
-          </div>
+
+                 <Button type="submit" className={styles.authFormButton} form="login-form">
+                  Login
+                </Button>
         </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full" form="login-form">
-          Login
-        </Button>
-      </CardFooter>
-    </Card>
     </div>
     
   );

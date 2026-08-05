@@ -43,8 +43,8 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                 {mode == "create" ? "Create Affiliate" : mode == "edit" ? "Edit Affiliate" : "Affiliate Application"}
               </h1>
             <form onSubmit={handleSubmit} className={styles.form}>
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="flex flex-col gap-[12px]">
+                <div className="flex flex-col gap-0">
                     <Label className={styles.formLabel}>Name</Label>
                     <Input
                         placeholder="Enter affiliate name"
@@ -55,7 +55,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
                 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-[8px]">
                     <Label className={styles.formLabel}>Email</Label>
                     <Input
                         type="email"
@@ -67,7 +67,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-[8px]">
                     <Label className={styles.formLabel}>Website</Label>
                     <Input
                         type="url"
@@ -79,11 +79,11 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-[8px]">
                     <Label className={styles.formLabel}>Categories</Label>
                     {categories.map(category => (
                       <div key={category.id}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-[8px]"
                       >
                         <Checkbox
                           id={`category-${category.id}`}

@@ -1,0 +1,102 @@
+.authForm {
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 32px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.formGroupLabel{
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #24292e;
+  line-height: 22.4px;
+}
+
+.authFormInput{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin: 0;
+  height: 41.7px;
+}
+
+.authFormInput:focus{
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.authFormLink{
+  align-self: flex-end;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #2563eb;
+}
+
+.authFormLink:hover{
+  text-decoration: underline;
+}
+
+.authFormButton{
+  padding: 0 20px;
+  border-radius:8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: .2s ease;
+
+  /* remove default styles */
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  line-height: 1;
+  background: #2d89ef;
+  color: white;
+  height: 38px;
+}
+
+.authFormButton:hover{
+   background: #1d6fd3;
+  transform: translateY(-1px);
+}
+
+.authFormH2{
+  margin: 0;
+  padding: 2px;
+  text-align: center;
+  font-size: 24px;
+  color: #1f2937;
+  font-weight: 700;
+  line-height: 38.4px;
+  white-space: nowrap;
+}
+
+.logoutButton {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}

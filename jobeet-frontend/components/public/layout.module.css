@@ -99,6 +99,7 @@
 .logoText{
     font-size: 24px;
     font-weight: 600;
+    line-height: 27.2px;
     color: #24292e;
     margin: 0;
 }
@@ -127,6 +128,7 @@
     text-decoration: none;
     font-weight: 500;
     transition: .2s;
+    line-height: 18.4px;
 }
 
 .footerText:hover{

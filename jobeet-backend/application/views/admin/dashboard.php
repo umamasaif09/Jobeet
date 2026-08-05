@@ -1,9 +1,9 @@
 
-<div class="admin-header">
+
     <div class = "admin-title">
         <h2><?php echo $this->lang->line("dashboard"); ?></h2>
     </div>
-</div>
+
 
 
 

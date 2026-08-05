@@ -5,7 +5,7 @@
 
     
     <?php if(!empty($job["logo"])) { ?>
-        <p><strong>Logo: </strong></p>
+        <p class="logo-label"><strong>Logo: </strong></p>
         <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" width="150">
     <?php } ?>
     

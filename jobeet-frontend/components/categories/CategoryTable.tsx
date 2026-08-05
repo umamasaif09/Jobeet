@@ -8,6 +8,8 @@ import { useState } from "react";
 import CategoryDialog from "./CategoryDialog";
 import DeleteCategoryDialog from "./DeleteCategoryDialog";
 import { useRouter } from "next/navigation";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./categories.module.css";
 
 
 interface Props{
@@ -31,26 +33,27 @@ export default function CategoryTable({categories}: Props) {
     );
   }
   return(
-    <div className="space-y-6">
+    <div className="space-y-6 my-[24px]">
       <div className="flex justify-between items-center">
-        <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+        <h1 className={pageStyles.pageTitle}>
           Manage Categories
         </h1>
           <Button onClick={()=> {
             setSelectedCategory(null);
             setCategoryDialogOpen(true);
-          }}>
+          }}
+          className={styles.categoryButton}>
             New Category
         </Button>
       </div>
       
-      <div className="rounded-md border ">
-        <Table>
+      <div className={styles.categoryTableCard}>
+        <Table className={styles.categoryTable}>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Category ID</TableHead>
-              <TableHead>Category Name</TableHead>
-              <TableHead className="w-[80px]"></TableHead>
+              <TableHead className={styles.categoryTableHeaderTh}>Category ID</TableHead>
+              <TableHead className={styles.categoryTableHeaderTh}>Category Name</TableHead>
+              <TableHead className={styles.categoryTableHeaderTh}></TableHead>
             </TableRow>
           </TableHeader>
 

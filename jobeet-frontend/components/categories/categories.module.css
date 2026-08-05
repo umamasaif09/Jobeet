@@ -5,6 +5,7 @@
   font-weight: 600;
   color: #3498db;
   text-decoration: none;
+  line-height: 23.2px;
 }
 
 .categoryHeading:hover{
@@ -13,3 +14,255 @@
 }
 
 /* Category Page */
+
+.categoryButton{
+  padding: 0 20px;
+  border-radius:8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: .2s ease;
+
+  /* remove default styles */
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  line-height: 1;
+  background: #2d89ef;
+  color: white;
+  height: 38px;
+}
+
+.categoryButton:hover{
+  background: #1d6fd3;
+    transform: translateY(-1px);
+}
+
+/* Category Table */
+.categoryTableCard {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.categoryTableCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.categoryTable{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.categoryTableHeaderTh {
+    background: #f6f8fa;
+    color: #24292e;
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 2px solid #e1e4e8;
+    white-space: nowrap;
+}
+
+.categoryTableBodyTd {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f2f5;
+    text-align: left;
+    font-size: 14px;
+    color: #24292e;
+    vertical-align: middle;
+}
+
+.categoryTableBodyTr {
+    transition: background 0.15s ease;
+}
+
+.categoryTableBodyTr:nth-child(even) {
+    background: #fafafa;
+}
+
+.menuDropdown{
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.categoryTableBodyTr:hover {
+    background: #f8f9fa;
+}
+
+.categoryTableIdColumn {
+    width: 60px;
+    font-weight: 500;
+    color: #57606a;
+    font-size: 13px;
+}
+
+.rowMenu {
+    position: relative;
+    width: 50px;
+    text-align: left ;
+    padding-left: 16px ;
+    overflow: visible ;
+}
+
+.menuDropdownBtnWarning {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: #24292e;
+    border: none;
+}
+
+.menuDropdownBtnWarning:hover {
+    background: #f0f2f5;
+    color: #1a202c;
+    transform: none;
+}
+
+.menuDropdownBtnDanger {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: #cf222e;
+    border: none;
+}
+
+.menuDropdownBtnDanger:hover {
+    background: #ffebe9;
+    color: #cf222e;
+    transform: none;
+}
+
+
+.dialogContent {
+    padding: 0;
+    overflow: hidden;
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: modalSlideUp 0.25s ease;
+}
+
+.dialogBody{
+  padding: 0 24px 24px 24px;
+}
+
+.dialogHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  border-bottom: 1px solid #e1e4e8;
+  background: #fafbfc;
+}
+
+.dialogHeaderH2{
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #24292e;
+}
+
+.formGroup{
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroupLabel{
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #24292e;
+  margin-bottom: 6px;
+}
+
+.formGroupInput{
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #e1e4e8;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  color: #24292e;
+  height: 41.7px;
+}
+
+.formGroupInput:focus{
+  outline: none;
+  border-color: #2d89ef;
+  box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.12);
+}
+
+.dialogButton{
+  width: 100%;
+  padding: 12px;
+  border-radius:8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: .2s ease;
+
+  /* remove default styles */
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  line-height: 1;
+  background: #2d89ef;
+  color: white;
+  height: 38px;
+}
+
+.dialogButton:hover{
+  background: #1d6fd3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(45, 137, 239, 0.3);
+}
+
+.dialogButton:active{
+  transform: scale(0.98);
+}

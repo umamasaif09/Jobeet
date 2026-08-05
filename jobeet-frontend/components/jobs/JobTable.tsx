@@ -19,7 +19,7 @@ export default function JobTable({jobs}: JobTableProps) {
       <div className={styles.jobsTableCard}> 
         <Table className={styles.jobsTable}>
             <TableHeader >
-                <TableRow className={styles.jobsTableBodyTr}>
+                <TableRow >
                     <TableHead className={styles.jobsTableHeaderTh}>Position</TableHead>
                     <TableHead className={styles.jobsTableHeaderTh}>Location</TableHead>
                     <TableHead className={styles.jobsTableHeaderTh}>Company</TableHead>
@@ -27,10 +27,10 @@ export default function JobTable({jobs}: JobTableProps) {
                 </TableRow>
             </TableHeader>
 
-            <TableBody className={styles.jobsTableBodyTr}>
+            <TableBody>
                 
                 {jobs.map((job) => (
-                    <JobRow key={job.id} job={job}/>
+                    <JobRow key={job.id} job={job} />
                 ))}
             </TableBody>
         </Table>

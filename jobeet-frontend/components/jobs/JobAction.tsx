@@ -4,7 +4,7 @@ import { Job } from "@/types/job";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { MoreVertical } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import styles from "./jobs.module.css";
 
 type Props = {
   job: Job;
@@ -23,17 +23,25 @@ export default function JobAction({job, onDelete}: Props) {
       <DropdownMenuContent>
         <DropdownMenuItem
           onClick={()=> router.push(`/admin/jobs/${job.id}`)}
+          className={styles.menuDropdownBtnWarning}
         >
           View
         </DropdownMenuItem>
 
         <DropdownMenuItem
           onClick={()=> router.push(`/admin/jobs/edit/${job.id}`)}
+          className={styles.menuDropdownBtnWarning}
         >
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={()=> onDelete(job)}>
+        <DropdownMenuItem onClick={() => {
+            if (window.confirm("Delete this job?")) {
+              onDelete(job);
+            }
+          }}
+            className={styles.menuDropdownBtnDanger}
+          >
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent> 

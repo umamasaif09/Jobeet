@@ -5,6 +5,8 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { createCategory, updateCategory } from "@/services/categories";
+import styles from "./categories.module.css";
+
 
 interface Props{
   open: boolean;
@@ -40,34 +42,33 @@ export default function CategoryDialog({open, onOpenChange, category, onSuccess}
   return (
     <>
     <Dialog open = {open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>
+      <DialogContent className={styles.dialogContent}>
+        <div className={styles.dialogHeader}>
+          <div className={styles.dialogHeaderH2}>
             {category ? "Edit Category" : "Create Category"}
-          </DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} id="category-form">
-          <div className="space-y-2">
-            <Label>Name</Label>
+          </div>
+        </div>
+        <div className={styles.dialogBody}>
 
-            <Input value={name} onChange = {(e) => setName(e.target.value)} required/>
+           <form onSubmit={handleSubmit} id="category-form">
+          <div className={styles.formGroup}>
+            <Label className={styles.formGroupLabel}>Category Name</Label>
+
+            <Input value={name} onChange = {(e) => setName(e.target.value)} 
+              className={styles.formGroupInput}
+              placeholder="Enter category name"
+            required/>
 
           </div>
 
-        </form>
-        
-        <DialogFooter>
-          <Button variant = "outline"
-            onClick={()=>onOpenChange(false)}>
-            Cancel
-          </Button>
-
-          <Button
+          <Button className={styles.dialogButton}
            type="submit" form="category-form"
           >
-            {category? "Update" : "Create"}
+            {category? "Update" : "Create Category"}
           </Button>
-        </DialogFooter>
+        </form>
+        </div>
+       
 
       </DialogContent>
     </Dialog>

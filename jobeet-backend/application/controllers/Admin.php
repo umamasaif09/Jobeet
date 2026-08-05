@@ -48,7 +48,7 @@ class Admin extends CI_Controller
         $data["content"] = "admin/categories";
         $data["showPageHeader"] = true;
         $data["pageAction"] = [
-            "text" => "Add Category",
+            "text" => "New Category",
             "id" => "openCategoryModal"
         ];
 
@@ -537,7 +537,7 @@ class Admin extends CI_Controller
             $data["content"] = "admin/forgotPassword";
             $data["showPageHeader"]= false;
             $data["showAdminHeader"] =false;
-            $data["title"] = "Administrator Password Reset";
+            $data["title"] = "Reset Password";
 
             $this->load->view("templates/admin_template", $data); //show forgot password page
         }

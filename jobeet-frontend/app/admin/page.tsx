@@ -3,6 +3,7 @@
 import StatCard from "@/components/admin/StatCard";
 import { getDashboardStats } from "@/services/admins";
 import { useEffect, useState } from "react";
+import styles from "./admin.module.css";
 
 type DashboardStats = {
   categories: number;
@@ -29,12 +30,13 @@ export default function HomePage() {
   }
 
   return (
-    <div className="space-y-6">
-       <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+    <>
+       <h1 className={styles.dashboardH2}>
         Dashboard
       </h1>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="Categories"
           value={stats.categories}
@@ -55,7 +57,8 @@ export default function HomePage() {
           value={stats.admins}
         />
       </div>
-    </div>
+      
+    </>
    
       
   );
