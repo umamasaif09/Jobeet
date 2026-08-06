@@ -1,6 +1,5 @@
 import { Category } from "@/types/category";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "../ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
 import styles from "./categories.module.css";
 
 interface Props{
@@ -14,8 +13,8 @@ export default function CategoryAction({category, onEdit, onDelete}: Props) {
   return(
   <>
     <DropdownMenu>
-      <DropdownMenuTrigger>
-          <MoreVertical className="cursor-pointer"/>
+      <DropdownMenuTrigger className={styles.menuToggle}>
+        ⋮
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
@@ -27,11 +26,7 @@ export default function CategoryAction({category, onEdit, onDelete}: Props) {
 
         <DropdownMenuItem
           className={styles.menuDropdownBtnDanger}
-          onClick={() => {
-            if (window.confirm("Delete this category?")) {
-              onDelete(category);
-            }
-          }}
+          onClick={() => {onDelete(category)}}
           >
           Delete
         </DropdownMenuItem>

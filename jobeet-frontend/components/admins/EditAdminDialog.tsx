@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import styles from "./admins.module.css";
 
 
 type Props = {
@@ -41,40 +42,37 @@ export default function EditAdminDialog({open, onOpenChange, onSuccess, admin}: 
 
   return(
     <Dialog open = {open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>
+      <DialogContent className={styles.dialogContent}>
+        <div className={styles.dialogHeader}>
+          <div className={styles.dialogHeaderH2}>
             Edit Admin
-          </DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} id="edit-form">
-          <div className="space-y-2">
-          <Label>Name</Label>
-
-          <Input value= {name} onChange= {(e) => setName(e.target.value)} required/>
+          </div>
         </div>
+        <div className={styles.dialogBody}>
+            <form onSubmit={handleSubmit} id="edit-form" className={styles.dialogForm}>
+              <div className={styles.formGroup}>
+                <Label className={styles.formGroupLabel}>Name</Label>
 
-        <div className="space-y-2">
-          <Label>Email</Label>
+                <Input value= {name} onChange= {(e) => setName(e.target.value)} 
+                  className={styles.formGroupInput}
+                  required/>
+              </div>
 
-          <Input value={email} onChange = {(e) => setEmail(e.target.value)} type="email" required/>
+              <div className={styles.formGroup}>
+                  <Label className={styles.formGroupLabel}>Email</Label>
+
+                  <Input value={email} onChange = {(e) => setEmail(e.target.value)} type="email" 
+                    className={styles.formGroupInput}
+                    required/>
+              </div>
+
+              <Button className={styles.dialogButton}
+                type="submit" form="edit-form"
+                >
+                Update
+              </Button>
+            </form>
         </div>
-        </form>
-        
-
-        <DialogFooter>
-          <Button variant="outline"
-            onClick= {()=> onOpenChange(false)}
-          >
-            Cancel
-          </Button>
-
-          <Button
-          type="submit" form="edit-form"
-          >
-            Update
-          </Button>
-        </DialogFooter>
 
       </DialogContent>
 

@@ -71,7 +71,7 @@ class Jobs extends CI_Controller
         $data["showPageHeader"] = true;
         $data["showBackButton"] = true;
         $data["formAction"] = site_url("jobs/preview");
-        $data["submitButtonText"] = "Preview Job";
+        $data["submitButtonText"] = "Preview";
 
         $this->load->view("templates/public_template", $data);
     }
@@ -195,7 +195,7 @@ class Jobs extends CI_Controller
         }
         else {
             $data = [
-            "title"=> "Edit Form",
+            "title"=> "Edit Job",
             "job"=> $job,
             "category" => $category,
             "categories" => $this->mdl_job->getJobCategories(),

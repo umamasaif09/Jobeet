@@ -100,3 +100,195 @@
   font-weight: bold;
   margin: 0 0 1.23em 0;
 }
+
+/* Affiliate Table */
+
+.affiliatesTableCard{
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.affiliatesTableCard:hover{
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.affiliatesTable{
+  width: 100%;
+  margin-top: 0;
+  border-collapse: collapse;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.affiliatesTableHeaderTh{
+  background: #f6f8fa;
+  color: #24292e;
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  text-align: left;
+  border-bottom: 2px solid #e1e4e8;
+  white-space: nowrap;
+}
+
+.affiliatesTableBodyTd{
+    padding: 10px;
+    border-bottom: 1px solid #f0f2f5;
+    text-align: left;
+    font-size: 13px;
+    color: #24292e;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+.affiliatesTableBodyTr{
+  transition: background 0.15s ease;
+}
+
+.affiliatesTableBodyTr:nth-child(even) {
+    background: #fafafa;
+}
+
+.affiliatesTableIdColumn {
+    width: 60px;
+    font-weight: 500;
+    color: #57606a;
+    font-size: 13px;
+}
+
+.affiliatesJobTitle{
+    font-size: 12px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.affiliatesJobMeta{
+  color: #1f2937;
+  font-size: 12px;
+}
+
+.badgeActive{
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badgeInactive{
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.rowMenu {
+    position: relative;
+    width: 50px;
+    text-align: left ;
+    padding-left: 16px ;
+    overflow: visible ;
+}
+
+.menuDropdownBtnWarning {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: #24292e;
+    border: none;
+}
+
+.menuDropdownBtnWarning:hover {
+    background: #f0f2f5;
+    color: #1a202c;
+    transform: none;
+}
+
+.menuDropdownBtnDanger {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: #cf222e;
+    border: none;
+}
+
+.menuDropdownBtnDanger:hover {
+    background: #ffebe9;
+    color: #cf222e;
+    transform: none;
+}
+
+.menuDropdownBtnSuccess {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: #1a7f37;
+    border: none;
+}
+
+.menuDropdownBtnSuccess:hover {
+    background: #dafbe1;
+    color: #1a7f37;
+    transform: none;
+}
+
+.menuToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #57606a;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.15s ease;
+  font-weight: 500;
+}
+
+.menuToggle:hover {
+  background: #f0f2f5;
+  color: #24292e;
+}
+
+.menuToggle:focus{
+  outline: none;
+  background: #e8eaed;
+}

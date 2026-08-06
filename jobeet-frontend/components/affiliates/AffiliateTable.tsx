@@ -6,45 +6,44 @@ import { Table } from "@/components/ui/table";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { TableHeader, TableRow, TableHead, TableBody } from "../ui/table";
-import { useState } from "react";
 import AffiliateRow from "./AffiliateRow";
-import DeleteAffiliateDialog from "./DeleteAffiliateDialog";
-import AffiliateStatusDialog from "./AffiliateStatusDialog";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./affiliates.module.css";
+import { activateAffiliate, deleteAffiliate, disableAffiliate } from "@/services/affiliates";
 
 type Props = {
   affiliates: Affiliate[];
 }
 
 export default function AffiliateTable({affiliates} : Props) {
-  const [selectedAffiliate, setSelectedAffiliate] = useState<Affiliate | null>(null);
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [statusDialogOpen, setStatusDialogOpen] = useState(false);
   const router = useRouter();
 
   return(
-    <div className="space-y-6">
+    <div className="space-y-6 my-[24px]">
       <div className="flex justify-between items-center">
-        <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+        <h1 className={pageStyles.pageTitle}>
           Manage Affiliates
         </h1>
         <Link href={`/admin/affiliates/create`}>
-          <Button>
+          <Button
+            className={styles.applyButton}
+          >
             New Affiliate
           </Button>
         </Link>
       </div>
       
-      <div className="rounded-md border ">
-        <Table>
+      <div className={styles.affiliatesTableCard}>
+        <Table className={styles.affiliatesTable}>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="w-[100px]">Affiliate ID</TableHead>
-                    <TableHead>Affiliate Name</TableHead>
-                    <TableHead>Affiliate Email</TableHead>
-                    <TableHead>Affiliate Website</TableHead>
-                    <TableHead>Active Status</TableHead>
-                    <TableHead>Affiliate Token</TableHead>
-                    <TableHead className="w-[80px]"></TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}>Affiliate ID</TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}>Affiliate Name</TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}>Affiliate Email</TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}>Affiliate Website</TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}>Status</TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}>Affiliate Token</TableHead>
+                    <TableHead className={styles.affiliatesTableHeaderTh}></TableHead>
                 </TableRow>
             </TableHeader>
 
@@ -52,33 +51,28 @@ export default function AffiliateTable({affiliates} : Props) {
                 
                 {affiliates.map((affiliate) => (
                     <AffiliateRow key={affiliate.id} affiliate={affiliate}
-                    onDelete={(affiliate) => {
-                      setSelectedAffiliate(affiliate);
-                      setDeleteDialogOpen(true);
+                    onDelete={async (affiliate) => {
+                      const confirmed = window.confirm("Delete this affiliate?");
+                      if(!confirmed) return;
+                      if(!affiliate) return;
+                      await deleteAffiliate(affiliate.id);
+                      router.refresh();
                     }}
-                    onStatus = {(affiliate) => {
-                      setSelectedAffiliate(affiliate);
-                      setStatusDialogOpen(true);
+                    onStatus = {async (affiliate) => {
+                      if(!affiliate) return;
+                      
+                      if(affiliate.is_active == true) {
+                        await disableAffiliate(affiliate.id);
+                      }
+                      else{
+                        await activateAffiliate(affiliate.id);
+                      }
+                      router.refresh();
                     }}/>
                 ))}
             </TableBody>
         </Table>
       </div>
-      
-
-        <DeleteAffiliateDialog
-          open={deleteDialogOpen}
-          onOpenChange={setDeleteDialogOpen}
-          affiliate= {selectedAffiliate}
-          onSuccess= {()=> router.refresh()}
-        />
-
-        <AffiliateStatusDialog
-          open = {statusDialogOpen}
-          onOpenChange = {setStatusDialogOpen}
-          affiliate = {selectedAffiliate}
-          onSuccess ={()=> router.refresh()}
-        />
-      </div>
+    </div>
   )
 }

@@ -8,19 +8,15 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import AdminJobRow from "./AdminJobRow";
-import DeleteJobDialog from "./DeleteJobDialog";
 import pageStyles from "@/app/styles/jobeet.module.css";
 import styles from "./jobs.module.css";
+import { deleteJob } from "@/services/jobs";
 
 interface JobTableProps{
     jobs: Job[];
 }
 
 export default function JobTable({jobs}: JobTableProps) {
-    const [selectedJob, setSelectedJob] =useState<Job | null>(null);
-
-    const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-
     const router = useRouter();
 
     if(jobs.length === 0) {
@@ -67,22 +63,16 @@ export default function JobTable({jobs}: JobTableProps) {
                 
                 {jobs.map((job) => (
                     <AdminJobRow key={job.id} job={job}
-                    onDelete={(job) => {
-                      setSelectedJob(job);
-                      setDeleteDialogOpen(true);
+                    onDelete={async (job)=> {
+                      if(!(window.confirm("Delete this job?"))) return;
+                      if(!job) return;
+                      await deleteJob(job.id);
+                      router.refresh();
                     }}/>
                 ))}
             </TableBody>
         </Table>
       </div>
-      
-
-        <DeleteJobDialog
-          open={deleteDialogOpen}
-          onOpenChange={setDeleteDialogOpen}
-          job= {selectedJob}
-          onSuccess= {()=> router.refresh()}
-        />
-      </div>
+    </div>
     );
 }

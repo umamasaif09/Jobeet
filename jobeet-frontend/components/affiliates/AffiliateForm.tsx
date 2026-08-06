@@ -79,7 +79,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                     />
                 </div>
 
-                <div className="flex flex-col gap-[8px]">
+                <div className="flex flex-col gap-[0px]">
                     <Label className={styles.formLabel}>Categories</Label>
                     {categories.map(category => (
                       <div key={category.id}

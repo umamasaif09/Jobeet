@@ -11,6 +11,7 @@ export default function LogoutButton() {
 
   async function handleLogout() {
     try{
+      if(!window.confirm("Are you sure you want to logout?")) return;
       await logout();
     } finally {
       router.replace("/auth/login");

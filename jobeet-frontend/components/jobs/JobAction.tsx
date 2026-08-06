@@ -16,8 +16,8 @@ export default function JobAction({job, onDelete}: Props) {
   return(
   <>
     <DropdownMenu>
-      <DropdownMenuTrigger>
-          <MoreVertical className="cursor-pointer"/>
+      <DropdownMenuTrigger className={styles.menuToggle}>
+        ⋮
       </DropdownMenuTrigger>
     
       <DropdownMenuContent>
@@ -35,11 +35,7 @@ export default function JobAction({job, onDelete}: Props) {
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={() => {
-            if (window.confirm("Delete this job?")) {
-              onDelete(job);
-            }
-          }}
+        <DropdownMenuItem onClick={() => {onDelete(job)}}
             className={styles.menuDropdownBtnDanger}
           >
           Delete

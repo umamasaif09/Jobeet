@@ -106,4 +106,65 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // logo preview
+    
+    const logoInput = document.getElementById("logo");
+    const logoPreview = document.getElementById("logo-preview");
+    if (logoInput && logoPreview) {
+      logoInput.addEventListener("change", function () {
+          const file = this.files[0];
+
+          if (!file) return;
+
+          logoPreview.src = URL.createObjectURL(file);
+          logoPreview.style.display = "block";
+      });
+  }
+
+    // edit admin modal
+    const editAdminModal = document.getElementById("editAdminModal");
+    const closeEditAdminModal= document.getElementById("closeEditAdminModal");
+
+    const editAdminForm = document.getElementById("editAdminForm");
+    const editAdminId = document.getElementById("edit_admin_id");
+    const editAdminName= document.getElementById("edit_admin_name");
+    const editAdminEmail = document.getElementById("edit_admin_email");
+
+    document.querySelectorAll(".edit-admin-btn").forEach(function(button) {
+        button.addEventListener("click", function(e) {
+          console.log("Edit clicked");
+            e.stopPropagation();
+
+            const adminId = this.getAttribute("data-id");
+            const adminName = this.getAttribute("data-name");
+            const adminEmail = this.getAttribute("data-email");
+
+            if(editAdminId) editAdminId.value= adminId;
+            if(editAdminName) editAdminName.value=adminName;
+            if(editAdminEmail) editAdminEmail.value= adminEmail;
+
+            if(editAdminModal) {
+                editAdminModal.classList.add("show");
+                document.body.style.overflow = "hidden";
+            }
+
+            const dropdown = this.closest(".menu-dropdown");
+            if(dropdown) {
+                dropdown.classList.remove("show");
+            }
+        });
+    });
+
+    if(closeEditAdminModal && editAdminModal) {
+        closeEditAdminModal.addEventListener("click", function() {
+            editAdminModal.classList.remove("show");
+            document.body.style.overflow = "";
+        });
+    }
+
+    window.addEventListener("click", function(e) {
+        if(e.target == editAdminModal) {
+            editAdminModal.classList.remove("show");
+        }
+    });
 });

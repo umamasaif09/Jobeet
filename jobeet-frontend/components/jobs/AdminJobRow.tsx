@@ -36,7 +36,7 @@ type JobRowProps = {
             </TableCell>
 
             <TableCell className={`${styles.adminJobsTableBodyTd}`}>
-                <span className={job.is_active ? styles.badgeActive : styles.BadgeInactive}>{job.is_active ? "Active" : "Inactive"}</span>                
+                <span className={job.is_active ? styles.badgeActive : styles.badgeInactive}>{job.is_active ? "Active" : "Inactive"}</span>                
             </TableCell >
 
             <TableCell className={` ${styles.adminJobsTableBodyTd}`}>

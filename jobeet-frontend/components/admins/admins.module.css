@@ -1,21 +1,4 @@
-.categoryHeading{
-  margin: 16px 0;
-  padding: 0 4px;
-  font-size: 20px;
-  font-weight: 600;
-  color: #3498db;
-  text-decoration: none;
-  line-height: 23.2px;
-}
-
-.categoryHeading:hover{
-  color: #3d89ef;
-  text-decoration: none;
-}
-
-/* Category Page */
-
-.categoryButton{
+.adminButton{
   padding: 0 20px;
   border-radius:8px;
   border: none;
@@ -37,84 +20,110 @@
   height: 38px;
 }
 
-.categoryButton:hover{
+.adminButton:hover{
   background: #1d6fd3;
     transform: translateY(-1px);
 }
 
-/* Category Table */
-.categoryTableCard {
+/* AdminTable */
+
+.adminsTableCard{
   width: 100%;
   overflow-x: auto;
-  display: flex;
   background: #ffffff;
   border: 1px solid #e1e4e8;
   border-radius: 12px;
-  padding: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.2s ease;
   margin-bottom: 24px;
 }
 
-.categoryTableCard:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.adminsTableCard:hover{
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.categoryTable{
+.adminsTable{
   width: 100%;
-  border-collapse: collapse;
   margin-top: 0;
+  border-collapse: collapse;
   border: none;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.categoryTableHeaderTh {
-    background: #f6f8fa;
-    color: #24292e;
-    font-weight: 900;
-    font-size: 13px;
-    text-transform: uppercase;
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 2px solid #e1e4e8;
-    white-space: nowrap;
+.adminsTableHeaderTh{
+  background: #f6f8fa;
+  color: #24292e;
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  text-align: left;
+  border-bottom: 2px solid #e1e4e8;
+  white-space: nowrap;
 }
 
-.categoryTableBodyTd {
-    padding: 14px 16px;
+.adminsTableBodyTd{
+    padding: 10px;
     border-bottom: 1px solid #f0f2f5;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
     color: #24292e;
     vertical-align: middle;
+    white-space: normal;
 }
 
-.categoryTableBodyTr {
-    transition: background 0.15s ease;
+.adminsTableBodyTr{
+  transition: background 0.15s ease;
 }
 
-.categoryTableBodyTr:nth-child(even) {
+.adminsTableBodyTr:nth-child(even) {
     background: #fafafa;
 }
 
-.menuDropdown{
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: 4px;
-}
-
-.categoryTableBodyTr:hover {
-    background: #f8f9fa;
-}
-
-.categoryTableIdColumn {
+.adminsTableIdColumn {
     width: 60px;
     font-weight: 500;
     color: #57606a;
     font-size: 13px;
+}
+
+.adminsJobTitle{
+    font-size: 12px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.adminsJobMeta{
+  color: #1f2937;
+  font-size: 12px;
+}
+
+.expiryDate{
+  color: #1f2937;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.badgeActive{
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badgeInactive{
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  background: #fee2e2;
+  color: #991b1b;
 }
 
 .rowMenu {
@@ -169,7 +178,92 @@
     transform: none;
 }
 
-/* Category Dialog */
+.menuDropdownBtnSuccess {
+  display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: #1a7f37;
+    border: none;
+}
+
+.menuDropdownBtnSuccess:hover {
+    background: #dafbe1;
+    color: #1a7f37;
+    transform: none;
+}
+
+/* Admin Form */
+
+.form{
+  min-width: 224px;
+  margin: 0;
+  padding: 0 95px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formLabel{
+  display:block;
+  font-weight:700;
+  color: #333;
+  font-size: 16px;
+}
+
+
+.formTextInput{
+  height: 45.6px;
+  line-height: normal;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px ;
+  font-size: 16px;
+  background: #ffffff;
+}
+
+.formTextInput:focus{
+  outline: none;
+  border-color: #2d89ef;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+}
+
+.Button{
+  padding: 0 20px;
+  border-radius:8px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: .2s ease;
+
+  /* remove default styles */
+  color: inherit;
+  background: transparent;
+  font-family: inherit;
+  line-height: 1;
+  background: #2d89ef;
+  color: white;
+  height: 38px;
+}
+
+.Button:hover{
+  background: #1d6fd3;
+    transform: translateY(-1px);
+}
+
+/* Admin Dialog */
 
 .dialogContent {
     padding: 0;
@@ -269,10 +363,6 @@
   box-shadow: 0 4px 12px rgba(45, 137, 239, 0.3);
 }
 
-.dialogButton:active{
-  transform: scale(0.98);
-}
-
 .menuToggle {
   background: none;
   border: none;
@@ -294,12 +384,4 @@
 .menuToggle:focus{
   outline: none;
   background: #e8eaed;
-}
-
-/* Responsive design */
-
-@media screen and (max-width: 540px) {
-  .categoryHeading {
-    font-size: 16px;
-  }
 }

@@ -4,6 +4,8 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import BackButton from "../ui/BackButton";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./admins.module.css";
 
 
 type Props ={
@@ -27,51 +29,55 @@ export default function AdminForm({onSubmit, updateField, admin}: Props) {
     <div className="flex items-baseline gap-4">
       <BackButton/>
       <div className="flex-1">
-        <div className="max-w-5xl space-y-6">
-          <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+        <div className="max-w-5xl space-y-6 my-[24px]">
+          <h1 className={pageStyles.pageTitle}>
             Register Admin
           </h1>
-          <form onSubmit={handleSubmit}>
-            <div className="space-y-4">
-                  <div className="space-y-2">
-                      <Label>Name</Label>
+          <form onSubmit={handleSubmit} className={styles.form}>
+
+                  <div className="flex flex-col gap-[8px]">
+                      <Label className={styles.formLabel}>Name</Label>
                       <Input
-                          placeholder="Name"
+                          placeholder="Enter admin name"
                           value={admin.name}
                           onChange={(e) => updateField("name", e.target.value)}
+                          className={styles.formTextInput}
                           required
                       />
                   </div>
                   
-                  <div className="space-y-2">
-                      <Label>Email</Label>
+                  <div className="flex flex-col gap-[8px]">
+                      <Label className={styles.formLabel}>Email</Label>
                       <Input
                           type="email"
-                          placeholder="Email"
+                          placeholder="Enter admin email"
                           value={admin.email}
                           onChange={(e) => updateField("email", e.target.value)}
+                          className={styles.formTextInput}
                           required
                       />
                   </div>
 
-                  <div className="space-y-2">
-                      <Label>Password</Label>
+                  <div className="flex flex-col gap-[8px]">
+                      <Label className={styles.formLabel}>Password</Label>
                       <Input
                           type = "password"
-                          placeholder="Password"
+                          placeholder="Enter password"
                           value={admin.password}
                           onChange={(e) => updateField("password", e.target.value)}
+                          className={styles.formTextInput}
                           required
                       />
                   </div>
 
-                  <div className="space-y-2">
-                      <Label>Confirm Password</Label>
+                  <div className="flex flex-col gap-[8px]">
+                      <Label className={styles.formLabel}>Confirm Password</Label>
                       <Input
                           type = "password"
                           placeholder="Confirm Password"
                           value={admin.confirmPassword}
                           onChange={(e) => updateField("confirmPassword", e.target.value)}
+                          className={styles.formTextInput}
                           required
                       />
                   </div>
@@ -79,11 +85,11 @@ export default function AdminForm({onSubmit, updateField, admin}: Props) {
                   <div className="flex justify-end">
                     <Button
                     type="submit"
+                    className={styles.Button}
                     >
-                      Register Admin
+                      Register
                     </Button>
                   </div>
-                </div>
           </form>
                 
           </div>

@@ -2,7 +2,7 @@ import { Affiliate } from "@/types/affiliate"
 import { Badge } from "@/components/ui/badge";
 import { TableRow, TableCell } from "../ui/table";
 import AffiliateAction from "./AffiliateAction";
-
+import styles from "./affiliates.module.css";
 
 type Props = {
   affiliate: Affiliate;
@@ -12,37 +12,32 @@ type Props = {
 
 export default function AffiliateRow({affiliate, onDelete, onStatus} : Props) {
  return (
-  <TableRow>
-    <TableCell>
+  <TableRow className={styles.affiliatesTableBodyTr}>
+    <TableCell className={`${styles.affiliatesTableIdColumn} ${styles.affiliatesTableBodyTd}`}>
         {affiliate.id}
     </TableCell>
 
-    <TableCell>
+    <TableCell className={`${styles.affiliatesJobTitle} ${styles.affiliatesTableBodyTd}`}>
         {affiliate.name}
     </TableCell>
 
-    <TableCell>
+    <TableCell className={`${styles.affiliatesJobMeta} ${styles.affiliatesTableBodyTd}`}>
         {affiliate.email}
     </TableCell>
 
-    <TableCell>
+    <TableCell className={`${styles.affiliatesJobMeta} ${styles.affiliatesTableBodyTd}`}>
         {affiliate.site_url}
     </TableCell>
 
-    <TableCell>
-      <Badge
-        variant={affiliate.is_active == true ? "default": "secondary"}
-      >
-        {affiliate.is_active == true ? "Active" : "Inactive"}
-      </Badge>
-        
+    <TableCell className={styles.adminJobsTableBodyTd}>
+        <span className={affiliate.is_active == true ? styles.badgeActive : styles.badgeInactive}>{affiliate.is_active == true ? "Active" : "Inactive"}</span>
     </TableCell>
 
-    <TableCell>
+    <TableCell className={`${styles.affiliatesJobMeta} ${styles.affiliatesTableBodyTd}`}>
         {affiliate.token}
     </TableCell>
 
-    <TableCell className="w-[80px] text-right">
+    <TableCell className={styles.rowMenu}>
       <AffiliateAction
         affiliate={affiliate}
         onDelete ={onDelete}

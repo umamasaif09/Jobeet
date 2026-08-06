@@ -8,8 +8,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import AdminRow from "./AdminRow";
 import EditAdminDialog from "./EditAdminDialog";
-import DeleteAdminDialog from "./DeleteAdminDialog";
-import AdminStatusDialog from "./AdminStatusDialog";
+import pageStyles from "@/app/styles/jobeet.module.css";
+import styles from "./admins.module.css";
+import { activateAdmin, deleteAdmin, disableAdmin } from "@/services/admins";
 
 
 type Props = {
@@ -19,33 +20,31 @@ type Props = {
 export default function AdminTable({admins}: Props) {
 
   const [selectedAdmin, setSelectedAdmin] = useState<Admin | null>(null);
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [statusDialogOpen, setStatusDialogOpen] = useState(false);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const router = useRouter();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 my-[24px]">
       <div className="flex justify-between items-center">
-        <h1 className="font-heading text-xl font-semibold tracking-tight primary-text">
+        <h1  className={pageStyles.pageTitle}>
           Manage Admins
         </h1>
         <Link href={`/admin/admins/create`}>
-          <Button>
+          <Button className={styles.adminButton}>
             New Admin
           </Button>
         </Link>
     </div>  
-    <div className="rounded-md border "> 
-      <Table>
+    <div className={styles.adminsTableCard}> 
+      <Table className={styles.adminsTable}>
         <TableHeader>
           <TableRow>
-              <TableHead className="w-[100px]">Admin ID</TableHead>
-              <TableHead>Admin Name</TableHead>
-              <TableHead>Admin Email</TableHead>
-              <TableHead>Active Status</TableHead>
-              <TableHead>Created At</TableHead>
-              <TableHead className="w-[80px]"></TableHead>
+              <TableHead className={styles.adminsTableHeaderTh}>Admin ID</TableHead>
+              <TableHead className={styles.adminsTableHeaderTh}>Admin Name</TableHead>
+              <TableHead className={styles.adminsTableHeaderTh}>Admin Email</TableHead>
+              <TableHead className={styles.adminsTableHeaderTh}>Active Status</TableHead>
+              <TableHead className={styles.adminsTableHeaderTh}>Created At</TableHead>
+              <TableHead className={styles.adminsTableHeaderTh}></TableHead>
           </TableRow>
         </TableHeader>
 
@@ -59,13 +58,23 @@ export default function AdminTable({admins}: Props) {
                   setEditDialogOpen(true);
                 }}
 
-                onDelete={(admin) => {
-                  setSelectedAdmin(admin);
-                  setDeleteDialogOpen(true);
+                onDelete={async (admin) => {
+                  const confirmed = window.confirm("Delete this admin?");
+                  if(!confirmed) return;
+                  await deleteAdmin(admin.id.toString());
+                  router.refresh();
                 }}
-                onStatus = {(admin) => {
-                  setSelectedAdmin(admin);
-                  setStatusDialogOpen(true);
+                onStatus = {async (admin) => {
+                  if(!admin) return;
+                  
+                  if(admin.is_active== true) {
+                    await disableAdmin(admin.id.toString());
+                  }
+                  else {
+                    await activateAdmin(admin.id.toString());
+                  }
+
+                  router.refresh();
                 }}/>
             ))}
         </TableBody>
@@ -78,20 +87,6 @@ export default function AdminTable({admins}: Props) {
           onOpenChange = {setEditDialogOpen}
           admin= {selectedAdmin}
           onSuccess = {()=> router.refresh()}
-        />
-
-        <DeleteAdminDialog
-          open={deleteDialogOpen}
-          onOpenChange={setDeleteDialogOpen}
-          admin= {selectedAdmin}
-          onSuccess= {()=> router.refresh()}
-        />
-
-        <AdminStatusDialog
-          open = {statusDialogOpen}
-          onOpenChange = {setStatusDialogOpen}
-          admin = {selectedAdmin}
-          onSuccess ={()=> router.refresh()}
         />
       </div>
   )

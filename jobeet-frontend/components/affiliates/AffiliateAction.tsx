@@ -4,7 +4,7 @@ import { Affiliate } from "@/types/affiliate"
 import { MoreVertical } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuContent } from "../ui/dropdown-menu";
-
+import styles from "./affiliates.module.css";
 
 type Props = {
   affiliate: Affiliate;
@@ -17,22 +17,28 @@ export default function AffiliateAction({affiliate, onDelete, onStatus}: Props) 
   return (
     <>
     <DropdownMenu>
-      <DropdownMenuTrigger>
-          <MoreVertical className="cursor-pointer" />
+      <DropdownMenuTrigger className={styles.menuToggle}>
+        ⋮
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
         <DropdownMenuItem
           onClick={()=> router.push(`/admin/affiliates/edit/${affiliate.id}`)}
+          className={styles.menuDropdownBtnWarning}
         >
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick= {()=> onStatus(affiliate)}>
+        <DropdownMenuItem onClick= {()=> onStatus(affiliate)}
+          className={affiliate.is_active == true? styles.menuDropdownBtnWarning : styles.menuDropdownBtnSuccess}
+          >
           {affiliate.is_active == true? "Disable" : "Activate"}
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={()=> onDelete(affiliate)}>
+        <DropdownMenuItem 
+            onClick={() => {onDelete(affiliate)}}
+          className={styles.menuDropdownBtnDanger}
+          >
           Delete
         </DropdownMenuItem>
 

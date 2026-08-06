@@ -3,7 +3,7 @@
 <div class="form-group">
     <label for="category_id">Category</label>
     <select name="category_id" id="category_id">
-      <option value="" disabled selected>Select Category</option>
+      <option value="" disabled selected style="color: #a0a8b4;">Select Category</option>
          <?php foreach($categories as $category) { ?>
                     <option value="<?php echo $category["id"]; ?>"
                         <?php
@@ -24,7 +24,7 @@
 
         <div class="radio-options">
             <div class="radio-group">
-                <input type="radio" name="type" value="Full-time"  id="full_time"
+                <input type="radio" name="type" value="Full-time"  id="full_time" checked
                     <?php if($isEdit && $job["type"]=="Full-time"){
                         echo "checked";
                     } ?>
@@ -72,7 +72,7 @@
         >
 
         <label for="logo" class="file-button">Choose File</label>
-<input type="file" name="logo" id="logo" accept="image/*" hidden>
+        <input type="file" name="logo" id="logo" accept="image/*" hidden>
     </div>
 
     <?php if ($isEdit && !empty($job["logo"])) { ?>
@@ -123,7 +123,7 @@
 </div>
 
 <div class="checkbox-group">
-    <input type="checkbox"  id="is-public" name="is_public" value="1" <?php
+    <input type="checkbox"  id="is-public" name="is_public" value="1" checked <?php
                 if($isEdit && $job["is_public"]) {
                     echo "checked";
                 }

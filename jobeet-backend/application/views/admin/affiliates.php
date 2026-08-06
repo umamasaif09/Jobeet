@@ -12,7 +12,6 @@
                         <th><strong><?= $this->lang->line("affiliate_website"); ?></strong></th>
                         <th><strong><?= $this->lang->line("status"); ?></strong></th>
                         <th><strong><?= $this->lang->line("affiliate_token"); ?></strong></th>
-                        <!-- <th><strong><?= $this->lang->line("created_at"); ?></strong></th> -->
                         <th class="menu-column"></th>
                 </tr>
             </thead>

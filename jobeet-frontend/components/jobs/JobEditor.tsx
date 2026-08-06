@@ -102,7 +102,7 @@ export default function JobEditor({categories, initialJob, mode, jobId, token, u
                   request
                 );
                 toast.success("Job updated successfully");
-                router.replace("/");
+                router.replace(`/jobs/${jobId}`);
               }
               else {
                 await adminUpdateJob(

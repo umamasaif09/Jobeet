@@ -12,7 +12,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #f9fafb;
     color: #333;
-    line-height: 1.6;
 }
 
 a {
@@ -48,7 +47,6 @@ img {
 
 
 .admin-header {
-    margin-bottom: 24px;
     border-bottom: 1px solid #e1e4e8;
 }
 
@@ -65,7 +63,6 @@ img {
 }
 
 .admin-nav {
-    padding: 0 24px;
     background: transparent;
     display: flex;
     align-items: center;
@@ -242,8 +239,7 @@ section h2 {
 .page-header {
     display: flex;
     justify-content: space-between;
-    padding: 0 4px;
-    margin-bottom: 24px;
+    margin: 24px 0;
 }
 
 .page-header-left {
@@ -286,29 +282,26 @@ section h2 {
    FORMS
    ======================================== */
 
-   .form-group{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-   }
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 textarea {
     min-height: 124px;
-}
-
-
-.form-group.file-group label,
-.form-group:last-of-type,
-.checkbox-group:last-child{
-    margin-bottom: 0px;
+    font-family: Arial, sans-serif;
 }
 
 
 .form-group label {
-    /* margin-bottom: 6px; */
-    font-weight: 600;
-    color: #24292e;
-    font-size: 14px;
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+.category-label{
+  margin-bottom: 8px;;
 }
 
 
@@ -317,16 +310,12 @@ textarea {
 .form-group textarea {
     /* margin-bottom: 12px; */
     width: 100%;
-    padding: 8px 14px;
-    border: 2px solid #e1e4e8;
-    border-radius: 8px;
-    font-size: 15px;
-    color: #24292e;
-    background: #ffffff;
-    transition: all 0.15s ease;
-    font-family: inherit;
-    line-height: 1.5;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
 }
+
 
 .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
 .form-group select:hover,
@@ -340,11 +329,6 @@ textarea {
     outline: none;
     border-color: #2d89ef;
     box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.12);
-}
-
-.form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"])::placeholder,
-.form-group textarea::placeholder{
-    color: #a0a8b4;
 }
 
 .logo-upload {
@@ -522,31 +506,9 @@ textarea {
 .form-actions{
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
 }
 
-input[type="file"]::file-selector-button{
-  height: 24px;
-  padding: 0 8px;
-  border-radius: 6px;
-  border: 1px solid #d0d7de;
-  background: #f6f8fa;
-  color: #24292e;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-input[type="file"]::file-selector-button:hover{
-    background: #f3f4f6;
-    border-color: #8b949e;
-    transform: none;
-}
-
-input[type="file"]::file-selector-button:active{
-    background: #e8eaed;
-}
 
 /* Auth Form */
 .auth-page{
@@ -699,7 +661,7 @@ input[type="file"]::file-selector-button:active{
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 22px;
+    padding: 0px 20px;
     border-radius: 8px;
     border: none;
     font-size: 15px;
@@ -711,6 +673,7 @@ input[type="file"]::file-selector-button:active{
     background: transparent;
     font-family: inherit;
     line-height: 1;
+    height: 38px;
     
 }
 
@@ -771,17 +734,15 @@ input[type="file"]::file-selector-button:active{
 
 
 .admin-table .job-title{
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #1f2937;
-    margin-bottom: 4px;
 
 }
 
 .admin-table .job-meta{
     color: #1f2937;
-    font-size: 13px;
-    margin-bottom: 2px;
+    font-size: 12px;
 }
 
 .admin-table .job-meta strong{
@@ -868,7 +829,7 @@ input[type="file"]::file-selector-button:active{
 }
 
 .category-table tbody td {
-    padding: 14px 16px;
+    padding: 10px;
     border-bottom: 1px solid #f0f2f5;
     text-align: left;
     font-size: 14px;
@@ -1036,7 +997,7 @@ input[type="file"]::file-selector-button:active{
     background: #f6f8fa;
     color: #24292e;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 12px;
     text-transform: uppercase;
     padding: 10px 10px;
     text-align: left;
@@ -1048,7 +1009,7 @@ input[type="file"]::file-selector-button:active{
     padding: 10px 10px;
     border-bottom: 1px solid #f0f2f5;
     text-align: left;
-    font-size: 13px;
+    font-size: 12px;
     color: #24292e;
     vertical-align: middle;
 }
@@ -1261,27 +1222,25 @@ input[type="file"]::file-selector-button:active{
     font-size: 12px;
     font-weight: 600;
     color: #1f2937;
-    margin-bottom: 4px;
 }
 
 .affiliate-table .job-meta{
-    color: #6b7280;
-    font-size: 11px;
-    margin-bottom: 2px;
+    color: #1f2937;
+    font-size: 12px;
 }
 
 .affiliate-table .job-meta strong{
-    color: #374151;
+    color: #1f2937;
     font-weight: 600;
 }
 
 .affiliate-table .job-meta strong{
-    columns: #374151;
+    columns: #1f2937;
     font-weight: 600;
 }
 
 .affiliate-table .expiry-date{
-    color: #6b7280;
+    color: #1f2937;
     font-size: 12px;
     font-weight: 500;
 }
@@ -1396,15 +1355,24 @@ input[type="file"]::file-selector-button:active{
     font-size: 12px;
     font-weight: 600;
     color: #1f2937;
-    margin-bottom: 8px;
 }
 
 .job-meta {
     color: #6b7280;
     font-size: 12px;
-    margin-bottom: 4px;
 }
 
+/* Job Details */
+
+.job-details{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job-details h2{
+  margin-top: 0;
+}
 
 /* ========================================
    DROPDOWN FIX - COMPLETE SOLUTION
@@ -1596,7 +1564,6 @@ input[type="file"]::file-selector-button:active{
     border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
-    margin-bottom: 8px;
 }
 
 .badge.active {
@@ -1629,7 +1596,7 @@ input[type="file"]::file-selector-button:active{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
     align-items: center;
     justify-content: center;
@@ -1677,7 +1644,7 @@ input[type="file"]::file-selector-button:active{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 24px;
+    padding: 12px 24px;
     border-bottom: 1px solid #e1e4e8;
     background: #fafbfc;
     
@@ -1707,19 +1674,15 @@ input[type="file"]::file-selector-button:active{
 }
 
 .modal .admin-form {
-    padding: 24px;
+    padding: 24px 24px 24px 24px;
 }
 
-.modal .form-group {
-    margin-bottom: 20px;
-}
 
 .modal .form-group label {
     display: block;
     font-size: 14px;
     font-weight: 600;
     color: #24292e;
-    margin-bottom: 6px;
 }
 
 .modal .form-group input {

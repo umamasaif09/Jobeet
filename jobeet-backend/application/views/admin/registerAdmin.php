@@ -21,7 +21,7 @@
                 <input type="password" name= "confirm_password" placeholder= "Confirm password" required>
             </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Register Admin</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </div>
             
         </form>

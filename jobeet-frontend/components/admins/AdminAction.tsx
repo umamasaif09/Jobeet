@@ -4,7 +4,7 @@ import { Admin } from "@/types/admin";
 import { useRouter } from "next/navigation";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { MoreVertical } from "lucide-react";
-
+import styles from "./admins.module.css";
 
 type Props = {
   admin: Admin;
@@ -18,20 +18,25 @@ export default function AdminAction({admin, onEdit, onDelete, onStatus}: Props) 
 
   return(
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <MoreVertical className="cursor-pointer"/>
+      <DropdownMenuTrigger className={styles.menuToggle}>
+        ⋮
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={() => {onEdit(admin)}}>
+        <DropdownMenuItem onClick={() => {onEdit(admin)}}
+          className={styles.menuDropdownBtnWarning}
+          >
           Edit
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={()=> {onStatus(admin)}}>
+        <DropdownMenuItem onClick={()=> {onStatus(admin)}}
+          className={admin.is_active == true? styles.menuDropdownBtnWarning : styles.menuDropdownBtnSuccess}
+          >
           {admin.is_active == true ? "Disable" : "Activate"}
         </DropdownMenuItem>
 
-        <DropdownMenuItem onClick={() => {onDelete(admin)}}>
+        <DropdownMenuItem onClick={() => onDelete(admin)}
+          className={styles.menuDropdownBtnDanger}>
           Delete
         </DropdownMenuItem>
       </DropdownMenuContent>

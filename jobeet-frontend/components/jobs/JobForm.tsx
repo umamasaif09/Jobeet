@@ -53,8 +53,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
               {mode == "create" ? "Create Job" : "Edit Job"}
             </h1>
               <form onSubmit={handleSubmit} className={styles.form}>
-                <div className="space-y-4">
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-[8px]">
                       <Label className={styles.formLabel}>Category</Label>
                         <Select 
                             value={job.category_id ?? ""}
@@ -84,7 +83,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                     </Select>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-[8px]">
                         <Label className={styles.formLabel}>Job Type</Label>
                         <RadioGroup value={job.type}
                             onValueChange={(value) => updateField("type", value)} required
@@ -108,8 +107,8 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                     </div>
 
                     
-                        <div className="space-y-2">
-                          <Label className={styles.formLabel}>Company</Label>
+                        <div className="flex flex-col gap-[8px]">
+                          <Label className={styles.formLabel}>Company Name</Label>
                           <Input
                               placeholder="Enter company name"
                               value={job.company}
@@ -118,9 +117,9 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           />
                         </div>
 
-                        <div className="space-y-2">
+                        <div className="flex flex-col gap-[8px]">
                         <Label className={styles.formLabel}>Upload Logo</Label>
-                            <div className="flex flex-col items-start gap-4">
+                            <div className="flex flex-col items-start gap-[8px]">
                               {job.logo && (
                                     <img
                                       src={job.logo instanceof File ? URL.createObjectURL(job.logo)
@@ -150,7 +149,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                             className="hidden"
                         />
 
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-[8px]">
                           <Label className={styles.formLabel}>Website Url</Label>
                           <Input
                               type="url"
@@ -161,7 +160,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           />
                       </div>
 
-                        <div className="space-y-2">
+                        <div className="flex flex-col gap-[8px]">
                           <Label className={styles.formLabel}>Position</Label>
                           <Input
                               placeholder="Enter position"
@@ -171,7 +170,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           />
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="flex flex-col gap-[8px]">
                           <Label className={styles.formLabel}>Location</Label>
                           <Input
                               placeholder="Enter location"
@@ -181,7 +180,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                           />
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="flex flex-col gap-[8px]">
                           <Label className={styles.formLabel}>Company Email</Label>
                           <Input
                               type="email"
@@ -193,7 +192,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                       </div> 
                     </div>
                     
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-[8px]">
                         <Label className={styles.formLabel}>Description</Label>
                         <Textarea
                             rows={6}
@@ -205,7 +204,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                             className={styles.formTextArea}
                         />
                     </div>
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-[8px]">
                         <Label className={styles.formLabel}>How to Apply</Label>
                             <Textarea
                                 rows={5}
@@ -238,11 +237,11 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                             type="submit"
                             className={styles.jobButton}
                             >
-                          {mode == "create" && userType=="admin" ? "Create Job" :mode=="create" && userType=="public"? "Preview Job" : "Update Job"}
+                          {mode == "create" && userType=="admin" ? "Create" :mode=="create" && userType=="public"? "Preview" : "Update"}
                         </Button>
    
                     </div>
-                </div>
+
               </form>
                 
            </div>

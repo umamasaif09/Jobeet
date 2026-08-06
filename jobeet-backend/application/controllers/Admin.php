@@ -118,7 +118,7 @@ class Admin extends CI_Controller
         $data["content"] = "admin/jobs";
         $data["showPageHeader"] = true;
         $data["pageAction"] = [
-            "text" => "Add Job",
+            "text" => "New Job",
             "url" => "admin/createJob"
         ];
         
@@ -142,7 +142,7 @@ class Admin extends CI_Controller
             "showPageHeader" => true,
             "showBackButton" => true,
             "formAction" => site_url("admin/createJobPost"),
-            "submitButtonText" => "Create Job"
+            "submitButtonText" => "Create"
         ];
 
         $this->load->view("templates/admin_template", $data);
@@ -211,7 +211,7 @@ class Admin extends CI_Controller
         }
         else {
             $data = [
-            "title"=> "Edit Form",
+            "title"=> "Edit Job",
             "job"=> $job,
             "category" => $category,
             "daysRemaining" =>$daysRemaining,
@@ -230,7 +230,7 @@ class Admin extends CI_Controller
     {
         $this->requireLogin();
         $this->lang->load('admin', 'english');
-        $data["title"] ="Job";
+        $data["title"] ="Job Detail";
         $this->load->model("mdl_job");
         $data["job"]= $this->mdl_job->getJobById($id);
 
@@ -266,7 +266,7 @@ class Admin extends CI_Controller
         $data["content"] = "admin/affiliates";
         $data["showPageHeader"] = true;
         $data["pageAction"] = [
-            "text" => "Add Affiliate",
+            "text" => "New Affiliate",
             "url" => "admin/addAffiliate"
         ];
         
@@ -685,7 +685,7 @@ class Admin extends CI_Controller
         $data["showPageHeader"] = true;
         $data["ShowAdminHeader"] = true;
         $data["pageAction"] = [
-            "text" => "Register Admin",
+            "text" => "New Admin",
             "url" => "admin/addAdmin"
         ];
 

@@ -50,7 +50,7 @@ export default function CategoryDialog({open, onOpenChange, category, onSuccess}
         </div>
         <div className={styles.dialogBody}>
 
-           <form onSubmit={handleSubmit} id="category-form">
+           <form onSubmit={handleSubmit} id="category-form" className={styles.dialogForm}>
           <div className={styles.formGroup}>
             <Label className={styles.formGroupLabel}>Category Name</Label>
 
@@ -64,7 +64,7 @@ export default function CategoryDialog({open, onOpenChange, category, onSuccess}
           <Button className={styles.dialogButton}
            type="submit" form="category-form"
           >
-            {category? "Update" : "Create Category"}
+            {category? "Update" : "Create"}
           </Button>
         </form>
         </div>

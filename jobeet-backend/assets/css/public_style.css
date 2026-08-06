@@ -40,10 +40,6 @@ img {
     height: 80px;
 }
 
-textarea {
-  font-family: Arial, sans-serif;
-}
-
 *,
 *::after,
 *::before{
@@ -84,7 +80,8 @@ section h2{
 /* ===== FORMS ===== */
 
 textarea{
-    min-height: 124px;
+    min-height: 100px;
+    font-family: Arial, sans-serif;
 }
 
 .form-group {
@@ -173,6 +170,16 @@ p.logo-label{
     outline: none;
     border-color: #2d89ef;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+}
+
+.checkbox-group input[type="checkbox"],
+.checkbox-group input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    accent-color: #2d89ef;
 }
 
 .form-row{
@@ -294,7 +301,7 @@ footer a:hover{
     align-items: center;
     justify-content: space-between;
 
-    padding: 12px 6px;
+    padding: 12px 0px;
     border-bottom: 1px solid #e1e4e8;
     
 } 
@@ -440,7 +447,6 @@ input[type="file"]::file-selector-button:active,
 
 .site-header .btn-primary{
     padding: 0 20px;
-    border-radius: 6px;
 }
 
 .site-header .btn-primary:hover{
@@ -609,7 +615,6 @@ input[type="checkbox"] {
 
 .section-header {
     margin: 16px 0;
-    padding: 0 4px;
 }
 
 .section-header h2 {
@@ -711,6 +716,11 @@ input[type="checkbox"] {
 .job-details{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.job-details h2{
+  margin-top: 0;
 }
 
 /* Edit Form Page */
@@ -805,6 +815,10 @@ input[type="checkbox"] {
     grid-template-columns: 1fr;
     gap: 24px
   }
+
+   .job-form{
+    padding: 0 80px;
+  }
   
 }
 
@@ -825,6 +839,9 @@ input[type="checkbox"] {
     width: calc(50% - 8px);
     text-align: center;
   }
+
+ 
+  
 }
 
 @media screen and (max-width: 540px) {
@@ -846,7 +863,7 @@ input[type="checkbox"] {
   }
 
   .section-header{
-    margin-bottom: 8px;
+    margin: 8px 0;
   }
 
   .radio-options{
@@ -871,12 +888,13 @@ input[type="checkbox"] {
   .back-button,
   .btn{
     height: 32px;
-    padding:  0 4px;
+    padding:  0 6px;
   }
 
   .site-header{
     padding: 8px 4px;
     gap: 8px;
+    margin-bottom: 0;
   }
 
   .search-form input{
@@ -950,7 +968,23 @@ input[type="checkbox"] {
   .edit-layout{
     gap: 12px;
   }
+
+  .checkbox-group input[type="checkbox"],
+  .checkbox-group input[type="radio"]{
+    width: 12px;
+    height: 12px;
+  }
+
+  .category-section{
+    margin-bottom: 0;
+  }
   
+}
+
+@media screen and (max-width: 400px) {
+  .job-form{
+    padding: 0;
+  }
 }
 
 @media screen and (max-width:360px) {
@@ -976,6 +1010,9 @@ input[type="checkbox"] {
     font-size: 10px;
   }
 
+  .search-form .btn{
+    min-width: 50px;
+  }
 
   .header-actions{
     gap: 8px;
@@ -992,6 +1029,28 @@ input[type="checkbox"] {
   .page-header{
     margin: 6px 0;
   }
+
+  .jobs-table thead th,
+  .jobs-table .job-title,
+  .jobs-table tbody td,
+  .page-number,
+  .page-info,
+  .back-button,
+  .post-job-btn,
+  .search-form .btn,
+  .btn, h3, h4, h5, p,
+  .form-group label,
+  .checkbox-group label{
+    font-size: 11px;
+  }
+
+    .section-header h2.category-title a ,
+  .section-header h2.category-title,
+  .page-header h2, h2{
+    font-size: 14px;
+  }
+
+  
 }
 
 

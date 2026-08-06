@@ -6,10 +6,10 @@ import { Category } from "@/types/category";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import CategoryDialog from "./CategoryDialog";
-import DeleteCategoryDialog from "./DeleteCategoryDialog";
 import { useRouter } from "next/navigation";
 import pageStyles from "@/app/styles/jobeet.module.css";
 import styles from "./categories.module.css";
+import { deleteCategory } from "@/services/categories";
 
 
 interface Props{
@@ -21,7 +21,6 @@ export default function CategoryTable({categories}: Props) {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
   const [categoryDialogOpen, setCategoryDialogOpen] = useState(false);
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const router= useRouter();
 
@@ -64,9 +63,11 @@ export default function CategoryTable({categories}: Props) {
                   setSelectedCategory(category);
                   setCategoryDialogOpen(true);
                 }}
-                onDelete={(category) => {
-                  setSelectedCategory(category);
-                  setDeleteDialogOpen(true);
+                onDelete={async (category) => {
+                  if(!(window.confirm("Delete this category?"))) return;
+                  if(!category) return;
+                  await deleteCategory(category.id);
+                  router.refresh();
                 }}
               />
             ))}
@@ -78,13 +79,6 @@ export default function CategoryTable({categories}: Props) {
     <CategoryDialog 
         open={categoryDialogOpen}
         onOpenChange={setCategoryDialogOpen}
-        category={selectedCategory}
-        onSuccess= {()=> router.refresh()}
-      />
-
-      <DeleteCategoryDialog
-        open={deleteDialogOpen}
-        onOpenChange={setDeleteDialogOpen}
         category={selectedCategory}
         onSuccess= {()=> router.refresh()}
       />

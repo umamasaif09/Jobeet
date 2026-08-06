@@ -7,7 +7,7 @@
 
 
   <?php if(!empty($job["logo"])): ?>
-      <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" style="float: right;">
+      <img src="<?php echo base_url("uploads/".$job["logo"]); ?>" alt="Company Logo" >
   <?php endif; ?>
 </div>
 

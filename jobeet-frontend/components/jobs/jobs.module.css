@@ -80,34 +80,58 @@
 
 /* Job Detail Page */
 
+.jobDetails{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    object-fit:contain;
+}
+
 .jobDetailsH2{
   font-size: 1.5em;
   font-weight: bold;
-  margin: 19.92px 0;
+  margin: 0 0 19.92px 0;
+  line-height: 27.2px;
 }
 
 .jobDetailsH3 {
   font-size: 1.17em;
   font-weight: bold;
   margin: 18.72px 0;
+  line-height: 21.6px;
 }
 
 .jobDetailsH4 {
   font-size: 1em;
   font-weight: bold;
   margin: 21.28px 0;
+  line-height: 18.4px;
 }
 
 .jobDetailsP{
   display: block;
   color: #333;
-  margin: 16px 0;
+  margin: 8px 0;
 }
 
 .jobDetailsHr{
   color: gray;
   border-width: 1px;
   margin: 8px 0;
+}
+
+.hr{
+  margin:0.5em 0;
+  border:0;
+  border-top:0.8px solid rgb(128, 128, 128);
+
 }
 
 /* Job Form */
@@ -252,9 +276,10 @@
 }
 
 .h3 {
-  font-size: 1.17em;
+  font-size: 18.72px;
   font-weight: bold;
   margin: 0 0 1.23em 0;
+  line-height: 21.6px;
 }
 
 .adminJobsTableCard{
@@ -267,7 +292,7 @@
 }
 
 .adminJobsTableCard:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .adminJobsTable{
@@ -444,4 +469,218 @@
     background: #ffebe9;
     color: #cf222e;
     transform: none;
+}
+
+
+.menuToggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #57606a;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.15s ease;
+  font-weight: 500;
+}
+
+.menuToggle:hover {
+  background: #f0f2f5;
+  color: #24292e;
+}
+
+.menuToggle:focus{
+  outline: none;
+  background: #e8eaed;
+}
+
+/* ===== JOBS RELATED RESPONSIVE DESIGN ===== */
+
+@media screen and (max-width: 540px) {
+  .jobsTableCard {
+    margin-bottom: 12px;
+  }
+
+  .jobsTableBodyTd {
+    padding: 8px 6px;
+  }
+
+  .jobTitle {
+    font-size: 13px;
+  }
+
+  .jobDetailsH2 {
+    font-size: 20px;
+  }
+
+  .jobDetailsH3 {
+    font-size: 16px;
+  }
+
+  .jobDetailsH4 {
+    font-size: 14px;
+  }
+
+  .jobDetailsP {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .jobsTableHeaderTh {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+
+  .jobsTableBodyTd {
+    font-size: 12px;
+  }
+
+  .jobTitle {
+    font-size: 12px;
+  }
+
+  .jobDetailsH2 {
+    font-size: 12px;
+  }
+
+  .jobDetailsH3 {
+    font-size: 12px;
+  }
+
+  .jobDetailsH4 {
+    font-size: 12px;
+  }
+
+  .jobDetailsP {
+    font-size: 12px;
+  }
+
+  .logo {
+    width: 55px;
+    height: 55px;
+  }
+
+  .formTextInput {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .formTextArea {
+    height: 100px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .formLabel {
+    font-size: 13px;
+  }
+
+  .checkboxLabel {
+    font-size: 12px;
+  }
+
+  .radioLabel {
+    font-size: 12px;
+  }
+
+  .jobButton {
+    height: 32px;
+    font-size: 13px;
+    padding: 0 12px;
+  }
+
+  /* ⚠️ DOUBTFUL: These classes might need rechecking */
+  /* .adminJobsTableHeaderTh { 
+    font-size: 11px;
+    padding: 6px 4px;
+  }
+  
+  .adminJobsTableBodyTd { 
+    font-size: 11px;
+    padding: 6px 4px;
+  } */
+}
+
+@media screen and (max-width: 400px) {
+  .form {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .jobsTableHeaderTh {
+    font-size: 11px;
+  }
+
+  .jobsTableBodyTd {
+    font-size: 11px;
+  }
+
+  .jobTitle {
+    font-size: 11px;
+  }
+
+  .jobDetailsH2 {
+    font-size: 11px;
+  }
+
+  .jobDetailsH3 {
+    font-size: 11px;
+  }
+
+  .jobDetailsH4 {
+    font-size: 11px;
+  }
+
+  .jobDetailsP {
+    font-size: 11px;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* .formTextInput {
+    height: 32px;
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .formTextArea {
+    height: 80px;
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .formLabel {
+    font-size: 11px;
+  }
+
+  .checkboxLabel {
+    font-size: 11px;
+  }
+
+  .radioLabel {
+    font-size: 11px;
+  }
+
+  .jobButton {
+    height: 28px;
+    font-size: 11px;
+    padding: 0 8px;
+  } */
+
+  .form {
+    padding: 0 10px 0 0;
+  }
+
+  /* .jobDetails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  } */
+
 }

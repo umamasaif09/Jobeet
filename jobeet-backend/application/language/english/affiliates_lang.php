@@ -14,5 +14,5 @@ $lang["thank_you"] = "Thank you,";
 $lang["affiliate_application"] = "Your affiliate application has been submitted.";
 $lang["account_activation"] = "Your account will be activated by an administrator.";
 $lang["edit_affiliate"] = "Edit Affiliate";
-$lang["create_affiliate"] = "Create Affiliate";
-$lang["update_effiliate"] = "Update Affiliate";
+$lang["create_affiliate"] = "Create";
+$lang["update_effiliate"] = "Update";
