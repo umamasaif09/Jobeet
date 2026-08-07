@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { resetPassword } from "@/services/auth";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";

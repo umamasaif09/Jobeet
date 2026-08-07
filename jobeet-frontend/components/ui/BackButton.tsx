@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
-import { ArrowLeft} from "lucide-react";
 import styles from "@/app/styles/jobeet.module.css"
 
 
@@ -14,8 +13,7 @@ export default function BackButton() {
       className={styles.backButton}
       onClick={()=> router.back()}
     >
-      <ArrowLeft />
-      Back
+    ← Back
     </Button>
   );
 }

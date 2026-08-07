@@ -5,7 +5,7 @@ import { getLatestJobs } from "@/services/jobs";
 export default async function HomePage() {
   const categories= await getLatestJobs();
   return (
-      <div className="space-y-6">
+      <div>
         {categories.map((category) => (
           <CategorySection key={category.id}
           category={category}/>

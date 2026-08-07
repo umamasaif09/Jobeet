@@ -4,7 +4,6 @@ import { TableCell
     , TableRow
  } from "../ui/table";
 import JobAction from "./JobAction";
-import { Badge } from "../ui/badge";
 import styles from "./jobs.module.css";
 
 type JobRowProps = {

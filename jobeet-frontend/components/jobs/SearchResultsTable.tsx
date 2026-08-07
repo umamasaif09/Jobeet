@@ -1,5 +1,4 @@
 import {SearchResults} from "@/types/search-results";
-import JobRow from "./JobRow";
 import styles from "./jobs.module.css"
 import {Table, TableBody, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import SearchResultsRow from "./SearchResultsRow";

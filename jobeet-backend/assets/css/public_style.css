@@ -164,9 +164,15 @@ p.logo-label{
     font-size: 16px;
 }
 
-.form-group input:not([type="file"]):focus,
+.form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+.form-group select:hover,
+.form-group textarea:hover{
+    border-color: #b0b8c4;
+}
+
+.form-group input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
 .form-group select:focus,
-.form-group textarea:focus{
+.form-group textarea:focus {
     outline: none;
     border-color: #2d89ef;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
@@ -333,7 +339,7 @@ footer a:hover{
     align-items: center;
     gap: 0;
     margin: 0;
-    max-width: 400px;
+    max-width: 350px;
     width: 100%;
 }
 
@@ -373,18 +379,7 @@ footer a:hover{
     box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
 }
 
-input[type="file"]::file-selector-button{
-  height: 24px;
-  padding: 0 8px;
-  border-radius: 6px;
-  border: 1px solid #d0d7de;
-  background: #f6f8fa;
-  color: #24292e;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
+
 
 .search-form .btn{
     height: 38px;
@@ -404,17 +399,7 @@ input[type="file"]::file-selector-button{
     align-items: center;
     justify-content: center;
 }
-input[type="file"]::file-selector-button:hover,
-.search-form .btn:hover{
-    background: #f3f4f6;
-    border-color: #8b949e;
-    transform: none;
-}
 
-input[type="file"]::file-selector-button:active,
-.search-form .btn:active{
-    background: #e8eaed;
-}
 
 .post-job-btn{
     height: 38px;
@@ -449,8 +434,14 @@ input[type="file"]::file-selector-button:active,
     padding: 0 20px;
 }
 
-.site-header .btn-primary:hover{
-    transform: none;
+.search-form .btn-primary:hover{
+  background: #f3f4f6;
+  border-color: #8b949e;
+  transform: none;
+}
+
+.search-form .btn-primary:active{
+  background: #e8eaed;
 }
 /* Category Headings */
 
@@ -610,7 +601,6 @@ input[type="checkbox"] {
 /* Category Section */
 .category-section {
     width: 100%;
-    margin-bottom: 32px;
 }
 
 .section-header {
@@ -645,7 +635,6 @@ input[type="checkbox"] {
     background: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 12px;
-    margin-bottom: 24px;
 }
 
 .jobs-table-card:hover {
@@ -845,9 +834,6 @@ input[type="checkbox"] {
 }
 
 @media screen and (max-width: 540px) {
-  .site-header{
-    margin-bottom: 12px;
-  }
 
   .search-form{
     max-width: 250px;
@@ -868,8 +854,7 @@ input[type="checkbox"] {
 
   .radio-options{
     display: flex;
-    flex-direction: column;
-    gap: 0;
+    gap: 8px;
     align-items: flex-start;
   }
 
@@ -892,7 +877,7 @@ input[type="checkbox"] {
   }
 
   .site-header{
-    padding: 8px 4px;
+    padding: 8px 0;
     gap: 8px;
     margin-bottom: 0;
   }
@@ -935,8 +920,9 @@ input[type="checkbox"] {
     padding: 8px 10px;
   }
 
-  input[type="file"]::file-selector-button{
-    padding: 0 4px;
+  .form-group .file-button{
+    padding: 4px;
+    height: 20px;
     font-size: 10px;
   }
 
@@ -997,7 +983,7 @@ input[type="checkbox"] {
   }
 
   .site-logo.logo-text{
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .search-form{
@@ -1018,16 +1004,16 @@ input[type="checkbox"] {
     gap: 8px;
   }
 
-  .section-header{
+  /* .section-header{
     margin-bottom: 4px;
-  }
+  } */
 
   .jobs-table-card{
     margin-bottom: 4px;
   }
 
   .page-header{
-    margin: 6px 0;
+    margin: 12px 0;
   }
 
   .jobs-table thead th,
@@ -1050,7 +1036,11 @@ input[type="checkbox"] {
     font-size: 14px;
   }
 
-  
+  .form-group .file-button{
+    padding: 2px 4px;
+    height: 16px;
+    font-size: 10px;
+  }
 }
 
 

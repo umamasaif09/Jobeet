@@ -9,9 +9,6 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import BackButton from "../ui/BackButton";
 import { Card, CardContent } from "../ui/card";
-import { Label } from "../ui/label";
-import Link from "next/link";
-import { Button } from "../ui/button";
 import pageStyles from "@/app/styles/jobeet.module.css";
 import styles from "./affiliates.module.css";
 
@@ -94,9 +91,9 @@ export default function AffiliateEditor({categories, mode, userType, initialAffi
                     {`Thank you, ${affiliateApplied.affiliate_name}`}
                 </h4>
 
-                <p>Your affiliate application has been submitted.</p>
+                <p className="text-[rgb(51, 51, 51)]">Your affiliate application has been submitted.</p>
 
-                <p>Your account will be activated by an administrator.</p>
+                <p className="text-[rgb(51, 51, 51)]">Your account will be activated by an administrator.</p>
                
               </div>
             </CardContent>

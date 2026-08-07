@@ -44,7 +44,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
               </h1>
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className="flex flex-col gap-[12px]">
-                <div className="flex flex-col gap-0">
+                <div className="flex flex-col gap-[8px]">
                     <Label className={styles.formLabel}>Name</Label>
                     <Input
                         placeholder="Enter affiliate name"
@@ -80,7 +80,7 @@ export default function AffiliateForm({affiliate, updateField, categories, onSub
                 </div>
 
                 <div className="flex flex-col gap-[0px]">
-                    <Label className={styles.formLabel}>Categories</Label>
+                    <Label className={`${styles.formLabel} mb-[8px]`}>Categories</Label>
                     {categories.map(category => (
                       <div key={category.id}
                         className="flex items-center gap-[8px]"

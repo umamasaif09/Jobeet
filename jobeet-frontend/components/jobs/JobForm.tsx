@@ -45,13 +45,14 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
     }
 
     return (
-      <div className="flex items-baseline gap-4">
-        <BackButton/>
-        <div className="flex-1">
-          <div className="max-w-5xl space-y-6 my-[24px]">
-            <h1 className={pageStyles.pageTitle}>
+      <div className={userType == "admin" ? "mb-[24px]" : ""}>
+        <div className="flex items-center gap-4 my-[12px] sm:my-[24px]">
+          <BackButton/>
+          <h1 className={pageStyles.pageTitle}>
               {mode == "create" ? "Create Job" : "Edit Job"}
             </h1>
+        </div>
+            
               <form onSubmit={handleSubmit} className={styles.form}>
                   <div className="flex flex-col gap-[8px]">
                       <Label className={styles.formLabel}>Category</Label>
@@ -66,7 +67,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                               
                         >
 
-                        <SelectTrigger className={styles.formTextInput}>
+                        <SelectTrigger className={styles.formSelectInput}>
                             {categories.find(c => c.id.toString() === job.category_id)?.name ?? "Select Category"}
                         </SelectTrigger>
 
@@ -75,6 +76,7 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                                 <SelectItem
                                     key={category.id}
                                     value={category.id.toString()}
+                                    className={styles.formSelectItem}
                                 >
                                     {category.name}
                                 </SelectItem>
@@ -88,16 +90,16 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
                         <RadioGroup value={job.type}
                             onValueChange={(value) => updateField("type", value)} required
                         >
-                          <div className="flex gap-4">
-                            <div className="flex gap-2">
+                          <div className="flex gap-4 max-[433]:gap-2">
+                            <div className="flex gap-2 max-[433]:gap-1">
                                 <RadioGroupItem value="Full-time" id="full"/>
-                                <Label htmlFor="full" className={styles.radioLabel}>Full Time</Label>
+                                <Label htmlFor="full" className={styles.radioLabel}>Full-time</Label>
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 max-[433]:gap-1">
                                 <RadioGroupItem value="Part-time" id="part"/>
-                                <Label htmlFor="part" className={styles.radioLabel}>Part Time</Label>
+                                <Label htmlFor="part" className={styles.radioLabel}>Part-time</Label>
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 max-[433]:gap-1">
                                 <RadioGroupItem value="Freelance" id="free"/>
                                 <Label htmlFor="free" className={styles.radioLabel}>Freelance</Label>
                             </div>
@@ -245,9 +247,6 @@ export default function JobForm({job, updateField, categories, onPreview, userTy
               </form>
                 
            </div>
-        </div>
-        
-      </div>
 
     );
 }

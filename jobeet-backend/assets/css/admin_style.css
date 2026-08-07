@@ -534,7 +534,7 @@ textarea {
     margin: 0;
     padding: 2px;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 24px;
     color: #1f2937;
 }
 
@@ -698,7 +698,6 @@ textarea {
     margin-top: 16px;
     border: none;
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
@@ -921,6 +920,9 @@ textarea {
 
 .menu-dropdown.show {
     display: block;
+    position: absolute;
+    z-index: 10000;
+    top: 100%;
 }
 
 @keyframes dropdownFadeIn {
@@ -982,7 +984,7 @@ textarea {
 
 .jobs-table-card{
     width: 100%;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     background: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 12px;
@@ -1124,6 +1126,9 @@ textarea {
 
 .jobs-table .menu-dropdown.show{
     display: block;
+    position: absolute;
+    z-index: 10000;
+    top: 100%;
 }
 
 .jobs-table .menu-dropdown .menu-btn{
@@ -1380,7 +1385,7 @@ textarea {
 
 /* 1. Ensure all containers allow overflow */
 .table-wrapper {
-    overflow-x: auto ;
+    /* overflow-x: auto ; */
     padding-bottom: 20px; /* Add space at bottom for dropdowns */
     position: relative;
     padding: 0;
@@ -1490,7 +1495,8 @@ textarea {
 }
 
 .dashboard p {
-    margin-bottom: 32px;
+    margin-bottom: 4px;
+    margin-top: 32px;
 }
 
 .dashboard-cards {
@@ -1674,7 +1680,7 @@ textarea {
 }
 
 .modal .admin-form {
-    padding: 24px 24px 24px 24px;
+    padding: 24px;
 }
 
 

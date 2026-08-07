@@ -20,7 +20,7 @@ export default async function CategoryPage({searchParams}: JobsPageProps) {
 
     const data = await getJobsByCategory(categoryId, page);
     return(
-      <div className="space-y-6">
+      <div >
         <div className="flex gap-4 items-center my-[24px]">
           <BackButton/>
           <h1 className={pageStyles.pageTitle}>

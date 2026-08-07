@@ -2,7 +2,6 @@
 
 import { Job } from "@/types/job";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
 import { useRouter } from "next/navigation";
 import styles from "./jobs.module.css";
 

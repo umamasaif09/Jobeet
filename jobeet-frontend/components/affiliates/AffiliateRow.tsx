@@ -1,5 +1,4 @@
 import { Affiliate } from "@/types/affiliate"
-import { Badge } from "@/components/ui/badge";
 import { TableRow, TableCell } from "../ui/table";
 import AffiliateAction from "./AffiliateAction";
 import styles from "./affiliates.module.css";

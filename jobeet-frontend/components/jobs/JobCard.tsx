@@ -1,13 +1,5 @@
 
 import { Job } from "@/types/job";
-
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle
-} from "@/components/ui/card";
-import { Separator } from "../ui/separator";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
 import pageStyles from "@/app/styles/jobeet.module.css";

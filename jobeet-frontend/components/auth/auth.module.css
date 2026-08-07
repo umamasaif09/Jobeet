@@ -21,18 +21,17 @@
   font-weight: 600;
   font-size: 14px;
   color: #24292e;
-  line-height: 22.4px;
+  line-height: 16.8px;
 }
 
 .authFormInput{
-  width: 100%;
-  padding: 10px 12px;
+  padding: 12px;
   border: 2px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 10px;
+  font-size: 16px;
   transition: border-color 0.2s, box-shadow 0.2s;
   margin: 0;
-  height: 41.7px;
+  height: 45.6px;
 }
 
 .authFormInput:focus{
@@ -46,6 +45,7 @@
   text-decoration: none;
   font-size: 0.9rem;
   color: #2563eb;
+  line-height: 16.8px;
 }
 
 .authFormLink:hover{
@@ -81,12 +81,11 @@
 
 .authFormH2{
   margin: 0;
-  padding: 2px;
   text-align: center;
   font-size: 24px;
   color: #1f2937;
   font-weight: 700;
-  line-height: 38.4px;
+  line-height: 31.2px;
   white-space: nowrap;
 }
 

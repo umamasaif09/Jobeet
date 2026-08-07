@@ -3,7 +3,7 @@
 import Header from "@/components/admin/Header";
 import Container from "@/components/ui/Container";
 import { getCurrentAdmin } from "@/services/auth";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 

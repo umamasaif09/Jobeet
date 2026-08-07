@@ -1,6 +1,5 @@
 import { Admin } from "@/types/admin";
 import { TableCell, TableRow } from "../ui/table";
-import { Badge } from "../ui/badge";
 import AdminAction from "./AdminAction";
 import styles from "./admins.module.css";
 

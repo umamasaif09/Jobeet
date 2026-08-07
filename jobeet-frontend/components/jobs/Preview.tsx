@@ -1,6 +1,5 @@
 import { JobFormData } from "@/types/job-form-data";
 import { Category } from "@/types/category";
-import { getCategories } from "@/services/categories";
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import BackButton from "../ui/BackButton";
@@ -24,7 +23,7 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
 
     return(
 
-      <div className="flex flex-col gap-[12px]">
+      <div className="flex flex-col">
         <div className="flex items-baseline gap-4 my-[24px] ">     
           <BackButton/>
           <h1 className={pageStyles.pageTitle}>
@@ -76,7 +75,7 @@ export default function Preview({job, categories, onEdit, onSubmit}: Props) {
 
         </Card>
 
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-end gap-4 mt-[12px]">
 
                     <Button
                         onClick={onSubmit}

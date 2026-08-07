@@ -3,7 +3,6 @@
 import { Admin } from "@/types/admin";
 import { useRouter } from "next/navigation";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import { MoreVertical } from "lucide-react";
 import styles from "./admins.module.css";
 
 type Props = {

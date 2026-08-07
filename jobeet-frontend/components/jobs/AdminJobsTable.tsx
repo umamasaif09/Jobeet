@@ -3,7 +3,6 @@
 import {Job} from "@/types/job";
 
 import {Table, TableBody, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "../ui/button";

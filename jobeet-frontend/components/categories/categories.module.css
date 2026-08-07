@@ -1,11 +1,10 @@
 .categoryHeading{
   margin: 16px 0;
-  padding: 0 4px;
   font-size: 20px;
   font-weight: 600;
   color: #3498db;
   text-decoration: none;
-  line-height: 23.2px;
+  line-height: 16.8px
 }
 
 .categoryHeading:hover{
@@ -220,7 +219,7 @@
   font-size: 14px;
   font-weight: 600;
   color: #24292e;
-  line-height: 1.6;
+  height: 16.8px;
 }
 
 .formGroupInput{
@@ -231,7 +230,7 @@
   font-size: 14px;
   transition: all 0.15s ease;
   color: #24292e;
-  height: 41.7px;
+  height: 45.6px;
 }
 
 .formGroupInput:focus{
@@ -299,7 +298,20 @@
 /* Responsive design */
 
 @media screen and (max-width: 540px) {
-  .categoryHeading {
+  .categoryHeading { 
+    margin: 8px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .categoryHeading{
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .categoryHeading{
+    font-size: 14px;
+    
   }
 }

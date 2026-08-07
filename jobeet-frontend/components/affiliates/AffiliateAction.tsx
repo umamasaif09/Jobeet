@@ -1,7 +1,6 @@
 "use client";
 
 import { Affiliate } from "@/types/affiliate"
-import { MoreVertical } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuContent } from "../ui/dropdown-menu";
 import styles from "./affiliates.module.css";

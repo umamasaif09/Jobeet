@@ -38,7 +38,7 @@
   box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
 }
 
-.searchFormInput:focus + .btn{
+.searchFormInput:focus + .searchBtn{
     border-color: #2d89ef;
     box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.15);
 }
@@ -138,8 +138,6 @@
 
 /* Responsive Design */
 
-/* ===== SHARED/COMMON RESPONSIVE DESIGN ===== */
-
 @media screen and (max-width: 768px) {
   .searchForm {
     max-width: 350px;
@@ -152,33 +150,26 @@
   }
 }
 
+@media screen and (max-width: 660px) {
+  .footer{
+    gap: 0px;
+    padding:12px 0px;
+    margin-top: 12PX;
+    flex-wrap: wrap;
+  }
+
+  .footerText{
+    margin: 0;
+    width: calc(50% - 8px);
+    text-align: center;
+  }
+
+}
+
 @media screen and (max-width: 540px) {
   .searchForm {
     max-width: 250px;
   }
-
-  /* .searchFormInput {
-    font-size: 12px;
-    padding: 6px 8px;
-    height: 32px;
-  }
-
-  .searchBtn {
-    height: 32px;
-    font-size: 12px;
-    padding: 0 8px;
-    min-width: 50px;
-  }
-
-  .postJobBtn {
-    height: 32px;
-    padding: 0 8px;
-    font-size: 12px;
-  }
-
-  .logoText {
-    font-size: 18px;
-  } */
 
 }
 
@@ -206,11 +197,11 @@
   }
 
   .logoText {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .footerText {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -233,6 +224,7 @@
   .postJobBtn {
     height: 25px;
     font-size: 11px;
+    padding: 0 6px;
   }
 
   .logoText {

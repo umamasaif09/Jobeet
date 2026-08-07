@@ -6,10 +6,10 @@ import styles from "./layout.module.css"
 
 export default function NavBar() {
     return(
-        <nav className="flex justify-between items-center border-b py-[12px] px-[6px]">
+        <nav className="flex justify-between items-center border-b sm:py-[12px] py-[8px] gap-[8px]">
             <Logo/>
 
-            <div className="flex items-center gap-[12px] flex-1 justify-end ">
+            <div className="flex items-center sm:gap-[12px] gap-[8px] flex-1 justify-end ">
               <SearchBar/>
 
               <Link href="/jobs/create">
