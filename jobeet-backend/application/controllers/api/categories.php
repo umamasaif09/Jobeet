@@ -14,8 +14,7 @@ class categories extends MY_Controller
     {
         $categories = $this->mdl_category->getCategories();
 
-        header("Content-Type: application/json");
-        echo json_encode($categories, JSON_PRETTY_PRINT);
+        $this->response($categories);
     }
 
     public function create()
@@ -50,13 +49,11 @@ class categories extends MY_Controller
 
         $category = $this->mdl_category->getCategoryById($categoryId);
 
-        http_response_code(201);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Category created successfully",
+        $this->response([
+          "message" => "Category created successfully",
             "id" =>$categoryId,
             "category" => $category
-        ]);
+        ], 201);
     }
 
     public function update($categoryId)
@@ -91,14 +88,11 @@ class categories extends MY_Controller
 
         $category = $this->mdl_category->getCategoryById($categoryId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Category updated successfully",
-            "id" =>$categoryId,
-            "category" => $category
+        $this->response([
+          "message" => "Category updated successfully",
+          "id" =>$categoryId,
+          "category" => $category
         ]);
-
     }
 
     public function delete($categoryId)
@@ -115,11 +109,9 @@ class categories extends MY_Controller
             return; 
         }
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Category deleted successfully",
-            "id" =>$categoryId
+        $this->response([
+          "message" => "Category deleted successfully",
+          "id" =>$categoryId
         ]);
 
     }
@@ -130,7 +122,6 @@ class categories extends MY_Controller
         
         $count = $this->mdl_category->getCategoriesCount();
 
-        header("Content-Type: application/json");
-        echo json_encode($count, JSON_PRETTY_PRINT);
+        $this->response($count);
     }
 }

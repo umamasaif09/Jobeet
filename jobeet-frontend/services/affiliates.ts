@@ -1,38 +1,39 @@
 import api from "@/lib/api";
 import { AffiliateFormData } from "@/types/affiliate-form-data";
 
-export async function getAffiliates(cookie: string){
+export async function getAffiliates(cookie: string) {
+  const response = await api.get("/affiliates", {
+    headers: {
+      Cookie: cookie,
+    },
+  });
 
-
-    const response = await api.get("/affiliates", {
-      headers : {
-        Cookie: cookie,
-      }
-    });
-
-    return response.data;
+  return response.data;
 }
 
-export async function getAffiliate(id: string, cookie: string){
+export async function getAffiliate(id: string, cookie: string) {
   const response = await api.get(`/affiliates/detail/${id}`, {
     headers: {
       Cookie: cookie,
-    }
+    },
   });
   return response.data;
 }
 
-export async function applyAffiliate(affiliate: AffiliateFormData){
+export async function applyAffiliate(affiliate: AffiliateFormData) {
   const response = await api.post("/affiliates/apply", affiliate);
   return response.data;
 }
 
-export async function createAffiliate(affiliate: AffiliateFormData){
+export async function createAffiliate(affiliate: AffiliateFormData) {
   const response = await api.post("/affiliates/create", affiliate);
   return response.data;
 }
 
-export async function updateAffiliate(id:number, affiliate: AffiliateFormData){
+export async function updateAffiliate(
+  id: number,
+  affiliate: AffiliateFormData,
+) {
   const response = await api.put(`/affiliates/update/${id}`, affiliate);
   return response.data;
 }
@@ -48,6 +49,6 @@ export async function disableAffiliate(id: number) {
 }
 
 export async function deleteAffiliate(id: number) {
-  const response= await api.delete(`/affiliates/delete/${id}`);
+  const response = await api.delete(`/affiliates/delete/${id}`);
   return response.data;
 }

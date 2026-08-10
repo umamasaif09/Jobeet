@@ -8,51 +8,44 @@ import AdminForm from "./AdminForm";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-
 export default function AdminEditor() {
   const [admin, setAdmin] = useState<AdminFormData>({
     name: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const router = useRouter();
 
-  function updateField<K extends keyof AdminFormData>(field: K, value: AdminFormData[K]) {
-    
-    setAdmin(previous=> {
-      if(!previous) return previous;
+  function updateField<K extends keyof AdminFormData>(
+    field: K,
+    value: AdminFormData[K],
+  ) {
+    setAdmin((previous) => {
+      if (!previous) return previous;
 
-      return { ...previous,
-      [field]: value,};
-      
-      
+      return { ...previous, [field]: value };
     });
   }
 
-  async function hanleSubmit(){
-
-    if(admin.password !== admin.confirmPassword) {
-      toast.error("Passwords do not match")
+  async function hanleSubmit() {
+    if (admin.password !== admin.confirmPassword) {
+      toast.error("Passwords do not match");
       return;
     }
 
-    const data: AdminRegisterData= {
+    const data: AdminRegisterData = {
       admin_name: admin.name,
       admin_email: admin.email,
-      admin_password: admin.password
-    }
+      admin_password: admin.password,
+    };
 
     await createAdmin(data);
-    toast.success("Admin regsitered")
+    toast.success("Admin regsitered");
     router.replace("/admin/admins");
   }
 
-  return(
-    <AdminForm 
-      admin= {admin}
-      onSubmit={hanleSubmit}
-      updateField= {updateField}
-    />
-  )
+  return (
+    <AdminForm admin={admin} onSubmit={hanleSubmit} updateField={updateField} />
+  );
 }

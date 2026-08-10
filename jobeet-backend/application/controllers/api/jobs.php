@@ -16,8 +16,7 @@ class jobs extends MY_Controller
         
         $jobs = $this->mdl_job->getJobs();
 
-        header("Content-Type: application/json");
-        echo json_encode($jobs, JSON_PRETTY_PRINT);
+        $this->response($jobs);
     }
 
     public function latest()
@@ -38,8 +37,7 @@ class jobs extends MY_Controller
           ];
         }
 
-        header("Content-Type: application/json");
-        echo json_encode($result, JSON_PRETTY_PRINT);
+        $this->response($result);
     }
 
     public function category()
@@ -53,8 +51,7 @@ class jobs extends MY_Controller
             show_error("Does not Exist", 404);
         }
 
-        header("Content-Type: application/json");
-        echo json_encode($jobs, JSON_PRETTY_PRINT);
+        $this->response($jobs);
     }
 
     public function search()
@@ -63,9 +60,7 @@ class jobs extends MY_Controller
 
         $jobs = $this->mdl_job->searchJobs($keyword);
 
-
-        header("Content-Type: application/json");
-        echo json_encode($jobs, JSON_PRETTY_PRINT);
+        $this->response($jobs);
     }
 
     public function detail($jobId)
@@ -77,8 +72,7 @@ class jobs extends MY_Controller
             show_error("Does not Exist", 404);
         }
 
-        header("Content-Type: application/json");
-        echo json_encode($job, JSON_PRETTY_PRINT);
+        $this->response($job);
     }
 
     public function create()
@@ -130,13 +124,11 @@ class jobs extends MY_Controller
         $job= $this->mdl_job->getJobById($jobId);
         $category= $this->mdl_job->getCategoryById($job["category_id"]);
 
-        http_response_code(201);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Job created successfully",
+        $this->response([
+          "message" => "Job created successfully",
             "job" => $job,
             "token" => $token
-        ]);
+        ], 201);
     }
 
     public function update($jobId, $token)
@@ -181,10 +173,8 @@ class jobs extends MY_Controller
 
         $job = $this->mdl_job->getJobById($jobId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Job updated successfully",
+        $this->response([
+          "message" => "Job updated successfully",
             "job" => $job
         ]);
     }
@@ -231,10 +221,8 @@ class jobs extends MY_Controller
 
         $job = $this->mdl_job->getJobById($jobId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Job updated successfully",
+        $this->response([
+          "message" => "Job updated successfully",
             "job" => $job
         ]);
     }
@@ -250,10 +238,8 @@ class jobs extends MY_Controller
 
         $job= $this->mdl_job->extendjob($id);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Validity extended successfully",
+        $this->response([
+          "message" => "Validity extended successfully",
             "id" =>$id,
             "job" => $job
         ]);
@@ -273,10 +259,8 @@ class jobs extends MY_Controller
             return; 
         }
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Job deleted successfully",
+        $this->response([
+          "message" => "Job deleted successfully",
             "id" =>$jobId
         ]);
 
@@ -288,8 +272,7 @@ class jobs extends MY_Controller
         
         $count = $this->mdl_job->getJobsCount();
 
-        header("Content-Type: application/json");
-        echo json_encode($count, JSON_PRETTY_PRINT);
+        $this->response($count);
     }
     
 }

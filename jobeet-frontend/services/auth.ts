@@ -9,7 +9,7 @@ export async function login(data: LoginData) {
 }
 
 export async function forgotPassword(email: string) {
-  const response = await api.post("/auth/forgotPassword", {email});
+  const response = await api.post("/auth/forgotPassword", { email });
 
   return response.data;
 }
@@ -18,15 +18,13 @@ export async function resetPassword(data: ResetPasswordData) {
   const response = await api.post(`/auth/resetPassword/${data.token}`, data);
 
   return response.data;
-
 }
 
 export async function logout() {
   return await api.post("/auth/logout");
-  
 }
 
 export async function getCurrentAdmin() {
-    const response = await api.get("/auth/me");
-    return response.data;
+  const response = await api.get("/auth/me");
+  return response.data;
 }

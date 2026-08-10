@@ -4,21 +4,21 @@ import { getJob } from "@/services/jobs";
 import { transformToJobForm } from "@/lib/transformers";
 
 type Props = {
-  params: Promise <{
+  params: Promise<{
     id: string;
     token: string;
   }>;
 };
 
-export default async function EditJobPage({params}: Props) {
-  const {id, token} = await params;
+export default async function EditJobPage({ params }: Props) {
+  const { id, token } = await params;
 
-  const job= await getJob(Number(id));
+  const job = await getJob(Number(id));
 
   const categories = await getCategories();
 
-  return(
-      <JobEditor
+  return (
+    <JobEditor
       mode="edit"
       userType="admin"
       initialJob={transformToJobForm(job)}
@@ -26,6 +26,5 @@ export default async function EditJobPage({params}: Props) {
       jobId={job.id}
       token={token}
     />
-    
   );
 }

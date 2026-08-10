@@ -31,12 +31,9 @@ class files extends MY_Controller
            
         $uploadData = $this->upload->data();
 
-        
-        header("Content-Type: application/json");
-        http_response_code(200);
-        echo json_encode([
-            "filename" => $uploadData["file_name"],
-            "url" => base_url("uploads/".$uploadData["file_name"])
+        $this->response([
+          "filename" => $uploadData["file_name"],
+          "url" => base_url("uploads/".$uploadData["file_name"])
         ]);
     }
 }

@@ -1,21 +1,21 @@
-.logoText{
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 27.2px;
-    color: #24292e;
-    margin: 0;
+.logoText {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 27.2px;
+  color: #24292e;
+  margin: 0;
 }
 
-.logoText:hover{
+.logoText:hover {
   opacity: 0.85;
   text-decoration: none;
 }
 
-.adminHeader{
+.adminHeader {
   margin-bottom: 0;
 }
 
-.adminNav{
+.adminNav {
   background: transparent;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
   min-height: 56px;
 }
 
-.navItem{
+.navItem {
   display: inline;
   line-height: 22.4px;
   padding: 8px 12px;
@@ -37,30 +37,30 @@
   white-space: nowrap;
 }
 
-.navItem:hover{
+.navItem:hover {
   background: rgba(0, 0, 0, 0.04);
   color: #24292e;
   text-decoration: none;
   border-color: #e1e4e8;
 }
 
-.navItem:active{
+.navItem:active {
   background: rgba(0, 0, 0, 0.06);
 }
 
-.navActiveItem{
+.navActiveItem {
   color: #24292e;
   font-weight: 600;
 }
 
-.navActiveItem:hover{
+.navActiveItem:hover {
   background: rgba(0, 0, 0, 0.04);
   border-color: #e1e4e8;
   border-radius: 6px;
 }
 
-.navActiveItem::after{
-  content: '';
+.navActiveItem::after {
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -72,8 +72,8 @@
   z-index: 1;
 }
 
-.navActiveItem:hover::before{
-  content: '';
+.navActiveItem:hover::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -86,7 +86,7 @@
   border-bottom: none;
 }
 
-.card{
+.card {
   background: #ffffff;
   border: 1px solid #d0d7de;
   border-radius: 6px;
@@ -99,45 +99,45 @@
 }
 
 .cardH3 {
-    margin: 0 0 8px 0;
-    font-size: 14px;
-    font-weight: 500;
-    color: #57606a;
-    text-transform: uppercase;
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #57606a;
+  text-transform: uppercase;
 }
 
 .cardNumber {
-    margin: 0 0 4px 0;
-    font-size: 36px;
-    font-weight: 600;
-    color: #24292e;
-    line-height: 1.2;
+  margin: 0 0 4px 0;
+  font-size: 36px;
+  font-weight: 600;
+  color: #24292e;
+  line-height: 1.2;
 }
 
 .cardLabel {
-    font-size: 13px;
-    color: #57606a;
-    display: block;
+  font-size: 13px;
+  color: #57606a;
+  display: block;
 }
 
 .card:nth-child(1) {
-    border-top: 3px solid #2d89ef;
+  border-top: 3px solid #2d89ef;
 }
 
 .card:nth-child(2) {
-    border-top: 3px solid #28a745;
+  border-top: 3px solid #28a745;
 }
 
 .card:nth-child(3) {
-    border-top: 3px solid #f9826c;
+  border-top: 3px solid #f9826c;
 }
 
 .card:nth-child(4) {
-    border-top: 3px solid #2d89ef;
+  border-top: 3px solid #2d89ef;
 }
 
 .card:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.08);
-    border-color: #2d89ef;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.08);
+  border-color: #2d89ef;
 }

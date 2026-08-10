@@ -1,14 +1,10 @@
-
-
 import ForgotPasswordForm from "@/components/auth/ForgotPasswordForm";
 import Container from "@/components/ui/Container";
 
-
 export default async function ForgotPasswordPage() {
-  return(
+  return (
     <Container>
-      <ForgotPasswordForm/>
+      <ForgotPasswordForm />
     </Container>
   );
-
 }

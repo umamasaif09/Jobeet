@@ -1,37 +1,45 @@
 import { Category } from "@/types/category";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "../ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import styles from "./categories.module.css";
 
-interface Props{
+interface Props {
   category: Category;
 
   onEdit: (category: Category) => void;
-  onDelete: (category: Category) =>void;
+  onDelete: (category: Category) => void;
 }
 
-export default function CategoryAction({category, onEdit, onDelete}: Props) {
-  return(
-  <>
-    <DropdownMenu>
-      <DropdownMenuTrigger className={styles.menuToggle}>
-        ⋮
-      </DropdownMenuTrigger>
+export default function CategoryAction({ category, onEdit, onDelete }: Props) {
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger className={styles.menuToggle}>
+          ⋮
+        </DropdownMenuTrigger>
 
-      <DropdownMenuContent>
-        <DropdownMenuItem onClick={()=> onEdit(category)}
-          className={styles.menuDropdownBtnWarning}
+        <DropdownMenuContent>
+          <DropdownMenuItem
+            onClick={() => onEdit(category)}
+            className={styles.menuDropdownBtnWarning}
           >
-          Edit
-        </DropdownMenuItem>
+            Edit
+          </DropdownMenuItem>
 
-        <DropdownMenuItem
-          className={styles.menuDropdownBtnDanger}
-          onClick={() => {onDelete(category)}}
+          <DropdownMenuItem
+            className={styles.menuDropdownBtnDanger}
+            onClick={() => {
+              onDelete(category);
+            }}
           >
-          Delete
-        </DropdownMenuItem>
-      </DropdownMenuContent> 
-    </DropdownMenu>
-  </>
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 }

@@ -7,59 +7,39 @@ import styles from "./admin.module.css";
 
 type DashboardStats = {
   categories: number;
-  jobs:number;
-  affiliates:number;
-  admins:number;
-}
+  jobs: number;
+  affiliates: number;
+  admins: number;
+};
 
 export default function HomePage() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
- 
-  useEffect(()=> {
+
+  useEffect(() => {
     async function load() {
-      const data= await getDashboardStats();
+      const data = await getDashboardStats();
       setStats(data);
     }
     load();
   }, []);
 
-  if(!stats) {
-    return (
-      <div>Loading...</div>
-    )
+  if (!stats) {
+    return <div>Loading...</div>;
   }
 
   return (
     <>
-       <h1 className={styles.dashboardH2}>
-        Dashboard
-      </h1>
+      <h1 className={styles.dashboardH2}>Dashboard</h1>
 
-      
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          title="Categories"
-          value={stats.categories}
-        />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <StatCard title="Categories" value={stats.categories} />
 
-        <StatCard
-          title="Jobs"
-          value={stats.jobs}
-        />
+        <StatCard title="Jobs" value={stats.jobs} />
 
-        <StatCard
-          title="Affiliates"
-          value={stats.affiliates}
-        />
+        <StatCard title="Affiliates" value={stats.affiliates} />
 
-        <StatCard
-          title="Admins"
-          value={stats.admins}
-        />
+        <StatCard title="Admins" value={stats.admins} />
       </div>
-      
     </>
-   
-      
   );
 }

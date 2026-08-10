@@ -1,5 +1,5 @@
 import { Job } from "./job";
 
- export interface SearchResults extends Job{
+export interface SearchResults extends Job {
   name: string;
 }

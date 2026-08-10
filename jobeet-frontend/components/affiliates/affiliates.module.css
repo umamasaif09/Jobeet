@@ -1,32 +1,32 @@
 /* Affiliate Form */
 
-.formTextInput{
+.formTextInput {
   height: 45.6px;
   line-height: normal;
   width: 100%;
   padding: 12px;
   border: 2px solid #ccc;
-  border-radius: 10px ;
+  border-radius: 10px;
   font-size: 16px;
   background: #ffffff;
 }
 
 .formTextInput:focus,
-.checkboxInput:focus{
+.checkboxInput:focus {
   outline: none;
   border-color: #2d89ef;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
-.formLabel{
-  display:block;
+.formLabel {
+  display: block;
   font-weight: 700;
   color: #333;
   font-size: 16px;
   /* margin-bottom: 8px; */
 }
 
-.checkboxLabel{
+.checkboxLabel {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -35,16 +35,16 @@
   line-height: 1.4;
 }
 
-.checkboxLabel:hover{
+.checkboxLabel:hover {
   color: #2d89ef;
 }
 
-.checkboxInput{
+.checkboxInput {
   margin: 0;
   cursor: pointer;
 }
 
-.checkboxInput[data-state="checked"]{
+.checkboxInput[data-state="checked"] {
   border-color: #2d89ef;
   background-color: #2d89ef;
 }
@@ -53,13 +53,13 @@
   border-color: #ccc;
 }
 
-.formGroup{
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form{
+.form {
   min-width: 224px;
   margin: 0;
   padding: 0 95px 0 0;
@@ -68,9 +68,13 @@
   gap: 12px;
 }
 
-.applyButton{
+.required {
+  color: red;
+}
+
+.applyButton {
   padding: 0 20px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -78,7 +82,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -90,9 +94,9 @@
   height: 38px;
 }
 
-.applyButton:hover{
+.applyButton:hover {
   background: #1d6fd3;
-    transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 .h4 {
@@ -103,7 +107,7 @@
 
 /* Affiliate Table */
 
-.affiliatesTableCard{
+.affiliatesTableCard {
   width: 100%;
   overflow-x: auto;
   background: #ffffff;
@@ -112,11 +116,11 @@
   margin-bottom: 24px;
 }
 
-.affiliatesTableCard:hover{
+.affiliatesTableCard:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.affiliatesTable{
+.affiliatesTable {
   width: 100%;
   margin-top: 0;
   border-collapse: collapse;
@@ -126,7 +130,7 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.affiliatesTableHeaderTh{
+.affiliatesTableHeaderTh {
   background: #f6f8fa;
   color: #24292e;
   font-weight: 900;
@@ -138,43 +142,43 @@
   white-space: nowrap;
 }
 
-.affiliatesTableBodyTd{
-    padding: 10px;
-    border-bottom: 1px solid #f0f2f5;
-    text-align: left;
-    font-size: 13px;
-    color: #24292e;
-    vertical-align: middle;
-    white-space: normal;
+.affiliatesTableBodyTd {
+  padding: 10px;
+  border-bottom: 1px solid #f0f2f5;
+  text-align: left;
+  font-size: 13px;
+  color: #24292e;
+  vertical-align: middle;
+  white-space: normal;
 }
 
-.affiliatesTableBodyTr{
+.affiliatesTableBodyTr {
   transition: background 0.15s ease;
 }
 
 .affiliatesTableBodyTr:nth-child(even) {
-    background: #fafafa;
+  background: #fafafa;
 }
 
 .affiliatesTableIdColumn {
-    width: 60px;
-    font-weight: 500;
-    color: #57606a;
-    font-size: 13px;
+  width: 60px;
+  font-weight: 500;
+  color: #57606a;
+  font-size: 13px;
 }
 
-.affiliatesJobTitle{
-    font-size: 12px;
-    font-weight: 600;
-    color: #1f2937;
+.affiliatesJobTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
 }
 
-.affiliatesJobMeta{
+.affiliatesJobMeta {
   color: #1f2937;
   font-size: 12px;
 }
 
-.badgeActive{
+.badgeActive {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -185,7 +189,7 @@
   color: #166534;
 }
 
-.badgeInactive{
+.badgeInactive {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -197,77 +201,77 @@
 }
 
 .rowMenu {
-    position: relative;
-    width: 50px;
-    text-align: left ;
-    padding-left: 16px ;
-    overflow: visible ;
+  position: relative;
+  width: 50px;
+  text-align: left;
+  padding-left: 16px;
+  overflow: visible;
 }
 
 .menuDropdownBtnWarning {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #24292e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #24292e;
+  border: none;
 }
 
 .menuDropdownBtnWarning:hover {
-    background: #f0f2f5;
-    color: #1a202c;
-    transform: none;
+  background: #f0f2f5;
+  color: #1a202c;
+  transform: none;
 }
 
 .menuDropdownBtnDanger {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #cf222e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #cf222e;
+  border: none;
 }
 
 .menuDropdownBtnDanger:hover {
-    background: #ffebe9;
-    color: #cf222e;
-    transform: none;
+  background: #ffebe9;
+  color: #cf222e;
+  transform: none;
 }
 
 .menuDropdownBtnSuccess {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #1a7f37;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #1a7f37;
+  border: none;
 }
 
 .menuDropdownBtnSuccess:hover {
-    background: #dafbe1;
-    color: #1a7f37;
-    transform: none;
+  background: #dafbe1;
+  color: #1a7f37;
+  transform: none;
 }
 
 .menuToggle {
@@ -288,7 +292,7 @@
   color: #24292e;
 }
 
-.menuToggle:focus{
+.menuToggle:focus {
   outline: none;
   background: #e8eaed;
 }

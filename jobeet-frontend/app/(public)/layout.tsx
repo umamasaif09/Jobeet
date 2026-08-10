@@ -8,17 +8,15 @@ export default function PublicLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return(
-     <div className="min-h-screen flex flex-col">
-        <Header />
-        <Toaster />
-            <main className="flex-1 text-[#333]">
-              <Container>
-                {children}
-              </Container>
-            </main>
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <Toaster />
+      <main className="flex-1 text-[#333]">
+        <Container>{children}</Container>
+      </main>
 
-        <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -8,45 +8,55 @@ type Props = {
   onEdit: (admin: Admin) => void;
   onDelete: (admin: Admin) => void;
   onStatus: (admin: Admin) => void;
-}
+};
 
-export default function AdminRow({admin, onEdit, onDelete, onStatus}: Props) {
+export default function AdminRow({ admin, onEdit, onDelete, onStatus }: Props) {
   return (
     <TableRow className={styles.adminsTableBodyTr}>
-      <TableCell  className={`${styles.adminsTableIdColumn} ${styles.adminsTableBodyTd}`}>
+      <TableCell
+        className={`${styles.adminsTableIdColumn} ${styles.adminsTableBodyTd}`}
+      >
         {admin.id}
       </TableCell>
 
-      <TableCell className={`${styles.adminsJobTitle} ${styles.adminsTableBodyTd}`}>
+      <TableCell
+        className={`${styles.adminsJobTitle} ${styles.adminsTableBodyTd}`}
+      >
         {admin.name}
       </TableCell>
 
-      <TableCell className={`${styles.adminsJobMeta} ${styles.adminsTableBodyTd}`}>
+      <TableCell
+        className={`${styles.adminsJobMeta} ${styles.adminsTableBodyTd}`}
+      >
         {admin.email}
       </TableCell>
 
       <TableCell className={styles.adminsTableBodyTd}>
-          <span className={admin.is_active == true ? styles.badgeActive : styles.badgeInactive}>{admin.is_active == true? "Acive" : "Inactive"}</span>
+        <span
+          className={
+            admin.is_active == true ? styles.badgeActive : styles.badgeInactive
+          }
+        >
+          {admin.is_active == true ? "Acive" : "Inactive"}
+        </span>
       </TableCell>
 
       <TableCell className={`${styles.expiryDate} ${styles.adminsTableBodyTd}`}>
-        {new Date(admin.created_at).toLocaleDateString("en-GB",{
+        {new Date(admin.created_at).toLocaleDateString("en-GB", {
           day: "2-digit",
           month: "short",
-          year: "numeric"
-        } )}
-        
+          year: "numeric",
+        })}
       </TableCell>
 
       <TableCell className={styles.rowMenu}>
         <AdminAction
-          admin = {admin}
-          onEdit = {onEdit}
-          onDelete = {onDelete}
-          onStatus = {onStatus}
+          admin={admin}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onStatus={onStatus}
         />
       </TableCell>
-
     </TableRow>
-  )
+  );
 }

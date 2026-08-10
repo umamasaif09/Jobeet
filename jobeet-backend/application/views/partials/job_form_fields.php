@@ -1,8 +1,9 @@
 <?php $isEdit= isset($job); ?>
 
 <div class="form-group">
-    <label for="category_id">Category</label>
-    <select name="category_id" id="category_id">
+    <label for="category_id">Category <span class="required">*</span>
+    </label>
+    <select name="category_id" id="category_id" required>
       <option value="" disabled selected style="color: #a0a8b4;">Select Category</option>
          <?php foreach($categories as $category) { ?>
                     <option value="<?php echo $category["id"]; ?>"
@@ -54,7 +55,7 @@
 </div>
 
 <div class="form-group">
-    <label for="company">Company Name</label>
+    <label for="company">Company Name <span class="required">*</span></label>
     <input type="text" name="company" id="company" placeholder="Enter company name"
         value="<?php echo $isEdit ? $job["company"] : ''; ?>" required
     >
@@ -69,6 +70,7 @@
             src="<?php echo !empty($job['logo']) ? base_url('uploads/'.$job['logo']) : ''; ?>"
             alt="Company Logo"
             <?php echo empty($job['logo']) ? 'style="display:none;"' : ''; ?>
+            class="logo"
         >
 
         <label for="logo" class="file-button">Choose File</label>
@@ -86,39 +88,39 @@
 </div>
 
 <div class="form-group">
-    <label for="url">Website Url</label>
+    <label for="url">Website Url <span class="required">*</span></label>
     <input type="url" name="url" id="url" placeholder= "Enter website url"
         value="<?php echo $isEdit ? $job["url"] : ''; ?>" required>
 </div>
 
 <div class="form-group">
-    <label for="position">Position</label>
+    <label for="position">Position <span class="required">*</span></label>
     <input type="text" name="position" id="position" placeholder= "Enter position"
         value="<?php echo $isEdit ? $job["position"] : ''; ?>" required
         >
 </div>
 
 <div class="form-group">
-    <label for="location">Location</label>
+    <label for="location">Location <span class="required">*</span></label>
     <input type="text" name="location" id="location" placeholder="Enter location"
                 value="<?php echo $isEdit ? $job["location"] : ''; ?>" required
             >
 </div>
 
 <div class="form-group">
-    <label for="email">Company Email</label>
+    <label for="email">Company Email <span class="required">*</span></label>
     <input type="email" name="email" id="email" placeholder="Enter company email"
                 value="<?php echo $isEdit ? $job["email"] : ''; ?>" required
             >
 </div>
 
 <div class="form-group">
-    <label for="description">Description</label>
+    <label for="description">Description <span class="required">*</span></label>
     <textarea name="description" id="description" placeholder="Enter job description here"><?php echo $isEdit ? $job["description"]: '' ?></textarea>
 </div>
 
 <div class="form-group">
-    <label for="how_to_apply">How to apply</label>
+    <label for="how_to_apply">How to apply <span class="required">*</span></label>
     <textarea name="how_to_apply" id="how_to_apply" placeholder="Enter how to apply here"><?php echo $isEdit ? $job["how_to_apply"]: '' ?></textarea>
 </div>
 

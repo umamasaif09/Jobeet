@@ -4,17 +4,17 @@
 
 
         <div  class = "form-group">
-            <label>Name</label>
+            <label>Name <span class="required">*</span></label>
             <input type="text" name= "name" placeholder = "Enter affiliate name" required value="<?php echo $isEdit ? $affiliate["name"] : ''; ?>">
         </div>
                 
         <div class = "form-group">
-            <label>Email</label>
+            <label>Email <span class="required">*</span></label>
             <input type="email" name= "email" placeholder = "Enter affiliate email" required value="<?php echo $isEdit ? $affiliate["email"] : ''; ?>">
         </div>
 
         <div class = "form-group">
-            <label>Website</label>
+            <label>Website <span class="required">*</span></label>
             <input type="url" name= "site_url" placeholder= "Enter affiliate website url" required value="<?php echo $isEdit ? $affiliate["site_url"] : ''; ?>">
         </div>
 

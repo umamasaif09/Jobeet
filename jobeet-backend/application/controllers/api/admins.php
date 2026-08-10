@@ -16,8 +16,8 @@ class admins extends MY_Controller
         
         $admins = $this->mdl_admin->getAdmins();
 
-        header("Content-Type: application/json");
-        echo json_encode($admins, JSON_PRETTY_PRINT);
+        $this->response($admins);
+
     }
 
     public function detail($id) {
@@ -25,8 +25,7 @@ class admins extends MY_Controller
 
       $admin= $this->mdl_admin->getAdminById();
 
-      header("Content-Type: application/json");
-      echo json_encode($admin, JSON_PRETTY_PRINT);
+      $this->response($admin);
     }
 
     public function create()
@@ -37,11 +36,9 @@ class admins extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+          return $this->response([
+            "message" => "Invalid request"
+            ],400);
         }
 
         $adminData = [
@@ -53,23 +50,18 @@ class admins extends MY_Controller
         $adminId = $this->mdl_admin->registerAdmin($adminData);
 
         if(!$adminId) {
-            http_response_code(500);
-            echo json_encode([
-                "message"=> "Unable to create admin"
-            ]);
-
-            return;
+            return $this->response([
+              "message"=> "Unable to create admin"
+            ],500);
         }
 
         $admin = $this->mdl_admin->getAdminById($adminId);
 
-        http_response_code(201);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Admin created successfully",
-            "id" =>$adminId,
-            "admin" => $admin
-        ]);
+        $this->response([
+          "message" => "Admin created successfully",
+          "id" =>$adminId,
+          "admin" => $admin
+        ], 201);
     }
 
     public function update($adminId)
@@ -80,11 +72,9 @@ class admins extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ],400);
         }
 
         $adminData = [
@@ -95,22 +85,17 @@ class admins extends MY_Controller
         $admin = $this->mdl_admin->updateAdmin($adminId,$adminData);
 
         if(!$admin) {
-            http_response_code(500);
-            echo json_encode([
-                "message"=> "Unable to update admin"
-            ]);
-
-            return;
+            return $this->response([
+              "message"=> "Unable to update admin"
+            ], 500);
         }
 
         $admin = $this->mdl_admin->getAdminById($adminId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Admin updated successfully",
-            "id" =>$adminId,
-            "admin" => $admin
+        $this->response([
+          "message" => "Admin updated successfully",
+          "id" =>$adminId,
+          "admin" => $admin
         ]);
 
     }
@@ -122,22 +107,17 @@ class admins extends MY_Controller
         $disabled = $this->mdl_admin->disable($adminId);
 
         if(!$disabled) {
-            http_response_code(404);
-            echo json_encode([
-                "message" => "Admin not found"
-            ]);
-            return; 
+            return $this->response([
+              "message" => "Admin not found"
+            ], 400); 
         }
 
         $admin = $this->mdl_admin->getAdminById($adminId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Admin disabled successfully",
-            "id" =>$adminId,
-            "admin" => $admin
-        ]);
+        $this->response([
+          "message" => "Admin disabled successfully",
+          "id" =>$adminId,
+          "admin" => $admin]);
     }
 
     public function activate($adminId)
@@ -146,23 +126,18 @@ class admins extends MY_Controller
         
         $activated = $this->mdl_admin->activate($adminId);
         if(!$activated) {
-            http_response_code(404);
-            echo json_encode([
-                "message" => "Admin not found"
-            ]);
-            return; 
+            return $this->response([
+              "message" => "Admin not found"
+            ],404); 
         }
 
         $admin = $this->mdl_admin->getAdminById($adminId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Admin activated successfully",
-            "id" =>$adminId,
-            "admin" => $admin
+        $this->response([
+          "message" => "Admin activated successfully",
+          "id" =>$adminId,
+          "admin" => $admin
         ]);
-
     }
 
     public function delete($adminId)
@@ -172,20 +147,15 @@ class admins extends MY_Controller
         $deleted = $this->mdl_admin->deleteAdmin($adminId);
 
         if(!$deleted) {
-            http_response_code(404);
-            echo json_encode([
-                "message" => "Admin not found"
-            ]);
-            return; 
+            return $this->resposne([
+              "message" => "Admin not found"
+            ], 404); 
         }
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Admin deleted successfully",
-            "id" =>$adminId
+        $this->response([
+          "message" => "Admin deleted successfully",
+          "id" =>$adminId
         ]);
-
     }
 
     public function count()
@@ -194,8 +164,7 @@ class admins extends MY_Controller
         
         $count = $this->mdl_admin->getAdminsCount();
 
-        header("Content-Type: application/json");
-        echo json_encode($count, JSON_PRETTY_PRINT);
+        $this->response($count);
     }
 
     public function dashboard() {
@@ -212,13 +181,11 @@ class admins extends MY_Controller
 
       $admins = $this->mdl_admin->getAdminsCount();
 
-      http_response_code(200);
-      header("Content-Type: application/json");
-      echo json_encode([
-          "categories" => $categories,
-          "jobs" => $jobs,
-          "affiliates" => $affiliates,
-          "admins" => $admins
+      $this->response([
+        "categories" => $categories,
+        "jobs" => $jobs,
+        "affiliates" => $affiliates,
+        "admins" => $admins
       ]);
     }
 }

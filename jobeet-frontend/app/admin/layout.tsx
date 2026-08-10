@@ -15,13 +15,12 @@ export default function AdminLayout({
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
-  useEffect(()=> {
+  useEffect(() => {
     async function checkAuth() {
       try {
         await getCurrentAdmin();
         setLoading(false);
-      }
-      catch{
+      } catch {
         router.replace("/auth/login");
         return;
       }
@@ -29,22 +28,17 @@ export default function AdminLayout({
     checkAuth();
   }, [router]);
 
-  if(loading) {
-    return (
-      <div>Loading...</div>
-    );
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  return(
+  return (
     <div className="min-h-screen flex flex-col">
-        <Header />
-        <Toaster />
-            <main className="flex-1 text-[#333]">
-              <Container>
-                {children}
-              </Container>
-            </main>
-
+      <Header />
+      <Toaster />
+      <main className="flex-1 text-[#333]">
+        <Container>{children}</Container>
+      </main>
     </div>
   );
 }

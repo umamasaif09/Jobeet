@@ -28,11 +28,9 @@ class auth extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ] ,400);
         }
 
         $email = $data["email"];
@@ -41,30 +39,27 @@ class auth extends MY_Controller
         $admin = $this->mdl_admin->getAdminByEmail($email);
 
         if(!$admin) {
-            http_response_code(401);
-            echo json_encode([
-                "message" => "Incorrect email or password"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Incorrect email or password"
+            ] ,401);
         } else if(!password_verify($password, $admin["password"])) {
-            http_response_code(401);
-            echo json_encode([
-                "message" => "Incorrect email or password"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Incorrect email or password"
+            ] ,401);
         } else if(!$admin["is_active"]) {
             http_response_code(403);
             echo json_encode([
                 "message" => "Account disabled"
             ]);
-            return;
+            return $this->response([
+              "message" => "Account disabled"
+            ] ,403);;
         }
 
         $this->createSession($admin);
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Login successful",
+
+        $this->response([
+          "message" => "Login successful",
             "admin" => [
                 "id" => $admin["id"],
                 "email" => $admin["email"],
@@ -78,10 +73,9 @@ class auth extends MY_Controller
         $this->requireLogin();
         
         $this->session->sess_destroy();
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Logout successful"
+
+        $this->response([
+          "message" => "Logout successful"
         ]);
 
     }
@@ -111,11 +105,9 @@ class auth extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ], 400);
         }
 
         $email = trim($data["email"]);
@@ -123,11 +115,9 @@ class auth extends MY_Controller
         $admin = $this->mdl_admin->getAdminByEmail($email);
 
         if(!$admin) {
-            http_response_code(200);
-            echo json_encode([
-                "message" => "If an account with this email exists, a password reset link has been sent"
+            return $this->response([
+              "message" => "If an account with this email exists, a password reset link has been sent"
             ]);
-            return;
         }
 
         $token = bin2hex(random_bytes(32));
@@ -139,17 +129,13 @@ class auth extends MY_Controller
         $emailSent = $this->sendPasswordResetEmail($admin, $resetLink);
 
         if(!$emailSent) {
-            http_response_code(500);
-            echo json_encode([
-                "message" => "Unable to send email"
-            ]);
-            return;
+            return $this->resposne([
+              "message" => "Unable to send email"
+            ],500);
         }
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "If an account with this email exists, a password reset link has been sent"
+        $this->response([
+          "message" => "If an account with this email exists, a password reset link has been sent"
         ]);
 
     }
@@ -160,11 +146,9 @@ class auth extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ], 400);
         }
 
         $password = $data["password"];
@@ -172,11 +156,9 @@ class auth extends MY_Controller
         $admin = $this->mdl_admin->getAdminByResetToken($token);
 
         if(!$admin || $admin["reset_token_expires_at"] < date("Y-m-d H:i:s")) {
-            http_response_code(403);
-            echo json_encode([
-                "message" => "Invalid or expired reset link"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid or expired reset link"
+            ], 403);
         }
 
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
@@ -191,10 +173,8 @@ class auth extends MY_Controller
             return; 
         }
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Password updated successfully"
+        $this->response([
+          "message" => "Password updated successfully"
         ]);
 
     }
@@ -202,13 +182,11 @@ class auth extends MY_Controller
     public function me()
     {
         $this->requireLogin();
-        http_response_code(200);
-        header("Content-Type: application/json");
 
-        echo json_encode([
-            "id" => $this->session->userdata("admin_id"),
-            "name" => $this->session->userdata("admin_name"),
-            "email" => $this->session->userdata("admin_email")
+        $this->response([
+          "id" => $this->session->userdata("admin_id"),
+          "name" => $this->session->userdata("admin_name"),
+          "email" => $this->session->userdata("admin_email")
         ]);
     }
 }

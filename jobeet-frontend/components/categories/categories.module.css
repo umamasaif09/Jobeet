@@ -1,22 +1,22 @@
-.categoryHeading{
+.categoryHeading {
   margin: 16px 0;
   font-size: 20px;
   font-weight: 600;
   color: #3498db;
   text-decoration: none;
-  line-height: 16.8px
+  line-height: 16.8px;
 }
 
-.categoryHeading:hover{
+.categoryHeading:hover {
   color: #3d89ef;
   text-decoration: none;
 }
 
 /* Category Page */
 
-.categoryButton{
+.categoryButton {
   padding: 0 20px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -24,7 +24,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -36,9 +36,9 @@
   height: 38px;
 }
 
-.categoryButton:hover{
+.categoryButton:hover {
   background: #1d6fd3;
-    transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 /* Category Table */
@@ -56,10 +56,10 @@
 }
 
 .categoryTableCard:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.categoryTable{
+.categoryTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 0;
@@ -70,123 +70,123 @@
 }
 
 .categoryTableHeaderTh {
-    background: #f6f8fa;
-    color: #24292e;
-    font-weight: 900;
-    font-size: 13px;
-    text-transform: uppercase;
-    padding: 14px 16px;
-    text-align: left;
-    border-bottom: 2px solid #e1e4e8;
-    white-space: nowrap;
+  background: #f6f8fa;
+  color: #24292e;
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 2px solid #e1e4e8;
+  white-space: nowrap;
 }
 
 .categoryTableBodyTd {
-    padding: 14px 16px;
-    border-bottom: 1px solid #f0f2f5;
-    text-align: left;
-    font-size: 14px;
-    color: #24292e;
-    vertical-align: middle;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0f2f5;
+  text-align: left;
+  font-size: 14px;
+  color: #24292e;
+  vertical-align: middle;
 }
 
 .categoryTableBodyTr {
-    transition: background 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .categoryTableBodyTr:nth-child(even) {
-    background: #fafafa;
+  background: #fafafa;
 }
 
-.menuDropdown{
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: 4px;
+.menuDropdown {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 
 .categoryTableBodyTr:hover {
-    background: #f8f9fa;
+  background: #f8f9fa;
 }
 
 .categoryTableIdColumn {
-    width: 60px;
-    font-weight: 500;
-    color: #57606a;
-    font-size: 13px;
+  width: 60px;
+  font-weight: 500;
+  color: #57606a;
+  font-size: 13px;
 }
 
 .rowMenu {
-    position: relative;
-    width: 50px;
-    text-align: left ;
-    padding-left: 16px ;
-    overflow: visible ;
+  position: relative;
+  width: 50px;
+  text-align: left;
+  padding-left: 16px;
+  overflow: visible;
 }
 
 .menuDropdownBtnWarning {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #24292e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #24292e;
+  border: none;
 }
 
 .menuDropdownBtnWarning:hover {
-    background: #f0f2f5;
-    color: #1a202c;
-    transform: none;
+  background: #f0f2f5;
+  color: #1a202c;
+  transform: none;
 }
 
 .menuDropdownBtnDanger {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #cf222e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #cf222e;
+  border: none;
 }
 
 .menuDropdownBtnDanger:hover {
-    background: #ffebe9;
-    color: #cf222e;
-    transform: none;
+  background: #ffebe9;
+  color: #cf222e;
+  transform: none;
 }
 
 /* Category Dialog */
 
 .dialogContent {
-    padding: 0;
-    overflow: hidden;
-    background: white;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 480px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    animation: modalSlideUp 0.25s ease;
+  padding: 0;
+  overflow: hidden;
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: modalSlideUp 0.25s ease;
 }
 
-.dialogBody{
+.dialogBody {
   padding: 0 24px 24px 24px;
 }
 
-.dialogHeader{
+.dialogHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -195,26 +195,26 @@
   background: #fafbfc;
 }
 
-.dialogHeaderH2{
+.dialogHeaderH2 {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
   color: #24292e;
 }
 
-.dialogForm{
+.dialogForm {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.formGroup{
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.formGroupLabel{
+.formGroupLabel {
   display: block;
   font-size: 14px;
   font-weight: 600;
@@ -222,7 +222,7 @@
   height: 16.8px;
 }
 
-.formGroupInput{
+.formGroupInput {
   width: 100%;
   padding: 10px 14px;
   border: 2px solid #e1e4e8;
@@ -233,16 +233,16 @@
   height: 45.6px;
 }
 
-.formGroupInput:focus{
+.formGroupInput:focus {
   outline: none;
   border-color: #2d89ef;
   box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.12);
 }
 
-.dialogButton{
+.dialogButton {
   width: 100%;
   padding: 12px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -250,7 +250,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -262,13 +262,13 @@
   height: 38px;
 }
 
-.dialogButton:hover{
+.dialogButton:hover {
   background: #1d6fd3;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(45, 137, 239, 0.3);
 }
 
-.dialogButton:active{
+.dialogButton:active {
   transform: scale(0.98);
 }
 
@@ -290,7 +290,7 @@
   color: #24292e;
 }
 
-.menuToggle:focus{
+.menuToggle:focus {
   outline: none;
   background: #e8eaed;
 }
@@ -298,20 +298,19 @@
 /* Responsive design */
 
 @media screen and (max-width: 540px) {
-  .categoryHeading { 
+  .categoryHeading {
     margin: 8px 0;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .categoryHeading{
+  .categoryHeading {
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 360px) {
-  .categoryHeading{
+  .categoryHeading {
     font-size: 14px;
-    
   }
 }

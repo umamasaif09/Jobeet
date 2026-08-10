@@ -1,22 +1,22 @@
 .authForm {
-    max-width: 420px;
-    margin: 60px auto;
-    padding: 32px;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.formGroup{
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.formGroupLabel{
+.formGroupLabel {
   display: block;
   font-weight: 600;
   font-size: 14px;
@@ -24,23 +24,25 @@
   line-height: 16.8px;
 }
 
-.authFormInput{
+.authFormInput {
   padding: 12px;
   border: 2px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   margin: 0;
   height: 45.6px;
 }
 
-.authFormInput:focus{
+.authFormInput:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-.authFormLink{
+.authFormLink {
   align-self: flex-end;
   text-decoration: none;
   font-size: 0.9rem;
@@ -48,13 +50,13 @@
   line-height: 16.8px;
 }
 
-.authFormLink:hover{
+.authFormLink:hover {
   text-decoration: underline;
 }
 
-.authFormButton{
+.authFormButton {
   padding: 0 20px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -62,7 +64,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -74,12 +76,12 @@
   height: 38px;
 }
 
-.authFormButton:hover{
-   background: #1d6fd3;
+.authFormButton:hover {
+  background: #1d6fd3;
   transform: translateY(-1px);
 }
 
-.authFormH2{
+.authFormH2 {
   margin: 0;
   text-align: center;
   font-size: 24px;

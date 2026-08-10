@@ -1,6 +1,6 @@
-.adminButton{
+.adminButton {
   padding: 0 20px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -8,7 +8,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -20,14 +20,14 @@
   height: 38px;
 }
 
-.adminButton:hover{
+.adminButton:hover {
   background: #1d6fd3;
-    transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 /* AdminTable */
 
-.adminsTableCard{
+.adminsTableCard {
   width: 100%;
   overflow-x: auto;
   background: #ffffff;
@@ -36,11 +36,11 @@
   margin-bottom: 24px;
 }
 
-.adminsTableCard:hover{
+.adminsTableCard:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.adminsTable{
+.adminsTable {
   width: 100%;
   margin-top: 0;
   border-collapse: collapse;
@@ -50,7 +50,7 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.adminsTableHeaderTh{
+.adminsTableHeaderTh {
   background: #f6f8fa;
   color: #24292e;
   font-weight: 900;
@@ -62,49 +62,49 @@
   white-space: nowrap;
 }
 
-.adminsTableBodyTd{
-    padding: 10px;
-    border-bottom: 1px solid #f0f2f5;
-    text-align: left;
-    font-size: 13px;
-    color: #24292e;
-    vertical-align: middle;
-    white-space: normal;
+.adminsTableBodyTd {
+  padding: 10px;
+  border-bottom: 1px solid #f0f2f5;
+  text-align: left;
+  font-size: 13px;
+  color: #24292e;
+  vertical-align: middle;
+  white-space: normal;
 }
 
-.adminsTableBodyTr{
+.adminsTableBodyTr {
   transition: background 0.15s ease;
 }
 
 .adminsTableBodyTr:nth-child(even) {
-    background: #fafafa;
+  background: #fafafa;
 }
 
 .adminsTableIdColumn {
-    width: 60px;
-    font-weight: 500;
-    color: #57606a;
-    font-size: 13px;
+  width: 60px;
+  font-weight: 500;
+  color: #57606a;
+  font-size: 13px;
 }
 
-.adminsJobTitle{
-    font-size: 12px;
-    font-weight: 600;
-    color: #1f2937;
+.adminsJobTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
 }
 
-.adminsJobMeta{
+.adminsJobMeta {
   color: #1f2937;
   font-size: 12px;
 }
 
-.expiryDate{
+.expiryDate {
   color: #1f2937;
   font-size: 12px;
   font-weight: 400;
 }
 
-.badgeActive{
+.badgeActive {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -115,7 +115,7 @@
   color: #166534;
 }
 
-.badgeInactive{
+.badgeInactive {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -127,82 +127,82 @@
 }
 
 .rowMenu {
-    position: relative;
-    width: 50px;
-    text-align: left ;
-    padding-left: 16px ;
-    overflow: visible ;
+  position: relative;
+  width: 50px;
+  text-align: left;
+  padding-left: 16px;
+  overflow: visible;
 }
 
 .menuDropdownBtnWarning {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #24292e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #24292e;
+  border: none;
 }
 
 .menuDropdownBtnWarning:hover {
-    background: #f0f2f5;
-    color: #1a202c;
-    transform: none;
+  background: #f0f2f5;
+  color: #1a202c;
+  transform: none;
 }
 
 .menuDropdownBtnDanger {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #cf222e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #cf222e;
+  border: none;
 }
 
 .menuDropdownBtnDanger:hover {
-    background: #ffebe9;
-    color: #cf222e;
-    transform: none;
+  background: #ffebe9;
+  color: #cf222e;
+  transform: none;
 }
 
 .menuDropdownBtnSuccess {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #1a7f37;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #1a7f37;
+  border: none;
 }
 
 .menuDropdownBtnSuccess:hover {
-    background: #dafbe1;
-    color: #1a7f37;
-    transform: none;
+  background: #dafbe1;
+  color: #1a7f37;
+  transform: none;
 }
 
 /* Admin Form */
 
-.form{
+.form {
   min-width: 224px;
   margin: 0;
   padding: 0 95px 0 0;
@@ -211,34 +211,37 @@
   gap: 12px;
 }
 
-.formLabel{
-  display:block;
-  font-weight:700;
+.formLabel {
+  display: block;
+  font-weight: 700;
   color: #333;
   font-size: 16px;
 }
 
-
-.formTextInput{
+.formTextInput {
   height: 45.6px;
   line-height: normal;
   width: 100%;
   padding: 12px;
   border: 2px solid #ccc;
-  border-radius: 10px ;
+  border-radius: 10px;
   font-size: 16px;
   background: #ffffff;
 }
 
-.formTextInput:focus{
+.formTextInput:focus {
   outline: none;
   border-color: #2d89ef;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
-.Button{
+.required {
+  color: red;
+}
+
+.Button {
   padding: 0 20px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -246,7 +249,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -258,30 +261,30 @@
   height: 38px;
 }
 
-.Button:hover{
+.Button:hover {
   background: #1d6fd3;
-    transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 /* Admin Dialog */
 
 .dialogContent {
-    padding: 0;
-    overflow: hidden;
-    background: white;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 480px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    animation: modalSlideUp 0.25s ease;
+  padding: 0;
+  overflow: hidden;
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: modalSlideUp 0.25s ease;
 }
 
-.dialogBody{
+.dialogBody {
   padding: 0 24px 24px 24px;
 }
 
-.dialogHeader{
+.dialogHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -290,26 +293,26 @@
   background: #fafbfc;
 }
 
-.dialogHeaderH2{
+.dialogHeaderH2 {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
   color: #24292e;
 }
 
-.dialogForm{
+.dialogForm {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.formGroup{
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.formGroupLabel{
+.formGroupLabel {
   display: block;
   font-size: 14px;
   font-weight: 600;
@@ -317,7 +320,7 @@
   line-height: 1.6;
 }
 
-.formGroupInput{
+.formGroupInput {
   width: 100%;
   padding: 10px 14px;
   border: 2px solid #e1e4e8;
@@ -328,16 +331,16 @@
   height: 41.7px;
 }
 
-.formGroupInput:focus{
+.formGroupInput:focus {
   outline: none;
   border-color: #2d89ef;
   box-shadow: 0 0 0 3px rgba(45, 137, 239, 0.12);
 }
 
-.dialogButton{
+.dialogButton {
   width: 100%;
   padding: 12px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -345,7 +348,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -357,7 +360,7 @@
   height: 38px;
 }
 
-.dialogButton:hover{
+.dialogButton:hover {
   background: #1d6fd3;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(45, 137, 239, 0.3);
@@ -381,7 +384,7 @@
   color: #24292e;
 }
 
-.menuToggle:focus{
+.menuToggle:focus {
   outline: none;
   background: #e8eaed;
 }

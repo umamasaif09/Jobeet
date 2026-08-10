@@ -8,15 +8,18 @@ export default function LogoutButton() {
   const router = useRouter();
 
   async function handleLogout() {
-    try{
-      if(!window.confirm("Are you sure you want to logout?")) return;
+    try {
+      if (!window.confirm("Are you sure you want to logout?")) return;
       await logout();
     } finally {
       router.replace("/auth/login");
     }
   }
   return (
-    <button onClick={handleLogout} className={`${navStyles.navItem} cursor-pointer`}>
+    <button
+      onClick={handleLogout}
+      className={`${navStyles.navItem} cursor-pointer`}
+    >
       Logout
     </button>
   );

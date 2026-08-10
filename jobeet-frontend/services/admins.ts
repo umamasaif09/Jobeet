@@ -11,16 +11,16 @@ export async function getAdmins(cookie: string) {
   const response = await api.get("/admins", {
     headers: {
       Cookie: cookie,
-    }
+    },
   });
   return response.data;
 }
 
-export async function getAdmin(id: string, cookie: string){
+export async function getAdmin(id: string, cookie: string) {
   const response = await api.get(`/admins/detail/${id}`, {
     headers: {
       Cookie: cookie,
-    }
+    },
   });
   return response.data;
 }

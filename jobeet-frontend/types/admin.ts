@@ -1,4 +1,4 @@
-export interface AdminApi{
+export interface AdminApi {
   id: string;
   name: string;
   email: string;
@@ -10,7 +10,7 @@ export interface AdminApi{
   updated_at: string;
 }
 
-export interface Admin{
+export interface Admin {
   id: number;
   name: string;
   email: string;

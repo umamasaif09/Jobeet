@@ -16,8 +16,7 @@ class affiliates extends MY_Controller
         
         $affiliates = $this->mdl_affiliate->getAffiliates();
 
-        header("Content-Type: application/json");
-        echo json_encode($affiliates, JSON_PRETTY_PRINT);
+        $this->response($affiliates);
     }
 
     public function detail($id) {
@@ -28,8 +27,7 @@ class affiliates extends MY_Controller
 
       $affiliate["categories"] = $categories;
 
-      header("Content-Type: application/json");
-      echo json_encode($affiliate, JSON_PRETTY_PRINT);
+      $this->response($affiliate);
     }
 
     public function apply()
@@ -38,11 +36,9 @@ class affiliates extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ], 400);
         }
 
         $affiliateData= [
@@ -56,38 +52,30 @@ class affiliates extends MY_Controller
         $affiliateId= $this->mdl_affiliate->createAffiliate($affiliateData);
 
         if(!$affiliateId) {
-            http_response_code(500);
-            echo json_encode([
-                "message"=> "Unable to submit application"
-            ]);
 
-            return;
+            return $this->response([
+              "message"=> "Unable to submit application"
+            ],500);
         }
 
         //get selected categories
         $categories = $data["categories"];
 
-        if(empty($categories)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+        if(!empty($categories)){
+           //save selected categories
+            $this->mdl_affiliate->saveCategories($affiliateId, $categories);
         }
 
-        //save selected categories
-        $this->mdl_affiliate->saveCategories($affiliateId, $categories);
+        
 
         //fetch the respective affiliate
         $affiliate= $this->mdl_affiliate->getAffiliateById($affiliateId);
 
-        http_response_code(201);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Application submitted successfully",
-            "id" =>$affiliateId,
-            "affiliate" =>$affiliate
-        ]);
+        $this->response([
+          "message" => "Application submitted successfully",
+          "id" =>$affiliateId,
+          "affiliate" =>$affiliate
+        ], 201);
     }
 
     public function create()
@@ -98,11 +86,9 @@ class affiliates extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->resposne([
+              "message" => "Invalid request"
+            ], 400);
         }
 
         $affiliateData = [
@@ -115,23 +101,18 @@ class affiliates extends MY_Controller
         $affiliateId = $this->mdl_affiliate->createAffiliate($affiliateData);
 
         if(!$affiliateId) {
-            http_response_code(500);
-            echo json_encode([
-                "message"=> "Unable to create affiliate"
-            ]);
-
-            return;
+            return $this->response([
+              "message"=> "Unable to create affiliate"
+            ], 500);
         }
 
         //get selected categories
         $categories = $data["categories"];
 
         if(empty($categories)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ], 400);
         }
 
         //save selected categories
@@ -139,13 +120,11 @@ class affiliates extends MY_Controller
 
         $affiliate = $this->mdl_affiliate->getAffiliateById($affiliateId);
 
-        http_response_code(201);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Affiliate created successfully",
-            "id" =>$affiliateId,
-            "affiliate" => $affiliate
-        ]);
+        $this->response([
+          "message" => "Affiliate created successfully",
+          "id" =>$affiliateId,
+          "affiliate" => $affiliate
+        ], 201);
     }
 
     public function update($affiliateId)
@@ -156,11 +135,9 @@ class affiliates extends MY_Controller
         $data = json_decode($json, true);
 
         if(empty($data)){
-            http_response_code(400);
-            echo json_encode([
-                "message" => "Invalid request"
-            ]);
-            return;
+            return $this->response([
+              "message" => "Invalid request"
+            ], 400);
         }
 
         $affiliateData = [
@@ -176,22 +153,17 @@ class affiliates extends MY_Controller
         $affiliate = $this->mdl_affiliate->editAffiliate($affiliateId ,$affiliateData);
 
         if(!$affiliate) {
-            http_response_code(500);
-            echo json_encode([
-                "message"=> "Unable to update affiliate"
-            ]);
-
-            return;
+            return $this->response([
+              "message"=> "Unable to update affiliate"
+            ], 500);
         }
 
         $affiliate = $this->mdl_affiliate->getAffiliateById($affiliateId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Affiliate updated successfully",
-            "id" =>$affiliateId,
-            "affiliate" => $affiliate
+        $this->response([
+          "message" => "Affiliate updated successfully",
+          "id" =>$affiliateId,
+          "affiliate" => $affiliate
         ]);
 
     }
@@ -203,21 +175,17 @@ class affiliates extends MY_Controller
         $disabled = $this->mdl_affiliate->disable($affiliateId);
 
         if(!$disabled) {
-            http_response_code(404);
-            echo json_encode([
-                "message" => "Affiliate not found"
-            ]);
-            return; 
+            return $this->response([
+              "message" => "Affiliate not found"
+            ],404); 
         }
 
         $affiliate = $this->mdl_affiliate->getAffiliateById($affiliateId);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Affiliate disabled successfully",
-            "id" =>$affiliateId,
-            "affiliate" => $affiliate
+        $this->response([
+          "message" => "Affiliate disabled successfully",
+          "id" =>$affiliateId,
+          "affiliate" => $affiliate
         ]);
     }
 
@@ -248,27 +216,22 @@ class affiliates extends MY_Controller
 
         $activated = $this->mdl_affiliate->activate($affiliateId, $token);
         if(!$activated) {
-            http_response_code(404);
-            echo json_encode([
-                "message" => "Affiliate not found"
-            ]);
-            return; 
+            return $this->response([
+              "message" => "Affiliate not found"
+            ],404); 
         }
 
         $affiliate = $this->mdl_affiliate->getAffiliateById($affiliateId);
 
         $emailSent = $this->sendActivationEmail($affiliate, $token);
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "Affiliate activated successfully",
-            "id" =>$affiliateId,
-            "affiliate" => $affiliate,
-            "token" => $token,
-            "emailSent" => $emailSent
+        $this->response([
+          "message" => "Affiliate activated successfully",
+          "id" =>$affiliateId,
+          "affiliate" => $affiliate,
+          "token" => $token,
+          "emailSent" => $emailSent
         ]);
-
     }
 
     public function delete($affiliateId)
@@ -278,18 +241,14 @@ class affiliates extends MY_Controller
         $deleted = $this->mdl_affiliate->deleteAffiliate($affiliateId);
 
         if(!$deleted) {
-            http_response_code(404);
-            echo json_encode([
-                "message" => "Affiliate not found"
-            ]);
-            return; 
+            return $this->response([
+              "message" => "Affiliate not found"
+            ],404); 
         }
 
-        http_response_code(200);
-        header("Content-Type: application/json");
-        echo json_encode([
-            "message" => "affiliate deleted successfully",
-            "id" =>$affiliateId
+        $this->response([
+          "message" => "affiliate deleted successfully",
+          "id" =>$affiliateId
         ]);
 
     }
@@ -300,7 +259,6 @@ class affiliates extends MY_Controller
         
         $count = $this->mdl_affiliate->getAffiliatesCount();
 
-        header("Content-Type: application/json");
-        echo json_encode($count, JSON_PRETTY_PRINT);
+        $this->response($count);
     }
 }

@@ -1,81 +1,80 @@
 /* Homepage Jobs Table */
 
 .jobsTableCard {
-    background: #ffffff;
-    border: 1px solid #e1e4e8;
-    border-radius: 12px;
-    /* margin-bottom: 24px; */
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  /* margin-bottom: 24px; */
 }
 
 .jobsTableCard:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .jobsTable {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .jobsTableHeaderTh {
-    background: #f6f8fa;
-    color: #24292e;
-    font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
-    padding: 10px 12px;
-    text-align: left;
-    border-bottom: 2px solid #e1e4e8;
-    white-space: nowrap;
-    height: 36px;
+  background: #f6f8fa;
+  color: #24292e;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 2px solid #e1e4e8;
+  white-space: nowrap;
+  height: 36px;
 }
 
 .jobsTableBodyTd {
-    padding: 14px 12px;
-    border-bottom: 1px solid #f0f2f5;
-    text-align: left;
-    font-size: 14px;
-    color: #24292e;
-    vertical-align: middle;
-    line-height: normal;
-    white-space: normal;
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  text-align: left;
+  font-size: 14px;
+  color: #24292e;
+  vertical-align: middle;
+  line-height: normal;
+  white-space: normal;
 }
 
-
 .jobsTableBodyTr {
-    transition: background 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .jobsTableBodyTr:hover {
-    background: #f8f9fa;
+  background: #f8f9fa;
 }
 
 .jobTitle {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1f2937;
-    text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  text-decoration: none;
 }
 
 .jobTitle:hover {
-    color: #2d89ef;
-    text-decoration: none;
+  color: #2d89ef;
+  text-decoration: none;
 }
 
 /* Pagination */
 
-.pageNumber{
-    font-weight: 600;
-    color: #2c3e50;
+.pageNumber {
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-.pageInfo{
+.pageInfo {
   color: #555;
   font-size: 15px;
   margin: 15px 0;
 }
 
-.pagination{
+.pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,21 +82,21 @@
 
 /* Job Detail Page */
 
-.jobDetails{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.jobDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo{
-    width:80px;
-    height:80px;
-    border-radius: 10px;
-    border: 2px solid #ddd;
-    object-fit:contain;
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  object-fit: contain;
 }
 
-.jobDetailsH2{
+.jobDetailsH2 {
   font-size: 1.5em;
   font-weight: bold;
   margin: 0 0 19.92px 0;
@@ -118,82 +117,82 @@
   line-height: 18.4px;
 }
 
-.jobDetailsP{
+.jobDetailsP {
   display: block;
   color: #333;
   margin: 8px 0;
 }
 
-.jobDetailsHr{
+.jobDetailsHr {
   color: gray;
   border-width: 1px;
   margin: 8px 0;
 }
 
-.hr{
-  margin:0.5em 0;
-  border:0;
-  border-top:0.8px solid rgb(128, 128, 128);
-
+.hr {
+  margin: 0.5em 0;
+  border: 0;
+  border-top: 0.8px solid rgb(128, 128, 128);
 }
 
 /* Job Form */
 
-.formTextInput{
+.formTextInput {
   height: 45.6px;
   line-height: normal;
   width: 100%;
   padding: 12px;
   border: 2px solid #ccc;
-  border-radius: 10px ;
+  border-radius: 10px;
   font-size: 16px;
   background: #ffffff;
 }
 
 .formTextInput:hover,
-.formTextArea:hover{
+.formTextArea:hover {
   border-color: #b0b8c4;
 }
 
-
 .formTextInput:focus,
 .checkboxInput:focus,
-.formTextArea:focus{
+.formTextArea:focus {
   outline: none;
   border-color: #2d89ef;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
 .formSelectInput {
-    height: 45.6px;
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-    background: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
+  height: 45.6px;
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #fff;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .formSelectInput:hover {
-    border-color: #b0b8c4;
+  border-color: #b0b8c4;
 }
 
 .formSelectInput:focus,
 .formSelectInput:focus-visible,
 .formSelectInput[data-state="open"] {
-    outline: none;
-    border-color: #2d89ef;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+  outline: none;
+  border-color: #2d89ef;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
 }
 
 .formSelectItem[data-highlighted] {
-    background-color: #2d89ef;
-    color: white;
-    border-radius: 0;
+  background-color: #2d89ef;
+  color: white;
+  border-radius: 0;
 }
 
-.formTextArea{
+.formTextArea {
   height: 100px;
   width: 100%;
   padding: 12px;
@@ -203,14 +202,14 @@
   background: #ffffff;
 }
 
-.formLabel{
-  display:block;
-  font-weight:700;
+.formLabel {
+  display: block;
+  font-weight: 700;
   color: #333;
   font-size: 16px;
 }
 
-.checkboxLabel{
+.checkboxLabel {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -219,16 +218,16 @@
   line-height: 1.4;
 }
 
-.checkboxLabel:hover{
+.checkboxLabel:hover {
   color: #2d89ef;
 }
 
-.checkboxInput{
+.checkboxInput {
   margin: 0;
   cursor: pointer;
 }
 
-.checkboxInput[data-state="checked"]{
+.checkboxInput[data-state="checked"] {
   border-color: #2d89ef;
   background-color: #2d89ef;
 }
@@ -237,13 +236,13 @@
   border-color: #ccc;
 }
 
-.formGroup{
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form{
+.form {
   min-width: 224px;
   margin: 0px calc(84.725px + 1rem);
   /* margin-bottom: 24px;
@@ -253,9 +252,9 @@
   gap: 12px;
 }
 
-.jobButton{
+.jobButton {
   padding: 0 20px;
-  border-radius:8px;
+  border-radius: 8px;
   border: none;
   font-size: 15px;
   font-weight: 600;
@@ -263,7 +262,7 @@
   text-decoration: none;
   cursor: pointer;
 
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   /* remove default styles */
   color: inherit;
@@ -275,9 +274,9 @@
   height: 38px;
 }
 
-.jobButton:hover{
+.jobButton:hover {
   background: #1d6fd3;
-    transform: translateY(-1px);
+  transform: translateY(-1px);
 }
 
 .fileButton {
@@ -294,18 +293,17 @@
 }
 
 .fileButton:hover {
-    background: #f3f4f6;
-    border-color: #8b949e;
-    transform: none;
+  background: #f3f4f6;
+  border-color: #8b949e;
+  transform: none;
 }
 
-
-.fileButton:active{
-    background: #e8eaed;
+.fileButton:active {
+  background: #e8eaed;
 }
 
 .checkboxLabel,
-.radioLabel{
+.radioLabel {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -314,27 +312,31 @@
   line-height: 1.4;
 }
 
+.required {
+  color: red;
+}
+
 .h3 {
   font-size: 18.72px;
   font-weight: bold;
-  margin: 0 0 1.23em 0;
+  margin: 0 0 18.72px 0;
   line-height: 21.6px;
 }
 
-.adminJobsTableCard{
-    width: 100%;
-    overflow-x: auto;
-    background: #ffffff;
-    border: 1px solid #e1e4e8;
-    border-radius: 12px;
-    /* margin-bottom: 24px; */
+.adminJobsTableCard {
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  /* margin-bottom: 24px; */
 }
 
-.adminJobsTableCard:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.adminJobsTableCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.adminJobsTable{
+.adminJobsTable {
   width: 100%;
   margin-top: 0;
   border-collapse: collapse;
@@ -344,56 +346,56 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.adminJobsTableHeaderTh{
-    background: #f6f8fa;
-    color: #24292e;
-    font-weight: 900;
-    font-size: 13px;
-    text-transform: uppercase;
-    padding: 10px 10px;
-    text-align: left;
-    border-bottom: 2px solid #e1e4e8;
-    white-space: nowrap;
+.adminJobsTableHeaderTh {
+  background: #f6f8fa;
+  color: #24292e;
+  font-weight: 900;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  text-align: left;
+  border-bottom: 2px solid #e1e4e8;
+  white-space: nowrap;
 }
 
-.adminJobsTableBodyTd{
-    padding: 10px;
-    border-bottom: 1px solid #f0f2f5;
-    text-align: left;
-    font-size: 13px;
-    color: #24292e;
-    vertical-align: middle;
-    white-space: normal;
+.adminJobsTableBodyTd {
+  padding: 10px;
+  border-bottom: 1px solid #f0f2f5;
+  text-align: left;
+  font-size: 13px;
+  color: #24292e;
+  vertical-align: middle;
+  white-space: normal;
 }
 
-.adminJobsTableBodyTr{
+.adminJobsTableBodyTr {
   transition: background 0.15s ease;
 }
 
 .adminJobsTableBodyTr:nth-child(even) {
-    background: #fafafa;
+  background: #fafafa;
 }
 
 .adminJobsTableIdColumn {
-    width: 60px;
-    font-weight: 500;
-    color: #57606a;
-    font-size: 13px;
+  width: 60px;
+  font-weight: 500;
+  color: #57606a;
+  font-size: 13px;
 }
 
-.adminJobTitle{
-    font-size: 12px;
-    font-weight: 600;
-    color: #1f2937;
+.adminJobTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
 }
 
-.companyName{
+.companyName {
   font-size: 12px;
   font-weight: 500;
   color: #1f2937;
 }
 
-.typeBadge{
+.typeBadge {
   display: inline-block;
   padding: 4px 10px;
   background: #dbeafe;
@@ -402,18 +404,18 @@
   font-weight: 500;
 }
 
-.locationText{
+.locationText {
   color: #1f2937;
   font-size: 12px;
 }
 
-.expiryDate{
+.expiryDate {
   color: #1f2937;
   font-size: 12px;
   font-weight: 400;
 }
 
-.badgeActive{
+.badgeActive {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -424,7 +426,7 @@
   color: #166534;
 }
 
-.badgeInactive{
+.badgeInactive {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -435,7 +437,7 @@
   color: #991b1b;
 }
 
-.badgePublic{
+.badgePublic {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -446,7 +448,7 @@
   color: #1d4ed8;
 }
 
-.badgePrivate{
+.badgePrivate {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
@@ -458,57 +460,56 @@
 }
 
 .rowMenu {
-    position: relative;
-    width: 50px;
-    text-align: left ;
-    padding-left: 16px ;
-    overflow: visible ;
+  position: relative;
+  width: 50px;
+  text-align: left;
+  padding-left: 16px;
+  overflow: visible;
 }
 
 .menuDropdownBtnWarning {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #24292e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #24292e;
+  border: none;
 }
 
 .menuDropdownBtnWarning:hover {
-    background: #f0f2f5;
-    color: #1a202c;
-    transform: none;
+  background: #f0f2f5;
+  color: #1a202c;
+  transform: none;
 }
 
 .menuDropdownBtnDanger {
   display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: left;
-    transition: all 0.15s ease;
-    background: transparent;
-    color: #cf222e;
-    border: none;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.15s ease;
+  background: transparent;
+  color: #cf222e;
+  border: none;
 }
 
 .menuDropdownBtnDanger:hover {
-    background: #ffebe9;
-    color: #cf222e;
-    transform: none;
+  background: #ffebe9;
+  color: #cf222e;
+  transform: none;
 }
-
 
 .menuToggle {
   background: none;
@@ -528,15 +529,26 @@
   color: #24292e;
 }
 
-.menuToggle:focus{
+.menuToggle:focus {
   outline: none;
   background: #e8eaed;
+}
+
+.previewTable {
+  border: none;
+  border-collapse: collapse;
+}
+
+.previewTable td {
+  padding: 10px 12px;
+  text-align: left;
+  border: none;
 }
 
 /* ===== JOBS RELATED RESPONSIVE DESIGN ===== */
 
 @media screen and (max-width: 700px) {
-  .form{
+  .form {
     margin: 0 calc(68.725px + 1rem);
     padding: 0;
   }
@@ -607,8 +619,8 @@
     height: 55px;
   }
 
-.formTextInput ,
-  .formSelectInput{
+  .formTextInput,
+  .formSelectInput {
     height: 32px;
     padding: 6px 8px;
     font-size: 11px;
@@ -639,12 +651,12 @@
     padding: 0 6px;
   }
 
-  .form{
-    margin:0 calc(60.2875px + 1rem);
-    padding: 0
+  .form {
+    margin: 0 calc(60.2875px + 1rem);
+    padding: 0;
   }
 
-  .fileButton{
+  .fileButton {
     padding: 4px;
     height: 20px;
     font-size: 10px;
@@ -652,12 +664,10 @@
 }
 
 @media screen and (max-width: 400px) {
-  .form{
+  .form {
     margin: 0;
     padding-right: 0;
   }
-
-  
 
   .formTextArea {
     height: 80px;
@@ -716,26 +726,22 @@
     margin-bottom: 4px;
   } */
 
-  
-
- 
   .jobButton {
     height: 25px;
     font-size: 11px;
-  } 
-  
+  }
 
-   .jobDetails {
+  .jobDetails {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
 
-  .pageTitle{
+  .pageTitle {
     margin: 12px 0;
   }
 
-  .fileButton{
+  .fileButton {
     padding: 2px 4px;
     height: 16px;
     font-size: 10px;

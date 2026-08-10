@@ -37,4 +37,10 @@ class MY_Controller extends CI_Controller
         exit;
     }
     }
+
+    protected function response($data, $httpCode = 200){
+      http_response_code($httpCode);
+      header("Content-Type: application/json");
+      echo json_encode($data, JSON_PRETTY_PRINT);
+    }
 }

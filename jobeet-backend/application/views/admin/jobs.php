@@ -44,7 +44,7 @@
                                 </span>
                             </td>
                             <td>
-                                <?php if($job["is_active"]) { ?>
+                                <?php if($job["is_active"] && $job["expires_at"] > date('Y-m-d H:i:s')) { ?>
                                     <span class="badge active">Active</span>
                                 <?php } else { ?>
                                     <span class="badge inactive">Inactive</span>

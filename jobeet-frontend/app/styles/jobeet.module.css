@@ -1,7 +1,6 @@
-
 /* Category Page */
 
-.pageTitle{
+.pageTitle {
   font-size: 24px;
   font-weight: 600;
   color: #24292e;
@@ -10,7 +9,7 @@
   text-overflow: ellipsis;
 }
 
-.backButton{
+.backButton {
   flex-shrink: 0;
   height: 36px;
   padding: 0 16px;
@@ -26,7 +25,7 @@
   cursor: pointer;
 }
 
-.backButton:hover{
+.backButton:hover {
   background: #d4e4fc;
   border-color: #2d89ef;
   transform: none;
@@ -40,7 +39,6 @@
   margin-right: auto;
   padding: 0 32px;
 }
-
 
 /* ===== CATEGORY PAGE RESPONSIVE ===== */
 
@@ -85,6 +83,4 @@
   .pageTitle {
     font-size: 16px;
   }
-
-
 }

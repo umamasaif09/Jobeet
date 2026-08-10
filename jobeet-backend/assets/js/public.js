@@ -1,20 +1,19 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".back-button").forEach(function(button) {
-        button.addEventListener("click", function() {
-            history.back();
-        });
-    });
+document.addEventListener("DOMContentLoaded", function () {
+	document.querySelectorAll(".back-button").forEach(function (button) {
+		button.addEventListener("click", function () {
+			history.back();
+		});
+	});
 
-  const logoInput = document.getElementById("logo");
-  const logoPreview = document.getElementById("logo-preview");
+	const logoInput = document.getElementById("logo");
+	const logoPreview = document.getElementById("logo-preview");
 
-  logoInput.addEventListener("change", function () {
-      const file = this.files[0];
+	logoInput.addEventListener("change", function () {
+		const file = this.files[0];
 
-      if (!file) return;
+		if (!file) return;
 
-      logoPreview.src = URL.createObjectURL(file);
-      logoPreview.style.display = "block";
-  });
+		logoPreview.src = URL.createObjectURL(file);
+		logoPreview.style.display = "block";
+	});
 });
-

@@ -43,7 +43,10 @@ class affiliates extends CI_Controller
         $categories = $this->input->post("categories");
 
         //save selected categories
-        $this->mdl_affiliate->saveCategories($affiliateId, $categories);
+        if($categories){
+          $this->mdl_affiliate->saveCategories($affiliateId, $categories);
+        }
+        
 
         //fetch the respective affiliate
         $affiliate= $this->mdl_affiliate->getAffiliateById($affiliateId);
